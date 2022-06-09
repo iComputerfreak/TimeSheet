@@ -11,6 +11,19 @@
 		ABE17B9A28522F7A00879C30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17B9928522F7A00879C30 /* ContentView.swift */; };
 		ABE17B9C28522F7B00879C30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABE17B9B28522F7B00879C30 /* Assets.xcassets */; };
 		ABE17B9F28522F7B00879C30 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABE17B9E28522F7B00879C30 /* Preview Assets.xcassets */; };
+		ABE17BA62852300B00879C30 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BA52852300B00879C30 /* ListView.swift */; };
+		ABE17BA82852301000879C30 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BA72852301000879C30 /* SettingsView.swift */; };
+		ABE17BAA2852309200879C30 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BA92852309200879C30 /* Config.swift */; };
+		ABE17BAC285233E900879C30 /* WorkTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BAB285233E900879C30 /* WorkTime.swift */; };
+		ABE17BAE2852368D00879C30 /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BAD2852368D00879C30 /* ListRow.swift */; };
+		ABE17BB12852386900879C30 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = ABE17BB02852386900879C30 /* Algorithms */; };
+		ABE17BB3285241DF00879C30 /* AddWorkTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BB2285241DF00879C30 /* AddWorkTimeView.swift */; };
+		ABE17BB528524AB800879C30 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BB428524AB800879C30 /* Utils.swift */; };
+		ABE17BB728524CB900879C30 /* PayoutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BB628524CB900879C30 /* PayoutsView.swift */; };
+		ABE17BBB28525F7E00879C30 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BBA28525F7E00879C30 /* Extensions.swift */; };
+		ABE17BBD285260C300879C30 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BBC285260C300879C30 /* TimeView.swift */; };
+		ABE17BBF2852619D00879C30 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BBE2852619D00879C30 /* UserData.swift */; };
+		ABE17BC1285261D600879C30 /* Payout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BC0285261D600879C30 /* Payout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +32,18 @@
 		ABE17B9928522F7A00879C30 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ABE17B9B28522F7B00879C30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABE17B9E28522F7B00879C30 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		ABE17BA52852300B00879C30 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		ABE17BA72852301000879C30 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		ABE17BA92852309200879C30 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		ABE17BAB285233E900879C30 /* WorkTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTime.swift; sourceTree = "<group>"; };
+		ABE17BAD2852368D00879C30 /* ListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
+		ABE17BB2285241DF00879C30 /* AddWorkTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkTimeView.swift; sourceTree = "<group>"; };
+		ABE17BB428524AB800879C30 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		ABE17BB628524CB900879C30 /* PayoutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutsView.swift; sourceTree = "<group>"; };
+		ABE17BBA28525F7E00879C30 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		ABE17BBC285260C300879C30 /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
+		ABE17BBE2852619D00879C30 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		ABE17BC0285261D600879C30 /* Payout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE17BB12852386900879C30 /* Algorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +63,7 @@
 			children = (
 				ABE17B9628522F7A00879C30 /* TimeSheet */,
 				ABE17B9528522F7A00879C30 /* Products */,
+				ABE17BC428528C2100879C30 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,7 +79,10 @@
 			isa = PBXGroup;
 			children = (
 				ABE17B9728522F7A00879C30 /* TimeSheetApp.swift */,
-				ABE17B9928522F7A00879C30 /* ContentView.swift */,
+				ABE17BB428524AB800879C30 /* Utils.swift */,
+				ABE17BBA28525F7E00879C30 /* Extensions.swift */,
+				ABE17BB928524CC100879C30 /* Models */,
+				ABE17BB828524CBC00879C30 /* Views */,
 				ABE17B9B28522F7B00879C30 /* Assets.xcassets */,
 				ABE17B9D28522F7B00879C30 /* Preview Content */,
 			);
@@ -65,6 +95,38 @@
 				ABE17B9E28522F7B00879C30 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		ABE17BB828524CBC00879C30 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ABE17B9928522F7A00879C30 /* ContentView.swift */,
+				ABE17BA52852300B00879C30 /* ListView.swift */,
+				ABE17BAD2852368D00879C30 /* ListRow.swift */,
+				ABE17BBC285260C300879C30 /* TimeView.swift */,
+				ABE17BB2285241DF00879C30 /* AddWorkTimeView.swift */,
+				ABE17BB628524CB900879C30 /* PayoutsView.swift */,
+				ABE17BA72852301000879C30 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ABE17BB928524CC100879C30 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ABE17BA92852309200879C30 /* Config.swift */,
+				ABE17BBE2852619D00879C30 /* UserData.swift */,
+				ABE17BAB285233E900879C30 /* WorkTime.swift */,
+				ABE17BC0285261D600879C30 /* Payout.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ABE17BC428528C2100879C30 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +145,9 @@
 			dependencies = (
 			);
 			name = TimeSheet;
+			packageProductDependencies = (
+				ABE17BB02852386900879C30 /* Algorithms */,
+			);
 			productName = TimeSheet;
 			productReference = ABE17B9428522F7A00879C30 /* TimeSheet.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +176,9 @@
 				Base,
 			);
 			mainGroup = ABE17B8B28522F7A00879C30;
+			packageReferences = (
+				ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+			);
 			productRefGroup = ABE17B9528522F7A00879C30 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +205,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE17BBF2852619D00879C30 /* UserData.swift in Sources */,
+				ABE17BB728524CB900879C30 /* PayoutsView.swift in Sources */,
 				ABE17B9A28522F7A00879C30 /* ContentView.swift in Sources */,
+				ABE17BA82852301000879C30 /* SettingsView.swift in Sources */,
+				ABE17BB528524AB800879C30 /* Utils.swift in Sources */,
+				ABE17BAA2852309200879C30 /* Config.swift in Sources */,
 				ABE17B9828522F7A00879C30 /* TimeSheetApp.swift in Sources */,
+				ABE17BA62852300B00879C30 /* ListView.swift in Sources */,
+				ABE17BAE2852368D00879C30 /* ListRow.swift in Sources */,
+				ABE17BB3285241DF00879C30 /* AddWorkTimeView.swift in Sources */,
+				ABE17BBB28525F7E00879C30 /* Extensions.swift in Sources */,
+				ABE17BC1285261D600879C30 /* Payout.swift in Sources */,
+				ABE17BAC285233E900879C30 /* WorkTime.swift in Sources */,
+				ABE17BBD285260C300879C30 /* TimeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +350,8 @@
 				DEVELOPMENT_TEAM = 46C9Y785NA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = TimeSheet;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +381,8 @@
 				DEVELOPMENT_TEAM = 46C9Y785NA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = TimeSheet;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -339,6 +423,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ABE17BB02852386900879C30 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ABE17B8C28522F7A00879C30 /* Project object */;
 }
