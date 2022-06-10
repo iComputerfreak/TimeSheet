@@ -23,7 +23,7 @@ struct PayoutRow: View {
             VStack(alignment: .leading) {
                 Text("\(payout.date, format: .dateTime.day().month().year())")
                     .font(.headline)
-                let duration = Self.durationFormatter.string(from: payout.duration)!
+                let duration = Self.durationFormatter.string(from: payout.duration) ?? ""
                 Text("\(duration)")
             }
             Spacer()

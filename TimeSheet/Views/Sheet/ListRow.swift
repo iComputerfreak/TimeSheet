@@ -23,7 +23,7 @@ struct ListRow: View {
             VStack(alignment: .leading) {
                 Text("\(worktime.date, format: .dateTime.weekday(.wide).day().month(.defaultDigits))")
                     .bold()
-                Text("\(Self.durationFormatter.string(from: worktime.duration)!)")
+                Text("\(Self.durationFormatter.string(from: worktime.duration) ?? "")")
             }
             Spacer()
             VStack(alignment: .trailing) {

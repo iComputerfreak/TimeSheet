@@ -30,7 +30,7 @@ struct AnnotationView: View {
             return value.formatted(.currency(code: config.currency))
         case .time:
             let comp = DateComponents(hour: Int(value), minute: Int(value * 60) % 60)
-            return Self.durationFormatter.string(from: comp)!
+            return Self.durationFormatter.string(from: comp) ?? ""
         }
     }
     
@@ -52,5 +52,6 @@ struct AnnotationView_Previews: PreviewProvider {
         AnnotationView(date: .now, value: 100, graphType: .income)
             .padding()
             .previewLayout(.sizeThatFits)
+            .environmentObject(Config())
     }
 }

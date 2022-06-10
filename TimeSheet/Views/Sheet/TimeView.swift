@@ -13,7 +13,7 @@ struct TimeView: View {
     let wage: Double
     
     var body: some View {
-        let timeString = WorkTime.durationFormatter.string(from: duration)!
+        let timeString = WorkTime.durationFormatter.string(from: duration) ?? ""
         let moneyString = duration.pay(using: wage).formatted(.currency(code: config.currency))
         Text("\(timeString) (\(moneyString))")
     }

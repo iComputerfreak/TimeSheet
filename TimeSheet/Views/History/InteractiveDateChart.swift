@@ -34,7 +34,7 @@ struct InteractiveDateChart: View {
                 .foregroundStyle(.green)
             }
             if let highlightedMonth {
-                let value = data.first(where: { $0.0 == highlightedMonth })!.1
+                let value = data.first(where: { $0.0 == highlightedMonth })?.1 ?? 0
                 BarMark(
                     x: .value("Date", highlightedMonth),
                     yStart: .value(graphType.yLabel, 0),
@@ -72,8 +72,6 @@ struct InteractiveDateChart: View {
                             let date: Date = proxy.value(atX: xCurrent) ?? .now
                             // Snap to nearest month
                             let nearest = nearestMonth(to: date)
-                            assert(nearest.day == 1)
-                            
                             highlightedMonth = nearest
                         }
                         .onEnded { _ in highlightedMonth = nil } // Clear the state on gesture end.
@@ -152,7 +150,7 @@ struct InteractiveDateChart_Previews: PreviewProvider {
                     year: worktime.date.year,
                     month: worktime.date.month,
                     day: 1
-                ))!
+                )) ?? worktime.date
             }
         )
     }

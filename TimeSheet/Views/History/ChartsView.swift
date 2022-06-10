@@ -47,7 +47,7 @@ struct ChartsView: View {
                     year: worktime.date.year,
                     month: worktime.date.month,
                     day: 1
-                ))!
+                )) ?? worktime.date
             }
         )
     }
@@ -82,39 +82,44 @@ struct ChartsView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    Picker("Graph Content", selection: $graphType) {
-                        Text("Income")
-                            .tag(GraphType.income)
-                        Text("Time")
-                            .tag(GraphType.time)
-                    }
-                    .pickerStyle(.segmented)
-                    InteractiveDateChart(data: data, graphType: graphType)
-                        .frame(height: 200)
-                        .animation(.default, value: graphType)
-                        .padding(.bottom, 8)
-                    VStack(alignment: .leading, spacing: 5) {
-                        ForEach(data.reversed(), id: \.0) { date, income in
-                            HStack {
-                                Text("\(date, format: .dateTime.month(.wide).year())")
-                                Spacer()
-                                switch graphType {
-                                case .income:
-                                    Text("\(income, format: .currency(code: config.currency))")
-                                case .time:
-                                    let components = DateComponents(hour: Int(income), minute: Int(income * 60) % 60)
-                                    Text("\(Self.historyDurationFormatter.string(from: components)!)")
-                                }
-                            }
-                            .foregroundColor(.gray)
+            if worktimes.isEmpty {
+                Text("No data to display")
+                    .navigationTitle("History")
+            } else {
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        Picker("Graph Content", selection: $graphType) {
+                            Text("Income")
+                                .tag(GraphType.income)
+                            Text("Time")
+                                .tag(GraphType.time)
                         }
+                        .pickerStyle(.segmented)
+                        InteractiveDateChart(data: data, graphType: graphType)
+                            .frame(height: 200)
+                            .animation(.default, value: graphType)
+                            .padding(.bottom, 8)
+                        VStack(alignment: .leading, spacing: 5) {
+                            ForEach(data.reversed(), id: \.0) { date, income in
+                                HStack {
+                                    Text("\(date, format: .dateTime.month(.wide).year())")
+                                    Spacer()
+                                    switch graphType {
+                                    case .income:
+                                        Text("\(income, format: .currency(code: config.currency))")
+                                    case .time:
+                                        let components = DateComponents(hour: Int(income), minute: Int(income * 60) % 60)
+                                        Text("\(Self.historyDurationFormatter.string(from: components) ?? "")")
+                                    }
+                                }
+                                .foregroundColor(.gray)
+                            }
+                        }
+                        Spacer()
                     }
-                    Spacer()
+                    .padding()
+                    .navigationTitle("History")
                 }
-                .padding()
-                .navigationTitle("History")
             }
         }
     }
