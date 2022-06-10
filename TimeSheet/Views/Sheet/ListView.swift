@@ -63,32 +63,8 @@ struct ListView: View {
                 #if DEBUG
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Generate") {
-                        func randomWage() -> Double {
-                            Double(Int.random(in: 12...15))
-                        }
-                        func randomHours() -> Double {
-                            Double(Int.random(in: 0...(4 * 10))) / 4
-                        }
-                        func randomDate() -> Date {
-                            let dateOffset = TimeInterval(Int.random(in: -300...0)) * TimeInterval.day
-                            return Date.now.addingTimeInterval(dateOffset)
-                        }
-                        
-                        var worktimes: [WorkTime] = []
-                        for _ in 1...80 {
-                            worktimes.append(.init(date: randomDate(), hours: randomHours(), wage: randomWage()))
-                        }
-                        var payouts: [Payout] = []
-                        var date: Date = .now
-                        for _ in 1...5 {
-                            // Payouts should lie in the past and should be at least 7 days distance from each other
-                            let offset = -TimeInterval(Int.random(in: 7...21)) * .day
-                            date.addTimeInterval(offset)
-                            payouts.append(.init(date: date, worktimes: [
-                                .init(date: date, hours: randomHours(), wage: randomWage())
-                            ]))
-                        }
-                        
+                        let worktimes = SampleData.generateWorkTimes()
+                        let payouts = SampleData.generatePayouts()
                         Task(priority: .userInitiated) {
                             await MainActor.run {
                                 withAnimation {

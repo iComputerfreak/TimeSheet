@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB7DA6922853A4750070C17A /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6912853A4750070C17A /* SampleData.swift */; };
+		AB7DA6942853CFBD0070C17A /* InteractiveDateChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */; };
+		AB7DA6962853D1B40070C17A /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6952853D1B40070C17A /* AnnotationView.swift */; };
 		ABE17B9828522F7A00879C30 /* TimeSheetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17B9728522F7A00879C30 /* TimeSheetApp.swift */; };
 		ABE17B9A28522F7A00879C30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17B9928522F7A00879C30 /* ContentView.swift */; };
 		ABE17B9C28522F7B00879C30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABE17B9B28522F7B00879C30 /* Assets.xcassets */; };
@@ -28,9 +31,13 @@
 		ABE17BCD2853880100879C30 /* PayoutRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BCC2853880100879C30 /* PayoutRow.swift */; };
 		ABE17BCF2853886E00879C30 /* WorkTimeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BCE2853886E00879C30 /* WorkTimeList.swift */; };
 		ABE17BD2285392AD00879C30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABE17BD0285392AD00879C30 /* Localizable.strings */; };
+		ABE17BD4285393AD00879C30 /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BD3285393AD00879C30 /* ChartsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB7DA6912853A4750070C17A /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveDateChart.swift; sourceTree = "<group>"; };
+		AB7DA6952853D1B40070C17A /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		ABE17B9428522F7A00879C30 /* TimeSheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeSheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE17B9728522F7A00879C30 /* TimeSheetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSheetApp.swift; sourceTree = "<group>"; };
 		ABE17B9928522F7A00879C30 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,6 +59,7 @@
 		ABE17BCC2853880100879C30 /* PayoutRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutRow.swift; sourceTree = "<group>"; };
 		ABE17BCE2853886E00879C30 /* WorkTimeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTimeList.swift; sourceTree = "<group>"; };
 		ABE17BD1285392AD00879C30 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ABE17BD3285393AD00879C30 /* ChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +74,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB7DA6972853DA430070C17A /* Sheet */ = {
+			isa = PBXGroup;
+			children = (
+				ABE17BA52852300B00879C30 /* ListView.swift */,
+				ABE17BAD2852368D00879C30 /* ListRow.swift */,
+				ABE17BBC285260C300879C30 /* TimeView.swift */,
+				ABE17BB2285241DF00879C30 /* AddWorkTimeView.swift */,
+				ABE17BCE2853886E00879C30 /* WorkTimeList.swift */,
+			);
+			path = Sheet;
+			sourceTree = "<group>";
+		};
+		AB7DA6982853DA4A0070C17A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				ABE17BA72852301000879C30 /* SettingsView.swift */,
+				ABE17BCA28537FC600879C30 /* WageStepper.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		AB7DA6992853DA4E0070C17A /* History */ = {
+			isa = PBXGroup;
+			children = (
+				ABE17BD3285393AD00879C30 /* ChartsView.swift */,
+				AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */,
+				AB7DA6952853D1B40070C17A /* AnnotationView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		AB7DA69A2853DA5B0070C17A /* Payouts */ = {
+			isa = PBXGroup;
+			children = (
+				ABE17BB628524CB900879C30 /* PayoutsView.swift */,
+				ABE17BCC2853880100879C30 /* PayoutRow.swift */,
+			);
+			path = Payouts;
+			sourceTree = "<group>";
+		};
 		ABE17B8B28522F7A00879C30 = {
 			isa = PBXGroup;
 			children = (
@@ -110,15 +158,10 @@
 			isa = PBXGroup;
 			children = (
 				ABE17B9928522F7A00879C30 /* ContentView.swift */,
-				ABE17BA52852300B00879C30 /* ListView.swift */,
-				ABE17BAD2852368D00879C30 /* ListRow.swift */,
-				ABE17BBC285260C300879C30 /* TimeView.swift */,
-				ABE17BB2285241DF00879C30 /* AddWorkTimeView.swift */,
-				ABE17BB628524CB900879C30 /* PayoutsView.swift */,
-				ABE17BCE2853886E00879C30 /* WorkTimeList.swift */,
-				ABE17BCC2853880100879C30 /* PayoutRow.swift */,
-				ABE17BA72852301000879C30 /* SettingsView.swift */,
-				ABE17BCA28537FC600879C30 /* WageStepper.swift */,
+				AB7DA6972853DA430070C17A /* Sheet */,
+				AB7DA69A2853DA5B0070C17A /* Payouts */,
+				AB7DA6992853DA4E0070C17A /* History */,
+				AB7DA6982853DA4A0070C17A /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -130,6 +173,7 @@
 				ABE17BBE2852619D00879C30 /* UserData.swift */,
 				ABE17BAB285233E900879C30 /* WorkTime.swift */,
 				ABE17BC0285261D600879C30 /* Payout.swift */,
+				AB7DA6912853A4750070C17A /* SampleData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -229,11 +273,15 @@
 				ABE17BAA2852309200879C30 /* Config.swift in Sources */,
 				ABE17B9828522F7A00879C30 /* TimeSheetApp.swift in Sources */,
 				ABE17BA62852300B00879C30 /* ListView.swift in Sources */,
+				AB7DA6962853D1B40070C17A /* AnnotationView.swift in Sources */,
 				ABE17BAE2852368D00879C30 /* ListRow.swift in Sources */,
+				AB7DA6922853A4750070C17A /* SampleData.swift in Sources */,
 				ABE17BCB28537FC600879C30 /* WageStepper.swift in Sources */,
 				ABE17BB3285241DF00879C30 /* AddWorkTimeView.swift in Sources */,
 				ABE17BBB28525F7E00879C30 /* Extensions.swift in Sources */,
+				AB7DA6942853CFBD0070C17A /* InteractiveDateChart.swift in Sources */,
 				ABE17BC1285261D600879C30 /* Payout.swift in Sources */,
+				ABE17BD4285393AD00879C30 /* ChartsView.swift in Sources */,
 				ABE17BAC285233E900879C30 /* WorkTime.swift in Sources */,
 				ABE17BBD285260C300879C30 /* TimeView.swift in Sources */,
 			);

@@ -27,6 +27,12 @@ struct ContentView: View {
                     Text("Payouts")
                 }
             
+            ChartsView()
+                .tabItem {
+                    Image(systemName: "chart.xyaxis.line")
+                    Text("History")
+                }
+            
             SettingsView()
                 .tabItem {
                     Image(systemName: "gear")

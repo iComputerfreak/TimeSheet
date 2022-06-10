@@ -11,7 +11,7 @@ struct PayoutRow: View {
     private static var durationFormatter: DateComponentsFormatter {
         let f = DateComponentsFormatter()
         f.allowedUnits = [.hour, .minute]
-        f.unitsStyle = .full
+        f.unitsStyle = .short
         return f
     }
     
@@ -37,7 +37,7 @@ struct PayoutRow: View {
 struct PayoutRow_Previews: PreviewProvider {
     static var previews: some View {
         PayoutRow(payout: .init(date: .now, worktimes: [
-            .init(date: .now, hours: 10, wage: 12)
+            .init(date: .now, hours: 10.2, wage: 12)
         ]))
         .previewLayout(.sizeThatFits)
     }

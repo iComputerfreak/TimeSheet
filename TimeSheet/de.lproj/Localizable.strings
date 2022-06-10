@@ -20,6 +20,12 @@
 "Generate" = "Generieren";
 
 /* No comment provided by engineer. */
+"Graph Content" = "Diagramm-Inhalt";
+
+/* No comment provided by engineer. */
+"History" = "Verlauf";
+
+/* No comment provided by engineer. */
 "Hourly wage" = "Stundenlohn";
 
 /* No comment provided by engineer. */
@@ -27,6 +33,9 @@
 
 /* No comment provided by engineer. */
 "Hours missing" = "Stunden fehlen";
+
+/* No comment provided by engineer. */
+"Income" = "Einkommen";
 
 /* No comment provided by engineer. */
 "No Entries" = "Keine Einträge";
@@ -47,10 +56,16 @@
 "Settings" = "Einstellungen";
 
 /* No comment provided by engineer. */
+"Sheet" = "Zettel";
+
+/* No comment provided by engineer. */
 "There are no entries in the list. You cannot create an empty payout." = "Es gibt keine Einträge in der Liste. Sie können keine leere Auszahlung erstellen.";
 
 /* No comment provided by engineer. */
 "This will remove all entries in the list and archive them in the payouts tab. The generated payout cannot be edited." = "Diese Aktion entfernt alle Einträge in der Liste und archiviert sie unter Auszahlungen. Die generierte Auszahlung kann nicht mehr bearbeitet werden.";
+
+/* No comment provided by engineer. */
+"Time" = "Zeit";
 
 /* No comment provided by engineer. */
 "Total" = "Gesamt";

@@ -85,7 +85,7 @@ struct PayoutsView_Previews: PreviewProvider {
                     .init(date: .now.addingTimeInterval(31 * .day), hours: 40, wage: 12)
                 ]),
                 .init(date: .now.addingTimeInterval(100 * .day), worktimes: [
-                    .init(date: .now.addingTimeInterval(100 * .day), hours: 10, wage: 12)
+                    .init(date: .now.addingTimeInterval(100 * .day), hours: 10.3, wage: 12)
                 ]),
             ]))
             .environmentObject(Config())
