@@ -58,7 +58,7 @@ struct ListView: View {
                 .padding(.vertical, 10)
                 Divider()
             }
-            .navigationTitle("List")
+            .navigationTitle("Work Times")
             .toolbar {
                 #if DEBUG
                 ToolbarItem(placement: .navigationBarLeading) {

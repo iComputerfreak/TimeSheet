@@ -27,6 +27,7 @@
 		ABE17BCB28537FC600879C30 /* WageStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BCA28537FC600879C30 /* WageStepper.swift */; };
 		ABE17BCD2853880100879C30 /* PayoutRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BCC2853880100879C30 /* PayoutRow.swift */; };
 		ABE17BCF2853886E00879C30 /* WorkTimeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BCE2853886E00879C30 /* WorkTimeList.swift */; };
+		ABE17BD2285392AD00879C30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABE17BD0285392AD00879C30 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		ABE17BCA28537FC600879C30 /* WageStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageStepper.swift; sourceTree = "<group>"; };
 		ABE17BCC2853880100879C30 /* PayoutRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutRow.swift; sourceTree = "<group>"; };
 		ABE17BCE2853886E00879C30 /* WorkTimeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTimeList.swift; sourceTree = "<group>"; };
+		ABE17BD1285392AD00879C30 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		ABE17B9628522F7A00879C30 /* TimeSheet */ = {
 			isa = PBXGroup;
 			children = (
+				ABE17BD0285392AD00879C30 /* Localizable.strings */,
 				ABE17B9728522F7A00879C30 /* TimeSheetApp.swift */,
 				ABE17BB428524AB800879C30 /* Utils.swift */,
 				ABE17BBA28525F7E00879C30 /* Extensions.swift */,
@@ -183,6 +186,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = ABE17B8B28522F7A00879C30;
 			packageReferences = (
@@ -203,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABE17B9F28522F7B00879C30 /* Preview Assets.xcassets in Resources */,
+				ABE17BD2285392AD00879C30 /* Localizable.strings in Resources */,
 				ABE17B9C28522F7B00879C30 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,6 +240,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		ABE17BD0285392AD00879C30 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ABE17BD1285392AD00879C30 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		ABE17BA028522F7B00879C30 /* Debug */ = {
