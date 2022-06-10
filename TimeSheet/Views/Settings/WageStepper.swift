@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct WageStepper: View {
+    @EnvironmentObject private var config: Config
     @Binding var wage: Double
     
     var body: some View {
-        Stepper(value: $wage, in: 0...100, step: 0.5, format: .currency(code: "EUR")) {
+        Stepper(value: $wage, in: 0...100, step: 0.5, format: .currency(code: config.currency)) {
             HStack {
                 Text("Hourly wage")
                 Spacer()
-                Text(wage.formatted(.currency(code: "EUR")))
+                Text(wage.formatted(.currency(code: config.currency)))
             }
         }
     }

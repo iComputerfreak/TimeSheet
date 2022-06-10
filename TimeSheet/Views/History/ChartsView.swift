@@ -31,6 +31,7 @@ struct ChartsView: View {
     }
     
     @EnvironmentObject private var userData: UserData
+    @EnvironmentObject private var config: Config
     
     @State private var graphType: GraphType = .income
     
@@ -93,8 +94,7 @@ struct ChartsView: View {
                     InteractiveDateChart(data: data, graphType: graphType)
                         .frame(height: 200)
                         .animation(.default, value: graphType)
-                    Text("History")
-                        .font(.largeTitle.bold())
+                        .padding(.bottom, 8)
                     VStack(alignment: .leading, spacing: 5) {
                         ForEach(data.reversed(), id: \.0) { date, income in
                             HStack {
@@ -102,7 +102,7 @@ struct ChartsView: View {
                                 Spacer()
                                 switch graphType {
                                 case .income:
-                                    Text("\(income, format: .currency(code: "EUR"))")
+                                    Text("\(income, format: .currency(code: config.currency))")
                                 case .time:
                                     let components = DateComponents(hour: Int(income), minute: Int(income * 60) % 60)
                                     Text("\(Self.historyDurationFormatter.string(from: components)!)")
@@ -125,6 +125,7 @@ struct ChartsView_Previews: PreviewProvider {
         Group {
             ChartsView()
                 .environmentObject(SampleData.userData)
+                .environmentObject(Config())
         }
     }
 }

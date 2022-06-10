@@ -41,7 +41,7 @@ struct PayoutsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Create", role: .destructive) {
-                        if userData.payouts.isEmpty {
+                        if userData.worktimes.isEmpty {
                             self.noEntriesShowing = true
                             return
                         }

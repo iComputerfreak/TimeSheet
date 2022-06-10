@@ -15,6 +15,11 @@ struct SettingsView: View {
         NavigationView {
             Form {
                 WageStepper(wage: $config.wage)
+                Picker("Currency", selection: $config.currency) {
+                    ForEach(Locale.commonISOCurrencyCodes, id: \.self) { code in
+                        Text(code)
+                    }
+                }
             }
             .navigationTitle("Settings")
         }

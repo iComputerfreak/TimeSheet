@@ -12,11 +12,14 @@ struct InteractiveDateChart: View {
     var data: [(Date, Double)]
     var graphType: GraphType
     
+    @EnvironmentObject private var config: Config
     @State private var highlightedMonth: Date?
     
     var body: some View {
         Chart {
             ForEach(data.prefix(12), id: \.0) { date, amount in
+                // Move the data point into the middle of the month
+                let date = middleOfMonth(date)
                 AreaMark(
                     x: .value("Date", date),
                     y: .value(graphType.yLabel, amount)
@@ -44,10 +47,11 @@ struct InteractiveDateChart: View {
                     alignment: alignment(for: highlightedMonth)
                 ) {
                     AnnotationView(date: highlightedMonth, value: value, graphType: graphType)
+                        .environmentObject(config)
                 }
             }
         }
-        .chartXScale(range: .plotDimension(padding: 10))
+        .chartXScale(range: .plotDimension(padding: 15))
         .chartXAxis {
             AxisMarks(values: .stride(by: .month) ) { value in
                 AxisGridLine()
@@ -87,6 +91,14 @@ struct InteractiveDateChart: View {
         } else {
             return .top
         }
+    }
+    
+    private func middleOfMonth(_ date: Date) -> Date {
+        date.addingTimeInterval(TimeInterval(numberOfDays(in: date)) / 2 * .day)
+    }
+    
+    private func numberOfDays(in month: Date) -> Int {
+        Calendar.current.range(of: .day, in: .month, for: month)?.count ?? 0
     }
     
     private func nearestMonth(to date: Date) -> Date {
@@ -156,5 +168,6 @@ struct InteractiveDateChart_Previews: PreviewProvider {
     
     static var previews: some View {
         InteractiveDateChart(data: incomePerMonth, graphType: .income)
+            .environmentObject(Config())
     }
 }

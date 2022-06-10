@@ -27,10 +27,10 @@ struct ListRow: View {
             }
             Spacer()
             VStack(alignment: .trailing) {
-                Text("\(worktime.pay, format: .currency(code: "EUR"))")
+                Text("\(worktime.pay, format: .currency(code: config.currency))")
                     .bold()
                     .foregroundColor(.green)
-                Text("at \(worktime.wage, format: .currency(code: "EUR"))/h")
+                Text("at \(worktime.wage, format: .currency(code: config.currency))/h")
                     .italic()
             }
         }

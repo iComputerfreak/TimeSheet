@@ -15,6 +15,7 @@ struct AnnotationView: View {
         return f
     }
     
+    @EnvironmentObject private var config: Config
     let date: Date
     let value: Double
     let graphType: GraphType
@@ -26,7 +27,7 @@ struct AnnotationView: View {
     var valueLabel: String {
         switch graphType {
         case .income:
-            return value.formatted(.currency(code: "EUR"))
+            return value.formatted(.currency(code: config.currency))
         case .time:
             let comp = DateComponents(hour: Int(value), minute: Int(value * 60) % 60)
             return Self.durationFormatter.string(from: comp)!

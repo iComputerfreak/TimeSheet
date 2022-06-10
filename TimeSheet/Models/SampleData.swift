@@ -46,7 +46,7 @@ struct SampleData {
     }
     
     static func randomDate() -> Date {
-        let dateOffset = TimeInterval(Int.random(in: -365...0)) * TimeInterval.day
+        let dateOffset = TimeInterval(Int.random(in: (-2 * 365)...0)) * TimeInterval.day
         return Date.now.addingTimeInterval(dateOffset)
     }
 }

@@ -15,6 +15,7 @@ struct PayoutRow: View {
         return f
     }
     
+    @EnvironmentObject private var config: Config
     let payout: Payout
     
     var body: some View {
@@ -26,7 +27,7 @@ struct PayoutRow: View {
                 Text("\(duration)")
             }
             Spacer()
-            let total = payout.amount.formatted(.currency(code: "EUR"))
+            let total = payout.amount.formatted(.currency(code: config.currency))
             Text(total)
                 .font(.title2)
                 .foregroundColor(.green)
