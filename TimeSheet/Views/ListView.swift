@@ -44,32 +44,8 @@ struct ListView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                List {
-                    ForEach(years, id: \.self) { (year: Int) in
-                        ForEach(months(in: year), id: \.self) { (month: Int) in
-                            let monthName = Calendar.current.standaloneMonthSymbols[month - 1]
-                            Section {
-                                ForEach(worktimes(in: year, month: month)) { (worktime: WorkTime) in
-                                    ListRow(worktime: worktime)
-                                }
-                                .onDelete { indexSet in
-                                    for index in indexSet {
-                                        let worktime = worktimes(in: year, month: month)[index]
-                                        self.userData.worktimes.removeAll { $0.id == worktime.id }
-                                    }
-                                }
-                            } header: {
-                                let total = worktimes(in: year, month: month)
-                                    .map(\.duration)
-                                    .reduce(DateComponents.zero, +)
-                                HStack {
-                                    Text("\(monthName) \(year, format: .number.grouping(.never))")
-                                    Spacer()
-                                    TimeView(duration: total, wage: config.wage)
-                                }
-                            }
-                        }
-                    }
+                WorkTimeList(worktimes: userData.worktimes) { worktime in
+                    self.userData.worktimes.removeAll { $0.id == worktime.id }
                 }
                 Divider()
                 HStack {
@@ -87,13 +63,20 @@ struct ListView: View {
                 #if DEBUG
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Generate") {
+                        func randomWage() -> Double {
+                            Double(Int.random(in: 12...15))
+                        }
+                        func randomHours() -> Double {
+                            Double(Int.random(in: 0...(4 * 10))) / 4
+                        }
+                        func randomDate() -> Date {
+                            let dateOffset = TimeInterval(Int.random(in: -300...0)) * TimeInterval.day
+                            return Date.now.addingTimeInterval(dateOffset)
+                        }
+                        
                         var worktimes: [WorkTime] = []
                         for _ in 1...80 {
-                            let dateOffset = TimeInterval(Int.random(in: -300...0)) * TimeInterval.day
-                            let date = Date.now.addingTimeInterval(dateOffset)
-                            // Select a value in 15 minute steps (from 0 to 10 hours)
-                            let hours = Double(Int.random(in: 0...(4 * 10))) / 4
-                            worktimes.append(.init(date: date, hours: hours))
+                            worktimes.append(.init(date: randomDate(), hours: randomHours(), wage: randomWage()))
                         }
                         var payouts: [Payout] = []
                         var date: Date = .now
@@ -101,9 +84,9 @@ struct ListView: View {
                             // Payouts should lie in the past and should be at least 7 days distance from each other
                             let offset = -TimeInterval(Int.random(in: 7...21)) * .day
                             date.addTimeInterval(offset)
-                            // Select a value in 15 minute steps (from 0 to 10 hours)
-                            let hours = Double(Int.random(in: 0...(4 * 10))) / 4
-                            payouts.append(.init(date: date, wage: 12, worktimes: [.init(date: date, hours: hours)]))
+                            payouts.append(.init(date: date, worktimes: [
+                                .init(date: date, hours: randomHours(), wage: randomWage())
+                            ]))
                         }
                         
                         Task(priority: .userInitiated) {
@@ -133,16 +116,16 @@ struct ListView_Previews: PreviewProvider {
             .environment(\.locale, Locale(identifier: "de"))
             .environmentObject(Config())
             .environmentObject(UserData(worktimes: [
-                .init(date: .now, hours: 10),
-                .init(date: .now.addingTimeInterval(1 * 24 * 60 * 60), hours: 1),
-                .init(date: .now.addingTimeInterval(11 * 24 * 60 * 60), hours: 6.5),
-                .init(date: .now.addingTimeInterval(21 * 24 * 60 * 60), hours: 3),
-                .init(date: .now.addingTimeInterval(31 * 24 * 60 * 60), hours: 7.5),
-                .init(date: .now.addingTimeInterval(41 * 24 * 60 * 60), hours: 0.5),
-                .init(date: .now.addingTimeInterval(51 * 24 * 60 * 60), hours: 2.3),
-                .init(date: .now.addingTimeInterval(61 * 24 * 60 * 60), hours: 9),
-                .init(date: .now.addingTimeInterval(71 * 24 * 60 * 60), hours: 8),
-                .init(date: .now.addingTimeInterval(81 * 24 * 60 * 60), hours: 1.4),
+                .init(date: .now, hours: 10, wage: 12),
+                .init(date: .now.addingTimeInterval(1 * 24 * 60 * 60), hours: 1, wage: 12),
+                .init(date: .now.addingTimeInterval(11 * 24 * 60 * 60), hours: 6.5, wage: 12),
+                .init(date: .now.addingTimeInterval(21 * 24 * 60 * 60), hours: 3, wage: 12),
+                .init(date: .now.addingTimeInterval(31 * 24 * 60 * 60), hours: 7.5, wage: 15),
+                .init(date: .now.addingTimeInterval(41 * 24 * 60 * 60), hours: 0.5, wage: 15),
+                .init(date: .now.addingTimeInterval(51 * 24 * 60 * 60), hours: 2.3, wage: 12),
+                .init(date: .now.addingTimeInterval(61 * 24 * 60 * 60), hours: 9, wage: 12),
+                .init(date: .now.addingTimeInterval(71 * 24 * 60 * 60), hours: 8, wage: 15),
+                .init(date: .now.addingTimeInterval(81 * 24 * 60 * 60), hours: 1.4, wage: 15),
             ].shuffled(), payouts: []))
     }
 }

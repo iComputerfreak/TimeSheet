@@ -18,16 +18,23 @@ struct WorkTime: Identifiable, Codable {
     var id = UUID()
     var date: Date
     var duration: DateComponents
-    
-    init(date: Date, duration: DateComponents) {
-        self.date = date
-        self.duration = duration
+    var wage: Double
+    var pay: Double {
+        var hours = Double(duration.hour ?? 0)
+        hours += Double(duration.minute ?? 0) / 60
+        return hours * wage
     }
     
-    init(date: Date, hours: Double) {
+    init(date: Date, duration: DateComponents, wage: Double) {
+        self.date = date
+        self.duration = duration
+        self.wage = wage
+    }
+    
+    init(date: Date, hours: Double, wage: Double) {
         let h = Int(hours)
         let m = Int(hours * 60) % 60
-        self.init(date: date, duration: DateComponents(hour: h, minute: m))
+        self.init(date: date, duration: DateComponents(hour: h, minute: m), wage: wage)
     }
 }
 

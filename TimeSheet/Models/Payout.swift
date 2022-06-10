@@ -10,13 +10,12 @@ import Foundation
 struct Payout: Codable, Identifiable {
     var id = UUID()
     let date: Date
-    let wage: Double
     let worktimes: [WorkTime]
 
     var duration: DateComponents {
         worktimes.map(\.duration).reduce(.zero, +)
     }
     var amount: Double {
-        return duration.pay(using: wage)
+        worktimes.map(\.pay).reduce(0, +)
     }
 }

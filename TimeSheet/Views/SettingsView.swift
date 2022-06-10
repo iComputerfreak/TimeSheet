@@ -14,13 +14,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             Form {
-                Stepper(value: config.$wage, in: 0...100, step: 0.5, format: .currency(code: "EUR")) {
-                    HStack {
-                        Text("Hourly wage")
-                        Spacer()
-                        Text(config.wage.formatted(.currency(code: "EUR")))
-                    }
-                }
+                WageStepper(wage: $config.wage)
             }
             .navigationTitle("Settings")
         }

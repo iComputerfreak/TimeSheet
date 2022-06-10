@@ -24,6 +24,9 @@
 		ABE17BBD285260C300879C30 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BBC285260C300879C30 /* TimeView.swift */; };
 		ABE17BBF2852619D00879C30 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BBE2852619D00879C30 /* UserData.swift */; };
 		ABE17BC1285261D600879C30 /* Payout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BC0285261D600879C30 /* Payout.swift */; };
+		ABE17BCB28537FC600879C30 /* WageStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BCA28537FC600879C30 /* WageStepper.swift */; };
+		ABE17BCD2853880100879C30 /* PayoutRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BCC2853880100879C30 /* PayoutRow.swift */; };
+		ABE17BCF2853886E00879C30 /* WorkTimeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BCE2853886E00879C30 /* WorkTimeList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		ABE17BBC285260C300879C30 /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		ABE17BBE2852619D00879C30 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		ABE17BC0285261D600879C30 /* Payout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payout.swift; sourceTree = "<group>"; };
+		ABE17BCA28537FC600879C30 /* WageStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageStepper.swift; sourceTree = "<group>"; };
+		ABE17BCC2853880100879C30 /* PayoutRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutRow.swift; sourceTree = "<group>"; };
+		ABE17BCE2853886E00879C30 /* WorkTimeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTimeList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +112,10 @@
 				ABE17BBC285260C300879C30 /* TimeView.swift */,
 				ABE17BB2285241DF00879C30 /* AddWorkTimeView.swift */,
 				ABE17BB628524CB900879C30 /* PayoutsView.swift */,
+				ABE17BCE2853886E00879C30 /* WorkTimeList.swift */,
+				ABE17BCC2853880100879C30 /* PayoutRow.swift */,
 				ABE17BA72852301000879C30 /* SettingsView.swift */,
+				ABE17BCA28537FC600879C30 /* WageStepper.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -205,15 +214,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE17BCF2853886E00879C30 /* WorkTimeList.swift in Sources */,
 				ABE17BBF2852619D00879C30 /* UserData.swift in Sources */,
 				ABE17BB728524CB900879C30 /* PayoutsView.swift in Sources */,
 				ABE17B9A28522F7A00879C30 /* ContentView.swift in Sources */,
 				ABE17BA82852301000879C30 /* SettingsView.swift in Sources */,
+				ABE17BCD2853880100879C30 /* PayoutRow.swift in Sources */,
 				ABE17BB528524AB800879C30 /* Utils.swift in Sources */,
 				ABE17BAA2852309200879C30 /* Config.swift in Sources */,
 				ABE17B9828522F7A00879C30 /* TimeSheetApp.swift in Sources */,
 				ABE17BA62852300B00879C30 /* ListView.swift in Sources */,
 				ABE17BAE2852368D00879C30 /* ListRow.swift in Sources */,
+				ABE17BCB28537FC600879C30 /* WageStepper.swift in Sources */,
 				ABE17BB3285241DF00879C30 /* AddWorkTimeView.swift in Sources */,
 				ABE17BBB28525F7E00879C30 /* Extensions.swift in Sources */,
 				ABE17BC1285261D600879C30 /* Payout.swift in Sources */,

@@ -11,16 +11,40 @@ struct PayoutsView: View {
     @EnvironmentObject private var config: Config
     @EnvironmentObject private var userData: UserData
     @State private var payoutConfirmationShowing = false
+    @State private var noEntriesShowing = false
+    
+    var payouts: [Payout] {
+        userData.payouts.sorted { $0.date > $1.date }
+    }
     
     var body: some View {
         NavigationView {
-            List(userData.payouts.sorted { $0.date > $1.date }) { payout in
-                PayoutRow(payout: payout)
+            List {
+                ForEach(payouts) { payout in
+                    NavigationLink {
+                        WorkTimeList(worktimes: payout.worktimes)
+                            .environmentObject(userData)
+                            .environmentObject(config)
+                            .navigationTitle("\(payout.date, format: .dateTime.day().month().year())")
+                    } label: {
+                        PayoutRow(payout: payout)
+                    }
+                }
+                .onDelete { indexSet in
+                    for index in indexSet {
+                        let payout = payouts[index]
+                        userData.payouts.removeAll(where: { $0.id == payout.id })
+                    }
+                }
             }
             .navigationTitle("Payouts")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Generate", role: .destructive) {
+                    Button("Create", role: .destructive) {
+                        if userData.payouts.isEmpty {
+                            self.noEntriesShowing = true
+                            return
+                        }
                         self.payoutConfirmationShowing = true
                     }
                 }
@@ -31,7 +55,6 @@ struct PayoutsView: View {
             Button("Payout", role: .destructive) {
                 let payout = Payout(
                     date: .now,
-                    wage: config.wage,
                     worktimes: userData.worktimes
                 )
                 withAnimation {
@@ -40,44 +63,31 @@ struct PayoutsView: View {
                 self.userData.worktimes = []
             }
         } message: {
-            Text("This will remove all entries in the list and archive them in the payouts tab. The generated payout cannot be edited or removed.")
+            Text("This will remove all entries in the list and archive them in the payouts tab. The generated payout cannot be edited.")
         }
-    }
-}
+        .alert("No Entries", isPresented: $noEntriesShowing) {
+            Button("Ok") {}
+        } message: {
+            Text("There are no entries in the list. You cannot create an empty payout.")
+        }
 
-struct PayoutRow: View {
-    let payout: Payout
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text("Payout on \(payout.date, format: .dateTime.day().month().year())")
-                .font(.headline)
-            let duration = WorkTime.durationFormatter.string(from: payout.duration)!
-            let wage = payout.wage.formatted(.currency(code: "EUR"))
-            let total = payout.amount.formatted(.currency(code: "EUR"))
-            HStack(alignment: .top) {
-                VStack {
-                    Text("\(duration) à \(wage)")
-                }
-                Spacer()
-                Text(total)
-                    .font(.title2)
-                    .foregroundColor(.green)
-            }
-        }
     }
 }
 
 struct PayoutsView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            PayoutsView()
-                .environmentObject(UserData(worktimes: [], payouts: [
-                    .init(date: .now, wage: 12, worktimes: [.init(date: .now, hours: 20)]),
-                    .init(date: .now.addingTimeInterval(31 * .day), wage: 12, worktimes: [.init(date: .now.addingTimeInterval(31 * .day), hours: 40)]),
-                    .init(date: .now.addingTimeInterval(100 * .day), wage: 12, worktimes: [.init(date: .now.addingTimeInterval(100 * .day), hours: 10)]),
-                ]))
-                .environmentObject(Config())
-        }
+        PayoutsView()
+            .environmentObject(UserData(worktimes: [], payouts: [
+                .init(date: .now, worktimes: [
+                    .init(date: .now, hours: 20, wage: 12)
+                ]),
+                .init(date: .now.addingTimeInterval(31 * .day), worktimes: [
+                    .init(date: .now.addingTimeInterval(31 * .day), hours: 40, wage: 12)
+                ]),
+                .init(date: .now.addingTimeInterval(100 * .day), worktimes: [
+                    .init(date: .now.addingTimeInterval(100 * .day), hours: 10, wage: 12)
+                ]),
+            ]))
+            .environmentObject(Config())
     }
 }

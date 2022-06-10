@@ -16,10 +16,14 @@ extension TimeInterval {
 }
 
 struct AddWorkTimeView: View {
+    @EnvironmentObject private var config: Config
     @State private var date = Date.now
     @State private var hours: Double = 0
+    @State private var wage: Double = 0
     @Binding var worktimes: [WorkTime]
     @Environment(\.dismiss) private var dismiss
+    
+    @State private var zeroHoursShowing = false
     
     let dateRange = Date.now.addingTimeInterval(-100 * .year) ... Date.now
     
@@ -35,14 +39,28 @@ struct AddWorkTimeView: View {
                     Text("\(hours, format: .number.precision(.fractionLength(0...2)))")
                 }
             }
+            WageStepper(wage: $wage)
         }
         .navigationTitle("Add Entry")
         .toolbar {
             Button("Save") {
-                worktimes.append(.init(date: date, hours: hours))
+                guard hours > 0 else {
+                    zeroHoursShowing = true
+                    return
+                }
+                worktimes.append(.init(date: date, hours: hours, wage: wage))
                 dismiss()
             }
         }
+        .onAppear {
+            self.wage = config.wage
+        }
+        .alert("Hours missing", isPresented: $zeroHoursShowing) {
+            Button("Ok") {}
+        } message: {
+            Text("Please specify how many hours you worked.")
+        }
+
     }
 }
 
@@ -50,6 +68,7 @@ struct AddWorkTimeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             AddWorkTimeView(worktimes: .constant([]))
+                .environmentObject(Config())
         }
     }
 }
