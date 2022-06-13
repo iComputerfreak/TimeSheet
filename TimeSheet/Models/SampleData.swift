@@ -18,7 +18,7 @@ struct SampleData {
     static func generateWorkTimes(count: Int = 80) -> [WorkTime] {
         var worktimes: [WorkTime] = []
         for _ in 1...count {
-            worktimes.append(.init(date: randomDate(), hours: randomHours(), wage: randomWage()))
+            worktimes.append(.init(date: randomDate(), activity: nil, hours: randomHours(), wage: randomWage()))
         }
         return worktimes
     }
@@ -31,7 +31,7 @@ struct SampleData {
             let offset = -TimeInterval(Int.random(in: 7...21)) * .day
             date.addTimeInterval(offset)
             payouts.append(.init(date: date, worktimes: [
-                .init(date: date, hours: randomHours(), wage: randomWage())
+                .init(date: date, activity: nil, hours: randomHours(), wage: randomWage())
             ]))
         }
         return payouts

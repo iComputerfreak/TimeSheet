@@ -91,17 +91,6 @@ struct ListView_Previews: PreviewProvider {
         ListView()
             .environment(\.locale, Locale(identifier: "de"))
             .environmentObject(Config())
-            .environmentObject(UserData(worktimes: [
-                .init(date: .now, hours: 10, wage: 12),
-                .init(date: .now.addingTimeInterval(1 * 24 * 60 * 60), hours: 1, wage: 12),
-                .init(date: .now.addingTimeInterval(11 * 24 * 60 * 60), hours: 6.5, wage: 12),
-                .init(date: .now.addingTimeInterval(21 * 24 * 60 * 60), hours: 3, wage: 12),
-                .init(date: .now.addingTimeInterval(31 * 24 * 60 * 60), hours: 7.5, wage: 15),
-                .init(date: .now.addingTimeInterval(41 * 24 * 60 * 60), hours: 0.5, wage: 15),
-                .init(date: .now.addingTimeInterval(51 * 24 * 60 * 60), hours: 2.3, wage: 12),
-                .init(date: .now.addingTimeInterval(61 * 24 * 60 * 60), hours: 9, wage: 12),
-                .init(date: .now.addingTimeInterval(71 * 24 * 60 * 60), hours: 8, wage: 15),
-                .init(date: .now.addingTimeInterval(81 * 24 * 60 * 60), hours: 1.4, wage: 15),
-            ].shuffled(), payouts: []))
+            .environmentObject(SampleData.userData)
     }
 }

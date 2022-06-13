@@ -18,6 +18,7 @@ extension TimeInterval {
 struct AddWorkTimeView: View {
     @EnvironmentObject private var config: Config
     @State private var date = Date.now
+    @State private var activity: String = ""
     @State private var hours: Double = 0
     @State private var wage: Double = 0
     @Binding var worktimes: [WorkTime]
@@ -29,6 +30,7 @@ struct AddWorkTimeView: View {
     
     var body: some View {
         Form {
+            TextField("Activity (optional)", text: $activity)
             DatePicker(selection: $date, in: dateRange, displayedComponents: .date) {
                 Text("Date")
             }
@@ -48,7 +50,12 @@ struct AddWorkTimeView: View {
                     zeroHoursShowing = true
                     return
                 }
-                worktimes.append(.init(date: date, hours: hours, wage: wage))
+                worktimes.append(.init(
+                    date: date,
+                    activity: activity.isEmpty ? nil : activity,
+                    hours: hours,
+                    wage: wage
+                ))
                 dismiss()
             }
         }

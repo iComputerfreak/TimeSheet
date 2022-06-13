@@ -16,6 +16,7 @@ struct WorkTime: Identifiable, Codable {
     }()
     
     var id = UUID()
+    var activity: String?
     var date: Date
     var duration: DateComponents
     var wage: Double
@@ -25,16 +26,17 @@ struct WorkTime: Identifiable, Codable {
         return hours * wage
     }
     
-    init(date: Date, duration: DateComponents, wage: Double) {
+    init(date: Date, activity: String?, duration: DateComponents, wage: Double) {
         self.date = date
+        self.activity = activity
         self.duration = duration
         self.wage = wage
     }
     
-    init(date: Date, hours: Double, wage: Double) {
+    init(date: Date, activity: String?, hours: Double, wage: Double) {
         let h = Int(hours)
         let m = Int(hours * 60) % 60
-        self.init(date: date, duration: DateComponents(hour: h, minute: m), wage: wage)
+        self.init(date: date, activity: activity, duration: DateComponents(hour: h, minute: m), wage: wage)
     }
 }
 

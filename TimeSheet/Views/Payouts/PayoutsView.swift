@@ -77,17 +77,7 @@ struct PayoutsView: View {
 struct PayoutsView_Previews: PreviewProvider {
     static var previews: some View {
         PayoutsView()
-            .environmentObject(UserData(worktimes: [], payouts: [
-                .init(date: .now, worktimes: [
-                    .init(date: .now, hours: 20, wage: 12)
-                ]),
-                .init(date: .now.addingTimeInterval(31 * .day), worktimes: [
-                    .init(date: .now.addingTimeInterval(31 * .day), hours: 40, wage: 12)
-                ]),
-                .init(date: .now.addingTimeInterval(100 * .day), worktimes: [
-                    .init(date: .now.addingTimeInterval(100 * .day), hours: 10.3, wage: 12)
-                ]),
-            ]))
+            .environmentObject(SampleData.userData)
             .environmentObject(Config())
     }
 }

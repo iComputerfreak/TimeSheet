@@ -19,19 +19,21 @@ struct ListRow: View {
     let worktime: WorkTime
     
     var body: some View {
-        HStack(alignment: .top) {
+        HStack(alignment: .center) {
             VStack(alignment: .leading) {
-                Text("\(worktime.date, format: .dateTime.weekday(.wide).day().month(.defaultDigits))")
+                Text("\(worktime.activity ?? "Work")")
                     .bold()
-                Text("\(Self.durationFormatter.string(from: worktime.duration) ?? "")")
+                let date = worktime.date.formatted(.dateTime.weekday().day().month(.defaultDigits))
+                Text("\(date)")
             }
             Spacer()
             VStack(alignment: .trailing) {
                 Text("\(worktime.pay, format: .currency(code: config.currency))")
                     .bold()
                     .foregroundColor(.green)
-                Text("at \(worktime.wage, format: .currency(code: config.currency))/h")
-                    .italic()
+                let duration = Self.durationFormatter.string(from: worktime.duration) ?? ""
+//                let wage = worktime.wage.formatted(.currency(code: config.currency))
+                Text(duration)
             }
         }
     }
@@ -40,7 +42,7 @@ struct ListRow: View {
 struct ListRow_Previews: PreviewProvider {
     static var previews: some View {
         List {
-            ListRow(worktime: .init(date: .now, hours: 5.5, wage: 12))
+            ListRow(worktime: SampleData.generateWorkTimes(count: 1).first!)
                 .environment(\.locale, Locale(identifier: "de"))
                 .environmentObject(Config())
         }

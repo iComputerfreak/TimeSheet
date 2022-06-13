@@ -37,9 +37,7 @@ struct PayoutRow: View {
 
 struct PayoutRow_Previews: PreviewProvider {
     static var previews: some View {
-        PayoutRow(payout: .init(date: .now, worktimes: [
-            .init(date: .now, hours: 10.2, wage: 12)
-        ]))
+        PayoutRow(payout: .init(date: .now, worktimes: SampleData.generateWorkTimes(count: 10)))
         .previewLayout(.sizeThatFits)
     }
 }
