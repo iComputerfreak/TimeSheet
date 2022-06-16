@@ -73,7 +73,7 @@ struct AddWorkTimeView: View {
 
 struct AddWorkTimeView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             AddWorkTimeView(worktimes: .constant([]))
                 .environmentObject(Config())
         }

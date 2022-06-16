@@ -12,7 +12,7 @@ struct SettingsView: View {
     @EnvironmentObject private var config: Config
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 WageStepper(wage: $config.wage)
                 Picker("Currency", selection: $config.currency) {

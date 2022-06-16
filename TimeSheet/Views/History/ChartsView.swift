@@ -80,8 +80,10 @@ struct ChartsView: View {
         }
     }
     
+    // TODO: Chart vs. gesture preview is different!
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             if worktimes.isEmpty {
                 Text("No data to display")
                     .navigationTitle("History")

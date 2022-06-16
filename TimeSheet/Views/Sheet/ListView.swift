@@ -42,7 +42,7 @@ struct ListView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: 0) {
                 WorkTimeList(worktimes: userData.worktimes) { worktime in
                     self.userData.worktimes.removeAll { $0.id == worktime.id }
