@@ -2,22 +2,37 @@
 "%@" = "";
 
 /* No comment provided by engineer. */
+"Activity (optional)" = "Aktivität (optional)";
+
+/* No comment provided by engineer. */
 "Add Entry" = "Eintrag hinzufügen";
 
 /* No comment provided by engineer. */
-"at %@/h" = "für %@/h";
+"Amount" = "Betrag";
 
 /* No comment provided by engineer. */
-"Cancel" = "Abbrechen";
+"Balance" = "Guthaben";
 
 /* No comment provided by engineer. */
 "Create" = "Erstellen";
+
+/* No comment provided by engineer. */
+"Create Payout" = "Auszahlung Erstellen";
 
 /* No comment provided by engineer. */
 "Currency" = "Währung";
 
 /* No comment provided by engineer. */
 "Date" = "Datum";
+
+/* No comment provided by engineer. */
+"Delete" = "Löschen";
+
+/* No comment provided by engineer. */
+"Edit" = "Bearbeiten";
+
+/* No comment provided by engineer. */
+"Full Payout" = "Volle Auszahlung";
 
 /* No comment provided by engineer. */
 "Generate" = "Generieren";
@@ -41,10 +56,19 @@
 "Income" = "Einkommen";
 
 /* No comment provided by engineer. */
+"No data to display" = "Keine Daten zum Anzeigen";
+
+/* No comment provided by engineer. */
 "No Entries" = "Keine Einträge";
 
 /* No comment provided by engineer. */
+"Ok" = "Ok";
+
+/* No comment provided by engineer. */
 "Payout" = "Auszahlung";
+
+/* No comment provided by engineer. */
+"Payout Amount" = "Auszahlungsbetrag";
 
 /* No comment provided by engineer. */
 "Payouts" = "Auszahlungen";
@@ -65,18 +89,17 @@
 "There are no entries in the list. You cannot create an empty payout." = "Es gibt keine Einträge in der Liste. Sie können keine leere Auszahlung erstellen.";
 
 /* No comment provided by engineer. */
-"This will remove all entries in the list and archive them in the payouts tab. The generated payout cannot be edited." = "Diese Aktion entfernt alle Einträge in der Liste und archiviert sie unter Auszahlungen. Die generierte Auszahlung kann nicht mehr bearbeitet werden.";
-
-/* No comment provided by engineer. */
 "Time" = "Zeit";
 
 /* No comment provided by engineer. */
 "Total" = "Gesamt";
 
 /* No comment provided by engineer. */
-"Work Times" = "Arbeitszeiten";
+"When creating a full payout, all entries in the time sheet will be removed and archived in the payouts tab. The generated payout cannot be edited." = "Wenn Sie eine volle Auszahlung erstellen werden alle Einträge auf dem Stundenzettel entfernt und im Auszahlungs-Tab archiviert. Die erstellte Auszahlung kann nicht bearbeitet werden.";
 
 /* No comment provided by engineer. */
-"No data to display" = "Keine Daten zum Anzeigen";
+"When creating a specific payout, the payout amount will be added as a separate entry in the time sheet and all other entries will remain." = "Wenn Sie eine spezifische Auszahlung erstellen wird der Auszahlungsbetrag als separater Eintrag auf den Stundenzettel aufgenommen und die anderen Einträge verbleiben auf dem Zettel.";
 
-"Activity (optional)" = "Aktivität (optional)";
+/* No comment provided by engineer. */
+"Work Times" = "Arbeitszeiten";
+

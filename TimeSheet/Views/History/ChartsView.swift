@@ -22,22 +22,24 @@ enum GraphType {
     }
 }
 
+extension DateComponentsFormatter {
+    convenience init(allowedUnits: NSCalendar.Unit?, unitsStyle: DateComponentsFormatter.UnitsStyle?) {
+        self.init()
+        if let allowedUnits {
+            self.allowedUnits = allowedUnits
+        }
+        if let unitsStyle {
+            self.unitsStyle = unitsStyle
+        }
+    }
+}
+
 struct ChartsView: View {
-    static var historyDurationFormatter: DateComponentsFormatter {
-        let f = DateComponentsFormatter()
-        f.allowedUnits = [.hour, .minute]
-        f.unitsStyle = .short
-        return f
-    }
+    static let historyDurationFormatter = DateComponentsFormatter(allowedUnits: [.hour, .minute], unitsStyle: .short)
     
-    @EnvironmentObject private var userData: UserData
     @EnvironmentObject private var config: Config
-    
     @State private var graphType: GraphType = .income
-    
-    var worktimes: [WorkTime] {
-        userData.worktimes + userData.payouts.flatMap(\.worktimes)
-    }
+    let worktimes: [WorkTime]
     
     var worktimesByMonth: [Date: [WorkTime]] {
         Dictionary(
@@ -79,50 +81,53 @@ struct ChartsView: View {
             return hoursPerMonth
         }
     }
-    
-    // TODO: Chart vs. gesture preview is different!
-    
+        
     var body: some View {
-        NavigationStack {
-            if worktimes.isEmpty {
-                Text("No data to display")
-                    .navigationTitle("History")
-            } else {
-                ScrollView {
-                    VStack(alignment: .leading) {
-                        Picker("Graph Content", selection: $graphType) {
-                            Text("Income")
-                                .tag(GraphType.income)
-                            Text("Time")
-                                .tag(GraphType.time)
-                        }
-                        .pickerStyle(.segmented)
-                        InteractiveDateChart(data: data, graphType: graphType)
-                            .frame(height: 200)
-                            .animation(.default, value: graphType)
-                            .padding(.bottom, 8)
-                        VStack(alignment: .leading, spacing: 5) {
-                            ForEach(data.reversed(), id: \.0) { date, income in
-                                HStack {
-                                    Text("\(date, format: .dateTime.month(.wide).year())")
-                                    Spacer()
-                                    switch graphType {
-                                    case .income:
-                                        Text("\(income, format: .currency(code: config.currency))")
-                                    case .time:
-                                        let components = DateComponents(hour: Int(income), minute: Int(income * 60) % 60)
-                                        Text("\(Self.historyDurationFormatter.string(from: components) ?? "")")
-                                    }
-                                }
-                                .foregroundColor(.gray)
-                            }
-                        }
-                        Spacer()
-                    }
-                    .padding()
-                    .navigationTitle("History")
+        NavigationView {
+            Group {
+                if worktimes.isEmpty {
+                    Text("No data to display")
+                } else {
+                    chartsContent
                 }
             }
+            .navigationTitle("History")
+        }
+    }
+    
+    var chartsContent: some View {
+        ScrollView {
+            VStack(alignment: .leading) {
+                Picker("Graph Content", selection: $graphType) {
+                    Text("Income")
+                        .tag(GraphType.income)
+                    Text("Time")
+                        .tag(GraphType.time)
+                }
+                .pickerStyle(.segmented)
+                InteractiveDateChart(data: data, graphType: graphType)
+                    .frame(height: 200)
+                    .animation(.default, value: graphType)
+                    .padding(.bottom, 8)
+                VStack(alignment: .leading, spacing: 5) {
+                    ForEach(data.reversed(), id: \.0) { date, income in
+                        HStack {
+                            Text("\(date, format: .dateTime.month(.wide).year())")
+                            Spacer()
+                            switch graphType {
+                            case .income:
+                                Text("\(income, format: .currency(code: config.currency))")
+                            case .time:
+                                let components = DateComponents(hour: Int(income), minute: Int(income * 60) % 60)
+                                Text("\(Self.historyDurationFormatter.string(from: components) ?? "")")
+                            }
+                        }
+                        .foregroundColor(.gray)
+                    }
+                }
+                Spacer()
+            }
+            .padding()
         }
     }
 }
@@ -130,7 +135,7 @@ struct ChartsView: View {
 struct ChartsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ChartsView()
+            ChartsView(worktimes: SampleData.userData.worktimes)
                 .environmentObject(SampleData.userData)
                 .environmentObject(Config())
         }

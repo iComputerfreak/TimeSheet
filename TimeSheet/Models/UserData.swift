@@ -15,6 +15,19 @@ class UserData: ObservableObject {
     @Published var worktimes: [WorkTime]
     @Published var payouts: [Payout]
     
+    var totalWorkingDuration: DateComponents {
+        worktimes
+            .filter { !$0.isFixedPay }
+            .map(\.duration)
+            .reduce(.zero, +)
+    }
+    
+    var totalWorktimePay: Double {
+        worktimes
+            .map(\.pay)
+            .reduce(0, +)
+    }
+    
     init(worktimes: [WorkTime], payouts: [Payout]) {
         self.worktimes = worktimes
         self.payouts = payouts

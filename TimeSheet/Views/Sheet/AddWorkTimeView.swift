@@ -21,12 +21,35 @@ struct AddWorkTimeView: View {
     @State private var activity: String = ""
     @State private var hours: Double = 0
     @State private var wage: Double = 0
-    @Binding var worktimes: [WorkTime]
+    private var worktimes: Binding<[WorkTime]>?
+    private var editingItem: Binding<WorkTime>?
     @Environment(\.dismiss) private var dismiss
     
     @State private var zeroHoursShowing = false
     
     let dateRange = Date.now.addingTimeInterval(-100 * .year) ... Date.now
+    
+    /// Creates a new AddWorkTimeView in either adding mode, adding a new work time item on save
+    /// - Parameter worktimes: The list of worktimes to append the new object at
+    init(worktimes: Binding<[WorkTime]>) {
+        self.worktimes = worktimes
+        self.editingItem = nil
+    }
+    
+    /// Creates a new AddWorkTimeView in editing mode, editing the given `editingItem`
+    /// - Parameter editingItem: The work time being edited
+    init(editingItem: Binding<WorkTime>) {
+        self.worktimes = nil
+        self.editingItem = editingItem
+        
+        // Pre-fill the values with the ones of the editingItem
+        let worktime = editingItem.wrappedValue
+        self._activity = State(wrappedValue: worktime.activity ?? "")
+        self._date = State(wrappedValue: worktime.date)
+        let h = Double(worktime.duration.hour ?? 0) + Double(worktime.duration.minute ?? 0) / 60.0
+        self._hours = State(wrappedValue: h)
+        self._wage = State(wrappedValue: worktime.wage)
+    }
     
     var body: some View {
         Form {
@@ -34,12 +57,12 @@ struct AddWorkTimeView: View {
             DatePicker(selection: $date, in: dateRange, displayedComponents: .date) {
                 Text("Date")
             }
-            Stepper(value: $hours, in: 0...24, step: 0.25) {
-                HStack {
-                    Text("Hours")
-                    Spacer()
-                    Text("\(hours, format: .number.precision(.fractionLength(0...2)))")
-                }
+            HStack {
+                Text("Hours")
+                Spacer(minLength: 50)
+                TextField("Hours", value: $hours, format:  .number.precision(.fractionLength(0...2)))
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.decimalPad)
             }
             WageStepper(wage: $wage)
         }
@@ -50,17 +73,28 @@ struct AddWorkTimeView: View {
                     zeroHoursShowing = true
                     return
                 }
-                worktimes.append(.init(
+                var newItem = WorkTime(
                     date: date,
                     activity: activity.isEmpty ? nil : activity,
                     hours: hours,
                     wage: wage
-                ))
+                )
+                if let worktimes {
+                    worktimes.wrappedValue.append(newItem)
+                } else if let editingItem {
+                    // Keep the old id
+                    newItem.id = editingItem.wrappedValue.id
+                    editingItem.wrappedValue = newItem
+                } else {
+                    assertionFailure("AddWorkTimeView was created with neither a list of worktimes, nor an editingItem.")
+                }
                 dismiss()
             }
         }
         .onAppear {
-            self.wage = config.wage
+            if self.editingItem == nil {
+                self.wage = config.wage
+            }
         }
         .alert("Hours missing", isPresented: $zeroHoursShowing) {
             Button("Ok") {}

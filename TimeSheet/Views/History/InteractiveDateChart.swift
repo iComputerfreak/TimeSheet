@@ -15,11 +15,15 @@ struct InteractiveDateChart: View {
     @EnvironmentObject private var config: Config
     @State private var highlightedMonth: Date?
     
+    var displayedData: [(Date, Double)] {
+        // Display the latest 12 months (data is already sorted)
+        data.suffix(12)
+    }
+    
     var body: some View {
         Chart {
-            ForEach(data.prefix(12), id: \.0) { date, amount in
+            ForEach(displayedData, id: \.0) { date, amount in
                 // Move the data point into the middle of the month
-                let date = middleOfMonth(date)
                 AreaMark(
                     x: .value("Date", date),
                     y: .value(graphType.yLabel, amount)
@@ -34,7 +38,7 @@ struct InteractiveDateChart: View {
                 .foregroundStyle(.green)
             }
             if let highlightedMonth {
-                let value = data.first(where: { $0.0 == highlightedMonth })?.1 ?? 0
+                let value = displayedData.first(where: { $0.0 == highlightedMonth })?.1 ?? 0
                 BarMark(
                     x: .value("Date", highlightedMonth),
                     yStart: .value(graphType.yLabel, 0),
@@ -72,6 +76,8 @@ struct InteractiveDateChart: View {
                             let date: Date = proxy.value(atX: xCurrent) ?? .now
                             // Snap to nearest month
                             let nearest = nearestMonth(to: date)
+                            assert(nearest <= displayedData.map(\.0).max() ?? nearest)
+                            assert(nearest >= displayedData.map(\.0).min() ?? nearest)
                             highlightedMonth = nearest
                         }
                         .onEnded { _ in highlightedMonth = nil } // Clear the state on gesture end.
@@ -81,7 +87,7 @@ struct InteractiveDateChart: View {
     }
     
     private func alignment(for month: Date) -> Alignment {
-        let months = data.map(\.0)
+        let months = displayedData.map(\.0)
         if month == months.first {
             return .topLeading
         } else if month == months.last {
@@ -91,6 +97,7 @@ struct InteractiveDateChart: View {
         }
     }
     
+    @available(*, unavailable)
     private func middleOfMonth(_ date: Date) -> Date {
         date.addingTimeInterval(TimeInterval(numberOfDays(in: date)) / 2 * .day)
     }
@@ -100,12 +107,12 @@ struct InteractiveDateChart: View {
     }
     
     private func nearestMonth(to date: Date) -> Date {
-        guard !data.isEmpty else {
+        guard !displayedData.isEmpty else {
             return date
         }
         
         // Edge cases
-        let dates = data.map(\.0)
+        let dates = displayedData.map(\.0)
         let min = dates.min()!
         let max = dates.max()!
         

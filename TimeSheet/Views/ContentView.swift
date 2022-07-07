@@ -27,7 +27,7 @@ struct ContentView: View {
                     Text("Payouts")
                 }
             
-            ChartsView()
+            HistoryView()
                 .tabItem {
                     Image(systemName: "chart.xyaxis.line")
                     Text("History")

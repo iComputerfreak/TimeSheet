@@ -9,8 +9,7 @@ import SwiftUI
 
 struct WorkTimeList: View {
     @EnvironmentObject private var config: Config
-    var worktimes: [WorkTime]
-    var onDelete: ((WorkTime) -> Void)?
+    @Binding var worktimes: [WorkTime]
     
     var years: [Int] {
         worktimes
@@ -44,22 +43,42 @@ struct WorkTimeList: View {
                     Section {
                         ForEach(worktimes(in: year, month: month)) { (worktime: WorkTime) in
                             ListRow(worktime: worktime)
+                                .swipeActions {
+                                    // Delete button
+                                    withAnimation {
+                                        Button {
+                                            worktimes.removeAll(where: { $0.id == worktime.id })
+                                        } label: {
+                                            Label("Delete", systemImage: "trash")
+                                        }
+                                    }
+                                    .tint(.red)
+                                    // Edit Button
+                                    if !worktime.isFixedPay {
+                                        NavigationLink {
+                                            AddWorkTimeView(
+                                                editingItem: $worktimes
+                                                    .first { $0.wrappedValue.id == worktime.id }!
+                                            )
+                                        } label: {
+                                            Label("Edit", systemImage: "pencil")
+                                        }
+                                    }
+                                }
                         }
-                        .onDelete { indexSet in
-                            for index in indexSet {
-                                let worktime = worktimes(in: year, month: month)[index]
-                                self.onDelete?(worktime)
-                            }
-                        }
-                        .deleteDisabled(onDelete == nil)
+                        
                     } header: {
-                        let total = worktimes(in: year, month: month)
+                        let totalHours = worktimes(in: year, month: month)
+                            .filter { !$0.isFixedPay }
                             .map(\.duration)
                             .reduce(DateComponents.zero, +)
+                        let totalMoney = worktimes(in: year, month: month)
+                            .map(\.pay)
+                            .reduce(0, +)
                         HStack {
                             Text("\(monthName) \(year, format: .number.grouping(.never))")
                             Spacer()
-                            TimeView(duration: total, wage: config.wage)
+                            TimeView(duration: totalHours, amount: totalMoney)
                         }
                     }
                 }
@@ -69,9 +88,10 @@ struct WorkTimeList: View {
 }
 
 struct WorkTimeList_Previews: PreviewProvider {
+    @State static var worktimes = SampleData.generateWorkTimes()
+    
     static var previews: some View {
-        WorkTimeList(worktimes: []) { worktime in
-            print("Deleting \(worktime)")
-        }
+        WorkTimeList(worktimes: $worktimes)
+        .environmentObject(Config())
     }
 }

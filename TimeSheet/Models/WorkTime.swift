@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WorkTime: Identifiable, Codable {
+struct WorkTime: Identifiable, Codable, Equatable {
     static let durationFormatter: DateComponentsFormatter = {
         let f = DateComponentsFormatter()
         f.unitsStyle = .abbreviated
@@ -25,6 +25,9 @@ struct WorkTime: Identifiable, Codable {
         hours += Double(duration.minute ?? 0) / 60
         return hours * wage
     }
+    /// Whether this item uses a fixed pay value instead of a `time * wage` value.
+    /// In this case the wage is set to `1` or `-1` and the hours is the actual pay amount.
+    var isFixedPay: Bool = false
     
     init(date: Date, activity: String?, duration: DateComponents, wage: Double) {
         self.date = date
@@ -37,6 +40,11 @@ struct WorkTime: Identifiable, Codable {
         let h = Int(hours)
         let m = Int(hours * 60) % 60
         self.init(date: date, activity: activity, duration: DateComponents(hour: h, minute: m), wage: wage)
+    }
+    
+    init(date: Date, activity: String?, fixedPay: Double) {
+        self.init(date: date, activity: activity, hours: abs(fixedPay), wage: fixedPay < 0 ? -1 : 1)
+        self.isFixedPay = true
     }
 }
 

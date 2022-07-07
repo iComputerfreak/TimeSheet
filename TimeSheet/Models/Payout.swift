@@ -9,8 +9,8 @@ import Foundation
 
 struct Payout: Codable, Identifiable {
     var id = UUID()
-    let date: Date
-    let worktimes: [WorkTime]
+    var date: Date
+    var worktimes: [WorkTime]
 
     var duration: DateComponents {
         worktimes.map(\.duration).reduce(.zero, +)

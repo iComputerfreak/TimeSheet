@@ -12,6 +12,7 @@ struct ListView: View {
     @EnvironmentObject private var config: Config
     @EnvironmentObject private var userData: UserData
     @State private var payoutConfirmationShowing = false
+    @State private var createPayoutSheetShowing = false
     
     var years: [Int] {
         userData.worktimes
@@ -37,21 +38,15 @@ struct ListView: View {
         .sorted { $0.date > $1.date }
     }
     
-    var grandTotal: DateComponents {
-        userData.worktimes.map(\.duration).reduce(.zero, +)
-    }
-    
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                WorkTimeList(worktimes: userData.worktimes) { worktime in
-                    self.userData.worktimes.removeAll { $0.id == worktime.id }
-                }
+                WorkTimeList(worktimes: $userData.worktimes)
                 Divider()
                 HStack {
                     Text("Total")
                     Spacer()
-                    TimeView(duration: grandTotal, wage: config.wage)
+                    TimeView(duration: userData.totalWorkingDuration, amount: userData.totalWorktimePay)
                 }
                 .bold()
                 .padding(.horizontal)
@@ -60,14 +55,20 @@ struct ListView: View {
             }
             .navigationTitle("Work Times")
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Payout") {
+                        createPayoutSheetShowing = true
+                    }
+                }
                 #if DEBUG
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Generate") {
-                        let worktimes = SampleData.generateWorkTimes()
-                        let payouts = SampleData.generatePayouts()
                         Task(priority: .userInitiated) {
+                            let worktimes = SampleData.generateWorkTimes()
+                            let payouts = SampleData.generatePayouts()
                             await MainActor.run {
                                 withAnimation {
+                                    self.userData.objectWillChange.send()
                                     self.userData.worktimes = worktimes
                                     self.userData.payouts = payouts
                                 }
@@ -82,6 +83,9 @@ struct ListView: View {
                     }
                 }
             }
+        }
+        .sheet(isPresented: $createPayoutSheetShowing) {
+            CreatePayoutView()
         }
     }
 }

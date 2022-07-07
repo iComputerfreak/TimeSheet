@@ -10,6 +10,8 @@
 		AB7DA6922853A4750070C17A /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6912853A4750070C17A /* SampleData.swift */; };
 		AB7DA6942853CFBD0070C17A /* InteractiveDateChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */; };
 		AB7DA6962853D1B40070C17A /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6952853D1B40070C17A /* AnnotationView.swift */; };
+		AB8B88F2287589DB00691C11 /* CreatePayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B88F1287589DB00691C11 /* CreatePayoutView.swift */; };
+		ABB6EC312877079800CF5B35 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB6EC302877079800CF5B35 /* HistoryView.swift */; };
 		ABE17B9828522F7A00879C30 /* TimeSheetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17B9728522F7A00879C30 /* TimeSheetApp.swift */; };
 		ABE17B9A28522F7A00879C30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17B9928522F7A00879C30 /* ContentView.swift */; };
 		ABE17B9C28522F7B00879C30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABE17B9B28522F7B00879C30 /* Assets.xcassets */; };
@@ -39,6 +41,8 @@
 		AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveDateChart.swift; sourceTree = "<group>"; };
 		AB7DA6952853D1B40070C17A /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		AB7DA69B2853E56B0070C17A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		AB8B88F1287589DB00691C11 /* CreatePayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePayoutView.swift; sourceTree = "<group>"; };
+		ABB6EC302877079800CF5B35 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		ABE17B9428522F7A00879C30 /* TimeSheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeSheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE17B9728522F7A00879C30 /* TimeSheetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSheetApp.swift; sourceTree = "<group>"; };
 		ABE17B9928522F7A00879C30 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,10 +83,10 @@
 			isa = PBXGroup;
 			children = (
 				ABE17BA52852300B00879C30 /* ListView.swift */,
+				ABE17BCE2853886E00879C30 /* WorkTimeList.swift */,
 				ABE17BAD2852368D00879C30 /* ListRow.swift */,
 				ABE17BBC285260C300879C30 /* TimeView.swift */,
 				ABE17BB2285241DF00879C30 /* AddWorkTimeView.swift */,
-				ABE17BCE2853886E00879C30 /* WorkTimeList.swift */,
 			);
 			path = Sheet;
 			sourceTree = "<group>";
@@ -99,6 +103,7 @@
 		AB7DA6992853DA4E0070C17A /* History */ = {
 			isa = PBXGroup;
 			children = (
+				ABB6EC302877079800CF5B35 /* HistoryView.swift */,
 				ABE17BD3285393AD00879C30 /* ChartsView.swift */,
 				AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */,
 				AB7DA6952853D1B40070C17A /* AnnotationView.swift */,
@@ -110,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				ABE17BB628524CB900879C30 /* PayoutsView.swift */,
+				AB8B88F1287589DB00691C11 /* CreatePayoutView.swift */,
 				ABE17BCC2853880100879C30 /* PayoutRow.swift */,
 			);
 			path = Payouts;
@@ -271,6 +277,7 @@
 				ABE17B9A28522F7A00879C30 /* ContentView.swift in Sources */,
 				ABE17BA82852301000879C30 /* SettingsView.swift in Sources */,
 				ABE17BCD2853880100879C30 /* PayoutRow.swift in Sources */,
+				ABB6EC312877079800CF5B35 /* HistoryView.swift in Sources */,
 				ABE17BB528524AB800879C30 /* Utils.swift in Sources */,
 				ABE17BAA2852309200879C30 /* Config.swift in Sources */,
 				ABE17B9828522F7A00879C30 /* TimeSheetApp.swift in Sources */,
@@ -281,6 +288,7 @@
 				ABE17BCB28537FC600879C30 /* WageStepper.swift in Sources */,
 				ABE17BB3285241DF00879C30 /* AddWorkTimeView.swift in Sources */,
 				ABE17BBB28525F7E00879C30 /* Extensions.swift in Sources */,
+				AB8B88F2287589DB00691C11 /* CreatePayoutView.swift in Sources */,
 				AB7DA6942853CFBD0070C17A /* InteractiveDateChart.swift in Sources */,
 				ABE17BC1285261D600879C30 /* Payout.swift in Sources */,
 				ABE17BD4285393AD00879C30 /* ChartsView.swift in Sources */,
@@ -439,7 +447,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = de.JonasFrey.TimeSheet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -470,7 +478,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = de.JonasFrey.TimeSheet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
