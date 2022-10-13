@@ -27,11 +27,17 @@ struct AddWorkTimeView: View {
     
     @State private var zeroHoursShowing = false
     
-    let dateRange = Date.now.addingTimeInterval(-100 * .year) ... Date.now
+    let dateRange: ClosedRange<Date>
+    
+    private init() {
+        self._date = State(wrappedValue: Date())
+        self.dateRange = Date().addingTimeInterval(-100 * .year) ... Date()
+    }
     
     /// Creates a new AddWorkTimeView in either adding mode, adding a new work time item on save
     /// - Parameter worktimes: The list of worktimes to append the new object at
     init(worktimes: Binding<[WorkTime]>) {
+        self.init()
         self.worktimes = worktimes
         self.editingItem = nil
     }
@@ -39,6 +45,7 @@ struct AddWorkTimeView: View {
     /// Creates a new AddWorkTimeView in editing mode, editing the given `editingItem`
     /// - Parameter editingItem: The work time being edited
     init(editingItem: Binding<WorkTime>) {
+        self.init()
         self.worktimes = nil
         self.editingItem = editingItem
         
