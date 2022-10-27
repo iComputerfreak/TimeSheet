@@ -21,8 +21,10 @@ struct ListRow: View {
     var body: some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading) {
-                Text("\(worktime.activity ?? "Work")")
-                    .bold()
+                if let activity = worktime.activity {
+                    Text(activity)
+                        .bold()
+                }
                 let date = worktime.date.formatted(.dateTime.weekday().day().month(.defaultDigits))
                 Text("\(date)")
             }
