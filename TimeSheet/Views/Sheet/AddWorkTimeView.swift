@@ -16,10 +16,13 @@ extension TimeInterval {
 }
 
 struct AddWorkTimeView: View {
+    let minuteSteps = 5
+    
     @EnvironmentObject private var config: Config
     @State private var date = Date.now
     @State private var activity: String = ""
-    @State private var hours: Double = 0
+    @State private var hours: Int = 0
+    @State private var minutes: Int = 0
     @State private var wage: Double = 0
     private var worktimes: Binding<[WorkTime]>?
     private var editingItem: Binding<WorkTime>?
@@ -51,11 +54,11 @@ struct AddWorkTimeView: View {
         
         // Pre-fill the values with the ones of the editingItem
         let worktime = editingItem.wrappedValue
-        self._activity = State(wrappedValue: worktime.activity ?? "")
-        self._date = State(wrappedValue: worktime.date)
-        let h = Double(worktime.duration.hour ?? 0) + Double(worktime.duration.minute ?? 0) / 60.0
-        self._hours = State(wrappedValue: h)
-        self._wage = State(wrappedValue: worktime.wage)
+        self.activity = worktime.activity ?? ""
+        self.date = worktime.date
+        self.hours = worktime.duration.hour ?? 0
+        self.minutes = worktime.duration.minute ?? 0
+        self.wage = worktime.wage
     }
     
     var body: some View {
@@ -64,19 +67,14 @@ struct AddWorkTimeView: View {
             DatePicker(selection: $date, in: dateRange, displayedComponents: .date) {
                 Text("Date")
             }
-            HStack {
-                Text("Hours")
-                Spacer(minLength: 50)
-                TextField("Hours", value: $hours, format:  .number.precision(.fractionLength(0...2)))
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.decimalPad)
-            }
+            Stepper("Hours: \(hours)", value: $hours, in: 0...23)
+            Stepper("Minutes: \(minutes)", value: $minutes, in: 0...55, step: 5)
             WageStepper(wage: $wage)
         }
         .navigationTitle("Add Entry")
         .toolbar {
             Button("Save") {
-                guard hours > 0 else {
+                guard hours > 0 || minutes > 0 else {
                     zeroHoursShowing = true
                     return
                 }
@@ -84,6 +82,7 @@ struct AddWorkTimeView: View {
                     date: date,
                     activity: activity.isEmpty ? nil : activity,
                     hours: hours,
+                    minutes: minutes,
                     wage: wage
                 )
                 if let worktimes {

@@ -18,7 +18,8 @@ struct SampleData {
     static func generateWorkTimes(count: Int = 80) -> [WorkTime] {
         var worktimes: [WorkTime] = []
         for _ in 1...count {
-            worktimes.append(.init(date: randomDate(), activity: nil, hours: randomHours(), wage: randomWage()))
+            let (h, m) = randomHours()
+            worktimes.append(.init(date: randomDate(), activity: nil, hours: h, minutes: m, wage: randomWage()))
         }
         return worktimes
     }
@@ -30,8 +31,9 @@ struct SampleData {
             // Payouts should lie in the past and should be at least 7 days distance from each other
             let offset = -TimeInterval(Int.random(in: 7...21)) * .day
             date.addTimeInterval(offset)
+            let (h, m) = randomHours()
             payouts.append(.init(date: date, worktimes: [
-                .init(date: date, activity: nil, hours: randomHours(), wage: randomWage())
+                .init(date: date, activity: nil, hours: h, minutes: m, wage: randomWage())
             ]))
         }
         return payouts
@@ -41,8 +43,8 @@ struct SampleData {
         Double(Int.random(in: 8...20))
     }
     
-    static func randomHours() -> Double {
-        Double(Int.random(in: 0...(4 * 10))) / 4
+    static func randomHours() -> (Int, Int) {
+        (Int.random(in: 0...10), Int.random(in: 0..<4) * 15)
     }
     
     static func randomDate() -> Date {

@@ -36,14 +36,14 @@ struct WorkTime: Identifiable, Codable, Equatable {
         self.wage = wage
     }
     
-    init(date: Date, activity: String?, hours: Double, wage: Double) {
-        let h = Int(hours)
-        let m = Int(hours * 60) % 60
-        self.init(date: date, activity: activity, duration: DateComponents(hour: h, minute: m), wage: wage)
+    init(date: Date, activity: String?, hours: Int, minutes: Int, wage: Double) {
+        self.init(date: date, activity: activity, duration: DateComponents(hour: hours, minute: minutes), wage: wage)
     }
     
     init(date: Date, activity: String?, fixedPay: Double) {
-        self.init(date: date, activity: activity, hours: abs(fixedPay), wage: fixedPay < 0 ? -1 : 1)
+        let fixedPay = abs(fixedPay)
+        let minutes = Int(fixedPay.truncatingRemainder(dividingBy: 1) * 60)
+        self.init(date: date, activity: activity, hours: Int(fixedPay), minutes: minutes, wage: fixedPay < 0 ? -1 : 1)
         self.isFixedPay = true
     }
 }
