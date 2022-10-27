@@ -78,7 +78,14 @@ struct ListView: View {
                 }
                 #endif
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: AddWorkTimeView(worktimes: $userData.worktimes)) {
+                    Menu {
+                        NavigationLink(destination: AddWorkTimeView(worktimes: $userData.worktimes)) {
+                            Label("Time", systemImage: "clock")
+                        }
+                        NavigationLink(destination: AddFixedPayView(worktimes: $userData.worktimes)) {
+                            Label("Fixed Amount", systemImage: "banknote")
+                        }
+                    } label: {
                         Image(systemName: "plus")
                     }
                 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB069816290A78D400F5CCA5 /* AddFixedPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB069815290A78D400F5CCA5 /* AddFixedPayView.swift */; };
 		AB7DA6922853A4750070C17A /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6912853A4750070C17A /* SampleData.swift */; };
 		AB7DA6942853CFBD0070C17A /* InteractiveDateChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */; };
 		AB7DA6962853D1B40070C17A /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6952853D1B40070C17A /* AnnotationView.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB069815290A78D400F5CCA5 /* AddFixedPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFixedPayView.swift; sourceTree = "<group>"; };
 		AB7DA6912853A4750070C17A /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveDateChart.swift; sourceTree = "<group>"; };
 		AB7DA6952853D1B40070C17A /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				ABE17BAD2852368D00879C30 /* ListRow.swift */,
 				ABE17BBC285260C300879C30 /* TimeView.swift */,
 				ABE17BB2285241DF00879C30 /* AddWorkTimeView.swift */,
+				AB069815290A78D400F5CCA5 /* AddFixedPayView.swift */,
 			);
 			path = Sheet;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				AB7DA6962853D1B40070C17A /* AnnotationView.swift in Sources */,
 				ABE17BAE2852368D00879C30 /* ListRow.swift in Sources */,
 				AB7DA6922853A4750070C17A /* SampleData.swift in Sources */,
+				AB069816290A78D400F5CCA5 /* AddFixedPayView.swift in Sources */,
 				ABE17BCB28537FC600879C30 /* WageStepper.swift in Sources */,
 				ABE17BB3285241DF00879C30 /* AddWorkTimeView.swift in Sources */,
 				ABE17BBB28525F7E00879C30 /* Extensions.swift in Sources */,

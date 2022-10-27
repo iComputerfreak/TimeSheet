@@ -7,3 +7,4 @@
 
 import Foundation
 
+let lowestValidNegativeDateInterval: TimeInterval = -100 * .year

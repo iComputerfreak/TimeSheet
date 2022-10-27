@@ -1,29 +1,17 @@
 //
-//  AddWorkTimeView.swift
+//  AddFixedPayView.swift
 //  TimeSheet
 //
-//  Created by Jonas Frey on 09.06.22.
+//  Created by Jonas Frey on 27.10.22.
 //
 
 import SwiftUI
 
-extension TimeInterval {
-    static let year: TimeInterval = 365 * .day
-    static let day: TimeInterval = 24 * .hour
-    static let hour: TimeInterval = 60 * .minute
-    static let minute: TimeInterval = 60
-    
-}
-
-struct AddWorkTimeView: View {
-    let minuteSteps = 5
-    
+struct AddFixedPayView: View {
     @EnvironmentObject private var config: Config
     @State private var date = Date.now
     @State private var activity: String = ""
-    @State private var hours: Int = 0
-    @State private var minutes: Int = 0
-    @State private var wage: Double = 0
+    @State private var payAmount: Double = 0
     private var worktimes: Binding<[WorkTime]>?
     private var editingItem: Binding<WorkTime>?
     @Environment(\.dismiss) private var dismiss
@@ -56,9 +44,7 @@ struct AddWorkTimeView: View {
         let worktime = editingItem.wrappedValue
         self.activity = worktime.activity ?? ""
         self.date = worktime.date
-        self.hours = worktime.duration.hour ?? 0
-        self.minutes = worktime.duration.minute ?? 0
-        self.wage = worktime.wage
+        self.payAmount = worktime.pay
     }
     
     var body: some View {
@@ -67,35 +53,25 @@ struct AddWorkTimeView: View {
             DatePicker(selection: $date, in: dateRange, displayedComponents: .date) {
                 Text("Date")
             }
-            Stepper(value: $hours, in: 0...23) {
-                HStack {
-                    Text("Hours")
-                    Spacer()
-                    Text(hours.formatted())
-                }
+            HStack {
+                Text("Amount")
+                Spacer(minLength: 50)
+                TextField("Amount", value: $payAmount, format: .number.precision(.fractionLength(0...2)))
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.decimalPad)
             }
-            Stepper(value: $minutes, in: 0...55, step: 5) {
-                HStack {
-                    Text("Minutes")
-                    Spacer()
-                    Text(minutes.formatted())
-                }
-            }
-            WageStepper(wage: $wage)
         }
         .navigationTitle("Add Entry")
         .toolbar {
             Button("Save") {
-                guard hours > 0 || minutes > 0 else {
+                guard payAmount > 0 else {
                     zeroHoursShowing = true
                     return
                 }
                 var newItem = WorkTime(
                     date: date,
                     activity: activity.isEmpty ? nil : activity,
-                    hours: hours,
-                    minutes: minutes,
-                    wage: wage
+                    fixedPay: payAmount
                 )
                 if let worktimes {
                     worktimes.wrappedValue.append(newItem)
@@ -108,27 +84,19 @@ struct AddWorkTimeView: View {
                 }
                 dismiss()
             }
-            .disabled(hours == 0 && minutes == 0)
+            .disabled(payAmount == 0)
         }
-        .onAppear {
-            if self.editingItem == nil {
-                self.wage = config.wage
-            }
-        }
-        .alert("Hours missing", isPresented: $zeroHoursShowing) {
+        .alert("Amount missing", isPresented: $zeroHoursShowing) {
             Button("Ok") {}
         } message: {
-            Text("Please specify how many hours you worked.")
+            Text("Please specify a pay amount.")
         }
 
     }
 }
 
-struct AddWorkTimeView_Previews: PreviewProvider {
+struct AddFixedPayView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            AddWorkTimeView(worktimes: .constant([]))
-                .environmentObject(Config())
-        }
+        AddFixedPayView(worktimes: .constant([]))
     }
 }

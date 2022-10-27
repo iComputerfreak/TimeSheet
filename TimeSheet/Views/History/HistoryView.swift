@@ -15,8 +15,7 @@ struct HistoryView: View {
     }
     
     var body: some View {
-        print("Debug: Building HistoryView")
-        return ChartsView(worktimes: worktimes)
+        ChartsView(worktimes: worktimes)
     }
 }
 
