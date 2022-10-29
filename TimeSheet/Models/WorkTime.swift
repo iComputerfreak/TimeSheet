@@ -41,9 +41,8 @@ struct WorkTime: Identifiable, Codable, Equatable {
     }
     
     init(date: Date, activity: String?, fixedPay: Double) {
-        let fixedPay = abs(fixedPay)
-        let minutes = Int(fixedPay.truncatingRemainder(dividingBy: 1) * 60)
-        self.init(date: date, activity: activity, hours: Int(fixedPay), minutes: minutes, wage: fixedPay < 0 ? -1 : 1)
+        let minutes = Int(abs(fixedPay).truncatingRemainder(dividingBy: 1) * 60)
+        self.init(date: date, activity: activity, hours: Int(abs(fixedPay)), minutes: minutes, wage: fixedPay < 0 ? -1 : 1)
         self.isFixedPay = true
     }
 }

@@ -84,6 +84,8 @@ struct CreatePayoutView: View {
                                 dismiss()
                             }
                         }
+                        .disabled(fullPayoutMode && userData.worktimes.isEmpty)
+                        .disabled(!fullPayoutMode && payoutAmount <= 0)
                     }
                 }
         }
