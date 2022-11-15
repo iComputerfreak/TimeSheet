@@ -56,7 +56,8 @@ struct ChartsView: View {
     
     var incomePerMonth: [(Date, Double)] {
         worktimesByMonth
-            .mapValues { $0.map(\.pay).reduce(0, +) }
+            // Do not include payouts (negative values)
+            .mapValues { $0.map(\.pay).filter({ $0 > 0 }).reduce(0, +) }
             .sorted { $0.key < $1.key }
     }
     

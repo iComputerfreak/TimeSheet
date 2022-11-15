@@ -18,6 +18,8 @@ class UserData: ObservableObject {
     var totalWorkingDuration: DateComponents {
         worktimes
             .filter { !$0.isFixedPay }
+            // Do not include payouts (negative pay)
+            .filter { $0.pay > 0 }
             .map(\.duration)
             .reduce(.zero, +)
     }
@@ -25,6 +27,8 @@ class UserData: ObservableObject {
     var totalWorktimePay: Double {
         worktimes
             .map(\.pay)
+            // Do not include payouts (negative values)
+            .filter { $0 > 0 }
             .reduce(0, +)
     }
     
