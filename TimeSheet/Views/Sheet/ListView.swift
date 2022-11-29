@@ -46,7 +46,7 @@ struct ListView: View {
                 HStack {
                     Text("Total")
                     Spacer()
-                    TimeView(duration: userData.totalWorkingDuration, amount: userData.totalWorktimePay)
+                    TimeView(duration: userData.totalWorkingDuration, amount: userData.totalWorktimePayIncludingDebts)
                 }
                 .bold()
                 .padding(.horizontal)

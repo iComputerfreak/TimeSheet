@@ -70,12 +70,10 @@ struct WorkTimeList: View {
                     } header: {
                         let totalHours = worktimes(in: year, month: month)
                             .filter { !$0.isFixedPay }
-                            .filter { $0.pay > 0 }
                             .map(\.duration)
                             .reduce(DateComponents.zero, +)
                         let totalMoney = worktimes(in: year, month: month)
                             .map(\.pay)
-                            .filter { $0 > 0 }
                             .reduce(0, +)
                         HStack {
                             Text("\(monthName) \(year, format: .number.grouping(.never))")
