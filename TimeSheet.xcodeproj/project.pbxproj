@@ -39,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		AB069815290A78D400F5CCA5 /* AddFixedPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFixedPayView.swift; sourceTree = "<group>"; };
+		AB391C9E2963297600A0B0C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AB7DA6912853A4750070C17A /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveDateChart.swift; sourceTree = "<group>"; };
 		AB7DA6952853D1B40070C17A /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
@@ -145,6 +146,7 @@
 		ABE17B9628522F7A00879C30 /* TimeSheet */ = {
 			isa = PBXGroup;
 			children = (
+				AB391C9E2963297600A0B0C1 /* Info.plist */,
 				ABE17BD0285392AD00879C30 /* Localizable.strings */,
 				ABE17B9728522F7A00879C30 /* TimeSheetApp.swift */,
 				ABE17BB428524AB800879C30 /* Utils.swift */,
@@ -440,6 +442,7 @@
 				DEVELOPMENT_TEAM = 46C9Y785NA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TimeSheet/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TimeSheet;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -471,6 +474,7 @@
 				DEVELOPMENT_TEAM = 46C9Y785NA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TimeSheet/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TimeSheet;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

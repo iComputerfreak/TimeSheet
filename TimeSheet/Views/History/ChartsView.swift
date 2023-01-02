@@ -86,7 +86,7 @@ struct ChartsView: View {
     }
         
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Group {
                 if worktimes.isEmpty {
                     Text("No data to display")

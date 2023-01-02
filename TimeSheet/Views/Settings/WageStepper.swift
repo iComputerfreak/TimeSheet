@@ -16,7 +16,10 @@ struct WageStepper: View {
             HStack {
                 Text("Hourly wage")
                 Spacer()
-                Text(wage.formatted(.currency(code: config.currency)))
+                TextField("Wage", value: $wage, format: .currency(code: config.currency))
+                    .multilineTextAlignment(.trailing)
+                    .scrollDismissesKeyboard(.automatic)
+                    .submitLabel(.done)
             }
         }
     }
