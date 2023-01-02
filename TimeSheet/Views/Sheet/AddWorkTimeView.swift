@@ -30,11 +30,12 @@ struct AddWorkTimeView: View {
     
     @State private var zeroHoursShowing = false
     
-    let dateRange: ClosedRange<Date>
+    @State private var dateRange: ClosedRange<Date>
     
     private init() {
         self._date = State(wrappedValue: Date())
-        self.dateRange = Date().addingTimeInterval(lowestValidNegativeDateInterval) ... Date()
+        let range = Date().addingTimeInterval(lowestValidNegativeDateInterval) ... Date()
+        self._dateRange = State(wrappedValue: range)
     }
     
     /// Creates a new AddWorkTimeView in either adding mode, adding a new work time item on save
@@ -66,6 +67,9 @@ struct AddWorkTimeView: View {
             TextField("Activity (optional)", text: $activity)
             DatePicker(selection: $date, in: dateRange, displayedComponents: .date) {
                 Text("Date")
+            }
+            .onAppear {
+                self.dateRange = Date().addingTimeInterval(lowestValidNegativeDateInterval) ... Date()
             }
             Stepper(value: $hours, in: 0...23) {
                 HStack {
