@@ -10,6 +10,9 @@ import SwiftUI
 struct SettingsView: View {
     
     @EnvironmentObject private var config: Config
+    #if DEBUG
+    @EnvironmentObject private var userData: UserData
+    #endif
     
     var body: some View {
         NavigationStack {
@@ -20,6 +23,14 @@ struct SettingsView: View {
                         Text(code)
                     }
                 }
+                #if DEBUG
+                if userData.worktimes.isEmpty {
+                    Button("Generate Screenshot Data") {
+                        userData.worktimes = SampleData.screenshotWorktimes
+                        userData.payouts = SampleData.screenshotPayouts
+                    }
+                }
+                #endif
             }
             .navigationTitle("Settings")
         }

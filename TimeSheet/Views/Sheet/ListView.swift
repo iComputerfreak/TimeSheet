@@ -60,23 +60,23 @@ struct ListView: View {
                         createPayoutSheetShowing = true
                     }
                 }
-                #if DEBUG
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Generate") {
-                        Task(priority: .userInitiated) {
-                            let worktimes = SampleData.generateWorkTimes()
-                            let payouts = SampleData.generatePayouts()
-                            await MainActor.run {
-                                withAnimation {
-                                    self.userData.objectWillChange.send()
-                                    self.userData.worktimes = worktimes
-                                    self.userData.payouts = payouts
-                                }
-                            }
-                        }
-                    }
-                }
-                #endif
+//                #if DEBUG
+//                ToolbarItem(placement: .navigationBarLeading) {
+//                    Button("Generate") {
+//                        Task(priority: .userInitiated) {
+//                            let worktimes = SampleData.generateWorkTimes()
+//                            let payouts = SampleData.generatePayouts()
+//                            await MainActor.run {
+//                                withAnimation {
+//                                    self.userData.objectWillChange.send()
+//                                    self.userData.worktimes = worktimes
+//                                    self.userData.payouts = payouts
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//                #endif
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
                         NavigationLink(destination: AddWorkTimeView(worktimes: $userData.worktimes)) {

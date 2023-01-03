@@ -20,6 +20,38 @@ struct InteractiveDateChart: View {
         data.suffix(12)
     }
     
+    init(data: [(Date, Double)], graphType: GraphType) {
+        // Fill gaps in data (months) with zeroes
+        var data = data
+        let dates = data.map(\.0).sorted()
+        var currentDate = dates.first!
+        repeat {
+            // Increment date
+            var newMonth = currentDate.month + 1
+            var newYear = currentDate.year
+            // Month overflow
+            if newMonth > 12 {
+                newMonth = 1
+                newYear += 1
+            }
+            currentDate = Calendar.current.date(from: .init(year: newYear, month: newMonth, day: 1))!
+            
+            // Check if our current date is contained in data, otherwise add an entry with zero
+            if !data.contains(where: { (date, amount) in
+                // Only compare month, year. day and time are irrelevant
+                date.month == currentDate.month && date.year == currentDate.year
+            }) {
+                data.append((currentDate, 0))
+            }
+        } while currentDate < dates.last!
+        
+        // After adding the missing values, sort the list again (by date)
+        data.sort { $0.0 < $1.0 }
+        
+        self.data = data
+        self.graphType = graphType
+    }
+    
     var body: some View {
         Chart {
             ForEach(displayedData, id: \.0) { date, amount in
@@ -28,13 +60,13 @@ struct InteractiveDateChart: View {
                     x: .value("Date", date),
                     y: .value(graphType.yLabel, amount)
                 )
-                .interpolationMethod(.catmullRom)
+                .interpolationMethod(.linear)
                 .foregroundStyle(Gradient(colors: [.green.opacity(0.6), .green]))
                 LineMark(
                     x: .value("Date", date),
                     y: .value(graphType.yLabel, amount)
                 )
-                .interpolationMethod(.catmullRom)
+                .interpolationMethod(.linear)
                 .foregroundStyle(.green)
             }
             if let highlightedMonth {

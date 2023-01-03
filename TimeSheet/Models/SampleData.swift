@@ -51,4 +51,35 @@ struct SampleData {
         let dateOffset = TimeInterval(Int.random(in: (-2 * 365)...0)) * TimeInterval.day
         return Date.now.addingTimeInterval(dateOffset)
     }
+    
+    static private let screenshotWage: Double = 20
+    static let screenshotWorktimes: [WorkTime] = [
+        WorkTime(date: Date.create(2022, 11, 12), activity: "Redesign of personal website", hours: 7, minutes: 0, wage: screenshotWage),
+        WorkTime(date: Date.create(2022, 11, 15), activity: "Creation of online store", hours: 8, minutes: 0, wage: screenshotWage),
+        WorkTime(date: Date.create(2022, 11, 23), activity: "Design of email newsletter", hours: 2, minutes: 45, wage: screenshotWage),
+        WorkTime(date: Date.create(2022, 12, 05), activity: "Logo revision", hours: 1, minutes: 0, wage: screenshotWage),
+        WorkTime(date: Date.create(2022, 12, 18), activity: "Consultation call", hours: 0, minutes: 30, wage: screenshotWage),
+        WorkTime(date: Date.create(2023, 01, 02), activity: "Ask ChatGPT for sample data", hours: 0, minutes: 15, wage: screenshotWage)
+    ]
+    
+    static private let screenshotPayoutsData: [(Date, Double)] = [
+        (Date.create(2022, 10, 01), 1250.0),
+        (Date.create(2022, 09, 01), 1750.0),
+        (Date.create(2022, 08, 01), 2250.0),
+        (Date.create(2022, 05, 01), 500.0),
+        (Date.create(2022, 04, 01), 3000.0)
+    ]
+    static var screenshotPayouts: [Payout] {
+        screenshotPayoutsData.map { (date, amount) in
+            let hours = amount / screenshotWage
+            let minutes = amount.truncatingRemainder(dividingBy: screenshotWage) / (screenshotWage / 60)
+            return Payout(date: date, worktimes: [WorkTime(date: date, activity: nil, hours: Int(hours), minutes: Int(minutes), wage: screenshotWage)])
+        }
+    }
+}
+
+extension Date {
+    static func create(_ year: Int, _ month: Int, _ day: Int) -> Date {
+        Calendar.current.date(from: .init(year: year, month: month, day: day))!
+    }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AB069816290A78D400F5CCA5 /* AddFixedPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB069815290A78D400F5CCA5 /* AddFixedPayView.swift */; };
+		AB391CA62964B7EE00A0B0C1 /* ScreenshotsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB391CA52964B7EE00A0B0C1 /* ScreenshotsUITests.swift */; };
 		AB7DA6922853A4750070C17A /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6912853A4750070C17A /* SampleData.swift */; };
 		AB7DA6942853CFBD0070C17A /* InteractiveDateChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */; };
 		AB7DA6962853D1B40070C17A /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6952853D1B40070C17A /* AnnotationView.swift */; };
@@ -37,9 +38,21 @@
 		ABE17BD4285393AD00879C30 /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BD3285393AD00879C30 /* ChartsView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		AB391CA92964B7EE00A0B0C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ABE17B8C28522F7A00879C30 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ABE17B9328522F7A00879C30;
+			remoteInfo = TimeSheet;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		AB069815290A78D400F5CCA5 /* AddFixedPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFixedPayView.swift; sourceTree = "<group>"; };
 		AB391C9E2963297600A0B0C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AB391CA32964B7EE00A0B0C1 /* TimeSheetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeSheetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB391CA52964B7EE00A0B0C1 /* ScreenshotsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsUITests.swift; sourceTree = "<group>"; };
 		AB7DA6912853A4750070C17A /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveDateChart.swift; sourceTree = "<group>"; };
 		AB7DA6952853D1B40070C17A /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
@@ -71,6 +84,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AB391CA02964B7EE00A0B0C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ABE17B9128522F7A00879C30 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -82,6 +102,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB391CA42964B7EE00A0B0C1 /* TimeSheetUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AB391CA52964B7EE00A0B0C1 /* ScreenshotsUITests.swift */,
+			);
+			path = TimeSheetUITests;
+			sourceTree = "<group>";
+		};
 		AB7DA6972853DA430070C17A /* Sheet */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +158,7 @@
 			children = (
 				AB7DA69B2853E56B0070C17A /* README.md */,
 				ABE17B9628522F7A00879C30 /* TimeSheet */,
+				AB391CA42964B7EE00A0B0C1 /* TimeSheetUITests */,
 				ABE17B9528522F7A00879C30 /* Products */,
 				ABE17BC428528C2100879C30 /* Frameworks */,
 			);
@@ -139,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				ABE17B9428522F7A00879C30 /* TimeSheet.app */,
+				AB391CA32964B7EE00A0B0C1 /* TimeSheetUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,6 +231,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AB391CA22964B7EE00A0B0C1 /* TimeSheetUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB391CAB2964B7EE00A0B0C1 /* Build configuration list for PBXNativeTarget "TimeSheetUITests" */;
+			buildPhases = (
+				AB391C9F2964B7EE00A0B0C1 /* Sources */,
+				AB391CA02964B7EE00A0B0C1 /* Frameworks */,
+				AB391CA12964B7EE00A0B0C1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB391CAA2964B7EE00A0B0C1 /* PBXTargetDependency */,
+			);
+			name = TimeSheetUITests;
+			productName = TimeSheetUITests;
+			productReference = AB391CA32964B7EE00A0B0C1 /* TimeSheetUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		ABE17B9328522F7A00879C30 /* TimeSheet */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABE17BA228522F7B00879C30 /* Build configuration list for PBXNativeTarget "TimeSheet" */;
@@ -228,9 +276,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					AB391CA22964B7EE00A0B0C1 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = ABE17B9328522F7A00879C30;
+					};
 					ABE17B9328522F7A00879C30 = {
 						CreatedOnToolsVersion = 14.0;
 					};
@@ -254,11 +306,19 @@
 			projectRoot = "";
 			targets = (
 				ABE17B9328522F7A00879C30 /* TimeSheet */,
+				AB391CA22964B7EE00A0B0C1 /* TimeSheetUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AB391CA12964B7EE00A0B0C1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ABE17B9228522F7A00879C30 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -272,6 +332,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AB391C9F2964B7EE00A0B0C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB391CA62964B7EE00A0B0C1 /* ScreenshotsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ABE17B9028522F7A00879C30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -305,6 +373,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		AB391CAA2964B7EE00A0B0C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ABE17B9328522F7A00879C30 /* TimeSheet */;
+			targetProxy = AB391CA92964B7EE00A0B0C1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		ABE17BD0285392AD00879C30 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -317,6 +393,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AB391CAC2964B7EE00A0B0C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 46C9Y785NA;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.JonasFrey.TimeSheetUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TimeSheet;
+			};
+			name = Debug;
+		};
+		AB391CAD2964B7EE00A0B0C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 46C9Y785NA;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.JonasFrey.TimeSheetUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TimeSheet;
+			};
+			name = Release;
+		};
 		ABE17BA028522F7B00879C30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -498,6 +612,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AB391CAB2964B7EE00A0B0C1 /* Build configuration list for PBXNativeTarget "TimeSheetUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB391CAC2964B7EE00A0B0C1 /* Debug */,
+				AB391CAD2964B7EE00A0B0C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		ABE17B8F28522F7A00879C30 /* Build configuration list for PBXProject "TimeSheet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
