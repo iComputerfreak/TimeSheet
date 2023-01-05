@@ -84,6 +84,7 @@ struct CreatePayoutView: View {
                                 dismiss()
                             }
                         }
+                        .accessibilityIdentifier("create-button")
                         .disabled(fullPayoutMode && userData.worktimes.isEmpty)
                         .disabled(!fullPayoutMode && payoutAmount <= 0)
                     }

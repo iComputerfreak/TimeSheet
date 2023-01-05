@@ -19,24 +19,28 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "list.bullet.rectangle.portrait")
                     Text("Sheet")
+                        .accessibilityIdentifier("sheet-tab")
                 }
             
             PayoutsView()
                 .tabItem {
                     Image(systemName: "banknote")
                     Text("Payouts")
+                        .accessibilityIdentifier("payouts-tab")
                 }
             
             HistoryView()
                 .tabItem {
                     Image(systemName: "chart.xyaxis.line")
                     Text("History")
+                        .accessibilityIdentifier("history-tab")
                 }
             
             SettingsView()
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")
+                        .accessibilityIdentifier("settings-tab")
                 }
         }
         .environmentObject(userData)

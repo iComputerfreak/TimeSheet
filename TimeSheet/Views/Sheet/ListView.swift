@@ -59,6 +59,7 @@ struct ListView: View {
                     Button("Payout") {
                         createPayoutSheetShowing = true
                     }
+                    .accessibilityIdentifier("payout-button")
                 }
 //                #if DEBUG
 //                ToolbarItem(placement: .navigationBarLeading) {
