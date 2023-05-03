@@ -30,3 +30,6 @@ override_status_bar(true)
 
 # For more information about all available options run
 # fastlane action snapshot
+
+stop_after_first_error(true)
+number_of_retries(0)

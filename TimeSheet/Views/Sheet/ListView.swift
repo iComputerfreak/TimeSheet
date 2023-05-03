@@ -82,12 +82,15 @@ struct ListView: View {
                     Menu {
                         NavigationLink(destination: AddWorkTimeView(worktimes: $userData.worktimes)) {
                             Label("Time", systemImage: "clock")
+                                .accessibilityIdentifier("time-based")
                         }
                         NavigationLink(destination: AddFixedPayView(worktimes: $userData.worktimes)) {
                             Label("Fixed Amount", systemImage: "banknote")
+                                .accessibilityIdentifier("fixed-amount")
                         }
                     } label: {
                         Image(systemName: "plus")
+                            .accessibilityIdentifier("add")
                     }
                 }
             }

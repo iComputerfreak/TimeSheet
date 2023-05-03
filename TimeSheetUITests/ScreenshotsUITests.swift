@@ -10,11 +10,13 @@ import XCTest
 final class TimeSheetUITests: XCTestCase {
     
     private var app: XCUIApplication!
+    private var screenshotCounter: Int!
 
     override func setUpWithError() throws {
         continueAfterFailure = false
         app = XCUIApplication()
         setupSnapshot(app)
+        screenshotCounter = 1
     }
 
     func testTakeAppStoreScreenshots() throws {
@@ -32,19 +34,30 @@ final class TimeSheetUITests: XCTestCase {
         app.tabBars.buttons["sheet-tab"].tap()
         
         // Take the screenshots
-        Snapshot.snapshot("01_Sheet")
+        snapshot("Sheet")
+        
+        app.navigationBars.buttons["add"].tap()
+        app.buttons["time-based"].tap()
+        snapshot("Create_Entry_Time")
+        app.navigationBars.buttons.firstMatch.tap()
         
         app.navigationBars.buttons["payout-button"].tap()
-        Snapshot.snapshot("02_Create_Payout")
+        snapshot("Create_Payout")
         app.swipeDown(velocity: .fast)
         
         app.tabBars.buttons["payouts-tab"].tap()
-        Snapshot.snapshot("03_Payouts")
+        snapshot("Payouts")
         
         app.tabBars.buttons["history-tab"].tap()
-        Snapshot.snapshot("04_History")
+        snapshot("History")
         
         app.tabBars.buttons["settings-tab"].tap()
-        Snapshot.snapshot("05_Settings")
+        snapshot("Settings")
+    }
+    
+    // Take a snapshot with a global increasing counter as a prefix
+    private func snapshot(_ name: String) {
+        Snapshot.snapshot("\(String(format: "%02d", screenshotCounter))_\(name)")
+        screenshotCounter += 1
     }
 }
