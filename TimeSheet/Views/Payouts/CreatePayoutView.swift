@@ -14,6 +14,7 @@ struct CreatePayoutView: View {
     
     @State private var fullPayoutMode = true
     @State private var payoutAmount: Double = 0
+    @State private var payoutDate: Date = .now
     @State private var zeroPayoutAlertShowing = false
     @State private var noEntriesShowing = false
     
@@ -25,6 +26,12 @@ struct CreatePayoutView: View {
         NavigationStack {
             Form {
                 Section {
+                    DatePicker(
+                        "Date",
+                        selection: $payoutDate,
+                        in: Date.now.addingTimeInterval(lowestValidNegativeDateInterval) ... .now,
+                        displayedComponents: .date
+                    )
                     let value = userData.worktimes.map(\.pay).reduce(0, +)
                     HStack {
                         Text("Balance")
@@ -62,7 +69,7 @@ struct CreatePayoutView: View {
                                 }
                                 // Create the payout
                                 let payout = Payout(
-                                    date: .now,
+                                    date: payoutDate,
                                     worktimes: userData.worktimes
                                 )
                                 withAnimation {
@@ -76,7 +83,7 @@ struct CreatePayoutView: View {
                                     return
                                 }
                                 let worktime = WorkTime(
-                                    date: .now,
+                                    date: payoutDate,
                                     activity: String(localized: "Payout"),
                                     fixedPay: -payoutAmount
                                 )
