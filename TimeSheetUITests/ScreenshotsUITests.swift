@@ -36,7 +36,7 @@ final class TimeSheetUITests: XCTestCase {
         // Take the screenshots
         snapshot("Sheet")
         
-        app.navigationBars.buttons["add"].tap()
+        app.navigationBars.buttons["add"].forceTap()
         app.buttons["time-based"].tap()
         snapshot("Create_Entry_Time")
         app.navigationBars.buttons.firstMatch.tap()
@@ -59,5 +59,11 @@ final class TimeSheetUITests: XCTestCase {
     private func snapshot(_ name: String) {
         Snapshot.snapshot("\(String(format: "%02d", screenshotCounter))_\(name)")
         screenshotCounter += 1
+    }
+}
+
+extension XCUIElement {
+    func forceTap() {
+        coordinate(withNormalizedOffset: CGVector(dx:0.5, dy:0.5)).tap()
     }
 }
