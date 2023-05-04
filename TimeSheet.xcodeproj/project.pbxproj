@@ -14,6 +14,7 @@
 		AB7DA6942853CFBD0070C17A /* InteractiveDateChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */; };
 		AB7DA6962853D1B40070C17A /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6952853D1B40070C17A /* AnnotationView.swift */; };
 		AB8B88F2287589DB00691C11 /* CreatePayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B88F1287589DB00691C11 /* CreatePayoutView.swift */; };
+		ABA8E7C02A03EDD90059E4BF /* EditPayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8E7BF2A03EDD90059E4BF /* EditPayoutView.swift */; };
 		ABB6EC312877079800CF5B35 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB6EC302877079800CF5B35 /* HistoryView.swift */; };
 		ABE17B9828522F7A00879C30 /* TimeSheetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17B9728522F7A00879C30 /* TimeSheetApp.swift */; };
 		ABE17B9A28522F7A00879C30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17B9928522F7A00879C30 /* ContentView.swift */; };
@@ -59,6 +60,7 @@
 		AB7DA6952853D1B40070C17A /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		AB7DA69B2853E56B0070C17A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AB8B88F1287589DB00691C11 /* CreatePayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePayoutView.swift; sourceTree = "<group>"; };
+		ABA8E7BF2A03EDD90059E4BF /* EditPayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPayoutView.swift; sourceTree = "<group>"; };
 		ABB6EC302877079800CF5B35 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		ABE17B9428522F7A00879C30 /* TimeSheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeSheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE17B9728522F7A00879C30 /* TimeSheetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSheetApp.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			children = (
 				ABE17BB628524CB900879C30 /* PayoutsView.swift */,
 				AB8B88F1287589DB00691C11 /* CreatePayoutView.swift */,
+				ABA8E7BF2A03EDD90059E4BF /* EditPayoutView.swift */,
 				ABE17BCC2853880100879C30 /* PayoutRow.swift */,
 			);
 			path = Payouts;
@@ -300,7 +303,7 @@
 			);
 			mainGroup = ABE17B8B28522F7A00879C30;
 			packageReferences = (
-				ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms.git" */,
+				ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 			);
 			productRefGroup = ABE17B9528522F7A00879C30 /* Products */;
 			projectDirPath = "";
@@ -346,6 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABA8E7C02A03EDD90059E4BF /* EditPayoutView.swift in Sources */,
 				ABE17BCF2853886E00879C30 /* WorkTimeList.swift in Sources */,
 				ABE17BBF2852619D00879C30 /* UserData.swift in Sources */,
 				ABE17BB728524CB900879C30 /* PayoutsView.swift in Sources */,
@@ -648,7 +652,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms.git" */ = {
+		ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-algorithms.git";
 			requirement = {
@@ -661,7 +665,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		ABE17BB02852386900879C30 /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms.git" */;
+			package = ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
 		};
 /* End XCSwiftPackageProductDependency section */

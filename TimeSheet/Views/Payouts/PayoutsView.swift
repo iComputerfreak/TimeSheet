@@ -10,6 +10,7 @@ import SwiftUI
 struct PayoutsView: View {
     @EnvironmentObject private var config: Config
     @EnvironmentObject private var userData: UserData
+    @State private var editingPayout: Payout?
     
     var payouts: [Binding<Payout>] {
         $userData.payouts.sorted { $0.wrappedValue.date > $1.wrappedValue.date }
@@ -27,15 +28,27 @@ struct PayoutsView: View {
                     } label: {
                         PayoutRow(payout: payout)
                     }
-                }
-                .onDelete { indexSet in
-                    for index in indexSet {
-                        let payout = payouts[index]
-                        userData.payouts.removeAll(where: { $0.id == payout.id })
+                    .swipeActions(allowsFullSwipe: true) {
+                        Button {
+                            userData.payouts.removeAll(where: { $0.id == payout.id })
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                        .tint(.red)
+                        Button {
+                            editingPayout = payout
+                        } label: {
+                            Label("Edit", systemImage: "pencil")
+                        }
                     }
                 }
             }
             .navigationTitle("Payouts")
+        }
+        .sheet(item: $editingPayout) { payout in
+            let index = userData.payouts.firstIndex(where: { $0.id == payout.id })!
+            EditPayoutView(payout: $userData.payouts[index])
+                .environmentObject(config)
         }
     }
 }
