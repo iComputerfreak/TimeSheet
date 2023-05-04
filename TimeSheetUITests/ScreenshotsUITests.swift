@@ -13,6 +13,7 @@ final class TimeSheetUITests: XCTestCase {
     private var screenshotCounter: Int!
 
     override func setUpWithError() throws {
+        try super.setUpWithError()
         continueAfterFailure = false
         app = XCUIApplication()
         setupSnapshot(app)

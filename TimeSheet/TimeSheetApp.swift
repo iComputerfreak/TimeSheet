@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// TODO: Make worktimes editable
-
 @main
 struct TimeSheetApp: App {
     var body: some Scene {
