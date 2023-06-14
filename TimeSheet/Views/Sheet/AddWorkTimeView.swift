@@ -19,11 +19,11 @@ struct AddWorkTimeView: View {
     let minuteSteps = 5
     
     @EnvironmentObject private var config: Config
-    @State private var date = Date.now
-    @State private var activity: String = ""
-    @State private var hours: Int = 0
-    @State private var minutes: Int = 0
-    @State private var wage: Double = 0
+    @State private var date: Date
+    @State private var activity: String
+    @State private var hours: Int
+    @State private var minutes: Int
+    @State private var wage: Double
     private var worktimes: Binding<[WorkTime]>?
     private var editingItem: Binding<WorkTime>?
     @Environment(\.dismiss) private var dismiss
@@ -37,6 +37,11 @@ struct AddWorkTimeView: View {
     init(worktimes: Binding<[WorkTime]>) {
         self.worktimes = worktimes
         self.editingItem = nil
+        self._date = State(wrappedValue: .now)
+        self._activity = State(wrappedValue: "")
+        self._hours = State(wrappedValue: 0)
+        self._minutes = State(wrappedValue: 0)
+        self._wage = State(wrappedValue: 0)
     }
     
     /// Creates a new AddWorkTimeView in editing mode, editing the given `editingItem`
@@ -47,11 +52,11 @@ struct AddWorkTimeView: View {
         
         // Pre-fill the values with the ones of the editingItem
         let worktime = editingItem.wrappedValue
-        self.activity = worktime.activity ?? ""
-        self.date = worktime.date
-        self.hours = worktime.duration.hour ?? 0
-        self.minutes = worktime.duration.minute ?? 0
-        self.wage = worktime.wage
+        self._activity = State(wrappedValue: worktime.activity ?? "")
+        self._date = State(wrappedValue: worktime.date)
+        self._hours = State(wrappedValue: worktime.duration.hour ?? 0)
+        self._minutes = State(wrappedValue: worktime.duration.minute ?? 0)
+        self._wage = State(wrappedValue: worktime.wage)
     }
     
     var body: some View {
