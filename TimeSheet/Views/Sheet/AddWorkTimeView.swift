@@ -24,6 +24,7 @@ struct AddWorkTimeView: View {
     @State private var hours: Int
     @State private var minutes: Int
     @State private var wage: Double
+    @State private var dateChanged = false
     private var worktimes: Binding<[WorkTime]>?
     private var editingItem: Binding<WorkTime>?
     @Environment(\.dismiss) private var dismiss
@@ -37,7 +38,7 @@ struct AddWorkTimeView: View {
     init(worktimes: Binding<[WorkTime]>) {
         self.worktimes = worktimes
         self.editingItem = nil
-        self._date = State(wrappedValue: .now)
+        self._date = State(wrappedValue: Date())
         self._activity = State(wrappedValue: "")
         self._hours = State(wrappedValue: 0)
         self._minutes = State(wrappedValue: 0)
@@ -65,8 +66,18 @@ struct AddWorkTimeView: View {
             DatePicker(selection: $date, in: dateRange, displayedComponents: .date) {
                 Text("Date")
             }
+            .onChange(of: date) { _ in
+                // Mark the date as manually changed
+                self.dateChanged = true
+            }
             .onAppear {
                 self.dateRange = Date().addingTimeInterval(lowestValidNegativeDateInterval) ... Date()
+                // If the user did not change the date himself, reset it to "today"
+                // This works around the bug that the date seems to be stuck on old values when opening the app after a few days
+                // TODO: DEBUG by putting an exact date in the form and observing if it changes when cancelling and reopening the view
+                if !self.dateChanged {
+                    self.date = Date()
+                }
             }
             Stepper(value: $hours, in: 0...23) {
                 HStack {
@@ -107,6 +118,7 @@ struct AddWorkTimeView: View {
                 } else {
                     assertionFailure("AddWorkTimeView was created with neither a list of worktimes, nor an editingItem.")
                 }
+                self.dateChanged = false
                 dismiss()
             }
             .disabled(hours == 0 && minutes == 0)
@@ -121,7 +133,6 @@ struct AddWorkTimeView: View {
         } message: {
             Text("Please specify how many hours you worked.")
         }
-
     }
 }
 
