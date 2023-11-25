@@ -41,7 +41,7 @@ struct AnnotationView: View {
         }
             .padding(8)
             .background(
-                .gray.opacity(0.8)
+                .quaternary.opacity(0.8)
             )
             .cornerRadius(5)
     }

@@ -59,12 +59,33 @@ struct AddFixedPayView: View {
                 TextField("Amount", value: $payAmount, format: .number.precision(.fractionLength(0...2)))
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.decimalPad)
+                    .toolbar {
+                        ToolbarItem(placement: .keyboard) {
+                            HStack {
+                                Button {
+                                    self.payAmount *= -1
+                                } label: {
+                                    Text("+/-")
+                                        .padding(.horizontal, 4)
+                                        .padding(.bottom, 2)
+                                        .background {
+                                            RoundedRectangle(cornerRadius: 3)
+                                                .fill(Color("secondaryAccent"))
+                                        }
+                                }
+                                Spacer()
+                            }
+                            Button("Test") {
+                                print("Pressed.")
+                            }
+                        }
+                    }
             }
         }
         .navigationTitle("Add Entry")
         .toolbar {
             Button("Save") {
-                guard payAmount > 0 else {
+                guard payAmount != 0 else {
                     zeroHoursShowing = true
                     return
                 }

@@ -30,7 +30,7 @@ struct PayoutRow: View {
             let total = payout.amount.formatted(.currency(code: config.currency))
             Text(total)
                 .font(.title2)
-                .foregroundColor(.green)
+                .foregroundColor(payout.amount >= 0 ? .green : .red)
         }
     }
 }

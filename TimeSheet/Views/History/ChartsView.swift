@@ -56,8 +56,14 @@ struct ChartsView: View {
     
     var incomePerMonth: [(Date, Double)] {
         worktimesByMonth
-            // Do not include payouts (negative values)
-            .mapValues { $0.map(\.pay).filter({ $0 > 0 }).reduce(0, +) }
+            // Do not include payouts
+            // TODO: We should not compare the literal title here, we should create a different struct for Payouts
+            .mapValues { value in
+                value
+                    .filter { $0.activity != String(localized: "Payout") }
+                    .map(\.pay)
+                    .reduce(0, +)
+            }
             .sorted { $0.key < $1.key }
     }
     

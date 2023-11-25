@@ -46,6 +46,7 @@ final class TimeSheetUITests: XCTestCase {
         snapshot("Create_Payout")
         app.swipeDown(velocity: .fast)
         
+        // TODO: Fix
         app.tabBars.buttons["payouts-tab"].tap()
         snapshot("Payouts")
         
