@@ -46,7 +46,6 @@ struct ListView: View {
     
     var totalWorkingDuration: TimeInterval {
         worktimes
-        // TODO: Only works after duration has been migrated to TimeInterval
             .filter { !$0.isFixedPay }
             .filter { $0.pay > 0 }
             .map(\.duration)
@@ -63,7 +62,7 @@ struct ListView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                WorkTimeList(worktimes: $userData.worktimes)
+                WorkTimeList()
                 Divider()
                 HStack {
                     Text("Total")

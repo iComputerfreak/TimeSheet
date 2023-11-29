@@ -5,17 +5,22 @@
 //  Created by Jonas Frey on 10.06.22.
 //
 
+import SwiftData
 import SwiftUI
+import JFUtils
 
 struct WorkTimeList: View {
     @EnvironmentObject private var config: Config
-    @Binding var worktimes: [WorkTime]
+    @Environment(\.modelContext) private var modelContext
+    
+    @Query(sort: [.init(\WorkTime.date)], animation: .default)
+    private var worktimes: [WorkTime]
     
     var years: [Int] {
         worktimes
             .map(\.date.year)
             .uniqued(on: \.hashValue)
-            .sorted { $0 > $1 }
+            .sorted(by: >)
     }
     
     func months(in year: Int) -> [Int] {
@@ -25,14 +30,15 @@ struct WorkTimeList: View {
             }
             .map(\.date.month)
             .uniqued(on: \.hashValue)
-            .sorted { $0 > $1 }
+            .sorted(by: >)
     }
     
+    // TODO: Should probably be done in a Query in a subview
     func worktimes(in year: Int, month: Int) -> [WorkTime] {
         worktimes.filter { worktime in
             worktime.date.year == year && worktime.date.month == month
         }
-        .sorted { $0.date > $1.date }
+        .sorted(on: \.date, by: >)
     }
     
     var body: some View {
@@ -47,7 +53,7 @@ struct WorkTimeList: View {
                                     // Delete button
                                     withAnimation {
                                         Button {
-                                            worktimes.removeAll(where: { $0.id == worktime.id })
+                                            self.modelContext.delete(worktime)
                                         } label: {
                                             Label("Delete", systemImage: "trash")
                                         }
@@ -56,17 +62,13 @@ struct WorkTimeList: View {
                                     // Edit Button
                                     if !worktime.isFixedPay {
                                         NavigationLink {
-                                            AddWorkTimeView(
-                                                editingItem: $worktimes
-                                                    .first { $0.wrappedValue.id == worktime.id }!
-                                            )
+                                            AddWorkTimeView(editingItem: worktime)
                                         } label: {
                                             Label("Edit", systemImage: "pencil")
                                         }
                                     }
                                 }
                         }
-                        
                     } header: {
                         let totalHours = worktimes(in: year, month: month)
                             .filter { !$0.isFixedPay }
@@ -91,7 +93,7 @@ struct WorkTimeList_Previews: PreviewProvider {
     @State static var worktimes = SampleData.generateWorkTimes()
     
     static var previews: some View {
-        WorkTimeList(worktimes: $worktimes)
-        .environmentObject(Config())
+        WorkTimeList()
+            .environmentObject(Config())
     }
 }

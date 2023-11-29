@@ -89,11 +89,12 @@ struct AddFixedPayView: View {
                     zeroHoursShowing = true
                     return
                 }
-                var newItem = WorkTime(
+                let newItem = WorkTime(
                     date: date,
                     activity: activity.isEmpty ? nil : activity,
                     fixedPay: payAmount
                 )
+                // TODO: Same as AddWorkTimeView (use mode and directly modify the editingItem)
                 if let worktimes {
                     worktimes.wrappedValue.append(newItem)
                 } else if let editingItem {

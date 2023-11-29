@@ -21,7 +21,8 @@ struct PayoutsView: View {
             List {
                 ForEach(payouts) { $payout in
                     NavigationLink {
-                        WorkTimeList(worktimes: $payout.worktimes)
+                        // TODO: Supply another way to display the payout worktimes (maybe a payout argument)
+                        WorkTimeList(/*worktimes: $payout.worktimes*/)
                             .environmentObject(userData)
                             .environmentObject(config)
                             .navigationTitle("\(payout.date, format: .dateTime.day().month().year())")

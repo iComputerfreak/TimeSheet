@@ -10,6 +10,12 @@ import SwiftUI
 struct AddWorkTimeView: View {
     let minuteSteps = 5
     
+    // TODO: Use
+    enum Mode {
+        case editing
+        case adding
+    }
+    
     @EnvironmentObject private var config: Config
     @State private var date: Date
     @State private var activity: String
@@ -17,9 +23,11 @@ struct AddWorkTimeView: View {
     @State private var minutes: Int
     @State private var wage: Double
     @State private var dateChanged = false
+    // TODO: Replace with query?
     private var worktimes: Binding<[WorkTime]>?
-    private var editingItem: Binding<WorkTime>?
+    private var editingItem: WorkTime?
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
     
     @State private var zeroHoursShowing = false
     
@@ -39,16 +47,16 @@ struct AddWorkTimeView: View {
     
     /// Creates a new AddWorkTimeView in editing mode, editing the given `editingItem`
     /// - Parameter editingItem: The work time being edited
-    init(editingItem: Binding<WorkTime>) {
+    init(editingItem: WorkTime) {
         self.worktimes = nil
         self.editingItem = editingItem
         
         // Pre-fill the values with the ones of the editingItem
-        let worktime = editingItem.wrappedValue
+        let worktime = editingItem
         self._activity = State(wrappedValue: worktime.activity ?? "")
         self._date = State(wrappedValue: worktime.date)
         self._hours = State(wrappedValue: Int(worktime.duration / .hour))
-        self._minutes = State(wrappedValue: Int(worktime.duration.truncatingRemainder(dividingBy: .minute)))
+        self._minutes = State(wrappedValue: Int(worktime.duration.truncatingRemainder(dividingBy: .hour) / .minute))
         self._wage = State(wrappedValue: worktime.wage)
     }
     
@@ -94,19 +102,23 @@ struct AddWorkTimeView: View {
                     zeroHoursShowing = true
                     return
                 }
-                let newItem = WorkTime(
-                    date: date,
-                    activity: activity.isEmpty ? nil : activity,
-                    hours: hours,
-                    minutes: minutes,
-                    wage: wage
-                )
+                // TODO: mode == Adding
                 if let worktimes {
-                    worktimes.wrappedValue.append(newItem)
+                    let newItem = WorkTime(
+                        date: date,
+                        activity: activity.isEmpty ? nil : activity,
+                        hours: hours,
+                        minutes: minutes,
+                        wage: wage
+                    )
+                    modelContext.insert(newItem)
+                    // TODO: mode == Editing
                 } else if let editingItem {
-                    // Keep the old id
-                    newItem.id = editingItem.wrappedValue.id
-                    editingItem.wrappedValue = newItem
+                    // Update the existing item
+                    editingItem.date = date
+                    editingItem.activity = activity.isEmpty ? nil : activity
+                    editingItem.duration = Double(hours) * .hour + Double(minutes) * .minute
+                    editingItem.wage = wage
                 } else {
                     assertionFailure("AddWorkTimeView was created with neither a list of worktimes, nor an editingItem.")
                 }
