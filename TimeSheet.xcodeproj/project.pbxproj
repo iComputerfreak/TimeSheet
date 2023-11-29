@@ -10,6 +10,9 @@
 		AB069816290A78D400F5CCA5 /* AddFixedPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB069815290A78D400F5CCA5 /* AddFixedPayView.swift */; };
 		AB391CA62964B7EE00A0B0C1 /* ScreenshotsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB391CA52964B7EE00A0B0C1 /* ScreenshotsUITests.swift */; };
 		AB391CAF2964BD7700A0B0C1 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB391CAE2964BD7700A0B0C1 /* SnapshotHelper.swift */; };
+		AB7C01582B1250A200657BEC /* LegacyPayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C01572B1250A200657BEC /* LegacyPayout.swift */; };
+		AB7C015A2B1250C500657BEC /* LegacyWorkTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C01592B1250C500657BEC /* LegacyWorkTime.swift */; };
+		AB7C015D2B17ECD900657BEC /* JFUtils in Frameworks */ = {isa = PBXBuildFile; productRef = AB7C015C2B17ECD900657BEC /* JFUtils */; };
 		AB7DA6922853A4750070C17A /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6912853A4750070C17A /* SampleData.swift */; };
 		AB7DA6942853CFBD0070C17A /* InteractiveDateChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */; };
 		AB7DA6962853D1B40070C17A /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6952853D1B40070C17A /* AnnotationView.swift */; };
@@ -55,6 +58,8 @@
 		AB391CA32964B7EE00A0B0C1 /* TimeSheetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeSheetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB391CA52964B7EE00A0B0C1 /* ScreenshotsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsUITests.swift; sourceTree = "<group>"; };
 		AB391CAE2964BD7700A0B0C1 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		AB7C01572B1250A200657BEC /* LegacyPayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyPayout.swift; sourceTree = "<group>"; };
+		AB7C01592B1250C500657BEC /* LegacyWorkTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyWorkTime.swift; sourceTree = "<group>"; };
 		AB7DA6912853A4750070C17A /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveDateChart.swift; sourceTree = "<group>"; };
 		AB7DA6952853D1B40070C17A /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
@@ -98,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB7C015D2B17ECD900657BEC /* JFUtils in Frameworks */,
 				ABE17BB12852386900879C30 /* Algorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,6 +118,15 @@
 				AB391CAE2964BD7700A0B0C1 /* SnapshotHelper.swift */,
 			);
 			path = TimeSheetUITests;
+			sourceTree = "<group>";
+		};
+		AB7C01562B12509A00657BEC /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				AB7C01572B1250A200657BEC /* LegacyPayout.swift */,
+				AB7C01592B1250C500657BEC /* LegacyWorkTime.swift */,
+			);
+			path = Legacy;
 			sourceTree = "<group>";
 		};
 		AB7DA6972853DA430070C17A /* Sheet */ = {
@@ -181,6 +196,7 @@
 		ABE17B9628522F7A00879C30 /* TimeSheet */ = {
 			isa = PBXGroup;
 			children = (
+				AB7C01562B12509A00657BEC /* Legacy */,
 				ABE17BD0285392AD00879C30 /* Localizable.strings */,
 				ABE17B9728522F7A00879C30 /* TimeSheetApp.swift */,
 				ABE17BB428524AB800879C30 /* Utils.swift */,
@@ -268,6 +284,7 @@
 			name = TimeSheet;
 			packageProductDependencies = (
 				ABE17BB02852386900879C30 /* Algorithms */,
+				AB7C015C2B17ECD900657BEC /* JFUtils */,
 			);
 			productName = TimeSheet;
 			productReference = ABE17B9428522F7A00879C30 /* TimeSheet.app */;
@@ -304,6 +321,7 @@
 			mainGroup = ABE17B8B28522F7A00879C30;
 			packageReferences = (
 				ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				AB7C015B2B17ECD900657BEC /* XCRemoteSwiftPackageReference "JFUtils" */,
 			);
 			productRefGroup = ABE17B9528522F7A00879C30 /* Products */;
 			projectDirPath = "";
@@ -351,6 +369,7 @@
 			files = (
 				ABA8E7C02A03EDD90059E4BF /* EditPayoutView.swift in Sources */,
 				ABE17BCF2853886E00879C30 /* WorkTimeList.swift in Sources */,
+				AB7C015A2B1250C500657BEC /* LegacyWorkTime.swift in Sources */,
 				ABE17BBF2852619D00879C30 /* UserData.swift in Sources */,
 				ABE17BB728524CB900879C30 /* PayoutsView.swift in Sources */,
 				ABE17B9A28522F7A00879C30 /* ContentView.swift in Sources */,
@@ -367,6 +386,7 @@
 				AB069816290A78D400F5CCA5 /* AddFixedPayView.swift in Sources */,
 				ABE17BCB28537FC600879C30 /* WageStepper.swift in Sources */,
 				ABE17BB3285241DF00879C30 /* AddWorkTimeView.swift in Sources */,
+				AB7C01582B1250A200657BEC /* LegacyPayout.swift in Sources */,
 				ABE17BBB28525F7E00879C30 /* Extensions.swift in Sources */,
 				AB8B88F2287589DB00691C11 /* CreatePayoutView.swift in Sources */,
 				AB7DA6942853CFBD0070C17A /* InteractiveDateChart.swift in Sources */,
@@ -488,7 +508,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -543,7 +563,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -572,6 +592,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -605,6 +626,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -652,6 +674,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AB7C015B2B17ECD900657BEC /* XCRemoteSwiftPackageReference "JFUtils" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/iComputerfreak/JFUtils";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.2;
+			};
+		};
 		ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-algorithms.git";
@@ -663,6 +693,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AB7C015C2B17ECD900657BEC /* JFUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB7C015B2B17ECD900657BEC /* XCRemoteSwiftPackageReference "JFUtils" */;
+			productName = JFUtils;
+		};
 		ABE17BB02852386900879C30 /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms" */;

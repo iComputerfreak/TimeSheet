@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-extension TimeInterval {
-    static let year: TimeInterval = 365 * .day
-    static let day: TimeInterval = 24 * .hour
-    static let hour: TimeInterval = 60 * .minute
-    static let minute: TimeInterval = 60
-    
-}
-
 struct AddWorkTimeView: View {
     let minuteSteps = 5
     
@@ -55,8 +47,8 @@ struct AddWorkTimeView: View {
         let worktime = editingItem.wrappedValue
         self._activity = State(wrappedValue: worktime.activity ?? "")
         self._date = State(wrappedValue: worktime.date)
-        self._hours = State(wrappedValue: worktime.duration.hour ?? 0)
-        self._minutes = State(wrappedValue: worktime.duration.minute ?? 0)
+        self._hours = State(wrappedValue: Int(worktime.duration / .hour))
+        self._minutes = State(wrappedValue: Int(worktime.duration.truncatingRemainder(dividingBy: .minute)))
         self._wage = State(wrappedValue: worktime.wage)
     }
     
@@ -66,7 +58,7 @@ struct AddWorkTimeView: View {
             DatePicker(selection: $date, in: dateRange, displayedComponents: .date) {
                 Text("Date")
             }
-            .onChange(of: date) { _ in
+            .onChange(of: date) {
                 // Mark the date as manually changed
                 self.dateChanged = true
             }
@@ -102,7 +94,7 @@ struct AddWorkTimeView: View {
                     zeroHoursShowing = true
                     return
                 }
-                var newItem = WorkTime(
+                let newItem = WorkTime(
                     date: date,
                     activity: activity.isEmpty ? nil : activity,
                     hours: hours,

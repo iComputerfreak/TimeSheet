@@ -5,6 +5,7 @@
 //  Created by Jonas Frey on 09.06.22.
 //
 
+import SwiftData
 import SwiftUI
 
 struct ContentView: View {
@@ -43,13 +44,9 @@ struct ContentView: View {
                         .accessibilityIdentifier("settings-tab")
                 }
         }
+        .modelContainer(for: [WorkTime.self, Payout.self])
         .environmentObject(userData)
         .environmentObject(config)
-        .onChange(of: scenePhase) { newValue in
-            if newValue == .background {
-                userData.save()
-            }
-        }
     }
 }
 

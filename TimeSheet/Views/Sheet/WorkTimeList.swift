@@ -71,7 +71,7 @@ struct WorkTimeList: View {
                         let totalHours = worktimes(in: year, month: month)
                             .filter { !$0.isFixedPay }
                             .map(\.duration)
-                            .reduce(DateComponents.zero, +)
+                            .reduce(0, +)
                         let totalMoney = worktimes(in: year, month: month)
                             .map(\.pay)
                             .reduce(0, +)

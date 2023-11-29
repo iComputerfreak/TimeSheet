@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "jfutils",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/iComputerfreak/JFUtils",
+      "state" : {
+        "revision" : "a4c492bb29017735981d103ce7d5742d10b60066",
+        "version" : "1.9.2"
+      }
+    },
+    {
       "identity" : "swift-algorithms",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-algorithms.git",

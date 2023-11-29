@@ -9,19 +9,10 @@ import Foundation
 import SwiftUI
 
 class UserData: ObservableObject {
-    static private let worktimesKey = "worktimes"
-    static private let payoutsKey = "payouts"
+    static let migrationKey = "migratedToSwiftData"
     
-    @Published var worktimes: [WorkTime]
-    @Published var payouts: [Payout]
-    
-    var totalWorkingDuration: DateComponents {
-        worktimes
-            .filter { !$0.isFixedPay }
-            .filter { $0.pay > 0 }
-            .map(\.duration)
-            .reduce(.zero, +)
-    }
+    @Published var worktimes: [WorkTime] = []
+    @Published var payouts: [Payout] = []
     
     var totalWorktimePayIncludingDebts: Double {
         worktimes
@@ -37,19 +28,15 @@ class UserData: ObservableObject {
     // Load from persistent store
     init() {
         print("Loading persistent data...")
-        self.worktimes = Self.decode([WorkTime].self, forKey: Self.worktimesKey) ?? []
-        self.payouts = Self.decode([Payout].self, forKey: Self.payoutsKey) ?? []
+        if !UserDefaults.standard.bool(forKey: Self.migrationKey) {
+            print("Migrating legacy data...")
+            Self.migrateLegacyData()
+            UserDefaults.standard.set(true, forKey: Self.migrationKey)
+        }
     }
     
     func save() {
         print("Saving persistent data...")
-        let encoder = PropertyListEncoder()
-        do {
-            UserDefaults.standard.set(try encoder.encode(self.worktimes), forKey: Self.worktimesKey)
-            UserDefaults.standard.set(try encoder.encode(self.payouts), forKey: Self.payoutsKey)
-        } catch {
-            print(error)
-        }
     }
     
     static func decode<T: Decodable>(_ type: T.Type, forKey key: String) -> T? {
@@ -62,5 +49,19 @@ class UserData: ObservableObject {
             print(error)
         }
         return nil
+    }
+    
+    static func migrateLegacyData() {
+        let worktimesKey = "worktimes"
+        let payoutsKey = "payouts"
+        let legacyWorktimes = Self.decode([LegacyWorkTime].self, forKey: worktimesKey)
+        let legacyPayouts = Self.decode([LegacyPayout].self, forKey: payoutsKey)
+        if legacyWorktimes == nil && legacyPayouts == nil {
+            // No data to restore, returning
+            return
+        }
+        // Migrate the models to the new Swift Data models and insert them into the context
+        print("Migrating \(legacyWorktimes?.count ?? 0) work times and \(legacyPayouts?.count ?? 0) payouts...")
+        // TODO: ...
     }
 }

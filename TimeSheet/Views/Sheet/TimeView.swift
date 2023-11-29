@@ -9,18 +9,12 @@ import SwiftUI
 
 struct TimeView: View {
     @EnvironmentObject private var config: Config
-    let duration: DateComponents
+    let duration: TimeInterval
     let amount: Double
     
-    init(duration: DateComponents, amount: Double) {
+    init(duration: TimeInterval, amount: Double) {
         self.duration = duration
         self.amount = amount
-    }
-    
-    @available(*, unavailable)
-    init(duration: DateComponents, wage: Double) {
-        self.duration = duration
-        self.amount = duration.pay(using: wage)
     }
     
     var body: some View {
@@ -32,6 +26,6 @@ struct TimeView: View {
 
 struct TimeView_Previews: PreviewProvider {
     static var previews: some View {
-        TimeView(duration: .init(hour: 1, minute: 30), amount: 12 * 1.5)
+        TimeView(duration: .hour + 30 * .minute, amount: 12 * 1.5)
     }
 }

@@ -73,9 +73,8 @@ struct ChartsView: View {
                 worktimes
                     // Don't include fixed pay in the hours
                     .filter { !$0.isFixedPay }
-                    .map(\.duration)
-                    .map { duration in
-                        Double(duration.hour ?? 0) + Double(duration.minute ?? 0) / 60
+                    .map { worktime in
+                        worktime.duration / .hour
                     }
                     .reduce(0, +)
             }
