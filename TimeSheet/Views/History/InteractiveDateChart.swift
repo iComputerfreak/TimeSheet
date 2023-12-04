@@ -181,7 +181,7 @@ struct InteractiveDateChart: View {
 }
 
 struct InteractiveDateChart_Previews: PreviewProvider {
-    static var worktimesByMonth: [Date: [WorkTime]] {
+    static var worktimesByMonth: [Date: [WorkTimeEntry]] {
         Dictionary(
             grouping: SampleData.generateWorkTimes(),
             by: { worktime in

@@ -13,8 +13,8 @@ struct WorkTimeList: View {
     @EnvironmentObject private var config: Config
     @Environment(\.modelContext) private var modelContext
     
-    @Query(sort: [.init(\WorkTime.date)], animation: .default)
-    private var worktimes: [WorkTime]
+    @Query(sort: [.init(\WorkTimeEntry.date)], animation: .default)
+    private var worktimes: [WorkTimeEntry]
     
     var years: [Int] {
         worktimes
@@ -34,7 +34,7 @@ struct WorkTimeList: View {
     }
     
     // TODO: Should probably be done in a Query in a subview
-    func worktimes(in year: Int, month: Int) -> [WorkTime] {
+    func worktimes(in year: Int, month: Int) -> [WorkTimeEntry] {
         worktimes.filter { worktime in
             worktime.date.year == year && worktime.date.month == month
         }
@@ -47,7 +47,7 @@ struct WorkTimeList: View {
                 ForEach(months(in: year), id: \.self) { (month: Int) in
                     let monthName = Calendar.current.standaloneMonthSymbols[month - 1]
                     Section {
-                        ForEach(worktimes(in: year, month: month)) { (worktime: WorkTime) in
+                        ForEach(worktimes(in: year, month: month)) { (worktime: WorkTimeEntry) in
                             ListRow(worktime: worktime)
                                 .swipeActions {
                                     // Delete button

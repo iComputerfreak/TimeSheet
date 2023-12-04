@@ -16,7 +16,7 @@ struct ListRow: View {
     }
     
     @EnvironmentObject private var config: Config
-    let worktime: WorkTime
+    let worktime: WorkTimeEntry
     
     var body: some View {
         HStack(alignment: .center) {

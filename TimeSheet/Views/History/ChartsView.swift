@@ -39,9 +39,9 @@ struct ChartsView: View {
     
     @EnvironmentObject private var config: Config
     @State private var graphType: GraphType = .income
-    let worktimes: [WorkTime]
+    let worktimes: [WorkTimeEntry]
     
-    var worktimesByMonth: [Date: [WorkTime]] {
+    var worktimesByMonth: [Date: [WorkTimeEntry]] {
         Dictionary(
             grouping: worktimes,
             by: { worktime in

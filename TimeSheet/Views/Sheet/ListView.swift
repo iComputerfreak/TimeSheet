@@ -16,8 +16,8 @@ struct ListView: View {
     @State private var payoutConfirmationShowing = false
     @State private var createPayoutSheetShowing = false
     
-    @Query(sort: [.init(\WorkTime.date)], animation: .default)
-    private var worktimes: [WorkTime]
+    @Query(sort: [.init(\WorkTimeEntry.date)], animation: .default)
+    private var worktimes: [WorkTimeEntry]
     
     var years: [Int] {
         worktimes
@@ -37,7 +37,7 @@ struct ListView: View {
     }
     
     // TODO: Should probably be done in a Query in a subview
-    func worktimes(in year: Int, month: Int) -> [WorkTime] {
+    func worktimes(in year: Int, month: Int) -> [WorkTimeEntry] {
         worktimes.filter { worktime in
             worktime.date.year == year && worktime.date.month == month
         }

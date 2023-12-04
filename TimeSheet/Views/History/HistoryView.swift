@@ -10,7 +10,7 @@ import SwiftUI
 struct HistoryView: View {
     @EnvironmentObject private var userData: UserData
     
-    var worktimes: [WorkTime] {
+    var worktimes: [WorkTimeEntry] {
         userData.worktimes + userData.payouts.flatMap(\.worktimes)
     }
     

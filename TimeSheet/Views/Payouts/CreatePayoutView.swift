@@ -82,7 +82,7 @@ struct CreatePayoutView: View {
                                     zeroPayoutAlertShowing = true
                                     return
                                 }
-                                let worktime = WorkTime(
+                                let worktime = WorkTimeEntry(
                                     date: payoutDate,
                                     activity: String(localized: "Payout"),
                                     fixedPay: -payoutAmount

@@ -18,7 +18,7 @@ struct SettingsView: View {
     
     var worktimeCount: Int {
         do {
-            return try modelContext.fetchCount(FetchDescriptor<WorkTime>())
+            return try modelContext.fetchCount(FetchDescriptor<WorkTimeEntry>())
         } catch {
             print("Error getting count of WorkTime objects: \(error)")
         }

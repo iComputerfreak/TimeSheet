@@ -14,7 +14,7 @@ class Payout {
     var id = UUID()
     var date: Date
     @Relationship(deleteRule: .nullify/*, inverse: \WorkTime.payout*/)
-    var worktimes: [WorkTime]
+    var worktimes: [WorkTimeEntry]
 
     var duration: TimeInterval {
         worktimes.map(\.duration).reduce(0, +)
@@ -23,7 +23,7 @@ class Payout {
         worktimes.map(\.pay).reduce(0, +)
     }
     
-    init(date: Date, worktimes: [WorkTime]) {
+    init(date: Date, worktimes: [WorkTimeEntry]) {
         self.date = date
         self.worktimes = worktimes
     }

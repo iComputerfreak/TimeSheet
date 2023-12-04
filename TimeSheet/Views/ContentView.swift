@@ -44,7 +44,7 @@ struct ContentView: View {
                         .accessibilityIdentifier("settings-tab")
                 }
         }
-        .modelContainer(for: [WorkTime.self, Payout.self])
+        .modelContainer(for: [WorkTimeEntry.self, Payout.self])
         .environmentObject(userData)
         .environmentObject(config)
     }

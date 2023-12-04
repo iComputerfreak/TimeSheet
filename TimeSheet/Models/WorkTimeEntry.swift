@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class WorkTime {
+class WorkTimeEntry {
     static let durationFormatter: DateComponentsFormatter = {
         let f = DateComponentsFormatter()
         f.unitsStyle = .abbreviated

@@ -24,8 +24,8 @@ struct AddWorkTimeView: View {
     @State private var wage: Double
     @State private var dateChanged = false
     // TODO: Replace with query?
-    private var worktimes: Binding<[WorkTime]>?
-    private var editingItem: WorkTime?
+    private var worktimes: Binding<[WorkTimeEntry]>?
+    private var editingItem: WorkTimeEntry?
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
@@ -35,7 +35,7 @@ struct AddWorkTimeView: View {
     
     /// Creates a new AddWorkTimeView in either adding mode, adding a new work time item on save
     /// - Parameter worktimes: The list of worktimes to append the new object at
-    init(worktimes: Binding<[WorkTime]>) {
+    init(worktimes: Binding<[WorkTimeEntry]>) {
         self.worktimes = worktimes
         self.editingItem = nil
         self._date = State(wrappedValue: Date())
@@ -47,7 +47,7 @@ struct AddWorkTimeView: View {
     
     /// Creates a new AddWorkTimeView in editing mode, editing the given `editingItem`
     /// - Parameter editingItem: The work time being edited
-    init(editingItem: WorkTime) {
+    init(editingItem: WorkTimeEntry) {
         self.worktimes = nil
         self.editingItem = editingItem
         
@@ -104,7 +104,7 @@ struct AddWorkTimeView: View {
                 }
                 // TODO: mode == Adding
                 if let worktimes {
-                    let newItem = WorkTime(
+                    let newItem = WorkTimeEntry(
                         date: date,
                         activity: activity.isEmpty ? nil : activity,
                         hours: hours,

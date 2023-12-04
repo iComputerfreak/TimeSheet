@@ -18,7 +18,7 @@ struct TimeView: View {
     }
     
     var body: some View {
-        let timeString = WorkTime.durationFormatter.string(from: duration) ?? ""
+        let timeString = WorkTimeEntry.durationFormatter.string(from: duration) ?? ""
         let moneyString = amount.formatted(.currency(code: config.currency))
         Text("\(timeString) (\(moneyString))")
     }

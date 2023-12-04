@@ -12,8 +12,8 @@ struct AddFixedPayView: View {
     @State private var date = Date.now
     @State private var activity: String = ""
     @State private var payAmount: Double = 0
-    private var worktimes: Binding<[WorkTime]>?
-    private var editingItem: Binding<WorkTime>?
+    private var worktimes: Binding<[WorkTimeEntry]>?
+    private var editingItem: Binding<WorkTimeEntry>?
     @Environment(\.dismiss) private var dismiss
     
     @State private var zeroHoursShowing = false
@@ -27,7 +27,7 @@ struct AddFixedPayView: View {
     
     /// Creates a new AddWorkTimeView in either adding mode, adding a new work time item on save
     /// - Parameter worktimes: The list of worktimes to append the new object at
-    init(worktimes: Binding<[WorkTime]>) {
+    init(worktimes: Binding<[WorkTimeEntry]>) {
         self.init()
         self.worktimes = worktimes
         self.editingItem = nil
@@ -35,7 +35,7 @@ struct AddFixedPayView: View {
     
     /// Creates a new AddWorkTimeView in editing mode, editing the given `editingItem`
     /// - Parameter editingItem: The work time being edited
-    init(editingItem: Binding<WorkTime>) {
+    init(editingItem: Binding<WorkTimeEntry>) {
         self.init()
         self.worktimes = nil
         self.editingItem = editingItem
@@ -89,7 +89,7 @@ struct AddFixedPayView: View {
                     zeroHoursShowing = true
                     return
                 }
-                let newItem = WorkTime(
+                let newItem = WorkTimeEntry(
                     date: date,
                     activity: activity.isEmpty ? nil : activity,
                     fixedPay: payAmount

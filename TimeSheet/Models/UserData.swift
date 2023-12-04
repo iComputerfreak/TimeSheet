@@ -11,7 +11,7 @@ import SwiftUI
 class UserData: ObservableObject {
     static let migrationKey = "migratedToSwiftData"
     
-    @Published var worktimes: [WorkTime] = []
+    @Published var worktimes: [WorkTimeEntry] = []
     @Published var payouts: [Payout] = []
     
     var totalWorktimePayIncludingDebts: Double {
@@ -20,7 +20,7 @@ class UserData: ObservableObject {
             .reduce(0, +)
     }
     
-    init(worktimes: [WorkTime], payouts: [Payout]) {
+    init(worktimes: [WorkTimeEntry], payouts: [Payout]) {
         self.worktimes = worktimes
         self.payouts = payouts
     }
