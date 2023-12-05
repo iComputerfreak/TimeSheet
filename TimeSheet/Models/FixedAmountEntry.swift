@@ -8,18 +8,20 @@
 import Foundation
 import SwiftData
 
-@Model
 class FixedAmountEntry: TimeSheetEntry {
-    var id = UUID()
-    var title: String?
-    var date: Date
-    var amount: Double
-    // The earning type depends on whether the amount is negative or not
-    var entryType: TimeSheetEntryType { amount < 0 ? .loss : .earning }
+    var _amount: Double {
+        didSet {
+            // The earning type depends on whether the amount is negative or not
+            self.entryType = _amount < 0 ? .loss : .earning
+        }
+    }
+    
+    override func amount() -> Double {
+        return _amount
+    }
     
     init(title: String? = nil, date: Date, amount: Double) {
-        self.title = title
-        self.date = date
-        self.amount = amount
+        super.init(title: title, date: date, entryType: amount < 0 ? .loss : .earning)
+        self._amount = amount
     }
 }

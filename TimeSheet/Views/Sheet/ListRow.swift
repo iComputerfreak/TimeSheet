@@ -30,9 +30,9 @@ struct ListRow: View {
             }
             Spacer()
             VStack(alignment: .trailing) {
-                Text("\(worktime.pay, format: .currency(code: config.currency))")
+                Text("\(worktime.amount(), format: .currency(code: config.currency))")
                     .bold()
-                    .foregroundColor(worktime.pay >= 0 ? .green : .red)
+                    .foregroundColor(worktime.amount() >= 0 ? .green : .red)
                 let duration = Self.durationFormatter.string(from: worktime.duration) ?? ""
                 if !worktime.isFixedPay {
                     Text(duration)

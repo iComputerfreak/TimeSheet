@@ -22,27 +22,23 @@ class WorkTimeEntry: TimeSheetEntry {
         worktime.payout == nil
     }
     
-    var id = UUID()
-    var title: String?
-    var date: Date
     var duration: TimeInterval
     var wage: Double
-    var pay: Double {
-        (duration / .hour) * wage
-    }
     /// Whether this item uses a fixed pay value instead of a `time * wage` value.
     /// In this case the wage is set to `1` or `-1` and the hours is the actual pay amount.
     var isFixedPay: Bool = false
+    
     /// The total pay amount
-    var amount: Double { self.pay }
-    var entryType: TimeSheetEntryType { .earning }
+    override func amount() -> Double {
+        (duration / .hour) * wage
+    }
     
     @Relationship
     var payout: Payout?
     
+    // TODO: Rename activity to title
     init(date: Date, activity: String?, duration: TimeInterval, wage: Double) {
-        self.date = date
-        self.title = activity
+        super.init(title: activity, date: date, entryType: .earning)
         self.duration = duration
         self.wage = wage
     }

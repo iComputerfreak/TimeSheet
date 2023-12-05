@@ -10,15 +10,14 @@ import SwiftData
 
 @Model
 class FixedPayout: TimeSheetEntry {
-    var id = UUID()
-    var title: String?
-    var date: Date
-    var amount: Double
-    var entryType: TimeSheetEntryType { .loss }
+    var _amount: Double
+    
+    override func amount() -> Double {
+        return _amount
+    }
     
     init(title: String? = nil, date: Date, amount: Double) {
-        self.title = title
-        self.date = date
-        self.amount = amount
+        super.init(title: title, date: date, entryType: .loss)
+        self._amount = amount
     }
 }

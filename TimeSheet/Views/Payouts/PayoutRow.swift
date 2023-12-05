@@ -27,10 +27,10 @@ struct PayoutRow: View {
                 Text("\(duration)")
             }
             Spacer()
-            let total = payout.amount.formatted(.currency(code: config.currency))
+            let total = payout.amount().formatted(.currency(code: config.currency))
             Text(total)
                 .font(.title2)
-                .foregroundColor(payout.amount >= 0 ? .green : .red)
+                .foregroundColor(payout.amount() >= 0 ? .green : .red)
         }
     }
 }

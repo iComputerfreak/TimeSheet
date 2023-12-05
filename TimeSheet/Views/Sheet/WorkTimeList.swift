@@ -16,6 +16,9 @@ struct WorkTimeList: View {
     @Query(sort: [.init(\WorkTimeEntry.date)], animation: .default)
     private var worktimes: [WorkTimeEntry]
     
+    @Query
+    private var test: [TimeSheetEntry]
+    
     var years: [Int] {
         worktimes
             .map(\.date.year)
