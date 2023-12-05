@@ -8,22 +8,25 @@
 import Foundation
 import SwiftData
 
-// TODO: We changed Payout from a struct to class, check if we need to change anything elsewhere now
 @Model
-class Payout {
+class Payout: TimeSheetEntry {
     var id = UUID()
+    var title: String?
     var date: Date
-    @Relationship(deleteRule: .nullify/*, inverse: \WorkTime.payout*/)
+    @Relationship(deleteRule: .nullify, inverse: \WorkTimeEntry.payout)
     var worktimes: [WorkTimeEntry]
+    // Payouts are losses, because they subtract from the total time sheet amount
+    var entryType: TimeSheetEntryType { .loss }
 
     var duration: TimeInterval {
         worktimes.map(\.duration).reduce(0, +)
     }
+    
     var amount: Double {
         worktimes.map(\.pay).reduce(0, +)
     }
     
-    init(date: Date, worktimes: [WorkTimeEntry]) {
+    init(title: String? = nil, date: Date, worktimes: [WorkTimeEntry]) {
         self.date = date
         self.worktimes = worktimes
     }

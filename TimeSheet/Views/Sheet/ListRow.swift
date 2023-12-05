@@ -21,7 +21,7 @@ struct ListRow: View {
     var body: some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading) {
-                if let activity = worktime.activity {
+                if let activity = worktime.title {
                     Text(activity)
                         .bold()
                 }

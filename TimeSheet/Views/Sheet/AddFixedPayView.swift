@@ -42,7 +42,7 @@ struct AddFixedPayView: View {
         
         // Pre-fill the values with the ones of the editingItem
         let worktime = editingItem.wrappedValue
-        self.activity = worktime.activity ?? ""
+        self.activity = worktime.title ?? ""
         self.date = worktime.date
         self.payAmount = worktime.pay
     }

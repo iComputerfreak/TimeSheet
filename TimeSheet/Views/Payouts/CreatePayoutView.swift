@@ -5,21 +5,26 @@
 //  Created by Jonas Frey on 06.07.22.
 //
 
+import SwiftData
 import SwiftUI
 
 struct CreatePayoutView: View {
     @EnvironmentObject private var userData: UserData
     @EnvironmentObject private var config: Config
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
+    
     
     @State private var fullPayoutMode = true
     @State private var payoutAmount: Double = 0
     @State private var payoutDate: Date = .now
-    @State private var zeroPayoutAlertShowing = false
     @State private var noEntriesShowing = false
     
-    var fullAmount: Double {
-        userData.worktimes.map(\.pay).reduce(0, +)
+    @Query(filter: WorkTimeEntry.notPaidOutPredicate, animation: .default)
+    var worktimes: [WorkTimeEntry]
+    
+    var fullAmountAvailable: Double {
+        worktimes.map(\.pay).reduce(0, +)
     }
     
     var body: some View {
@@ -63,43 +68,45 @@ struct CreatePayoutView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Create") {
                             if fullPayoutMode {
-                                guard !userData.worktimes.isEmpty else {
+                                // TODO: Remove?
+                                guard !worktimes.isEmpty else {
                                     self.noEntriesShowing = true
                                     return
                                 }
                                 // Create the payout
                                 let payout = Payout(
                                     date: payoutDate,
-                                    worktimes: userData.worktimes
+                                    worktimes: worktimes
                                 )
                                 withAnimation {
-                                    self.userData.payouts.append(payout)
+                                    modelContext.insert(payout)
                                 }
-                                self.userData.worktimes = []
                                 dismiss()
                             } else {
+                                // Should not be possible, as the "Create" button is disabled in that condition
                                 guard payoutAmount > 0 else {
-                                    zeroPayoutAlertShowing = true
                                     return
                                 }
-                                let worktime = WorkTimeEntry(
+                                let fixedPayout = FixedPayout(
                                     date: payoutDate,
-                                    activity: String(localized: "Payout"),
-                                    fixedPay: -payoutAmount
+                                    amount: payoutAmount
                                 )
-                                userData.worktimes.append(worktime)
+                                withAnimation {
+                                    modelContext.insert(fixedPayout)
+                                }
                                 dismiss()
                             }
                         }
                         .accessibilityIdentifier("create-button")
-                        .disabled(fullPayoutMode && userData.worktimes.isEmpty)
-                        .disabled(!fullPayoutMode && payoutAmount <= 0)
+                        // TODO: Show an error message when worktimes is empty
+                        .disabled(fullPayoutMode && worktimes.isEmpty)
+                        .disabled(!fullPayoutMode && (payoutAmount <= 0 || payoutAmount > fullAmountAvailable))
                     }
                 }
         }
         .onAppear {
             // We should not set the initial textfield value to an illegal, negative value
-            payoutAmount = max(0, fullAmount)
+            payoutAmount = max(0, fullAmountAvailable)
         }
         .alert("No Entries", isPresented: $noEntriesShowing) {
             Button("Ok") {}

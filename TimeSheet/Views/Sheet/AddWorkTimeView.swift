@@ -53,7 +53,7 @@ struct AddWorkTimeView: View {
         
         // Pre-fill the values with the ones of the editingItem
         let worktime = editingItem
-        self._activity = State(wrappedValue: worktime.activity ?? "")
+        self._activity = State(wrappedValue: worktime.title ?? "")
         self._date = State(wrappedValue: worktime.date)
         self._hours = State(wrappedValue: Int(worktime.duration / .hour))
         self._minutes = State(wrappedValue: Int(worktime.duration.truncatingRemainder(dividingBy: .hour) / .minute))
@@ -116,7 +116,7 @@ struct AddWorkTimeView: View {
                 } else if let editingItem {
                     // Update the existing item
                     editingItem.date = date
-                    editingItem.activity = activity.isEmpty ? nil : activity
+                    editingItem.title = activity.isEmpty ? nil : activity
                     editingItem.duration = Double(hours) * .hour + Double(minutes) * .minute
                     editingItem.wage = wage
                 } else {

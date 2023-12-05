@@ -60,7 +60,7 @@ struct ChartsView: View {
             // TODO: We should not compare the literal title here, we should create a different struct for Payouts
             .mapValues { value in
                 value
-                    .filter { $0.activity != String(localized: "Payout") }
+                    .filter { $0.title != String(localized: "Payout") }
                     .map(\.pay)
                     .reduce(0, +)
             }
