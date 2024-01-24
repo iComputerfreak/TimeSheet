@@ -10,9 +10,13 @@
 		AB069816290A78D400F5CCA5 /* AddFixedPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB069815290A78D400F5CCA5 /* AddFixedPayView.swift */; };
 		AB391CA62964B7EE00A0B0C1 /* ScreenshotsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB391CA52964B7EE00A0B0C1 /* ScreenshotsUITests.swift */; };
 		AB391CAF2964BD7700A0B0C1 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB391CAE2964BD7700A0B0C1 /* SnapshotHelper.swift */; };
+		AB3C63122B5EAB080071E9FD /* TimeSheetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3C63112B5EAB080071E9FD /* TimeSheetEntry.swift */; };
+		AB3C63142B5EAFAA0071E9FD /* HourBasedEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3C63132B5EAFAA0071E9FD /* HourBasedEntry.swift */; };
 		AB7DA6922853A4750070C17A /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6912853A4750070C17A /* SampleData.swift */; };
 		AB7DA6942853CFBD0070C17A /* InteractiveDateChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */; };
 		AB7DA6962853D1B40070C17A /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6952853D1B40070C17A /* AnnotationView.swift */; };
+		AB80524A2B61CED5008355FD /* FixedAmountEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8052492B61CED5008355FD /* FixedAmountEntry.swift */; };
+		AB80524C2B61CF4F008355FD /* PartialPayoutEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80524B2B61CF4F008355FD /* PartialPayoutEntry.swift */; };
 		AB8B88F2287589DB00691C11 /* CreatePayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B88F1287589DB00691C11 /* CreatePayoutView.swift */; };
 		ABA8E7C02A03EDD90059E4BF /* EditPayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8E7BF2A03EDD90059E4BF /* EditPayoutView.swift */; };
 		ABB6EC312877079800CF5B35 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB6EC302877079800CF5B35 /* HistoryView.swift */; };
@@ -55,10 +59,14 @@
 		AB391CA32964B7EE00A0B0C1 /* TimeSheetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeSheetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB391CA52964B7EE00A0B0C1 /* ScreenshotsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsUITests.swift; sourceTree = "<group>"; };
 		AB391CAE2964BD7700A0B0C1 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		AB3C63112B5EAB080071E9FD /* TimeSheetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSheetEntry.swift; sourceTree = "<group>"; };
+		AB3C63132B5EAFAA0071E9FD /* HourBasedEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourBasedEntry.swift; sourceTree = "<group>"; };
 		AB7DA6912853A4750070C17A /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveDateChart.swift; sourceTree = "<group>"; };
 		AB7DA6952853D1B40070C17A /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		AB7DA69B2853E56B0070C17A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		AB8052492B61CED5008355FD /* FixedAmountEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedAmountEntry.swift; sourceTree = "<group>"; };
+		AB80524B2B61CF4F008355FD /* PartialPayoutEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialPayoutEntry.swift; sourceTree = "<group>"; };
 		AB8B88F1287589DB00691C11 /* CreatePayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePayoutView.swift; sourceTree = "<group>"; };
 		ABA8E7BF2A03EDD90059E4BF /* EditPayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPayoutView.swift; sourceTree = "<group>"; };
 		ABB6EC302877079800CF5B35 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
@@ -216,9 +224,13 @@
 		ABE17BB928524CC100879C30 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AB3C63112B5EAB080071E9FD /* TimeSheetEntry.swift */,
+				AB3C63132B5EAFAA0071E9FD /* HourBasedEntry.swift */,
+				AB8052492B61CED5008355FD /* FixedAmountEntry.swift */,
+				AB80524B2B61CF4F008355FD /* PartialPayoutEntry.swift */,
+				ABE17BAB285233E900879C30 /* WorkTime.swift */,
 				ABE17BA92852309200879C30 /* Config.swift */,
 				ABE17BBE2852619D00879C30 /* UserData.swift */,
-				ABE17BAB285233E900879C30 /* WorkTime.swift */,
 				ABE17BC0285261D600879C30 /* Payout.swift */,
 				AB7DA6912853A4750070C17A /* SampleData.swift */,
 			);
@@ -360,6 +372,7 @@
 				ABE17BB528524AB800879C30 /* Utils.swift in Sources */,
 				ABE17BAA2852309200879C30 /* Config.swift in Sources */,
 				ABE17B9828522F7A00879C30 /* TimeSheetApp.swift in Sources */,
+				AB80524A2B61CED5008355FD /* FixedAmountEntry.swift in Sources */,
 				ABE17BA62852300B00879C30 /* ListView.swift in Sources */,
 				AB7DA6962853D1B40070C17A /* AnnotationView.swift in Sources */,
 				ABE17BAE2852368D00879C30 /* ListRow.swift in Sources */,
@@ -370,8 +383,11 @@
 				ABE17BBB28525F7E00879C30 /* Extensions.swift in Sources */,
 				AB8B88F2287589DB00691C11 /* CreatePayoutView.swift in Sources */,
 				AB7DA6942853CFBD0070C17A /* InteractiveDateChart.swift in Sources */,
+				AB3C63122B5EAB080071E9FD /* TimeSheetEntry.swift in Sources */,
 				ABE17BC1285261D600879C30 /* Payout.swift in Sources */,
+				AB3C63142B5EAFAA0071E9FD /* HourBasedEntry.swift in Sources */,
 				ABE17BD4285393AD00879C30 /* ChartsView.swift in Sources */,
+				AB80524C2B61CF4F008355FD /* PartialPayoutEntry.swift in Sources */,
 				ABE17BAC285233E900879C30 /* WorkTime.swift in Sources */,
 				ABE17BBD285260C300879C30 /* TimeView.swift in Sources */,
 			);
