@@ -16,7 +16,7 @@ enum TimeSheetEntryType {
 }
 
 /// Represents an entry on the time sheet
-protocol TimeSheetEntryProtocol: Identifiable {
+protocol TimeSheetEntryProtocol: Identifiable, Codable {
     var id: UUID { get }
     /// The title describing the entry
     var title: String? { get set }
@@ -33,6 +33,5 @@ protocol TimeSheetEntryProtocol: Identifiable {
 // HourBasedEntry
 // FixedAmountEntry (pos/neg)
 // PartialPayoutEntry
-
 
 // FullPayout

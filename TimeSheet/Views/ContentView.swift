@@ -12,6 +12,8 @@ struct ContentView: View {
     
     @StateObject private var userData = UserData()
     @StateObject private var config = Config()
+    @StateObject private var payoutStore = PayoutStore.load()
+    @StateObject private var entryStore = TimeSheetEntryStore.load()
     
     var body: some View {
         TabView {
@@ -43,6 +45,8 @@ struct ContentView: View {
                         .accessibilityIdentifier("settings-tab")
                 }
         }
+        .environmentObject(payoutStore)
+        .environmentObject(entryStore)
         .environmentObject(userData)
         .environmentObject(config)
         .onChange(of: scenePhase) { newValue in

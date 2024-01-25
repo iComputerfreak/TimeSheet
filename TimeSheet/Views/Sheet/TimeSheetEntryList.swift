@@ -1,5 +1,5 @@
 //
-//  WorkTimeList.swift
+//  TimeSheetEntryList.swift
 //  TimeSheet
 //
 //  Created by Jonas Frey on 10.06.22.
@@ -7,30 +7,30 @@
 
 import SwiftUI
 
-struct WorkTimeList: View {
+struct TimeSheetEntryList: View {
     @EnvironmentObject private var config: Config
-    @Binding var worktimes: [WorkTime]
+    @Binding var entries: [any TimeSheetEntryProtocol]
     
     var years: [Int] {
-        worktimes
+        entries
             .map(\.date.year)
             .uniqued(on: \.hashValue)
             .sorted { $0 > $1 }
     }
     
     func months(in year: Int) -> [Int] {
-        worktimes
-            .filter { worktime in
-                worktime.date.year == year
+        entries
+            .filter { entry in
+                entry.date.year == year
             }
             .map(\.date.month)
             .uniqued(on: \.hashValue)
             .sorted { $0 > $1 }
     }
     
-    func worktimes(in year: Int, month: Int) -> [WorkTime] {
-        worktimes.filter { worktime in
-            worktime.date.year == year && worktime.date.month == month
+    func entries(in year: Int, month: Int) -> [any TimeSheetEntryProtocol] {
+        entries.filter { entry in
+            entry.date.year == year && entry.date.month == month
         }
         .sorted { $0.date > $1.date }
     }
@@ -41,24 +41,24 @@ struct WorkTimeList: View {
                 ForEach(months(in: year), id: \.self) { (month: Int) in
                     let monthName = Calendar.current.standaloneMonthSymbols[month - 1]
                     Section {
-                        ForEach(worktimes(in: year, month: month)) { (worktime: WorkTime) in
-                            ListRow(worktime: worktime)
+                        ForEach(entries(in: year, month: month)) { (entry: any TimeSheetEntryProtocol) in
+                            ListRow(entry: entry)
                                 .swipeActions {
                                     // Delete button
                                     withAnimation {
                                         Button {
-                                            worktimes.removeAll(where: { $0.id == worktime.id })
+                                            entries.removeAll(where: { $0.id == entry.id })
                                         } label: {
                                             Label("Delete", systemImage: "trash")
                                         }
                                     }
                                     .tint(.red)
                                     // Edit Button
-                                    if !worktime.isFixedPay {
+                                    if !entry.isFixedPay {
                                         NavigationLink {
                                             AddWorkTimeView(
-                                                editingItem: $worktimes
-                                                    .first { $0.wrappedValue.id == worktime.id }!
+                                                editingItem: $entries
+                                                    .first { $0.wrappedValue.id == entry.id }!
                                             )
                                         } label: {
                                             Label("Edit", systemImage: "pencil")
@@ -68,11 +68,11 @@ struct WorkTimeList: View {
                         }
                         
                     } header: {
-                        let totalHours = worktimes(in: year, month: month)
+                        let totalHours = entries(in: year, month: month)
                             .filter { !$0.isFixedPay }
                             .map(\.duration)
                             .reduce(DateComponents.zero, +)
-                        let totalMoney = worktimes(in: year, month: month)
+                        let totalMoney = entries(in: year, month: month)
                             .map(\.pay)
                             .reduce(0, +)
                         HStack {
@@ -87,11 +87,11 @@ struct WorkTimeList: View {
     }
 }
 
-struct WorkTimeList_Previews: PreviewProvider {
-    @State static var worktimes = SampleData.generateWorkTimes()
+struct TimeSheetEntryList_Previews: PreviewProvider {
+    @State static var entries = SampleData.generateWorkTimes()
     
     static var previews: some View {
-        WorkTimeList(worktimes: $worktimes)
+        TimeSheetEntryList(entries: $entries)
         .environmentObject(Config())
     }
 }

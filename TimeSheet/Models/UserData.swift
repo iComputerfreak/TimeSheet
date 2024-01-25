@@ -7,12 +7,16 @@
 
 import Foundation
 import SwiftUI
+import JFUtils
 
 class UserData: ObservableObject {
     static private let worktimesKey = "worktimes"
     static private let payoutsKey = "payouts"
+//    static private let entriesKey = "entries"
     
+    // TODO: Remove
     @Published var worktimes: [WorkTime]
+//    @Published var entries: [any TimeSheetEntryProtocol]
     @Published var payouts: [Payout]
     
     var totalWorkingDuration: DateComponents {
@@ -29,8 +33,9 @@ class UserData: ObservableObject {
             .reduce(0, +)
     }
     
-    init(worktimes: [WorkTime], payouts: [Payout]) {
-        self.worktimes = worktimes
+    init(entries: [any TimeSheetEntryProtocol], payouts: [Payout]) {
+//        self.entries = entries
+        self.worktimes = []
         self.payouts = payouts
     }
     
@@ -39,6 +44,7 @@ class UserData: ObservableObject {
         print("Loading persistent data...")
         self.worktimes = Self.decode([WorkTime].self, forKey: Self.worktimesKey) ?? []
         self.payouts = Self.decode([Payout].self, forKey: Self.payoutsKey) ?? []
+//        self.entries = Self.decode([any TimeSheetEntryProtocol].self, forKey: Self.entriesKey)
     }
     
     func save() {

@@ -16,25 +16,25 @@ struct ListRow: View {
     }
     
     @EnvironmentObject private var config: Config
-    let worktime: WorkTime
+    let entry: any TimeSheetEntryProtocol
     
     var body: some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading) {
-                if let activity = worktime.activity {
+                if let activity = entry.title {
                     Text(activity)
                         .bold()
                 }
-                let date = worktime.date.formatted(.dateTime.weekday().day().month(.defaultDigits))
+                let date = entry.date.formatted(.dateTime.weekday().day().month(.defaultDigits))
                 Text("\(date)")
             }
             Spacer()
             VStack(alignment: .trailing) {
-                Text("\(worktime.pay, format: .currency(code: config.currency))")
+                Text("\(entry.amount, format: .currency(code: config.currency))")
                     .bold()
-                    .foregroundColor(worktime.pay >= 0 ? .green : .red)
-                let duration = Self.durationFormatter.string(from: worktime.duration) ?? ""
-                if !worktime.isFixedPay {
+                    .foregroundColor(entry.amount >= 0 ? .green : .red)
+                if let hourBasedEntry = entry as? HourBasedEntry {
+                    let duration = hourBasedEntry.durationString
                     Text(duration)
                 }
             }
@@ -45,7 +45,7 @@ struct ListRow: View {
 struct ListRow_Previews: PreviewProvider {
     static var previews: some View {
         List {
-            ListRow(worktime: SampleData.generateWorkTimes(count: 1).first!)
+            ListRow(entry: SampleData.generateTimeSheetEntries(count: 1).first!)
                 .environment(\.locale, Locale(identifier: "de"))
                 .environmentObject(Config())
         }

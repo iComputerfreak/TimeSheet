@@ -41,7 +41,7 @@ struct ListView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                WorkTimeList(worktimes: $userData.worktimes)
+                TimeSheetEntryList(worktimes: $userData.worktimes)
                 Divider()
                 HStack {
                     Text("Total")

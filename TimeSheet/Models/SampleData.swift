@@ -10,18 +10,18 @@ import Foundation
 struct SampleData {
     static let userData: UserData = {
         UserData(
-            worktimes: generateWorkTimes(),
+            entries: generateTimeSheetEntries(),
             payouts: generatePayouts()
         )
     }()
     
-    static func generateWorkTimes(count: Int = 80) -> [WorkTime] {
-        var worktimes: [WorkTime] = []
+    // TODO: Extend with other TimeSheetEntryProtocol types
+    static func generateTimeSheetEntries(count: Int = 80) -> [any TimeSheetEntryProtocol] {
+        var entries: [any TimeSheetEntryProtocol] = []
         for _ in 1...count {
-            let (h, m) = randomHours()
-            worktimes.append(.init(date: randomDate(), activity: nil, hours: h, minutes: m, wage: randomWage()))
+            entries.append(HourBasedEntry(date: randomDate(), wage: randomWage(), duration: randomDuration()))
         }
-        return worktimes
+        return entries
     }
     
     static func generatePayouts(count: Int = 5) -> [Payout] {
@@ -45,6 +45,13 @@ struct SampleData {
     
     static func randomHours() -> (Int, Int) {
         (Int.random(in: 0...10), Int.random(in: 0..<4) * 15)
+    }
+    
+    static func randomDuration() -> TimeInterval {
+        let maxHours = 10
+        let stepMinutes = 15
+        let i = Int.random(in: 0...(maxHours / stepMinutes))
+        return TimeInterval(stepMinutes) * TimeInterval(i)
     }
     
     static func randomDate() -> Date {

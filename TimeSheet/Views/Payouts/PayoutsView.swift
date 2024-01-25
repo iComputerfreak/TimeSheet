@@ -21,7 +21,7 @@ struct PayoutsView: View {
             List {
                 ForEach(payouts) { $payout in
                     NavigationLink {
-                        WorkTimeList(worktimes: $payout.worktimes)
+                        TimeSheetEntryList(worktimes: $payout.worktimes)
                             .environmentObject(userData)
                             .environmentObject(config)
                             .navigationTitle("\(payout.date, format: .dateTime.day().month().year())")
