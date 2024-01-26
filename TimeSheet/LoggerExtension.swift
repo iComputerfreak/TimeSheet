@@ -11,4 +11,6 @@ extension Logger {
     init(category: String) {
         self.init(subsystem: "de.JonasFrey.TimeSheet", category: category)
     }
+    
+    static let views: Logger = .init(category: "Views")
 }
