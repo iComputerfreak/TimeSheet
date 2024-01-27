@@ -10,5 +10,5 @@ import Foundation
 protocol ExporterProtocol {
     associatedtype Output
     
-    func export(_ worktimes: [WorkTime]) -> Output
+    func export(_ worktimes: [WorkTime], startDate: Date?, endDate: Date?) throws -> Output
 }

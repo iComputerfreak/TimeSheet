@@ -17,6 +17,7 @@
 		AB80525B2B654D2D008355FD /* PDFExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80525A2B654D2D008355FD /* PDFExporter.swift */; };
 		AB80525D2B654EC4008355FD /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80525C2B654EC4008355FD /* DebugView.swift */; };
 		AB8052602B65567C008355FD /* TPPDF in Frameworks */ = {isa = PBXBuildFile; productRef = AB80525F2B65567C008355FD /* TPPDF */; };
+		AB8052632B65589D008355FD /* JFUtils in Frameworks */ = {isa = PBXBuildFile; productRef = AB8052622B65589D008355FD /* JFUtils */; };
 		AB8B88F2287589DB00691C11 /* CreatePayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B88F1287589DB00691C11 /* CreatePayoutView.swift */; };
 		ABA8E7C02A03EDD90059E4BF /* EditPayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8E7BF2A03EDD90059E4BF /* EditPayoutView.swift */; };
 		ABB6EC312877079800CF5B35 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB6EC302877079800CF5B35 /* HistoryView.swift */; };
@@ -105,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB8052632B65589D008355FD /* JFUtils in Frameworks */,
 				ABE17BB12852386900879C30 /* Algorithms in Frameworks */,
 				AB8052602B65567C008355FD /* TPPDF in Frameworks */,
 			);
@@ -280,6 +282,7 @@
 			packageProductDependencies = (
 				ABE17BB02852386900879C30 /* Algorithms */,
 				AB80525F2B65567C008355FD /* TPPDF */,
+				AB8052622B65589D008355FD /* JFUtils */,
 			);
 			productName = TimeSheet;
 			productReference = ABE17B9428522F7A00879C30 /* TimeSheet.app */;
@@ -317,6 +320,7 @@
 			packageReferences = (
 				ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 				AB80525E2B65567C008355FD /* XCRemoteSwiftPackageReference "tppdf" */,
+				AB8052612B65589D008355FD /* XCRemoteSwiftPackageReference "JFUtils" */,
 			);
 			productRefGroup = ABE17B9528522F7A00879C30 /* Products */;
 			projectDirPath = "";
@@ -676,6 +680,14 @@
 				minimumVersion = 2.4.1;
 			};
 		};
+		AB8052612B65589D008355FD /* XCRemoteSwiftPackageReference "JFUtils" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/iComputerfreak/JFUtils";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.3;
+			};
+		};
 		ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-algorithms.git";
@@ -691,6 +703,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AB80525E2B65567C008355FD /* XCRemoteSwiftPackageReference "tppdf" */;
 			productName = TPPDF;
+		};
+		AB8052622B65589D008355FD /* JFUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB8052612B65589D008355FD /* XCRemoteSwiftPackageReference "JFUtils" */;
+			productName = JFUtils;
 		};
 		ABE17BB02852386900879C30 /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -15,11 +15,14 @@ struct DebugView: View {
     var body: some View {
         VStack {
             Button("Export") {
-                let worktimes = userData.worktimes
-                let pdf = PDFExporter().export(worktimes)
-                let url = Utils.documentsDirectoryURL().appending(component: "export.pdf")
-                pdf?.write(to: url)
-                self.pdfURL = url
+                do {
+                    let worktimes = userData.worktimes
+                    let pdf = try PDFExporter().export(worktimes)
+//                    let url = Utils.documentsDirectoryURL().appending(component: "export.pdf")
+                    self.pdfURL = pdf
+                } catch {
+                    print(error)
+                }
             }
             
             if let pdfURL {
