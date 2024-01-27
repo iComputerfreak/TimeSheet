@@ -29,6 +29,14 @@ struct ContentView: View {
                         .accessibilityIdentifier("payouts-tab")
                 }
             
+            #if DEBUG
+            DebugView()
+                .tabItem {
+                    Image(systemName: "ladybug")
+                    Text("Debug")
+                }
+            #endif
+            
             HistoryView()
                 .tabItem {
                     Image(systemName: "chart.xyaxis.line")
