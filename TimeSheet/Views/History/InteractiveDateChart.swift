@@ -181,9 +181,9 @@ struct InteractiveDateChart: View {
 }
 
 struct InteractiveDateChart_Previews: PreviewProvider {
-    static var worktimesByMonth: [Date: [WorkTime]] {
+    static var worktimesByMonth: [Date: [any TimeSheetEntryProtocol]] {
         Dictionary(
-            grouping: SampleData.generateWorkTimes(),
+            grouping: SampleData.generateTimeSheetEntries(),
             by: { worktime in
                 Calendar.current.date(from: .init(
                     year: worktime.date.year,

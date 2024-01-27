@@ -6,20 +6,21 @@
 //
 
 import SwiftUI
+import JFUtils
 
 struct TimeSheetEntryList: View {
     @EnvironmentObject private var config: Config
-    @Binding var entries: [any TimeSheetEntryProtocol]
+    @EnvironmentObject private var entryStore: TimeSheetEntryStore
     
     var years: [Int] {
-        entries
+        entryStore.entries
             .map(\.date.year)
             .uniqued(on: \.hashValue)
             .sorted { $0 > $1 }
     }
     
     func months(in year: Int) -> [Int] {
-        entries
+        entryStore.entries
             .filter { entry in
                 entry.date.year == year
             }
@@ -29,7 +30,7 @@ struct TimeSheetEntryList: View {
     }
     
     func entries(in year: Int, month: Int) -> [any TimeSheetEntryProtocol] {
-        entries.filter { entry in
+        entryStore.entries.filter { entry in
             entry.date.year == year && entry.date.month == month
         }
         .sorted { $0.date > $1.date }
@@ -57,8 +58,11 @@ struct TimeSheetEntryList: View {
                                     if !entry.isFixedPay {
                                         NavigationLink {
                                             AddWorkTimeView(
-                                                editingItem: $entries
-                                                    .first { $0.wrappedValue.id == entry.id }!
+                                                editingItem: Binding(get: {
+                                                    entryStore.entries.first(where: \.id, equals: entry.id)
+                                                }, set: { newValue in
+                                                    entryStore.replaceEntry(id: entry.id, with: entry)
+                                                })
                                             )
                                         } label: {
                                             Label("Edit", systemImage: "pencil")
@@ -88,7 +92,7 @@ struct TimeSheetEntryList: View {
 }
 
 struct TimeSheetEntryList_Previews: PreviewProvider {
-    @State static var entries = SampleData.generateWorkTimes()
+    @State static var entries = SampleData.generateTimeSheetEntries()
     
     static var previews: some View {
         TimeSheetEntryList(entries: $entries)

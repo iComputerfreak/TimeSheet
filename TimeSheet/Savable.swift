@@ -14,20 +14,25 @@ protocol Savable: Codable {
     static var logger: Logger { get }
     /// The URL where to persist the entity
     static var dataPath: URL { get }
+    /// Whether the entity was created as in-memory and should therefore not be saved to disk
+    var inMemory: Bool { get }
     /// Loads the entity from disk
     static func load() throws -> Self
+    /// Tries to save the entity to disk, logging errors to the logger
     func trySave() throws
     /// Persists the entity to disk, logging any errors
     func save()
-    init()
+    /// Creates a new empty instance
+    /// - Parameter inMemory: Whether the instance should be created as in-memory without being able to be saved
+    init(inMemory: Bool)
 }
 
 extension Savable {
     /// Decodes the data stored at the `dataPath` and returns the decoded object of type `Self`.
-    static func load() throws -> Self {
+    static func tryLoad() throws -> Self {
         guard FileManager.default.fileExists(atPath: dataPath.path()) else {
             // No data available on disk, so we can create a new file
-            let newObject = Self()
+            let newObject = Self(inMemory: false)
             do {
                 try newObject.trySave()
             } catch {
@@ -42,8 +47,21 @@ extension Savable {
         return try JSONDecoder().decode(Self.self, from: data)
     }
     
+    static func load() -> Self {
+        do {
+            return try tryLoad()
+        } catch {
+            logger.error("Error during loading persistent data: \(error). Falling back to a new in-memory instance.")
+            return Self.init(inMemory: true)
+        }
+    }
+    
     /// Encodes this object into JSON data and writes it to the `dataPath` and throws any errors that occur during saving.
     func trySave() throws {
+        // Do not save in-memory instances
+        guard !inMemory else {
+            return
+        }
         let data = try JSONEncoder().encode(self)
         try data.write(to: Self.dataPath)
     }

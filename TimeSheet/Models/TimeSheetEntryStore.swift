@@ -14,15 +14,19 @@ class TimeSheetEntryStore: ObservableObject, Codable, Savable {
     static let logger: Logger = .init(category: "TimeSheetEntryStore")
     static let dataPath: URL = Utils.documentsDirectoryURL().appending(component: "timeSheetEntryStore.json")
     
+    let inMemory: Bool
     @Published private var hourBasedEntries: [HourBasedEntry]
     @Published private var fixedAmountEntries: [FixedAmountEntry]
     @Published private var partialPayoutEntries: [PartialPayoutEntry]
     
+    // TODO: We cannot get a binding of this, this is all shit, maybe we store them together and separate them for saving,
+    // TODO: but then we have to keep a list of subclasses here so we know what to try and decode...
     var entries: [any TimeSheetEntryProtocol] {
         hourBasedEntries + fixedAmountEntries + partialPayoutEntries
     }
     
-    required init() {
+    required init(inMemory: Bool = false) {
+        self.inMemory = inMemory
         self.hourBasedEntries = []
         self.fixedAmountEntries = []
         self.partialPayoutEntries = []
@@ -33,6 +37,8 @@ class TimeSheetEntryStore: ObservableObject, Codable, Savable {
         self.hourBasedEntries = try container.decode([HourBasedEntry].self, forKey: .hourBasedEntries)
         self.fixedAmountEntries = try container.decode([FixedAmountEntry].self, forKey: .fixedAmountEntries)
         self.partialPayoutEntries = try container.decode([PartialPayoutEntry].self, forKey: .partialPayoutEntries)
+        // Loaded entities are never in-memory
+        self.inMemory = false
     }
     
     func encode(to encoder: Encoder) throws {
@@ -76,6 +82,11 @@ extension TimeSheetEntryStore {
     func removeEntry(_ entry: HourBasedEntry) {
         hourBasedEntries.removeAll(where: \.id, equals: entry.id)
     }
+    
+    func replaceEntry(id: HourBasedEntry.ID, with other: HourBasedEntry) {
+        removeEntry(other)
+        addEntry(other)
+    }
 }
 
 // FixedAmountEntry Extension
@@ -87,6 +98,11 @@ extension TimeSheetEntryStore {
     func removeEntry(_ entry: FixedAmountEntry) {
         fixedAmountEntries.removeAll(where: \.id, equals: entry.id)
     }
+    
+    func replaceEntry(id: FixedAmountEntry.ID, with other: FixedAmountEntry) {
+        removeEntry(other)
+        addEntry(other)
+    }
 }
 
 // PartialPayoutEntry Extension
@@ -97,5 +113,10 @@ extension TimeSheetEntryStore {
     
     func removeEntry(_ entry: PartialPayoutEntry) {
         partialPayoutEntries.removeAll(where: \.id, equals: entry.id)
+    }
+    
+    func replaceEntry(id: PartialPayoutEntry.ID, with other: PartialPayoutEntry) {
+        removeEntry(other)
+        addEntry(other)
     }
 }
