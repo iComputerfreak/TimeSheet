@@ -14,4 +14,7 @@ class Config: ObservableObject {
     
     @AppStorage("currency")
     var currency: String = "EUR"
+    
+    @AppStorage("exportName")
+    var exportName: String = ""
 }

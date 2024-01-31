@@ -1,0 +1,483 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "%@ (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (%2$@)"
+          }
+        }
+      }
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "+/-" : {
+
+    },
+    "Activity (optional)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktivität (optional)"
+          }
+        }
+      }
+    },
+    "Add Entry" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eintrag hinzufügen"
+          }
+        }
+      }
+    },
+    "Amount" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Betrag"
+          }
+        }
+      }
+    },
+    "Amount missing" : {
+
+    },
+    "Balance" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guthaben"
+          }
+        }
+      }
+    },
+    "Between..." : {
+
+    },
+    "Comment" : {
+
+    },
+    "Create" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erstellen"
+          }
+        }
+      }
+    },
+    "Create Payout" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auszahlung Erstellen"
+          }
+        }
+      }
+    },
+    "Currency" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Währung"
+          }
+        }
+      }
+    },
+    "Date" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datum"
+          }
+        }
+      }
+    },
+    "Debug" : {
+
+    },
+    "Delete" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löschen"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fertig"
+          }
+        }
+      }
+    },
+    "Edit" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bearbeiten"
+          }
+        }
+      }
+    },
+    "Edit Payout" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auszahlung Bearbeiten"
+          }
+        }
+      }
+    },
+    "End Date" : {
+
+    },
+    "Error Generating PDF" : {
+      "comment" : "The alert title when informing the user about an error during PDF export"
+    },
+    "Everything" : {
+
+    },
+    "Export" : {
+
+    },
+    "Fixed Amount" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fester Betrag"
+          }
+        }
+      }
+    },
+    "From..." : {
+
+    },
+    "Full Payout" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volle Auszahlung"
+          }
+        }
+      }
+    },
+    "Generate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Generieren"
+          }
+        }
+      }
+    },
+    "Generate PDF" : {
+      "comment" : "The label for the export button in the settings"
+    },
+    "Generate Screenshot Data" : {
+
+    },
+    "Graph Content" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diagramm-Inhalt"
+          }
+        }
+      }
+    },
+    "History" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verlauf"
+          }
+        }
+      }
+    },
+    "Hourly wage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stundenlohn"
+          }
+        }
+      }
+    },
+    "Hours" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stunden"
+          }
+        }
+      }
+    },
+    "Hours missing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stunden fehlen"
+          }
+        }
+      }
+    },
+    "Income" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einkommen"
+          }
+        }
+      }
+    },
+    "Minutes" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minuten"
+          }
+        }
+      }
+    },
+    "Month..." : {
+
+    },
+    "No data to display" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Daten zum Anzeigen"
+          }
+        }
+      }
+    },
+    "No Entries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Einträge"
+          }
+        }
+      }
+    },
+    "Ok" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        }
+      }
+    },
+    "Payout" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auszahlung"
+          }
+        }
+      }
+    },
+    "Payout Amount" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auszahlungsbetrag"
+          }
+        }
+      }
+    },
+    "Payouts" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auszahlungen"
+          }
+        }
+      }
+    },
+    "PDF Export" : {
+
+    },
+    "Please specify a pay amount." : {
+
+    },
+    "Please specify how many hours you worked." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte geben Sie an, wie viele Stunden Sie gearbeitet haben."
+          }
+        }
+      }
+    },
+    "Range" : {
+
+    },
+    "Save" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speichern"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        }
+      }
+    },
+    "Sheet" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zettel"
+          }
+        }
+      }
+    },
+    "Some PDF" : {
+
+    },
+    "Start Date" : {
+
+    },
+    "Test" : {
+
+    },
+    "There are no entries in the list. You cannot create an empty payout." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es gibt keine Einträge in der Liste. Sie können keine leere Auszahlung erstellen."
+          }
+        }
+      }
+    },
+    "Time" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeit"
+          }
+        }
+      }
+    },
+    "Total" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesamt"
+          }
+        }
+      }
+    },
+    "Up to..." : {
+
+    },
+    "Wage" : {
+
+    },
+    "When creating a full payout, all entries in the time sheet will be removed and archived in the payouts tab. The generated payout cannot be edited." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn Sie eine volle Auszahlung erstellen werden alle Einträge auf dem Stundenzettel entfernt und im Auszahlungs-Tab archiviert. Die erstellte Auszahlung kann nicht bearbeitet werden."
+          }
+        }
+      }
+    },
+    "When creating a specific payout, the payout amount will be added as a separate entry in the time sheet and all other entries will remain." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn Sie eine spezifische Auszahlung erstellen wird der Auszahlungsbetrag als separater Eintrag auf den Stundenzettel aufgenommen und die anderen Einträge verbleiben auf dem Zettel."
+          }
+        }
+      }
+    },
+    "Work Times" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arbeitszeiten"
+          }
+        }
+      }
+    },
+    "Your Name" : {
+
+    }
+  },
+  "version" : "1.0"
+}

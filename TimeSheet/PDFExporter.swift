@@ -32,7 +32,7 @@ class PDFExporter: ExporterProtocol {
     let footerFontSize: CGFloat = 8
     let bodyFontSize: CGFloat = 12
     
-    func export(_ worktimes: [WorkTime], startDate: Date? = nil, endDate: Date? = nil) throws -> URL? {
+    func export(_ worktimes: [WorkTime], startDate: Date? = nil, endDate: Date? = nil) throws -> URL {
         let document = PDFDocument(format: .a4)
         let worktimes = worktimes.sorted(on: \.date, by: <)
         
@@ -47,6 +47,8 @@ class PDFExporter: ExporterProtocol {
             leftFooterText = "TimeSheet Export \(start!.formatted(dateFormat)) – \(end!.formatted(dateFormat))"
         } else if end != nil {
             leftFooterText = "TimeSheet Export up to \(end!.formatted(dateFormat))"
+        } else if start != nil {
+            leftFooterText = "TimeSheet Export from \(start!.formatted(dateFormat))"
         } else {
             leftFooterText = "TimeSheet Export of all entries"
         }

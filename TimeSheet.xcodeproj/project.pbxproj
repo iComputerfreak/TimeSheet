@@ -20,6 +20,7 @@
 		AB8052632B65589D008355FD /* JFUtils in Frameworks */ = {isa = PBXBuildFile; productRef = AB8052622B65589D008355FD /* JFUtils */; };
 		AB8B88F2287589DB00691C11 /* CreatePayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B88F1287589DB00691C11 /* CreatePayoutView.swift */; };
 		ABA8E7C02A03EDD90059E4BF /* EditPayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8E7BF2A03EDD90059E4BF /* EditPayoutView.swift */; };
+		ABA905FE2B6A6D5000D14CBE /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = ABA905FD2B6A6D5000D14CBE /* Localizable.xcstrings */; };
 		ABB6EC312877079800CF5B35 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB6EC302877079800CF5B35 /* HistoryView.swift */; };
 		ABE17B9828522F7A00879C30 /* TimeSheetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17B9728522F7A00879C30 /* TimeSheetApp.swift */; };
 		ABE17B9A28522F7A00879C30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17B9928522F7A00879C30 /* ContentView.swift */; };
@@ -41,7 +42,6 @@
 		ABE17BCB28537FC600879C30 /* WageStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BCA28537FC600879C30 /* WageStepper.swift */; };
 		ABE17BCD2853880100879C30 /* PayoutRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BCC2853880100879C30 /* PayoutRow.swift */; };
 		ABE17BCF2853886E00879C30 /* WorkTimeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BCE2853886E00879C30 /* WorkTimeList.swift */; };
-		ABE17BD2285392AD00879C30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABE17BD0285392AD00879C30 /* Localizable.strings */; };
 		ABE17BD4285393AD00879C30 /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BD3285393AD00879C30 /* ChartsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +69,7 @@
 		AB80525C2B654EC4008355FD /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		AB8B88F1287589DB00691C11 /* CreatePayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePayoutView.swift; sourceTree = "<group>"; };
 		ABA8E7BF2A03EDD90059E4BF /* EditPayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPayoutView.swift; sourceTree = "<group>"; };
+		ABA905FD2B6A6D5000D14CBE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		ABB6EC302877079800CF5B35 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		ABE17B9428522F7A00879C30 /* TimeSheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeSheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE17B9728522F7A00879C30 /* TimeSheetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSheetApp.swift; sourceTree = "<group>"; };
@@ -90,7 +91,6 @@
 		ABE17BCA28537FC600879C30 /* WageStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageStepper.swift; sourceTree = "<group>"; };
 		ABE17BCC2853880100879C30 /* PayoutRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutRow.swift; sourceTree = "<group>"; };
 		ABE17BCE2853886E00879C30 /* WorkTimeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTimeList.swift; sourceTree = "<group>"; };
-		ABE17BD1285392AD00879C30 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ABE17BD3285393AD00879C30 /* ChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,7 +191,7 @@
 		ABE17B9628522F7A00879C30 /* TimeSheet */ = {
 			isa = PBXGroup;
 			children = (
-				ABE17BD0285392AD00879C30 /* Localizable.strings */,
+				ABA905FD2B6A6D5000D14CBE /* Localizable.xcstrings */,
 				ABE17B9728522F7A00879C30 /* TimeSheetApp.swift */,
 				ABE17BB428524AB800879C30 /* Utils.swift */,
 				ABE17BBA28525F7E00879C30 /* Extensions.swift */,
@@ -296,7 +296,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					AB391CA22964B7EE00A0B0C1 = {
 						CreatedOnToolsVersion = 14.2;
@@ -345,7 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABE17B9F28522F7B00879C30 /* Preview Assets.xcassets in Resources */,
-				ABE17BD2285392AD00879C30 /* Localizable.strings in Resources */,
+				ABA905FE2B6A6D5000D14CBE /* Localizable.xcstrings in Resources */,
 				ABE17B9C28522F7B00879C30 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,17 +407,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		ABE17BD0285392AD00879C30 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ABE17BD1285392AD00879C30 /* de */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		AB391CAC2964B7EE00A0B0C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -461,6 +450,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -509,11 +499,13 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -522,6 +514,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -564,10 +557,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
