@@ -53,12 +53,12 @@ struct CreatePayoutView: View {
                 } footer: {
                     if fullPayoutMode {
                         Text(
-                            "When creating a full payout, all entries in the time sheet will be removed and archived"
+                            "When creating a full payout, all entries in the time sheet will be removed and archived "
                             + "in the payouts tab. The generated payout cannot be edited."
                         )
                     } else {
                         Text(
-                            "When creating a specific payout, the payout amount will be added as a separate entry"
+                            "When creating a specific payout, the payout amount will be added as a separate entry "
                             + "in the time sheet and all other entries will remain."
                         )
                     }
