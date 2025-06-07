@@ -20,6 +20,7 @@ struct InteractiveDateChart: View {
         data.suffix(12)
     }
 
+    // swiftlint:disable:next type_contents_order
     init(data: [(Date, Double)], graphType: GraphType) {
         // Fill gaps in data (months) with zeroes
         var data = data

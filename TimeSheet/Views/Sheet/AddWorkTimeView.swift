@@ -35,6 +35,7 @@ struct AddWorkTimeView: View {
     /// Creates a new AddWorkTimeView in either adding mode, adding a new work time item on save
     /// - Parameter worktimes: The list of worktimes to append the new object at
     init(worktimes: Binding<[WorkTime]>) {
+        // swiftlint:disable:previous type_contents_order
         self.worktimes = worktimes
         self.editingItem = nil
         self._date = State(wrappedValue: Date())
@@ -47,6 +48,7 @@ struct AddWorkTimeView: View {
     /// Creates a new AddWorkTimeView in editing mode, editing the given `editingItem`
     /// - Parameter editingItem: The work time being edited
     init(editingItem: Binding<WorkTime>) {
+        // swiftlint:disable:previous type_contents_order
         self.worktimes = nil
         self.editingItem = editingItem
 

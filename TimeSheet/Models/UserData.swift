@@ -51,7 +51,9 @@ class UserData: ObservableObject {
             print(error)
         }
     }
+}
 
+extension UserData {
     static func decode<T: Decodable>(_ type: T.Type, forKey key: String) -> T? {
         guard let data = UserDefaults.standard.data(forKey: key) else { return nil }
         do {

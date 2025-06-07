@@ -20,6 +20,7 @@ struct AddFixedPayView: View {
 
     let dateRange: ClosedRange<Date>
 
+    // swiftlint:disable:next type_contents_order
     private init() {
         self._date = State(wrappedValue: Date())
         self.dateRange = Date().addingTimeInterval(lowestValidNegativeDateInterval) ... Date()
@@ -28,6 +29,7 @@ struct AddFixedPayView: View {
     /// Creates a new AddWorkTimeView in either adding mode, adding a new work time item on save
     /// - Parameter worktimes: The list of worktimes to append the new object at
     init(worktimes: Binding<[WorkTime]>) {
+        // swiftlint:disable:previous type_contents_order
         self.init()
         self.worktimes = worktimes
         self.editingItem = nil
@@ -36,6 +38,7 @@ struct AddFixedPayView: View {
     /// Creates a new AddWorkTimeView in editing mode, editing the given `editingItem`
     /// - Parameter editingItem: The work time being edited
     init(editingItem: Binding<WorkTime>) {
+        // swiftlint:disable:previous type_contents_order
         self.init()
         self.worktimes = nil
         self.editingItem = editingItem
