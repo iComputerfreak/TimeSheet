@@ -1,0 +1,22 @@
+name: Test iOS
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set Xcode version
+        run: |
+          xcode_version=$(head -n 1 .xcode_version)
+          sudo xcode-select -s /Applications/Xcode_${xcode_version}.app
+      - name: Test
+        run: fastlane test

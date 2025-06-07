@@ -45,4 +45,12 @@ platform :ios do
 	  description: changelog
 	)
   end
+  
+  desc "iOS unit tests"
+  lane :test do
+    run_tests(
+      device: @testDevice,
+      scheme: "TimeSheet"
+    )
+  end
 end

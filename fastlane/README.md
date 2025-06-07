@@ -31,6 +31,14 @@ Generate new localized screenshots
 
 Deploy a new version to GitHub
 
+### ios test
+
+```sh
+[bundle exec] fastlane ios test
+```
+
+iOS unit tests
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
