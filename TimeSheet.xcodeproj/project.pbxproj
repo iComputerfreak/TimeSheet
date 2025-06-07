@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 74;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,14 +30,25 @@
 /* Begin PBXFileReference section */
 		AB391CA32964B7EE00A0B0C1 /* TimeSheetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeSheetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5CE2F82DF4B213009E41F3 /* TimeSheetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeSheetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB7DA69B2853E56B0070C17A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ABE17B9428522F7A00879C30 /* TimeSheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeSheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AB5CE3522DF4BE2F009E41F3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				/Localized/Localizable.strings,
+				Assets.xcassets,
+				"Preview Content/Preview Assets.xcassets",
+			);
+			target = ABE17B9328522F7A00879C30 /* TimeSheet */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		AB5CE2F92DF4B213009E41F3 /* TimeSheetTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TimeSheetTests; sourceTree = "<group>"; };
 		AB5CE32A2DF4BC3E009E41F3 /* TimeSheet */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TimeSheet; sourceTree = "<group>"; };
-		AB5CE3492DF4BC44009E41F3 /* SupportingFiles */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SupportingFiles; sourceTree = "<group>"; };
+		AB5CE3492DF4BC44009E41F3 /* SupportingFiles */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (AB5CE3522DF4BE2F009E41F3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = SupportingFiles; sourceTree = "<group>"; };
 		AB5CE34C2DF4BC46009E41F3 /* TimeSheetUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TimeSheetUITests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -70,7 +81,6 @@
 		ABE17B8B28522F7A00879C30 = {
 			isa = PBXGroup;
 			children = (
-				AB7DA69B2853E56B0070C17A /* README.md */,
 				AB5CE32A2DF4BC3E009E41F3 /* TimeSheet */,
 				AB5CE3492DF4BC44009E41F3 /* SupportingFiles */,
 				AB5CE34C2DF4BC46009E41F3 /* TimeSheetUITests */,
@@ -192,7 +202,6 @@
 				};
 			};
 			buildConfigurationList = ABE17B8F28522F7A00879C30 /* Build configuration list for PBXProject "TimeSheet" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -204,6 +213,7 @@
 			packageReferences = (
 				ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 			);
+			preferredProjectObjectVersion = 56;
 			productRefGroup = ABE17B9528522F7A00879C30 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -509,7 +519,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
-				DEVELOPMENT_ASSET_PATHS = "\"TimeSheet/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SupportingFiles/Preview Content\"";
 				DEVELOPMENT_TEAM = 46C9Y785NA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -542,7 +552,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
-				DEVELOPMENT_ASSET_PATHS = "\"TimeSheet/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SupportingFiles/Preview Content\"";
 				DEVELOPMENT_TEAM = 46C9Y785NA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
