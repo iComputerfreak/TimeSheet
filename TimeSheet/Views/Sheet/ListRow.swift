@@ -14,10 +14,10 @@ struct ListRow: View {
         f.unitsStyle = .abbreviated
         return f
     }
-    
+
     @EnvironmentObject private var config: Config
     let worktime: WorkTime
-    
+
     var body: some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading) {

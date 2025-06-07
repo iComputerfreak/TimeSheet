@@ -11,7 +11,7 @@ import Charts
 enum GraphType {
     case income
     case time
-    
+
     var yLabel: String {
         switch self {
         case .income:
@@ -36,11 +36,11 @@ extension DateComponentsFormatter {
 
 struct ChartsView: View {
     static let historyDurationFormatter = DateComponentsFormatter(allowedUnits: [.hour, .minute], unitsStyle: .short)
-    
+
     @EnvironmentObject private var config: Config
     @State private var graphType: GraphType = .income
     let worktimes: [WorkTime]
-    
+
     var worktimesByMonth: [Date: [WorkTime]] {
         Dictionary(
             grouping: worktimes,
@@ -53,7 +53,7 @@ struct ChartsView: View {
             }
         )
     }
-    
+
     var incomePerMonth: [(Date, Double)] {
         worktimesByMonth
             // Do not include payouts
@@ -66,7 +66,7 @@ struct ChartsView: View {
             }
             .sorted { $0.key < $1.key }
     }
-    
+
     var hoursPerMonth: [(Date, Double)] {
         worktimesByMonth
             .mapValues { worktimes in
@@ -81,7 +81,7 @@ struct ChartsView: View {
             }
             .sorted { $0.key < $1.key }
     }
-    
+
     var data: [(Date, Double)] {
         switch graphType {
         case .income:
@@ -90,7 +90,7 @@ struct ChartsView: View {
             return hoursPerMonth
         }
     }
-        
+
     var body: some View {
         NavigationStack {
             Group {
@@ -103,7 +103,7 @@ struct ChartsView: View {
             .navigationTitle("History")
         }
     }
-    
+
     var chartsContent: some View {
         ScrollView {
             VStack(alignment: .leading) {

@@ -11,17 +11,17 @@ struct CreatePayoutView: View {
     @EnvironmentObject private var userData: UserData
     @EnvironmentObject private var config: Config
     @Environment(\.dismiss) private var dismiss
-    
+
     @State private var fullPayoutMode = true
     @State private var payoutAmount: Double = 0
     @State private var payoutDate: Date = .now
     @State private var zeroPayoutAlertShowing = false
     @State private var noEntriesShowing = false
-    
+
     var fullAmount: Double {
         userData.worktimes.map(\.pay).reduce(0, +)
     }
-    
+
     var body: some View {
         NavigationStack {
             Form {

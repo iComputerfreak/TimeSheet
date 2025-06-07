@@ -12,12 +12,12 @@ extension TimeInterval {
     static let day: TimeInterval = 24 * .hour
     static let hour: TimeInterval = 60 * .minute
     static let minute: TimeInterval = 60
-    
+
 }
 
 struct AddWorkTimeView: View {
     let minuteSteps = 5
-    
+
     @EnvironmentObject private var config: Config
     @State private var date: Date
     @State private var activity: String
@@ -28,11 +28,11 @@ struct AddWorkTimeView: View {
     private var worktimes: Binding<[WorkTime]>?
     private var editingItem: Binding<WorkTime>?
     @Environment(\.dismiss) private var dismiss
-    
+
     @State private var zeroHoursShowing = false
-    
+
     @State private var dateRange = Date().addingTimeInterval(lowestValidNegativeDateInterval) ... Date()
-    
+
     /// Creates a new AddWorkTimeView in either adding mode, adding a new work time item on save
     /// - Parameter worktimes: The list of worktimes to append the new object at
     init(worktimes: Binding<[WorkTime]>) {
@@ -44,13 +44,13 @@ struct AddWorkTimeView: View {
         self._minutes = State(wrappedValue: 0)
         self._wage = State(wrappedValue: 0)
     }
-    
+
     /// Creates a new AddWorkTimeView in editing mode, editing the given `editingItem`
     /// - Parameter editingItem: The work time being edited
     init(editingItem: Binding<WorkTime>) {
         self.worktimes = nil
         self.editingItem = editingItem
-        
+
         // Pre-fill the values with the ones of the editingItem
         let worktime = editingItem.wrappedValue
         self._activity = State(wrappedValue: worktime.activity ?? "")
@@ -59,7 +59,7 @@ struct AddWorkTimeView: View {
         self._minutes = State(wrappedValue: worktime.duration.minute ?? 0)
         self._wage = State(wrappedValue: worktime.wage)
     }
-    
+
     var body: some View {
         Form {
             TextField("Activity (optional)", text: $activity)

@@ -11,18 +11,18 @@ struct TimeView: View {
     @EnvironmentObject private var config: Config
     let duration: DateComponents
     let amount: Double
-    
+
     init(duration: DateComponents, amount: Double) {
         self.duration = duration
         self.amount = amount
     }
-    
+
     @available(*, unavailable)
     init(duration: DateComponents, wage: Double) {
         self.duration = duration
         self.amount = duration.pay(using: wage)
     }
-    
+
     var body: some View {
         let timeString = WorkTime.durationFormatter.string(from: duration) ?? ""
         let moneyString = amount.formatted(.currency(code: config.currency))

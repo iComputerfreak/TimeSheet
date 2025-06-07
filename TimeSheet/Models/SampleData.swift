@@ -14,7 +14,7 @@ struct SampleData {
             payouts: generatePayouts()
         )
     }()
-    
+
     static func generateWorkTimes(count: Int = 80) -> [WorkTime] {
         var worktimes: [WorkTime] = []
         for _ in 1...count {
@@ -23,7 +23,7 @@ struct SampleData {
         }
         return worktimes
     }
-    
+
     static func generatePayouts(count: Int = 5) -> [Payout] {
         var payouts: [Payout] = []
         var date: Date = .now
@@ -38,20 +38,20 @@ struct SampleData {
         }
         return payouts
     }
-    
+
     static func randomWage() -> Double {
         Double(Int.random(in: 8...20))
     }
-    
+
     static func randomHours() -> (Int, Int) {
         (Int.random(in: 0...10), Int.random(in: 0..<4) * 15)
     }
-    
+
     static func randomDate() -> Date {
         let dateOffset = TimeInterval(Int.random(in: (-2 * 365)...0)) * TimeInterval.day
         return Date.now.addingTimeInterval(dateOffset)
     }
-    
+
     static private let screenshotWage: Double = 20
     static let screenshotWorktimes: [WorkTime] = [
         WorkTime(date: Date.create(2022, 11, 12), activity: "Redesign of personal website", hours: 7, minutes: 0, wage: screenshotWage),
@@ -61,7 +61,7 @@ struct SampleData {
         WorkTime(date: Date.create(2022, 12, 18), activity: "Consultation call", hours: 0, minutes: 30, wage: screenshotWage),
         WorkTime(date: Date.create(2023, 01, 02), activity: "Ask ChatGPT for sample data", hours: 0, minutes: 15, wage: screenshotWage)
     ]
-    
+
     static private let screenshotPayoutsData: [(Date, Double)] = [
         (Date.create(2022, 10, 01), 1250.0),
         (Date.create(2022, 09, 01), 1750.0),

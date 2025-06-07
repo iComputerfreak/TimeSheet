@@ -11,7 +11,7 @@ import SwiftUI
 class Config: ObservableObject {
     @AppStorage("wage")
     var wage: Double = 12.0
-    
+
     @AppStorage("currency")
     var currency: String = "EUR"
 }

@@ -11,15 +11,15 @@ import Charts
 struct InteractiveDateChart: View {
     var data: [(Date, Double)]
     var graphType: GraphType
-    
+
     @EnvironmentObject private var config: Config
     @State private var highlightedMonth: Date?
-    
+
     var displayedData: [(Date, Double)] {
         // Display the latest 12 months (data is already sorted)
         data.suffix(12)
     }
-    
+
     init(data: [(Date, Double)], graphType: GraphType) {
         // Fill gaps in data (months) with zeroes
         var data = data
@@ -35,7 +35,7 @@ struct InteractiveDateChart: View {
                 newYear += 1
             }
             currentDate = Calendar.current.date(from: .init(year: newYear, month: newMonth, day: 1))!
-            
+
             // Check if our current date is contained in data, otherwise add an entry with zero
             if !data.contains(where: { (date, amount) in
                 // Only compare month, year. day and time are irrelevant
@@ -44,14 +44,14 @@ struct InteractiveDateChart: View {
                 data.append((currentDate, 0))
             }
         } while currentDate < dates.last!
-        
+
         // After adding the missing values, sort the list again (by date)
         data.sort { $0.0 < $1.0 }
-        
+
         self.data = data
         self.graphType = graphType
     }
-    
+
     var body: some View {
         Chart {
             ForEach(displayedData, id: \.0) { date, amount in
@@ -117,7 +117,7 @@ struct InteractiveDateChart: View {
             }
         }
     }
-    
+
     private func alignment(for month: Date) -> Alignment {
         let months = displayedData.map(\.0)
         if month == months.first {
@@ -128,38 +128,38 @@ struct InteractiveDateChart: View {
             return .top
         }
     }
-    
+
     @available(*, unavailable)
     private func middleOfMonth(_ date: Date) -> Date {
         date.addingTimeInterval(TimeInterval(numberOfDays(in: date)) / 2 * .day)
     }
-    
+
     private func numberOfDays(in month: Date) -> Int {
         Calendar.current.range(of: .day, in: .month, for: month)?.count ?? 0
     }
-    
+
     private func nearestMonth(to date: Date) -> Date {
         guard !displayedData.isEmpty else {
             return date
         }
-        
+
         // Edge cases
         let dates = displayedData.map(\.0)
         let min = dates.min()!
         let max = dates.max()!
-        
+
         guard date < max else {
             return max
         }
         guard date > min else {
             return min
         }
-        
+
         // If we are already at the beginning of a month, return it
         if date.day == 1 {
             return Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: date) ?? date
         }
-        
+
         // Otherwise search for the nearest month
         func search(direction: Calendar.SearchDirection) -> Date {
             Calendar.current.nextDate(
@@ -193,7 +193,7 @@ struct InteractiveDateChart_Previews: PreviewProvider {
             }
         )
     }
-    
+
     static var incomePerMonth: [(Date, Double)] {
         Array(
             worktimesByMonth
@@ -202,7 +202,7 @@ struct InteractiveDateChart_Previews: PreviewProvider {
                 .prefix(12)
         )
     }
-    
+
     static var previews: some View {
         InteractiveDateChart(data: incomePerMonth, graphType: .income)
             .environmentObject(Config())

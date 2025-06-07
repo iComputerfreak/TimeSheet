@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
-    
+
     @StateObject private var userData = UserData()
     @StateObject private var config = Config()
-    
+
     var body: some View {
         TabView {
             ListView()
@@ -21,21 +21,21 @@ struct ContentView: View {
                     Text("Sheet")
                         .accessibilityIdentifier("sheet-tab")
                 }
-            
+
             PayoutsView()
                 .tabItem {
                     Image(systemName: "banknote")
                     Text("Payouts")
                         .accessibilityIdentifier("payouts-tab")
                 }
-            
+
             HistoryView()
                 .tabItem {
                     Image(systemName: "chart.xyaxis.line")
                     Text("History")
                         .accessibilityIdentifier("history-tab")
                 }
-            
+
             SettingsView()
                 .tabItem {
                     Image(systemName: "gear")
