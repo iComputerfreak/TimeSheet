@@ -66,7 +66,6 @@ struct WorkTimeList: View {
                                     }
                                 }
                         }
-
                     } header: {
                         let totalHours = worktimes(in: year, month: month)
                             .filter { !$0.isFixedPay }

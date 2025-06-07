@@ -52,7 +52,7 @@ struct SampleData {
         return Date.now.addingTimeInterval(dateOffset)
     }
 
-    static private let screenshotWage: Double = 20
+    private static let screenshotWage: Double = 20
     static let screenshotWorktimes: [WorkTime] = [
         WorkTime(date: Date.create(2022, 11, 12), activity: "Redesign of personal website", hours: 7, minutes: 0, wage: screenshotWage),
         WorkTime(date: Date.create(2022, 11, 15), activity: "Creation of online store", hours: 8, minutes: 0, wage: screenshotWage),
@@ -62,7 +62,7 @@ struct SampleData {
         WorkTime(date: Date.create(2023, 01, 02), activity: "Ask ChatGPT for sample data", hours: 0, minutes: 15, wage: screenshotWage)
     ]
 
-    static private let screenshotPayoutsData: [(Date, Double)] = [
+    private static let screenshotPayoutsData: [(Date, Double)] = [
         (Date.create(2022, 10, 01), 1250.0),
         (Date.create(2022, 09, 01), 1750.0),
         (Date.create(2022, 08, 01), 2250.0),
@@ -70,7 +70,7 @@ struct SampleData {
         (Date.create(2022, 04, 01), 3000.0)
     ]
     static var screenshotPayouts: [Payout] {
-        screenshotPayoutsData.map { (date, amount) in
+        screenshotPayoutsData.map { date, amount in
             let hours = amount / screenshotWage
             let minutes = amount.truncatingRemainder(dividingBy: screenshotWage) / (screenshotWage / 60)
             return Payout(date: date, worktimes: [WorkTime(date: date, activity: nil, hours: Int(hours), minutes: Int(minutes), wage: screenshotWage)])

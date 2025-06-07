@@ -112,7 +112,6 @@ struct AddFixedPayView: View {
         } message: {
             Text("Please specify a pay amount.")
         }
-
     }
 }
 

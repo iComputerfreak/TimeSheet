@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ListRow: View {
-    static private var durationFormatter: DateComponentsFormatter {
+    private static var durationFormatter: DateComponentsFormatter {
         let f = DateComponentsFormatter()
         f.allowedUnits = [.hour, .minute]
         f.unitsStyle = .abbreviated

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SettingsView: View {
-
     @EnvironmentObject private var config: Config
     #if DEBUG
     @EnvironmentObject private var userData: UserData

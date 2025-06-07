@@ -12,7 +12,6 @@ extension TimeInterval {
     static let day: TimeInterval = 24 * .hour
     static let hour: TimeInterval = 60 * .minute
     static let minute: TimeInterval = 60
-
 }
 
 struct AddWorkTimeView: View {

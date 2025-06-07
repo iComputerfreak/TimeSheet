@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 
 class UserData: ObservableObject {
-    static private let worktimesKey = "worktimes"
-    static private let payoutsKey = "payouts"
+    private static let worktimesKey = "worktimes"
+    private static let payoutsKey = "payouts"
 
     @Published var worktimes: [WorkTime]
     @Published var payouts: [Payout]

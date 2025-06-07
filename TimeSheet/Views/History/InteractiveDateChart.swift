@@ -37,7 +37,7 @@ struct InteractiveDateChart: View {
             currentDate = Calendar.current.date(from: .init(year: newYear, month: newMonth, day: 1))!
 
             // Check if our current date is contained in data, otherwise add an entry with zero
-            if !data.contains(where: { (date, amount) in
+            if !data.contains(where: { date, _ in
                 // Only compare month, year. day and time are irrelevant
                 date.month == currentDate.month && date.year == currentDate.year
             }) {
@@ -89,7 +89,7 @@ struct InteractiveDateChart: View {
         }
         .chartXScale(range: .plotDimension(padding: 15))
         .chartXAxis {
-            AxisMarks(values: .stride(by: .month) ) { value in
+            AxisMarks(values: .stride(by: .month) ) { _ in
                 AxisGridLine()
                 AxisTick()
                 AxisValueLabel(

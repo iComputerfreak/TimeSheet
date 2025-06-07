@@ -8,7 +8,6 @@
 import XCTest
 
 final class TimeSheetUITests: XCTestCase {
-
     private var app: XCUIApplication!
     private var screenshotCounter: Int!
 
@@ -66,6 +65,6 @@ final class TimeSheetUITests: XCTestCase {
 
 extension XCUIElement {
     func forceTap() {
-        coordinate(withNormalizedOffset: CGVector(dx:0.5, dy:0.5)).tap()
+        coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
     }
 }

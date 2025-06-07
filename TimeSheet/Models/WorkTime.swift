@@ -49,7 +49,7 @@ struct WorkTime: Identifiable, Codable, Equatable {
 
 extension DateComponents {
     func pay(using wage: Double) -> Double {
-        var hours: Double = Double(self.hour ?? 0)
+        var hours = Double(self.hour ?? 0)
         hours += Double(self.minute ?? 0) / 60
         return hours * wage
     }
