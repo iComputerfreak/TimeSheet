@@ -8,8 +8,9 @@
 import XCTest
 
 final class TimeSheetUITests: XCTestCase {
-    
+    // swiftlint:disable:next implicitly_unwrapped_optional
     private var app: XCUIApplication!
+    // swiftlint:disable:next implicitly_unwrapped_optional
     private var screenshotCounter: Int!
 
     override func setUpWithError() throws {
@@ -33,30 +34,30 @@ final class TimeSheetUITests: XCTestCase {
         app.tabBars.buttons["settings-tab"].tap()
         app.buttons["Generate Screenshot Data"].tap()
         app.tabBars.buttons["sheet-tab"].tap()
-        
+
         // Take the screenshots
         snapshot("Sheet")
-        
+
         app.navigationBars.buttons["add"].forceTap()
         app.buttons["time-based"].tap()
         snapshot("Create_Entry_Time")
         app.navigationBars.buttons.firstMatch.tap()
-        
+
         app.navigationBars.buttons["payout-button"].tap()
         snapshot("Create_Payout")
         app.swipeDown(velocity: .fast)
-        
+
         // TODO: Fix
         app.tabBars.buttons["payouts-tab"].tap()
         snapshot("Payouts")
-        
+
         app.tabBars.buttons["history-tab"].tap()
         snapshot("History")
-        
+
         app.tabBars.buttons["settings-tab"].tap()
         snapshot("Settings")
     }
-    
+
     // Take a snapshot with a global increasing counter as a prefix
     private func snapshot(_ name: String) {
         Snapshot.snapshot("\(String(format: "%02d", screenshotCounter))_\(name)")
@@ -66,6 +67,6 @@ final class TimeSheetUITests: XCTestCase {
 
 extension XCUIElement {
     func forceTap() {
-        coordinate(withNormalizedOffset: CGVector(dx:0.5, dy:0.5)).tap()
+        coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
     }
 }

@@ -11,11 +11,11 @@ struct PayoutsView: View {
     @EnvironmentObject private var config: Config
     @EnvironmentObject private var userData: UserData
     @State private var editingPayout: Payout?
-    
+
     var payouts: [Binding<Payout>] {
         $userData.payouts.sorted { $0.wrappedValue.date > $1.wrappedValue.date }
     }
-    
+
     var body: some View {
         NavigationStack {
             List {

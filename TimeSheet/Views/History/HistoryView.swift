@@ -9,11 +9,11 @@ import SwiftUI
 
 struct HistoryView: View {
     @EnvironmentObject private var userData: UserData
-    
+
     var worktimes: [WorkTime] {
         userData.worktimes + userData.payouts.flatMap(\.worktimes)
     }
-    
+
     var body: some View {
         ChartsView(worktimes: worktimes)
     }

@@ -14,10 +14,10 @@ struct PayoutRow: View {
         f.unitsStyle = .short
         return f
     }
-    
+
     @EnvironmentObject private var config: Config
     let payout: Payout
-    
+
     var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading) {

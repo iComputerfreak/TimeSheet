@@ -14,16 +14,16 @@ struct AnnotationView: View {
         f.unitsStyle = .abbreviated
         return f
     }
-    
+
     @EnvironmentObject private var config: Config
     let date: Date
     let value: Double
     let graphType: GraphType
-    
+
     var monthName: String {
         Calendar.current.monthSymbols[date.month - 1]
     }
-    
+
     var valueLabel: String {
         switch graphType {
         case .income:
@@ -33,7 +33,7 @@ struct AnnotationView: View {
             return Self.durationFormatter.string(from: comp) ?? ""
         }
     }
-    
+
     var body: some View {
         VStack {
             Text("\(monthName)")

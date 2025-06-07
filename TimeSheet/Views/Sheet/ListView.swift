@@ -13,31 +13,14 @@ struct ListView: View {
     @EnvironmentObject private var userData: UserData
     @State private var payoutConfirmationShowing = false
     @State private var createPayoutSheetShowing = false
-    
+
     var years: [Int] {
         userData.worktimes
             .map(\.date.year)
             .uniqued(on: \.hashValue)
             .sorted { $0 > $1 }
     }
-    
-    func months(in year: Int) -> [Int] {
-        userData.worktimes
-            .filter { worktime in
-                worktime.date.year == year
-            }
-            .map(\.date.month)
-            .uniqued(on: \.hashValue)
-            .sorted { $0 > $1 }
-    }
-    
-    func worktimes(in year: Int, month: Int) -> [WorkTime] {
-        userData.worktimes.filter { worktime in
-            worktime.date.year == year && worktime.date.month == month
-        }
-        .sorted { $0.date > $1.date }
-    }
-    
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -98,6 +81,23 @@ struct ListView: View {
         .sheet(isPresented: $createPayoutSheetShowing) {
             CreatePayoutView()
         }
+    }
+
+    func months(in year: Int) -> [Int] {
+        userData.worktimes
+            .filter { worktime in
+                worktime.date.year == year
+            }
+            .map(\.date.month)
+            .uniqued(on: \.hashValue)
+            .sorted { $0 > $1 }
+    }
+
+    func worktimes(in year: Int, month: Int) -> [WorkTime] {
+        userData.worktimes.filter { worktime in
+            worktime.date.year == year && worktime.date.month == month
+        }
+        .sorted { $0.date > $1.date }
     }
 }
 

@@ -9,8 +9,8 @@ import Foundation
 
 extension DateComponents {
     static let zero = DateComponents() + DateComponents()
-    
-    static func +(lhs: DateComponents, rhs: DateComponents) -> DateComponents {
+
+    static func + (lhs: DateComponents, rhs: DateComponents) -> DateComponents {
         DateComponents(
             calendar: lhs.calendar,
             timeZone: lhs.timeZone,

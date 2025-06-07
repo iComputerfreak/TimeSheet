@@ -11,17 +11,17 @@ struct CreatePayoutView: View {
     @EnvironmentObject private var userData: UserData
     @EnvironmentObject private var config: Config
     @Environment(\.dismiss) private var dismiss
-    
+
     @State private var fullPayoutMode = true
     @State private var payoutAmount: Double = 0
     @State private var payoutDate: Date = .now
     @State private var zeroPayoutAlertShowing = false
     @State private var noEntriesShowing = false
-    
+
     var fullAmount: Double {
         userData.worktimes.map(\.pay).reduce(0, +)
     }
-    
+
     var body: some View {
         NavigationStack {
             Form {
@@ -52,9 +52,15 @@ struct CreatePayoutView: View {
                     .foregroundColor(fullPayoutMode ? .gray : .primary)
                 } footer: {
                     if fullPayoutMode {
-                        Text("When creating a full payout, all entries in the time sheet will be removed and archived in the payouts tab. The generated payout cannot be edited.")
+                        Text(
+                            "When creating a full payout, all entries in the time sheet will be removed and archived "
+                            + "in the payouts tab. The generated payout cannot be edited."
+                        )
                     } else {
-                        Text("When creating a specific payout, the payout amount will be added as a separate entry in the time sheet and all other entries will remain.")
+                        Text(
+                            "When creating a specific payout, the payout amount will be added as a separate entry "
+                            + "in the time sheet and all other entries will remain."
+                        )
                     }
                 }
             }

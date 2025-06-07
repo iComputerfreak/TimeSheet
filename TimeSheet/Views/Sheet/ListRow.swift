@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct ListRow: View {
-    static private var durationFormatter: DateComponentsFormatter {
+    private static var durationFormatter: DateComponentsFormatter {
         let f = DateComponentsFormatter()
         f.allowedUnits = [.hour, .minute]
         f.unitsStyle = .abbreviated
         return f
     }
-    
+
     @EnvironmentObject private var config: Config
     let worktime: WorkTime
-    
+
     var body: some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading) {

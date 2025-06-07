@@ -10,31 +10,14 @@ import SwiftUI
 struct WorkTimeList: View {
     @EnvironmentObject private var config: Config
     @Binding var worktimes: [WorkTime]
-    
+
     var years: [Int] {
         worktimes
             .map(\.date.year)
             .uniqued(on: \.hashValue)
             .sorted { $0 > $1 }
     }
-    
-    func months(in year: Int) -> [Int] {
-        worktimes
-            .filter { worktime in
-                worktime.date.year == year
-            }
-            .map(\.date.month)
-            .uniqued(on: \.hashValue)
-            .sorted { $0 > $1 }
-    }
-    
-    func worktimes(in year: Int, month: Int) -> [WorkTime] {
-        worktimes.filter { worktime in
-            worktime.date.year == year && worktime.date.month == month
-        }
-        .sorted { $0.date > $1.date }
-    }
-    
+
     var body: some View {
         List {
             ForEach(years, id: \.self) { (year: Int) in
@@ -66,7 +49,6 @@ struct WorkTimeList: View {
                                     }
                                 }
                         }
-                        
                     } header: {
                         let totalHours = worktimes(in: year, month: month)
                             .filter { !$0.isFixedPay }
@@ -85,11 +67,28 @@ struct WorkTimeList: View {
             }
         }
     }
+
+    func months(in year: Int) -> [Int] {
+        worktimes
+            .filter { worktime in
+                worktime.date.year == year
+            }
+            .map(\.date.month)
+            .uniqued(on: \.hashValue)
+            .sorted { $0 > $1 }
+    }
+
+    func worktimes(in year: Int, month: Int) -> [WorkTime] {
+        worktimes.filter { worktime in
+            worktime.date.year == year && worktime.date.month == month
+        }
+        .sorted { $0.date > $1.date }
+    }
 }
 
 struct WorkTimeList_Previews: PreviewProvider {
     @State static var worktimes = SampleData.generateWorkTimes()
-    
+
     static var previews: some View {
         WorkTimeList(worktimes: $worktimes)
         .environmentObject(Config())

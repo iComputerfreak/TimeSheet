@@ -11,7 +11,7 @@ import Charts
 enum GraphType {
     case income
     case time
-    
+
     var yLabel: String {
         switch self {
         case .income:
@@ -36,11 +36,11 @@ extension DateComponentsFormatter {
 
 struct ChartsView: View {
     static let historyDurationFormatter = DateComponentsFormatter(allowedUnits: [.hour, .minute], unitsStyle: .short)
-    
+
     @EnvironmentObject private var config: Config
     @State private var graphType: GraphType = .income
     let worktimes: [WorkTime]
-    
+
     var worktimesByMonth: [Date: [WorkTime]] {
         Dictionary(
             grouping: worktimes,
@@ -53,7 +53,7 @@ struct ChartsView: View {
             }
         )
     }
-    
+
     var incomePerMonth: [(Date, Double)] {
         worktimesByMonth
             // Do not include payouts
@@ -66,22 +66,24 @@ struct ChartsView: View {
             }
             .sorted { $0.key < $1.key }
     }
-    
+
     var hoursPerMonth: [(Date, Double)] {
-        worktimesByMonth
-            .mapValues { worktimes in
-                worktimes
-                    // Don't include fixed pay in the hours
-                    .filter { !$0.isFixedPay }
-                    .map(\.duration)
-                    .map { duration in
-                        Double(duration.hour ?? 0) + Double(duration.minute ?? 0) / 60
-                    }
-                    .reduce(0, +)
-            }
-            .sorted { $0.key < $1.key }
+        var hoursByMonth: [(key: Date, value: Double)] = []
+        for (date, worktimes) in worktimesByMonth {
+            let hours = worktimes
+                // Don't include fixed pay in the hours
+                .filter { !$0.isFixedPay }
+                .map(\.duration)
+                .map { (duration: DateComponents) -> Double in
+                    Double(duration.hour ?? 0) + Double(duration.minute ?? 0) / 60
+                }
+                .reduce(0, +)
+            hoursByMonth.append((date, hours))
+        }
+
+        return hoursByMonth.sorted { $0.key < $1.key }
     }
-    
+
     var data: [(Date, Double)] {
         switch graphType {
         case .income:
@@ -90,7 +92,7 @@ struct ChartsView: View {
             return hoursPerMonth
         }
     }
-        
+
     var body: some View {
         NavigationStack {
             Group {
@@ -103,7 +105,7 @@ struct ChartsView: View {
             .navigationTitle("History")
         }
     }
-    
+
     var chartsContent: some View {
         ScrollView {
             VStack(alignment: .leading) {

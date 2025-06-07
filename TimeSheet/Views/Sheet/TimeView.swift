@@ -11,18 +11,20 @@ struct TimeView: View {
     @EnvironmentObject private var config: Config
     let duration: DateComponents
     let amount: Double
-    
+
+    // swiftlint:disable:next type_contents_order
     init(duration: DateComponents, amount: Double) {
         self.duration = duration
         self.amount = amount
     }
-    
+
     @available(*, unavailable)
+    // swiftlint:disable:next type_contents_order
     init(duration: DateComponents, wage: Double) {
         self.duration = duration
         self.amount = duration.pay(using: wage)
     }
-    
+
     var body: some View {
         let timeString = WorkTime.durationFormatter.string(from: duration) ?? ""
         let moneyString = amount.formatted(.currency(code: config.currency))

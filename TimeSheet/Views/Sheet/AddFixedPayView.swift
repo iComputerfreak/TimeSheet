@@ -15,38 +15,41 @@ struct AddFixedPayView: View {
     private var worktimes: Binding<[WorkTime]>?
     private var editingItem: Binding<WorkTime>?
     @Environment(\.dismiss) private var dismiss
-    
+
     @State private var zeroHoursShowing = false
-    
+
     let dateRange: ClosedRange<Date>
-    
+
+    // swiftlint:disable:next type_contents_order
     private init() {
         self._date = State(wrappedValue: Date())
         self.dateRange = Date().addingTimeInterval(lowestValidNegativeDateInterval) ... Date()
     }
-    
+
     /// Creates a new AddWorkTimeView in either adding mode, adding a new work time item on save
     /// - Parameter worktimes: The list of worktimes to append the new object at
     init(worktimes: Binding<[WorkTime]>) {
+        // swiftlint:disable:previous type_contents_order
         self.init()
         self.worktimes = worktimes
         self.editingItem = nil
     }
-    
+
     /// Creates a new AddWorkTimeView in editing mode, editing the given `editingItem`
     /// - Parameter editingItem: The work time being edited
     init(editingItem: Binding<WorkTime>) {
+        // swiftlint:disable:previous type_contents_order
         self.init()
         self.worktimes = nil
         self.editingItem = editingItem
-        
+
         // Pre-fill the values with the ones of the editingItem
         let worktime = editingItem.wrappedValue
         self.activity = worktime.activity ?? ""
         self.date = worktime.date
         self.payAmount = worktime.pay
     }
-    
+
     var body: some View {
         Form {
             TextField("Activity (optional)", text: $activity)
@@ -101,7 +104,9 @@ struct AddFixedPayView: View {
                     newItem.id = editingItem.wrappedValue.id
                     editingItem.wrappedValue = newItem
                 } else {
-                    assertionFailure("AddWorkTimeView was created with neither a list of worktimes, nor an editingItem.")
+                    assertionFailure(
+                        "AddWorkTimeView was created with neither a list of worktimes, nor an editingItem."
+                    )
                 }
                 dismiss()
             }
@@ -112,7 +117,6 @@ struct AddFixedPayView: View {
         } message: {
             Text("Please specify a pay amount.")
         }
-
     }
 }
 
