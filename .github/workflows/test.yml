@@ -14,6 +14,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set Xcode version
+        run: |
+          xcode_version=$(head -n 1 .xcode_version)
+          xcodeselect -s /Applications/Xcode_$(xcode_version).app
       - name: Set Default Scheme
         run: |
           scheme_list=$(xcodebuild -list -json | tr -d "\n")
