@@ -17,7 +17,7 @@ jobs:
       - name: Set Xcode version
         run: |
           xcode_version=$(head -n 1 .xcode_version)
-          xcodeselect -s /Applications/Xcode_$(xcode_version).app
+          xcode-select -s /Applications/Xcode_${xcode_version}.app
       - name: Set Default Scheme
         run: |
           scheme_list=$(xcodebuild -list -json | tr -d "\n")
