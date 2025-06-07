@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		ABD6D4BF2DF4C1650021A0E7 /* JFTestingUtils in Frameworks */ = {isa = PBXBuildFile; productRef = ABD6D4BE2DF4C1650021A0E7 /* JFTestingUtils */; };
 		ABD6D4C12DF4C1650021A0E7 /* JFUtils in Frameworks */ = {isa = PBXBuildFile; productRef = ABD6D4C02DF4C1650021A0E7 /* JFUtils */; };
+		ABD6D4CB2DF4D8480021A0E7 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = ABD6D4CA2DF4D8480021A0E7 /* Core */; };
+		ABD6D4CD2DF4D8480021A0E7 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = ABD6D4CC2DF4D8480021A0E7 /* Data */; };
+		ABD6D4CF2DF4D8480021A0E7 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = ABD6D4CE2DF4D8480021A0E7 /* Domain */; };
+		ABD6D4D12DF4D8480021A0E7 /* Model in Frameworks */ = {isa = PBXBuildFile; productRef = ABD6D4D02DF4D8480021A0E7 /* Model */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,7 +88,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABD6D4D12DF4D8480021A0E7 /* Model in Frameworks */,
 				ABD6D4C12DF4C1650021A0E7 /* JFUtils in Frameworks */,
+				ABD6D4CB2DF4D8480021A0E7 /* Core in Frameworks */,
+				ABD6D4CF2DF4D8480021A0E7 /* Domain in Frameworks */,
+				ABD6D4CD2DF4D8480021A0E7 /* Data in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +197,10 @@
 			name = TimeSheet;
 			packageProductDependencies = (
 				ABD6D4C02DF4C1650021A0E7 /* JFUtils */,
+				ABD6D4CA2DF4D8480021A0E7 /* Core */,
+				ABD6D4CC2DF4D8480021A0E7 /* Data */,
+				ABD6D4CE2DF4D8480021A0E7 /* Domain */,
+				ABD6D4D02DF4D8480021A0E7 /* Model */,
 			);
 			productName = TimeSheet;
 			productReference = ABE17B9428522F7A00879C30 /* TimeSheet.app */;
@@ -656,6 +668,22 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ABD6D4BD2DF4C1650021A0E7 /* XCRemoteSwiftPackageReference "JFUtils" */;
 			productName = JFUtils;
+		};
+		ABD6D4CA2DF4D8480021A0E7 /* Core */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Core;
+		};
+		ABD6D4CC2DF4D8480021A0E7 /* Data */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Data;
+		};
+		ABD6D4CE2DF4D8480021A0E7 /* Domain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Domain;
+		};
+		ABD6D4D02DF4D8480021A0E7 /* Model */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Model;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

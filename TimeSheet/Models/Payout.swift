@@ -5,6 +5,7 @@
 //  Created by Jonas Frey on 09.06.22.
 //
 
+import Core
 import Foundation
 
 struct Payout: Codable, Identifiable {

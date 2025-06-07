@@ -5,14 +5,8 @@
 //  Created by Jonas Frey on 09.06.22.
 //
 
+import Core
 import SwiftUI
-
-extension TimeInterval {
-    static let year: TimeInterval = 365 * .day
-    static let day: TimeInterval = 24 * .hour
-    static let hour: TimeInterval = 60 * .minute
-    static let minute: TimeInterval = 60
-}
 
 struct AddWorkTimeView: View {
     let minuteSteps = 5
@@ -30,7 +24,7 @@ struct AddWorkTimeView: View {
 
     @State private var zeroHoursShowing = false
 
-    @State private var dateRange = Date().addingTimeInterval(lowestValidNegativeDateInterval) ... Date()
+    @State private var dateRange = Date().addingTimeInterval(GlobalConstants.lowestValidNegativeDateInterval) ... Date()
 
     /// Creates a new AddWorkTimeView in either adding mode, adding a new work time item on save
     /// - Parameter worktimes: The list of worktimes to append the new object at
@@ -72,7 +66,7 @@ struct AddWorkTimeView: View {
                 self.dateChanged = true
             }
             .onAppear {
-                self.dateRange = Date().addingTimeInterval(lowestValidNegativeDateInterval) ... Date()
+                self.dateRange = Date().addingTimeInterval(GlobalConstants.lowestValidNegativeDateInterval) ... Date()
                 // If the user did not change the date himself, reset it to "today"
                 // This works around the bug that the date seems to be stuck on old values when opening the app after a few days
                 // TODO: DEBUG by putting an exact date in the form and observing if it changes when cancelling and reopening the view

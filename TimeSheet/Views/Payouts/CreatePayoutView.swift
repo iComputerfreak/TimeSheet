@@ -5,6 +5,7 @@
 //  Created by Jonas Frey on 06.07.22.
 //
 
+import Core
 import SwiftUI
 
 struct CreatePayoutView: View {
@@ -29,7 +30,7 @@ struct CreatePayoutView: View {
                     DatePicker(
                         "Date",
                         selection: $payoutDate,
-                        in: Date.now.addingTimeInterval(lowestValidNegativeDateInterval) ... .now,
+                        in: Date.now.addingTimeInterval(GlobalConstants.lowestValidNegativeDateInterval) ... .now,
                         displayedComponents: .date
                     )
                     let value = userData.worktimes.map(\.pay).reduce(0, +)

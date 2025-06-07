@@ -5,6 +5,7 @@
 //  Created by Jonas Frey on 10.06.22.
 //
 
+import Core
 import SwiftUI
 
 struct WorkTimeList: View {

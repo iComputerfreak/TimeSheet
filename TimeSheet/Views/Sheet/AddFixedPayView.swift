@@ -5,6 +5,7 @@
 //  Created by Jonas Frey on 27.10.22.
 //
 
+import Core
 import SwiftUI
 
 struct AddFixedPayView: View {
@@ -23,7 +24,7 @@ struct AddFixedPayView: View {
     // swiftlint:disable:next type_contents_order
     private init() {
         self._date = State(wrappedValue: Date())
-        self.dateRange = Date().addingTimeInterval(lowestValidNegativeDateInterval) ... Date()
+        self.dateRange = Date().addingTimeInterval(GlobalConstants.lowestValidNegativeDateInterval) ... Date()
     }
 
     /// Creates a new AddWorkTimeView in either adding mode, adding a new work time item on save

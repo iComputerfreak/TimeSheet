@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension DateComponents {
+public extension DateComponents {
     static let zero = DateComponents() + DateComponents()
 
     static func + (lhs: DateComponents, rhs: DateComponents) -> DateComponents {
@@ -32,13 +32,15 @@ extension DateComponents {
     }
 }
 
-extension Date {
+public extension Date {
     var day: Int {
         Calendar.current.component(.day, from: self)
     }
+
     var month: Int {
         Calendar.current.component(.month, from: self)
     }
+
     var year: Int {
         Calendar.current.component(.year, from: self)
     }
