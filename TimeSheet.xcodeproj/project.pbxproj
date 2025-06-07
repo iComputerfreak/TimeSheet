@@ -3,41 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 74;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB069816290A78D400F5CCA5 /* AddFixedPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB069815290A78D400F5CCA5 /* AddFixedPayView.swift */; };
-		AB391CA62964B7EE00A0B0C1 /* ScreenshotsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB391CA52964B7EE00A0B0C1 /* ScreenshotsUITests.swift */; };
-		AB391CAF2964BD7700A0B0C1 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB391CAE2964BD7700A0B0C1 /* SnapshotHelper.swift */; };
-		AB7DA6922853A4750070C17A /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6912853A4750070C17A /* SampleData.swift */; };
-		AB7DA6942853CFBD0070C17A /* InteractiveDateChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */; };
-		AB7DA6962853D1B40070C17A /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7DA6952853D1B40070C17A /* AnnotationView.swift */; };
-		AB8B88F2287589DB00691C11 /* CreatePayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B88F1287589DB00691C11 /* CreatePayoutView.swift */; };
-		ABA8E7C02A03EDD90059E4BF /* EditPayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8E7BF2A03EDD90059E4BF /* EditPayoutView.swift */; };
-		ABB6EC312877079800CF5B35 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB6EC302877079800CF5B35 /* HistoryView.swift */; };
-		ABE17B9828522F7A00879C30 /* TimeSheetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17B9728522F7A00879C30 /* TimeSheetApp.swift */; };
-		ABE17B9A28522F7A00879C30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17B9928522F7A00879C30 /* ContentView.swift */; };
-		ABE17B9C28522F7B00879C30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABE17B9B28522F7B00879C30 /* Assets.xcassets */; };
-		ABE17B9F28522F7B00879C30 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABE17B9E28522F7B00879C30 /* Preview Assets.xcassets */; };
-		ABE17BA62852300B00879C30 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BA52852300B00879C30 /* ListView.swift */; };
-		ABE17BA82852301000879C30 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BA72852301000879C30 /* SettingsView.swift */; };
-		ABE17BAA2852309200879C30 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BA92852309200879C30 /* Config.swift */; };
-		ABE17BAC285233E900879C30 /* WorkTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BAB285233E900879C30 /* WorkTime.swift */; };
-		ABE17BAE2852368D00879C30 /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BAD2852368D00879C30 /* ListRow.swift */; };
-		ABE17BB12852386900879C30 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = ABE17BB02852386900879C30 /* Algorithms */; };
-		ABE17BB3285241DF00879C30 /* AddWorkTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BB2285241DF00879C30 /* AddWorkTimeView.swift */; };
-		ABE17BB528524AB800879C30 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BB428524AB800879C30 /* Utils.swift */; };
-		ABE17BB728524CB900879C30 /* PayoutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BB628524CB900879C30 /* PayoutsView.swift */; };
-		ABE17BBB28525F7E00879C30 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BBA28525F7E00879C30 /* Extensions.swift */; };
-		ABE17BBD285260C300879C30 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BBC285260C300879C30 /* TimeView.swift */; };
-		ABE17BBF2852619D00879C30 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BBE2852619D00879C30 /* UserData.swift */; };
-		ABE17BC1285261D600879C30 /* Payout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BC0285261D600879C30 /* Payout.swift */; };
-		ABE17BCB28537FC600879C30 /* WageStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BCA28537FC600879C30 /* WageStepper.swift */; };
-		ABE17BCD2853880100879C30 /* PayoutRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BCC2853880100879C30 /* PayoutRow.swift */; };
-		ABE17BCF2853886E00879C30 /* WorkTimeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BCE2853886E00879C30 /* WorkTimeList.swift */; };
-		ABE17BD2285392AD00879C30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABE17BD0285392AD00879C30 /* Localizable.strings */; };
-		ABE17BD4285393AD00879C30 /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE17BD3285393AD00879C30 /* ChartsView.swift */; };
+		ABD6D4BF2DF4C1650021A0E7 /* JFTestingUtils in Frameworks */ = {isa = PBXBuildFile; productRef = ABD6D4BE2DF4C1650021A0E7 /* JFTestingUtils */; };
+		ABD6D4C12DF4C1650021A0E7 /* JFUtils in Frameworks */ = {isa = PBXBuildFile; productRef = ABD6D4C02DF4C1650021A0E7 /* JFUtils */; };
+		ABD6D4CB2DF4D8480021A0E7 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = ABD6D4CA2DF4D8480021A0E7 /* Core */; };
+		ABD6D4CD2DF4D8480021A0E7 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = ABD6D4CC2DF4D8480021A0E7 /* Data */; };
+		ABD6D4CF2DF4D8480021A0E7 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = ABD6D4CE2DF4D8480021A0E7 /* Domain */; };
+		ABD6D4D12DF4D8480021A0E7 /* Model in Frameworks */ = {isa = PBXBuildFile; productRef = ABD6D4D02DF4D8480021A0E7 /* Model */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,45 +33,39 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AB069815290A78D400F5CCA5 /* AddFixedPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFixedPayView.swift; sourceTree = "<group>"; };
 		AB391CA32964B7EE00A0B0C1 /* TimeSheetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeSheetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB391CA52964B7EE00A0B0C1 /* ScreenshotsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsUITests.swift; sourceTree = "<group>"; };
-		AB391CAE2964BD7700A0B0C1 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
-		AB5CE2E62DF4B1B0009E41F3 /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
 		AB5CE2F82DF4B213009E41F3 /* TimeSheetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeSheetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB7DA6912853A4750070C17A /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
-		AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveDateChart.swift; sourceTree = "<group>"; };
-		AB7DA6952853D1B40070C17A /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
-		AB7DA69B2853E56B0070C17A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		AB8B88F1287589DB00691C11 /* CreatePayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePayoutView.swift; sourceTree = "<group>"; };
-		ABA8E7BF2A03EDD90059E4BF /* EditPayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPayoutView.swift; sourceTree = "<group>"; };
-		ABB6EC302877079800CF5B35 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		ABE17B9428522F7A00879C30 /* TimeSheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeSheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		ABE17B9728522F7A00879C30 /* TimeSheetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSheetApp.swift; sourceTree = "<group>"; };
-		ABE17B9928522F7A00879C30 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		ABE17B9B28522F7B00879C30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		ABE17B9E28522F7B00879C30 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		ABE17BA52852300B00879C30 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		ABE17BA72852301000879C30 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		ABE17BA92852309200879C30 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		ABE17BAB285233E900879C30 /* WorkTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTime.swift; sourceTree = "<group>"; };
-		ABE17BAD2852368D00879C30 /* ListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
-		ABE17BB2285241DF00879C30 /* AddWorkTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkTimeView.swift; sourceTree = "<group>"; };
-		ABE17BB428524AB800879C30 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		ABE17BB628524CB900879C30 /* PayoutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutsView.swift; sourceTree = "<group>"; };
-		ABE17BBA28525F7E00879C30 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		ABE17BBC285260C300879C30 /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
-		ABE17BBE2852619D00879C30 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		ABE17BC0285261D600879C30 /* Payout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payout.swift; sourceTree = "<group>"; };
-		ABE17BCA28537FC600879C30 /* WageStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageStepper.swift; sourceTree = "<group>"; };
-		ABE17BCC2853880100879C30 /* PayoutRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutRow.swift; sourceTree = "<group>"; };
-		ABE17BCE2853886E00879C30 /* WorkTimeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTimeList.swift; sourceTree = "<group>"; };
-		ABE17BD1285392AD00879C30 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		ABE17BD3285393AD00879C30 /* ChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AB5CE3522DF4BE2F009E41F3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				/Localized/Localizable.strings,
+				Assets.xcassets,
+				"Preview Content/Preview Assets.xcassets",
+			);
+			target = ABE17B9328522F7A00879C30 /* TimeSheet */;
+		};
+		ABD6D4C62DF4D5B60021A0E7 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Core,
+				Data,
+				Domain,
+				Model,
+			);
+			target = ABE17B9328522F7A00879C30 /* TimeSheet */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		AB5CE2F92DF4B213009E41F3 /* TimeSheetTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TimeSheetTests; sourceTree = "<group>"; };
+		AB5CE32A2DF4BC3E009E41F3 /* TimeSheet */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TimeSheet; sourceTree = "<group>"; };
+		AB5CE3492DF4BC44009E41F3 /* SupportingFiles */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (AB5CE3522DF4BE2F009E41F3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = SupportingFiles; sourceTree = "<group>"; };
+		AB5CE34C2DF4BC46009E41F3 /* TimeSheetUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TimeSheetUITests; sourceTree = "<group>"; };
+		ABD6D4C42DF4C4CC0021A0E7 /* Packages */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (ABD6D4C62DF4D5B60021A0E7 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Packages; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABD6D4BF2DF4C1650021A0E7 /* JFTestingUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,81 +88,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABE17BB12852386900879C30 /* Algorithms in Frameworks */,
+				ABD6D4D12DF4D8480021A0E7 /* Model in Frameworks */,
+				ABD6D4C12DF4C1650021A0E7 /* JFUtils in Frameworks */,
+				ABD6D4CB2DF4D8480021A0E7 /* Core in Frameworks */,
+				ABD6D4CF2DF4D8480021A0E7 /* Domain in Frameworks */,
+				ABD6D4CD2DF4D8480021A0E7 /* Data in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AB391CA42964B7EE00A0B0C1 /* TimeSheetUITests */ = {
-			isa = PBXGroup;
-			children = (
-				AB391CA52964B7EE00A0B0C1 /* ScreenshotsUITests.swift */,
-				AB391CAE2964BD7700A0B0C1 /* SnapshotHelper.swift */,
-			);
-			path = TimeSheetUITests;
-			sourceTree = "<group>";
-		};
-		AB5CE2E52DF4B18F009E41F3 /* SupportingFiles */ = {
-			isa = PBXGroup;
-			children = (
-				AB5CE2E62DF4B1B0009E41F3 /* TestPlan.xctestplan */,
-			);
-			path = SupportingFiles;
-			sourceTree = "<group>";
-		};
-		AB7DA6972853DA430070C17A /* Sheet */ = {
-			isa = PBXGroup;
-			children = (
-				ABE17BA52852300B00879C30 /* ListView.swift */,
-				ABE17BCE2853886E00879C30 /* WorkTimeList.swift */,
-				ABE17BAD2852368D00879C30 /* ListRow.swift */,
-				ABE17BBC285260C300879C30 /* TimeView.swift */,
-				ABE17BB2285241DF00879C30 /* AddWorkTimeView.swift */,
-				AB069815290A78D400F5CCA5 /* AddFixedPayView.swift */,
-			);
-			path = Sheet;
-			sourceTree = "<group>";
-		};
-		AB7DA6982853DA4A0070C17A /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				ABE17BA72852301000879C30 /* SettingsView.swift */,
-				ABE17BCA28537FC600879C30 /* WageStepper.swift */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		AB7DA6992853DA4E0070C17A /* History */ = {
-			isa = PBXGroup;
-			children = (
-				ABB6EC302877079800CF5B35 /* HistoryView.swift */,
-				ABE17BD3285393AD00879C30 /* ChartsView.swift */,
-				AB7DA6932853CFBD0070C17A /* InteractiveDateChart.swift */,
-				AB7DA6952853D1B40070C17A /* AnnotationView.swift */,
-			);
-			path = History;
-			sourceTree = "<group>";
-		};
-		AB7DA69A2853DA5B0070C17A /* Payouts */ = {
-			isa = PBXGroup;
-			children = (
-				ABE17BB628524CB900879C30 /* PayoutsView.swift */,
-				AB8B88F1287589DB00691C11 /* CreatePayoutView.swift */,
-				ABA8E7BF2A03EDD90059E4BF /* EditPayoutView.swift */,
-				ABE17BCC2853880100879C30 /* PayoutRow.swift */,
-			);
-			path = Payouts;
-			sourceTree = "<group>";
-		};
 		ABE17B8B28522F7A00879C30 = {
 			isa = PBXGroup;
 			children = (
-				AB7DA69B2853E56B0070C17A /* README.md */,
-				ABE17B9628522F7A00879C30 /* TimeSheet */,
-				AB5CE2E52DF4B18F009E41F3 /* SupportingFiles */,
-				AB391CA42964B7EE00A0B0C1 /* TimeSheetUITests */,
+				ABD6D4C42DF4C4CC0021A0E7 /* Packages */,
+				AB5CE32A2DF4BC3E009E41F3 /* TimeSheet */,
+				AB5CE3492DF4BC44009E41F3 /* SupportingFiles */,
+				AB5CE34C2DF4BC46009E41F3 /* TimeSheetUITests */,
 				AB5CE2F92DF4B213009E41F3 /* TimeSheetTests */,
 				ABE17B9528522F7A00879C30 /* Products */,
 				ABE17BC428528C2100879C30 /* Frameworks */,
@@ -207,53 +120,6 @@
 				AB5CE2F82DF4B213009E41F3 /* TimeSheetTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		ABE17B9628522F7A00879C30 /* TimeSheet */ = {
-			isa = PBXGroup;
-			children = (
-				ABE17BD0285392AD00879C30 /* Localizable.strings */,
-				ABE17B9728522F7A00879C30 /* TimeSheetApp.swift */,
-				ABE17BB428524AB800879C30 /* Utils.swift */,
-				ABE17BBA28525F7E00879C30 /* Extensions.swift */,
-				ABE17BB928524CC100879C30 /* Models */,
-				ABE17BB828524CBC00879C30 /* Views */,
-				ABE17B9B28522F7B00879C30 /* Assets.xcassets */,
-				ABE17B9D28522F7B00879C30 /* Preview Content */,
-			);
-			path = TimeSheet;
-			sourceTree = "<group>";
-		};
-		ABE17B9D28522F7B00879C30 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				ABE17B9E28522F7B00879C30 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		ABE17BB828524CBC00879C30 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				ABE17B9928522F7A00879C30 /* ContentView.swift */,
-				AB7DA6972853DA430070C17A /* Sheet */,
-				AB7DA69A2853DA5B0070C17A /* Payouts */,
-				AB7DA6992853DA4E0070C17A /* History */,
-				AB7DA6982853DA4A0070C17A /* Settings */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		ABE17BB928524CC100879C30 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				ABE17BA92852309200879C30 /* Config.swift */,
-				ABE17BBE2852619D00879C30 /* UserData.swift */,
-				ABE17BAB285233E900879C30 /* WorkTime.swift */,
-				ABE17BC0285261D600879C30 /* Payout.swift */,
-				AB7DA6912853A4750070C17A /* SampleData.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		ABE17BC428528C2100879C30 /* Frameworks */ = {
@@ -279,6 +145,9 @@
 			dependencies = (
 				AB391CAA2964B7EE00A0B0C1 /* PBXTargetDependency */,
 			);
+			fileSystemSynchronizedGroups = (
+				AB5CE34C2DF4BC46009E41F3 /* TimeSheetUITests */,
+			);
 			name = TimeSheetUITests;
 			productName = TimeSheetUITests;
 			productReference = AB391CA32964B7EE00A0B0C1 /* TimeSheetUITests.xctest */;
@@ -302,6 +171,7 @@
 			);
 			name = TimeSheetTests;
 			packageProductDependencies = (
+				ABD6D4BE2DF4C1650021A0E7 /* JFTestingUtils */,
 			);
 			productName = TimeSheetTests;
 			productReference = AB5CE2F82DF4B213009E41F3 /* TimeSheetTests.xctest */;
@@ -320,9 +190,17 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				AB5CE32A2DF4BC3E009E41F3 /* TimeSheet */,
+				ABD6D4C42DF4C4CC0021A0E7 /* Packages */,
+			);
 			name = TimeSheet;
 			packageProductDependencies = (
-				ABE17BB02852386900879C30 /* Algorithms */,
+				ABD6D4C02DF4C1650021A0E7 /* JFUtils */,
+				ABD6D4CA2DF4D8480021A0E7 /* Core */,
+				ABD6D4CC2DF4D8480021A0E7 /* Data */,
+				ABD6D4CE2DF4D8480021A0E7 /* Domain */,
+				ABD6D4D02DF4D8480021A0E7 /* Model */,
 			);
 			productName = TimeSheet;
 			productReference = ABE17B9428522F7A00879C30 /* TimeSheet.app */;
@@ -352,7 +230,6 @@
 				};
 			};
 			buildConfigurationList = ABE17B8F28522F7A00879C30 /* Build configuration list for PBXProject "TimeSheet" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -362,8 +239,9 @@
 			);
 			mainGroup = ABE17B8B28522F7A00879C30;
 			packageReferences = (
-				ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				ABD6D4BD2DF4C1650021A0E7 /* XCRemoteSwiftPackageReference "JFUtils" */,
 			);
+			preferredProjectObjectVersion = 56;
 			productRefGroup = ABE17B9528522F7A00879C30 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -394,9 +272,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABE17B9F28522F7B00879C30 /* Preview Assets.xcassets in Resources */,
-				ABE17BD2285392AD00879C30 /* Localizable.strings in Resources */,
-				ABE17B9C28522F7B00879C30 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,8 +304,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB391CA62964B7EE00A0B0C1 /* ScreenshotsUITests.swift in Sources */,
-				AB391CAF2964BD7700A0B0C1 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,31 +318,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABA8E7C02A03EDD90059E4BF /* EditPayoutView.swift in Sources */,
-				ABE17BCF2853886E00879C30 /* WorkTimeList.swift in Sources */,
-				ABE17BBF2852619D00879C30 /* UserData.swift in Sources */,
-				ABE17BB728524CB900879C30 /* PayoutsView.swift in Sources */,
-				ABE17B9A28522F7A00879C30 /* ContentView.swift in Sources */,
-				ABE17BA82852301000879C30 /* SettingsView.swift in Sources */,
-				ABE17BCD2853880100879C30 /* PayoutRow.swift in Sources */,
-				ABB6EC312877079800CF5B35 /* HistoryView.swift in Sources */,
-				ABE17BB528524AB800879C30 /* Utils.swift in Sources */,
-				ABE17BAA2852309200879C30 /* Config.swift in Sources */,
-				ABE17B9828522F7A00879C30 /* TimeSheetApp.swift in Sources */,
-				ABE17BA62852300B00879C30 /* ListView.swift in Sources */,
-				AB7DA6962853D1B40070C17A /* AnnotationView.swift in Sources */,
-				ABE17BAE2852368D00879C30 /* ListRow.swift in Sources */,
-				AB7DA6922853A4750070C17A /* SampleData.swift in Sources */,
-				AB069816290A78D400F5CCA5 /* AddFixedPayView.swift in Sources */,
-				ABE17BCB28537FC600879C30 /* WageStepper.swift in Sources */,
-				ABE17BB3285241DF00879C30 /* AddWorkTimeView.swift in Sources */,
-				ABE17BBB28525F7E00879C30 /* Extensions.swift in Sources */,
-				AB8B88F2287589DB00691C11 /* CreatePayoutView.swift in Sources */,
-				AB7DA6942853CFBD0070C17A /* InteractiveDateChart.swift in Sources */,
-				ABE17BC1285261D600879C30 /* Payout.swift in Sources */,
-				ABE17BD4285393AD00879C30 /* ChartsView.swift in Sources */,
-				ABE17BAC285233E900879C30 /* WorkTime.swift in Sources */,
-				ABE17BBD285260C300879C30 /* TimeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,17 +335,6 @@
 			targetProxy = AB5CE2FC2DF4B213009E41F3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		ABE17BD0285392AD00879C30 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ABE17BD1285392AD00879C30 /* de */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		AB391CAC2964B7EE00A0B0C1 /* Debug */ = {
@@ -710,11 +547,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
-				DEVELOPMENT_ASSET_PATHS = "\"TimeSheet/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SupportingFiles/Preview Content\"";
 				DEVELOPMENT_TEAM = 46C9Y785NA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TimeSheet/Info.plist;
+				INFOPLIST_FILE = SupportingFiles/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TimeSheet;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -743,11 +580,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
-				DEVELOPMENT_ASSET_PATHS = "\"TimeSheet/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SupportingFiles/Preview Content\"";
 				DEVELOPMENT_TEAM = 46C9Y785NA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TimeSheet/Info.plist;
+				INFOPLIST_FILE = SupportingFiles/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TimeSheet;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -811,21 +648,42 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+		ABD6D4BD2DF4C1650021A0E7 /* XCRemoteSwiftPackageReference "JFUtils" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			repositoryURL = "https://github.com/iComputerfreak/JFUtils";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		ABE17BB02852386900879C30 /* Algorithms */ = {
+		ABD6D4BE2DF4C1650021A0E7 /* JFTestingUtils */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
-			productName = Algorithms;
+			package = ABD6D4BD2DF4C1650021A0E7 /* XCRemoteSwiftPackageReference "JFUtils" */;
+			productName = JFTestingUtils;
+		};
+		ABD6D4C02DF4C1650021A0E7 /* JFUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ABD6D4BD2DF4C1650021A0E7 /* XCRemoteSwiftPackageReference "JFUtils" */;
+			productName = JFUtils;
+		};
+		ABD6D4CA2DF4D8480021A0E7 /* Core */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Core;
+		};
+		ABD6D4CC2DF4D8480021A0E7 /* Data */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Data;
+		};
+		ABD6D4CE2DF4D8480021A0E7 /* Domain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Domain;
+		};
+		ABD6D4D02DF4D8480021A0E7 /* Model */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Model;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

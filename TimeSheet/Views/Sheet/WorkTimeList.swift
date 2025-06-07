@@ -5,6 +5,7 @@
 //  Created by Jonas Frey on 10.06.22.
 //
 
+import Core
 import SwiftUI
 
 struct WorkTimeList: View {
@@ -14,7 +15,7 @@ struct WorkTimeList: View {
     var years: [Int] {
         worktimes
             .map(\.date.year)
-            .uniqued(on: \.hashValue)
+            .removingDuplicates()
             .sorted { $0 > $1 }
     }
 
@@ -74,7 +75,7 @@ struct WorkTimeList: View {
                 worktime.date.year == year
             }
             .map(\.date.month)
-            .uniqued(on: \.hashValue)
+            .removingDuplicates()
             .sorted { $0 > $1 }
     }
 

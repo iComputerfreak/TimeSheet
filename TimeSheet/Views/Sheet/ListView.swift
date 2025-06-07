@@ -5,8 +5,8 @@
 //  Created by Jonas Frey on 09.06.22.
 //
 
+import JFUtils
 import SwiftUI
-import Algorithms
 
 struct ListView: View {
     @EnvironmentObject private var config: Config
@@ -17,8 +17,8 @@ struct ListView: View {
     var years: [Int] {
         userData.worktimes
             .map(\.date.year)
-            .uniqued(on: \.hashValue)
-            .sorted { $0 > $1 }
+            .removingDuplicates()
+            .sorted(by: >)
     }
 
     var body: some View {
@@ -44,23 +44,6 @@ struct ListView: View {
                     }
                     .accessibilityIdentifier("payout-button")
                 }
-//                #if DEBUG
-//                ToolbarItem(placement: .navigationBarLeading) {
-//                    Button("Generate") {
-//                        Task(priority: .userInitiated) {
-//                            let worktimes = SampleData.generateWorkTimes()
-//                            let payouts = SampleData.generatePayouts()
-//                            await MainActor.run {
-//                                withAnimation {
-//                                    self.userData.objectWillChange.send()
-//                                    self.userData.worktimes = worktimes
-//                                    self.userData.payouts = payouts
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//                #endif
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
                         NavigationLink(destination: AddWorkTimeView(worktimes: $userData.worktimes)) {
@@ -89,8 +72,8 @@ struct ListView: View {
                 worktime.date.year == year
             }
             .map(\.date.month)
-            .uniqued(on: \.hashValue)
-            .sorted { $0 > $1 }
+            .removingDuplicates()
+            .sorted(by: >)
     }
 
     func worktimes(in year: Int, month: Int) -> [WorkTime] {
