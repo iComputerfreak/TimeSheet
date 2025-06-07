@@ -29,13 +29,24 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO"
+            skipped = "YES"
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AB391CA22964B7EE00A0B0C1"
                BuildableName = "TimeSheetUITests.xctest"
                BlueprintName = "TimeSheetUITests"
+               ReferencedContainer = "container:TimeSheet.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AB5CE2F72DF4B213009E41F3"
+               BuildableName = "TimeSheetTests.xctest"
+               BlueprintName = "TimeSheetTests"
                ReferencedContainer = "container:TimeSheet.xcodeproj">
             </BuildableReference>
          </TestableReference>

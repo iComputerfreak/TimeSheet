@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "91821CFA-B2DB-4673-96AA-CB33223BCA8F",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:TimeSheet.xcodeproj",
+        "identifier" : "AB5CE2F72DF4B213009E41F3",
+        "name" : "TimeSheetTests"
+      }
+    }
+  ],
+  "version" : 1
+}
