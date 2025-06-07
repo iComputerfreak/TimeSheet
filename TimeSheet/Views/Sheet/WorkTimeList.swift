@@ -14,7 +14,7 @@ struct WorkTimeList: View {
     var years: [Int] {
         worktimes
             .map(\.date.year)
-            .uniqued(on: \.hashValue)
+            .removingDuplicates()
             .sorted { $0 > $1 }
     }
 
@@ -74,7 +74,7 @@ struct WorkTimeList: View {
                 worktime.date.year == year
             }
             .map(\.date.month)
-            .uniqued(on: \.hashValue)
+            .removingDuplicates()
             .sorted { $0 > $1 }
     }
 
