@@ -68,18 +68,20 @@ struct ChartsView: View {
     }
 
     var hoursPerMonth: [(Date, Double)] {
-        worktimesByMonth
-            .mapValues { worktimes in
-                worktimes
-                    // Don't include fixed pay in the hours
-                    .filter { !$0.isFixedPay }
-                    .map(\.duration)
-                    .map { duration in
-                        Double(duration.hour ?? 0) + Double(duration.minute ?? 0) / 60
-                    }
-                    .reduce(0, +)
-            }
-            .sorted { $0.key < $1.key }
+        var hoursByMonth: [(key: Date, value: Double)] = []
+        for (date, worktimes) in worktimesByMonth {
+            let hours = worktimes
+                // Don't include fixed pay in the hours
+                .filter { !$0.isFixedPay }
+                .map(\.duration)
+                .map { (duration: DateComponents) -> Double in
+                    Double(duration.hour ?? 0) + Double(duration.minute ?? 0) / 60
+                }
+                .reduce(0, +)
+            hoursByMonth.append((date, hours))
+        }
+
+        return hoursByMonth.sorted { $0.key < $1.key }
     }
 
     var data: [(Date, Double)] {
