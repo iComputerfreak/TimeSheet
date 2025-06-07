@@ -44,6 +44,16 @@
 			);
 			target = ABE17B9328522F7A00879C30 /* TimeSheet */;
 		};
+		ABD6D4C62DF4D5B60021A0E7 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Core,
+				Data,
+				Domain,
+				Model,
+			);
+			target = ABE17B9328522F7A00879C30 /* TimeSheet */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -51,6 +61,7 @@
 		AB5CE32A2DF4BC3E009E41F3 /* TimeSheet */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TimeSheet; sourceTree = "<group>"; };
 		AB5CE3492DF4BC44009E41F3 /* SupportingFiles */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (AB5CE3522DF4BE2F009E41F3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = SupportingFiles; sourceTree = "<group>"; };
 		AB5CE34C2DF4BC46009E41F3 /* TimeSheetUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TimeSheetUITests; sourceTree = "<group>"; };
+		ABD6D4C42DF4C4CC0021A0E7 /* Packages */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (ABD6D4C62DF4D5B60021A0E7 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Packages; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +94,7 @@
 		ABE17B8B28522F7A00879C30 = {
 			isa = PBXGroup;
 			children = (
+				ABD6D4C42DF4C4CC0021A0E7 /* Packages */,
 				AB5CE32A2DF4BC3E009E41F3 /* TimeSheet */,
 				AB5CE3492DF4BC44009E41F3 /* SupportingFiles */,
 				AB5CE34C2DF4BC46009E41F3 /* TimeSheetUITests */,
@@ -172,6 +184,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				AB5CE32A2DF4BC3E009E41F3 /* TimeSheet */,
+				ABD6D4C42DF4C4CC0021A0E7 /* Packages */,
 			);
 			name = TimeSheet;
 			packageProductDependencies = (
