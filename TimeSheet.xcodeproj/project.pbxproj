@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABD6D4BF2DF4C1650021A0E7 /* JFTestingUtils in Frameworks */ = {isa = PBXBuildFile; productRef = ABD6D4BE2DF4C1650021A0E7 /* JFTestingUtils */; };
+		ABD6D4C12DF4C1650021A0E7 /* JFUtils in Frameworks */ = {isa = PBXBuildFile; productRef = ABD6D4C02DF4C1650021A0E7 /* JFUtils */; };
 		ABE17BB12852386900879C30 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = ABE17BB02852386900879C30 /* Algorithms */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABD6D4BF2DF4C1650021A0E7 /* JFTestingUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABD6D4C12DF4C1650021A0E7 /* JFUtils in Frameworks */,
 				ABE17BB12852386900879C30 /* Algorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +153,7 @@
 			);
 			name = TimeSheetTests;
 			packageProductDependencies = (
+				ABD6D4BE2DF4C1650021A0E7 /* JFTestingUtils */,
 			);
 			productName = TimeSheetTests;
 			productReference = AB5CE2F82DF4B213009E41F3 /* TimeSheetTests.xctest */;
@@ -173,6 +178,7 @@
 			name = TimeSheet;
 			packageProductDependencies = (
 				ABE17BB02852386900879C30 /* Algorithms */,
+				ABD6D4C02DF4C1650021A0E7 /* JFUtils */,
 			);
 			productName = TimeSheet;
 			productReference = ABE17B9428522F7A00879C30 /* TimeSheet.app */;
@@ -212,6 +218,7 @@
 			mainGroup = ABE17B8B28522F7A00879C30;
 			packageReferences = (
 				ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				ABD6D4BD2DF4C1650021A0E7 /* XCRemoteSwiftPackageReference "JFUtils" */,
 			);
 			preferredProjectObjectVersion = 56;
 			productRefGroup = ABE17B9528522F7A00879C30 /* Products */;
@@ -620,6 +627,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		ABD6D4BD2DF4C1650021A0E7 /* XCRemoteSwiftPackageReference "JFUtils" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/iComputerfreak/JFUtils";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-algorithms.git";
@@ -631,6 +646,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		ABD6D4BE2DF4C1650021A0E7 /* JFTestingUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ABD6D4BD2DF4C1650021A0E7 /* XCRemoteSwiftPackageReference "JFUtils" */;
+			productName = JFTestingUtils;
+		};
+		ABD6D4C02DF4C1650021A0E7 /* JFUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ABD6D4BD2DF4C1650021A0E7 /* XCRemoteSwiftPackageReference "JFUtils" */;
+			productName = JFUtils;
+		};
 		ABE17BB02852386900879C30 /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = ABE17BAF2852386900879C30 /* XCRemoteSwiftPackageReference "swift-algorithms" */;

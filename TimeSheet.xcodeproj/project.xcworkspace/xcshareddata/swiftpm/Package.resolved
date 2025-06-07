@@ -1,5 +1,15 @@
 {
+  "originHash" : "e05de01b7453b7dc0f23c41f325577060cc8aaf3e062865506db227bcd91f117",
   "pins" : [
+    {
+      "identity" : "jfutils",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/iComputerfreak/JFUtils",
+      "state" : {
+        "branch" : "main",
+        "revision" : "96c44d3dca19c15ec878e7c3dfbdf4cb9d06abe8"
+      }
+    },
     {
       "identity" : "swift-algorithms",
       "kind" : "remoteSourceControl",
@@ -19,5 +29,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
