@@ -258,6 +258,7 @@
 			buildConfigurationList = ABE17BA228522F7B00879C30 /* Build configuration list for PBXNativeTarget "TimeSheet" */;
 			buildPhases = (
 				ABE17B9028522F7A00879C30 /* Sources */,
+				ABCD5FB92DF484D3009ADEDD /* SwiftLint */,
 				ABE17B9128522F7A00879C30 /* Frameworks */,
 				ABE17B9228522F7A00879C30 /* Resources */,
 			);
@@ -334,6 +335,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ABCD5FB92DF484D3009ADEDD /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]\nthen\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint\nelse\n    echo \"error: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AB391C9F2964B7EE00A0B0C1 /* Sources */ = {
