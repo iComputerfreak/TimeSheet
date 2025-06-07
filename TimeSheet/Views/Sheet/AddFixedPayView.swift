@@ -101,7 +101,9 @@ struct AddFixedPayView: View {
                     newItem.id = editingItem.wrappedValue.id
                     editingItem.wrappedValue = newItem
                 } else {
-                    assertionFailure("AddWorkTimeView was created with neither a list of worktimes, nor an editingItem.")
+                    assertionFailure(
+                        "AddWorkTimeView was created with neither a list of worktimes, nor an editingItem."
+                    )
                 }
                 dismiss()
             }

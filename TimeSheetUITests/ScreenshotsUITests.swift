@@ -8,7 +8,9 @@
 import XCTest
 
 final class TimeSheetUITests: XCTestCase {
+    // swiftlint:disable:next implicitly_unwrapped_optional
     private var app: XCUIApplication!
+    // swiftlint:disable:next implicitly_unwrapped_optional
     private var screenshotCounter: Int!
 
     override func setUpWithError() throws {

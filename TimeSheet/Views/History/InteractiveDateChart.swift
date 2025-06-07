@@ -99,20 +99,23 @@ struct InteractiveDateChart: View {
         }
         .chartOverlay { proxy in
             GeometryReader { nthGeoItem in
-                Rectangle().fill(.clear).contentShape(Rectangle())
-                    .gesture(DragGesture(minimumDistance: 0)
-                        .onChanged { value in
-                            // Find the x-coordinates in the chart’s plot area.
-                            let xCurrent = value.location.x - nthGeoItem[proxy.plotAreaFrame].origin.x
-                            // Find the date value at the x-coordinate.
-                            let date: Date = proxy.value(atX: xCurrent) ?? .now
-                            // Snap to nearest month
-                            let nearest = nearestMonth(to: date)
-                            assert(nearest <= displayedData.map(\.0).max() ?? nearest)
-                            assert(nearest >= displayedData.map(\.0).min() ?? nearest)
-                            highlightedMonth = nearest
-                        }
-                        .onEnded { _ in highlightedMonth = nil } // Clear the state on gesture end.
+                Rectangle()
+                    .fill(.clear)
+                    .contentShape(Rectangle())
+                    .gesture(
+                        DragGesture(minimumDistance: 0)
+                            .onChanged { value in
+                                // Find the x-coordinates in the chart’s plot area.
+                                let xCurrent = value.location.x - nthGeoItem[proxy.plotAreaFrame].origin.x
+                                // Find the date value at the x-coordinate.
+                                let date: Date = proxy.value(atX: xCurrent) ?? .now
+                                // Snap to nearest month
+                                let nearest = nearestMonth(to: date)
+                                assert(nearest <= displayedData.map(\.0).max() ?? nearest)
+                                assert(nearest >= displayedData.map(\.0).min() ?? nearest)
+                                highlightedMonth = nearest
+                            }
+                            .onEnded { _ in highlightedMonth = nil } // Clear the state on gesture end.
                     )
             }
         }
@@ -139,21 +142,15 @@ struct InteractiveDateChart: View {
     }
 
     private func nearestMonth(to date: Date) -> Date {
-        guard !displayedData.isEmpty else {
-            return date
-        }
+        guard !displayedData.isEmpty else { return date }
 
         // Edge cases
         let dates = displayedData.map(\.0)
         let min = dates.min()!
         let max = dates.max()!
 
-        guard date < max else {
-            return max
-        }
-        guard date > min else {
-            return min
-        }
+        guard date < max else { return max }
+        guard date > min else { return min }
 
         // If we are already at the beginning of a month, return it
         if date.day == 1 {

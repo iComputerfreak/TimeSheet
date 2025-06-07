@@ -6,6 +6,7 @@ disabled_rules:
   - trailing_comma
   - redundant_optional_initialization
   - unneeded_synthesized_initializer
+  - balanced_xctest_lifecycle
 
 opt_in_rules:
   - anonymous_argument_in_multiline_closure
