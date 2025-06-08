@@ -5,6 +5,7 @@
 //  Created by Jonas Frey on 09.06.22.
 //
 
+import Core
 import SwiftUI
 
 struct ContentView: View {
@@ -18,28 +19,28 @@ struct ContentView: View {
             ListView()
                 .tabItem {
                     Image(systemName: "list.bullet.rectangle.portrait")
-                    Text("Sheet")
+                    Text(Strings.List.navigationTitle)
                         .accessibilityIdentifier("sheet-tab")
                 }
 
             PayoutsView()
                 .tabItem {
                     Image(systemName: "banknote")
-                    Text("Payouts")
+                    Text(Strings.Payouts.navigationTitle)
                         .accessibilityIdentifier("payouts-tab")
                 }
 
             HistoryView()
                 .tabItem {
                     Image(systemName: "chart.xyaxis.line")
-                    Text("History")
+                    Text(Strings.History.navigationTitle)
                         .accessibilityIdentifier("history-tab")
                 }
 
             SettingsView()
                 .tabItem {
                     Image(systemName: "gear")
-                    Text("Settings")
+                    Text(Strings.Settings.navigationTitle)
                         .accessibilityIdentifier("settings-tab")
                 }
         }

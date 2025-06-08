@@ -53,14 +53,14 @@ struct AddFixedPayView: View {
 
     var body: some View {
         Form {
-            TextField("Activity (optional)", text: $activity)
+            TextField(Strings.CreateEntry.activity, text: $activity)
             DatePicker(selection: $date, in: dateRange, displayedComponents: .date) {
-                Text("Date")
+                Text(Strings.CreateEntry.date)
             }
             HStack {
-                Text("Amount")
+                Text(Strings.CreateEntry.amount)
                 Spacer(minLength: 50)
-                TextField("Amount", value: $payAmount, format: .number.precision(.fractionLength(0...2)))
+                TextField(Strings.CreateEntry.amount, value: $payAmount, format: .number.precision(.fractionLength(0...2)))
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.decimalPad)
                     .toolbar {
@@ -69,7 +69,7 @@ struct AddFixedPayView: View {
                                 Button {
                                     self.payAmount *= -1
                                 } label: {
-                                    Text("+/-")
+                                    Text(Strings.CreateEntry.Keyboard.plusMinus)
                                         .padding(.horizontal, 4)
                                         .padding(.bottom, 2)
                                         .background {
@@ -79,16 +79,13 @@ struct AddFixedPayView: View {
                                 }
                                 Spacer()
                             }
-                            Button("Test") {
-                                print("Pressed.")
-                            }
                         }
                     }
             }
         }
-        .navigationTitle("Add Entry")
+        .navigationTitle(Strings.CreateEntry.navigationTitle)
         .toolbar {
-            Button("Save") {
+            Button(Strings.Generic.save) {
                 guard payAmount != 0 else {
                     zeroHoursShowing = true
                     return
@@ -113,10 +110,10 @@ struct AddFixedPayView: View {
             }
             .disabled(payAmount == 0)
         }
-        .alert("Amount missing", isPresented: $zeroHoursShowing) {
-            Button("Ok") {}
+        .alert(Strings.CreateEntry.Alerts.AmountMissing.title, isPresented: $zeroHoursShowing) {
+            Button(Strings.Generic.okay) {}
         } message: {
-            Text("Please specify a pay amount.")
+            Text(Strings.CreateEntry.Alerts.AmountMissing.message)
         }
     }
 }

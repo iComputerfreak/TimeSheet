@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 74;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -42,7 +42,6 @@
 		AB5CE3522DF4BE2F009E41F3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				/Localized/Localizable.strings,
 				Assets.xcassets,
 				"Preview Content/Preview Assets.xcassets",
 			);
@@ -231,6 +230,7 @@
 				};
 			};
 			buildConfigurationList = ABE17B8F28522F7A00879C30 /* Build configuration list for PBXProject "TimeSheet" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -242,7 +242,6 @@
 			packageReferences = (
 				ABD6D4BD2DF4C1650021A0E7 /* XCRemoteSwiftPackageReference "JFUtils" */,
 			);
-			preferredProjectObjectVersion = 56;
 			productRefGroup = ABE17B9528522F7A00879C30 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

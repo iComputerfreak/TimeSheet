@@ -57,9 +57,9 @@ struct AddWorkTimeView: View {
 
     var body: some View {
         Form {
-            TextField("Activity (optional)", text: $activity)
+            TextField(Strings.CreateEntry.activity, text: $activity)
             DatePicker(selection: $date, in: dateRange, displayedComponents: .date) {
-                Text("Date")
+                Text(Strings.CreateEntry.date)
             }
             .onChange(of: date) { _ in
                 // Mark the date as manually changed
@@ -76,23 +76,23 @@ struct AddWorkTimeView: View {
             }
             Stepper(value: $hours, in: 0...23) {
                 HStack {
-                    Text("Hours")
+                    Text(Strings.CreateEntry.hours)
                     Spacer()
                     Text(hours.formatted())
                 }
             }
             Stepper(value: $minutes, in: 0...55, step: 5) {
                 HStack {
-                    Text("Minutes")
+                    Text(Strings.CreateEntry.minutes)
                     Spacer()
                     Text(minutes.formatted())
                 }
             }
             WageStepper(wage: $wage)
         }
-        .navigationTitle("Add Entry")
+        .navigationTitle(Strings.CreateEntry.navigationTitle)
         .toolbar {
-            Button("Save") {
+            Button(Strings.Generic.save) {
                 guard hours > 0 || minutes > 0 else {
                     zeroHoursShowing = true
                     return
@@ -125,10 +125,10 @@ struct AddWorkTimeView: View {
                 self.wage = config.wage
             }
         }
-        .alert("Hours missing", isPresented: $zeroHoursShowing) {
-            Button("Ok") {}
+        .alert(Strings.CreateEntry.Alerts.HoursMissing.title, isPresented: $zeroHoursShowing) {
+            Button(Strings.Generic.okay) {}
         } message: {
-            Text("Please specify how many hours you worked.")
+            Text(Strings.CreateEntry.Alerts.HoursMissing.message)
         }
     }
 }

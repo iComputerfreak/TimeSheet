@@ -5,6 +5,7 @@
 //  Created by Jonas Frey on 09.06.22.
 //
 
+import Core
 import JFUtils
 import SwiftUI
 
@@ -27,7 +28,7 @@ struct ListView: View {
                 WorkTimeList(worktimes: $userData.worktimes)
                 Divider()
                 HStack {
-                    Text("Total")
+                    Text(Strings.List.Footer.total)
                     Spacer()
                     TimeView(duration: userData.totalWorkingDuration, amount: userData.totalWorktimePayIncludingDebts)
                 }
@@ -36,10 +37,10 @@ struct ListView: View {
                 .padding(.vertical, 10)
                 Divider()
             }
-            .navigationTitle("Work Times")
+            .navigationTitle(Strings.List.navigationTitle)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Payout") {
+                    Button(Strings.List.NavigationBar.payout) {
                         createPayoutSheetShowing = true
                     }
                     .accessibilityIdentifier("payout-button")
@@ -47,11 +48,11 @@ struct ListView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
                         NavigationLink(destination: AddWorkTimeView(worktimes: $userData.worktimes)) {
-                            Label("Time", systemImage: "clock")
+                            Label(Strings.CreateEntry.time, systemImage: "clock")
                                 .accessibilityIdentifier("time-based")
                         }
                         NavigationLink(destination: AddFixedPayView(worktimes: $userData.worktimes)) {
-                            Label("Fixed Amount", systemImage: "banknote")
+                            Label(Strings.CreateEntry.fixedAmount, systemImage: "banknote")
                                 .accessibilityIdentifier("fixed-amount")
                         }
                     } label: {

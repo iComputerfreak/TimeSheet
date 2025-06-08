@@ -5,6 +5,7 @@
 //  Created by Jonas Frey on 09.06.22.
 //
 
+import Core
 import SwiftUI
 
 struct SettingsView: View {
@@ -17,21 +18,21 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 WageStepper(wage: $config.wage)
-                Picker("Currency", selection: $config.currency) {
+                Picker(Strings.Settings.currency, selection: $config.currency) {
                     ForEach(Locale.commonISOCurrencyCodes, id: \.self) { code in
                         Text(code)
                     }
                 }
                 #if DEBUG
                 if userData.worktimes.isEmpty {
-                    Button("Generate Screenshot Data") {
+                    Button(Strings.List.NavigationBar.generate) {
                         userData.worktimes = SampleData.screenshotWorktimes
                         userData.payouts = SampleData.screenshotPayouts
                     }
                 }
                 #endif
             }
-            .navigationTitle("Settings")
+            .navigationTitle(Strings.Settings.navigationTitle)
         }
     }
 }

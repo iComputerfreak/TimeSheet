@@ -1,77 +1,92 @@
-"Activity (optional)" = "Aktivität (optional)";
+"CREATE_ENTRY.ACTIVITY" = "Aktivität (optional)";
 
-"Add Entry" = "Eintrag hinzufügen";
+"CREATE_ENTRY.NAVIGATION_TITLE" = "Eintrag hinzufügen";
 
-"Amount" = "Betrag";
+"CREATE_ENTRY.AMOUNT" = "Betrag";
 
-"Balance" = "Guthaben";
+"CREATE_PAYOUT.BALANCE" = "Guthaben";
 
-"Create" = "Erstellen";
+"CREATE_PAYOUT.NAVIGATION_BAR.CREATE" = "Erstellen";
 
-"Create Payout" = "Auszahlung Erstellen";
+"CREATE_PAYOUT.NAVIGATION_TITLE" = "Auszahlung Erstellen";
 
-"Currency" = "Währung";
+"SETTINGS.CURRENCY" = "Währung";
 
-"Date" = "Datum";
+"CREATE_ENTRY.DATE" = "Datum";
 
-"Delete" = "Löschen";
+"GENERIC.DELETE" = "Löschen";
 
-"Edit" = "Bearbeiten";
+"GENERIC.EDIT" = "Bearbeiten";
 
-"Full Payout" = "Volle Auszahlung";
+"CREATE_PAYOUT.FULL_PAYOUT" = "Full Payout";
 
-"Generate" = "Generieren";
+"LIST.NAVIGATION_BAR.GENERATE" = "Generieren";
 
-"Graph Content" = "Diagramm-Inhalt";
+"HISTORY.GRAPH_CONTENT" = "Diagramm-Inhalt";
 
-"History" = "Verlauf";
+"HISTORY.NAVIGATION_TITLE" = "Verlauf";
 
-"Hourly wage" = "Stundenlohn";
+"CREATE_ENTRY.HOURLY_WAGE" = "Stundenlohn";
 
-"Hours" = "Stunden";
+"SETTINGS.HOURLY_WAGE" = "Stundenlohn";
 
-"Hours missing" = "Stunden fehlen";
+"CREATE_ENTRY.HOURS" = "Stunden";
 
-"Income" = "Einkommen";
+"CREATE_ENTRY.ALERTS.HOURS_MISSING.TITLE" = "Stunden fehlen";
 
-"No data to display" = "Keine Daten zum Anzeigen";
+"HISTORY.GRAPH_TYPE.INCOME" = "Einkommen";
 
-"No Entries" = "Keine Einträge";
+"HISTORY.NO_DATA_TO_SHOW" = "Keine Daten zum Anzeigen";
 
-"Ok" = "Ok";
+"CREATE_PAYOUT.ALERTS.EMPTY_PAYOUT.TITLE" = "No Entries";
 
-"Payout" = "Auszahlung";
+"GENERIC.OKAY" = "Ok";
 
-"Payout Amount" = "Auszahlungsbetrag";
+"LIST.NAVIGATION_BAR.PAYOUT" = "Auszahlung";
 
-"Payouts" = "Auszahlungen";
+"CREATE_PAYOUT.AMOUNT" = "Auszahlungsbetrag";
 
-"Please specify how many hours you worked." = "Bitte geben Sie an, wie viele Stunden Sie gearbeitet haben.";
+"CREATE_PAYOUT.AMOUNT_HINT" = "Betrag";
 
-"Save" = "Speichern";
+"PAYOUTS.NAVIGATION_TITLE" = "Auszahlungen";
 
-"Settings" = "Einstellungen";
+"CREATE_ENTRY.ALERTS.HOURS_MISSING.MESSAGE" = "Bitte geben Sie an, wie viele Stunden Sie gearbeitet haben.";
 
-"Sheet" = "Zettel";
+"GENERIC.SAVE" = "Speichern";
 
-"There are no entries in the list. You cannot create an empty payout." = "Es gibt keine Einträge in der Liste. Sie können keine leere Auszahlung erstellen.";
+"SETTINGS.NAVIGATION_TITLE" = "Einstellungen";
 
-"Time" = "Zeit";
+"LIST.NAVIGATION_TITLE" = "Stundenzettel";
 
-"Total" = "Gesamt";
+"CREATE_PAYOUT.ALERTS.EMPTY_PAYOUT.MESSAGE" = "There are no entries in the list. You cannot create an empty payout.";
 
-"When creating a full payout, all entries in the time sheet will be removed and archived in the payouts tab. The generated payout cannot be edited." = "Wenn Sie eine volle Auszahlung erstellen werden alle Einträge auf dem Stundenzettel entfernt und im Auszahlungs-Tab archiviert. Die erstellte Auszahlung kann nicht bearbeitet werden.";
+"HISTORY.GRAPH_TYPE.TIME" = "Zeit";
 
-"When creating a specific payout, the payout amount will be added as a separate entry in the time sheet and all other entries will remain." = "Wenn Sie eine spezifische Auszahlung erstellen wird der Auszahlungsbetrag als separater Eintrag auf den Stundenzettel aufgenommen und die anderen Einträge verbleiben auf dem Zettel.";
+"LIST.FOOTER.TOTAL" = "Gesamt";
 
-"Work Times" = "Arbeitszeiten";
+"CREATE_PAYOUT.MESSAGES.FULL_PAYOUT" = "Wenn Sie eine volle Auszahlung erstellen werden alle Einträge auf dem Stundenzettel entfernt und im Auszahlungs-Tab archiviert. Die erstellte Auszahlung kann nicht bearbeitet werden.";
 
-"Fixed Amount" = "Fester Betrag";
+"CREATE_PAYOUT.MESSAGES.SPECIFIC_PAYOUT" = "Wenn Sie eine spezifische Auszahlung erstellen wird der Auszahlungsbetrag als separater Eintrag auf den Stundenzettel aufgenommen und die anderen Einträge verbleiben auf dem Zettel.";
 
-"Hours" = "Stunden";
+"CREATE_ENTRY.FIXED_AMOUNT" = "Fester Betrag";
 
-"Minutes" = "Minuten";
+"CREATE_ENTRY.TIME" = "Zeit";
 
-"Done" = "Fertig";
+"CREATE_ENTRY.HOURS" = "Stunden";
 
-"Edit Payout" = "Auszahlung Bearbeiten";
+"CREATE_ENTRY.MINUTES" = "Minuten";
+
+"GENERIC.DONE" = "Fertig";
+
+"PAYOUTS.SWIPE_ACTIONS.EDIT" = "Auszahlung Bearbeiten";
+
+"CREATE_PAYOUT.EDIT_NAVIGATION_TITLE" = "Auszahlung Bearbeiten";
+
+// The title of the payout in the list of payouts.
+"PAYOUTS.ACTIVITY_TEXT" = "Auszahlung";
+
+"HISTORY.AXIS_LABEL_DATE" = "Datum";
+
+"CREATE_PAYOUT.DATE" = "Datum";
+
+"CREATE_ENTRY.KEYBOARD.PLUS_MINUS" = "+/-";
