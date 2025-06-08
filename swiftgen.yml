@@ -3,7 +3,9 @@ strings:
   outputs:
     - templatePath: swiftgen-stencils/strings-swift6.stencil
       output: Packages/Core/Sources/Generated/Strings.swift
-      enumName: Strings
+      params:
+          enumName: Strings
+          publicAccess: true
 xcassets:
   - inputs: Packages/Core/Sources/Resources/Colors.xcassets
     outputs:

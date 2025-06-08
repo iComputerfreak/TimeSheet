@@ -1,1 +1,77 @@
-"KEY1" = "VALUE1";
+"Activity (optional)" = "Aktivität (optional)";
+
+"Add Entry" = "Eintrag hinzufügen";
+
+"Amount" = "Betrag";
+
+"Balance" = "Guthaben";
+
+"Create" = "Erstellen";
+
+"Create Payout" = "Auszahlung Erstellen";
+
+"Currency" = "Währung";
+
+"Date" = "Datum";
+
+"Delete" = "Löschen";
+
+"Edit" = "Bearbeiten";
+
+"Full Payout" = "Volle Auszahlung";
+
+"Generate" = "Generieren";
+
+"Graph Content" = "Diagramm-Inhalt";
+
+"History" = "Verlauf";
+
+"Hourly wage" = "Stundenlohn";
+
+"Hours" = "Stunden";
+
+"Hours missing" = "Stunden fehlen";
+
+"Income" = "Einkommen";
+
+"No data to display" = "Keine Daten zum Anzeigen";
+
+"No Entries" = "Keine Einträge";
+
+"Ok" = "Ok";
+
+"Payout" = "Auszahlung";
+
+"Payout Amount" = "Auszahlungsbetrag";
+
+"Payouts" = "Auszahlungen";
+
+"Please specify how many hours you worked." = "Bitte geben Sie an, wie viele Stunden Sie gearbeitet haben.";
+
+"Save" = "Speichern";
+
+"Settings" = "Einstellungen";
+
+"Sheet" = "Zettel";
+
+"There are no entries in the list. You cannot create an empty payout." = "Es gibt keine Einträge in der Liste. Sie können keine leere Auszahlung erstellen.";
+
+"Time" = "Zeit";
+
+"Total" = "Gesamt";
+
+"When creating a full payout, all entries in the time sheet will be removed and archived in the payouts tab. The generated payout cannot be edited." = "Wenn Sie eine volle Auszahlung erstellen werden alle Einträge auf dem Stundenzettel entfernt und im Auszahlungs-Tab archiviert. Die erstellte Auszahlung kann nicht bearbeitet werden.";
+
+"When creating a specific payout, the payout amount will be added as a separate entry in the time sheet and all other entries will remain." = "Wenn Sie eine spezifische Auszahlung erstellen wird der Auszahlungsbetrag als separater Eintrag auf den Stundenzettel aufgenommen und die anderen Einträge verbleiben auf dem Zettel.";
+
+"Work Times" = "Arbeitszeiten";
+
+"Fixed Amount" = "Fester Betrag";
+
+"Hours" = "Stunden";
+
+"Minutes" = "Minuten";
+
+"Done" = "Fertig";
+
+"Edit Payout" = "Auszahlung Bearbeiten";

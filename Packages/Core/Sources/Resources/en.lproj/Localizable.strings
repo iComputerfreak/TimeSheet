@@ -1,1 +1,77 @@
-"KEY1" = "VALUE1";
+"Activity (optional)" = "Activity (optional)";
+
+"Add Entry" = "Add Entry";
+
+"Amount" = "Amount";
+
+"Balance" = "Balance";
+
+"Create" = "Create";
+
+"Create Payout" = "Create Payout";
+
+"Currency" = "Currency";
+
+"Date" = "Date";
+
+"Delete" = "Delete";
+
+"Edit" = "Edit";
+
+"Full Payout" = "Full Payout";
+
+"Generate" = "Generate";
+
+"Graph Content" = "Graph Content";
+
+"History" = "History";
+
+"Hourly wage" = "Hourly wage";
+
+"Hours" = "Hours";
+
+"Hours missing" = "Hours missing";
+
+"Income" = "Income";
+
+"No data to display" = "No data to display";
+
+"No Entries" = "No Entries";
+
+"Ok" = "Ok";
+
+"Payout" = "Payout";
+
+"Payout Amount" = "Payout Amount";
+
+"Payouts" = "Payouts";
+
+"Please specify how many hours you worked." = "Please specify how many hours you worked.";
+
+"Save" = "Save";
+
+"Settings" = "Settings";
+
+"Sheet" = "Sheet";
+
+"There are no entries in the list. You cannot create an empty payout." = "There are no entries in the list. You cannot create an empty payout.";
+
+"Time" = "Time";
+
+"Total" = "Total";
+
+"When creating a full payout, all entries in the time sheet will be removed and archived in the payouts tab. The generated payout cannot be edited." = "When creating a full payout, all entries in the time sheet will be removed and archived in the payouts tab. The generated payout cannot be edited.";
+
+"When creating a specific payout, the payout amount will be added as a separate entry in the time sheet and all other entries will remain." = "When creating a specific payout, the payout amount will be added as a separate entry in the time sheet and all other entries will remain.";
+
+"Work Times" = "Work Times";
+
+"Fixed Amount" = "Fixed Amount";
+
+"Hours" = "Hours";
+
+"Minutes" = "Minutes";
+
+"Done" = "Done";
+
+"Edit Payout" = "Edit Payout";
