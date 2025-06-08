@@ -14,6 +14,7 @@ public struct WageStepper: View {
 
     @Binding private var wage: Double
 
+    // swiftlint:disable:next type_contents_order
     public init(wage: Binding<Double>) {
         self._wage = wage
     }

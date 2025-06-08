@@ -62,27 +62,31 @@ struct AddFixedPayView: View {
             HStack {
                 Text(Strings.CreateEntry.amount)
                 Spacer(minLength: 50)
-                TextField(Strings.CreateEntry.amount, value: $payAmount, format: .number.precision(.fractionLength(0...2)))
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.decimalPad)
-                    .toolbar {
-                        ToolbarItem(placement: .keyboard) {
-                            HStack {
-                                Button {
-                                    self.payAmount *= -1
-                                } label: {
-                                    Text(Strings.CreateEntry.Keyboard.plusMinus)
-                                        .padding(.horizontal, 4)
-                                        .padding(.bottom, 2)
-                                        .background {
-                                            RoundedRectangle(cornerRadius: 3)
-                                                .fill(Colors.secondaryAccent)
-                                        }
-                                }
-                                Spacer()
+                TextField(
+                    Strings.CreateEntry.amount,
+                    value: $payAmount,
+                    format: .number.precision(.fractionLength(0...2))
+                )
+                .multilineTextAlignment(.trailing)
+                .keyboardType(.decimalPad)
+                .toolbar {
+                    ToolbarItem(placement: .keyboard) {
+                        HStack {
+                            Button {
+                                self.payAmount *= -1
+                            } label: {
+                                Text(Strings.CreateEntry.Keyboard.plusMinus)
+                                    .padding(.horizontal, 4)
+                                    .padding(.bottom, 2)
+                                    .background {
+                                        RoundedRectangle(cornerRadius: 3)
+                                            .fill(Colors.secondaryAccent)
+                                    }
                             }
+                            Spacer()
                         }
                     }
+                }
             }
         }
         .navigationTitle(Strings.CreateEntry.navigationTitle)

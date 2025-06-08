@@ -3,6 +3,8 @@
 import SwiftUI
 
 public protocol StatefulView: View {
-    associatedtype ViewState
-    var viewModel: any ViewModel<ViewState> { get set }
+    associatedtype ViewModel
+    var viewModel: ViewModel { get set }
+
+    init(viewModel: ViewModel)
 }

@@ -5,22 +5,36 @@ import Domain
 import Foundation
 import SwiftUI
 
-public struct SettingsViewState {
-    @AppStorage(UserDefaultsKey.wage)
-    var wage: Double = UserDefaultsDefaultValue.wage
+@Observable
+public class SettingsViewState {
+    var wage: Double {
+        didSet {
+            AppStorage(UserDefaultsKey.wage).wrappedValue = wage
+        }
+    }
 
-    @AppStorage(UserDefaultsKey.currency)
-    var currency: String = UserDefaultsDefaultValue.currency
+    var currency: String = UserDefaultsDefaultValue.currency {
+        didSet {
+            AppStorage(UserDefaultsKey.currency).wrappedValue = currency
+        }
+    }
 
     #if DEBUG
     // TODO: Use DI
     /*@EnvironmentObject*/ var userData: UserData = .init()
     #endif
 
-    public init() {}
+    public init() {
+        @AppStorage(UserDefaultsKey.wage)
+        var storedWage: Double = UserDefaultsDefaultValue.wage
+        self.wage = storedWage
+
+        @AppStorage(UserDefaultsKey.currency)
+        var storedCurrency: String = UserDefaultsDefaultValue.currency
+        self.currency = storedCurrency
+    }
 }
 
-@Observable
 public class SettingsViewModel: ViewModel {
     public var state: SettingsViewState
 

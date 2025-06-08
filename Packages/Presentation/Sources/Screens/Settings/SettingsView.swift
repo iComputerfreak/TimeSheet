@@ -11,22 +11,22 @@ import Model
 import SwiftUI
 
 public struct SettingsView: StatefulView {
-    @State public var viewModel: any ViewModel<SettingsViewState>
+    @State public var viewModel: SettingsViewModel
 
     // swiftlint:disable:next type_contents_order
-    public init(viewModel: any ViewModel<SettingsViewState> = SettingsViewModel()) {
+    public init(viewModel: SettingsViewModel = SettingsViewModel()) {
         self.viewModel = viewModel
     }
 
     public var body: some View {
         NavigationStack {
             Form {
-//                WageStepper(wage: $viewModel.state.wage)
-//                Picker(Strings.Settings.currency, selection: $viewModel.state.currency) {
-//                    ForEach(Locale.commonISOCurrencyCodes, id: \.self) { code in
-//                        Text(code)
-//                    }
-//                }
+                WageStepper(wage: $viewModel.state.wage)
+                Picker(Strings.Settings.currency, selection: $viewModel.state.currency) {
+                    ForEach(Locale.commonISOCurrencyCodes, id: \.self) { code in
+                        Text(code)
+                    }
+                }
                 #if DEBUG
                 if viewModel.state.userData.worktimes.isEmpty {
                     Button(Strings.List.NavigationBar.generate) {
@@ -41,9 +41,9 @@ public struct SettingsView: StatefulView {
     }
 }
 
-//#Preview {
-//    SettingsView(viewModel: EmptyViewModel(state: .init()))
-//        .environment(\.locale, Locale(identifier: "de"))
-//    // TODO: Resolve
-//    //            .environmentObject(Config())
-//}
+#if DEBUG
+#Preview {
+    SettingsView()
+        .previewEnvironment()
+}
+#endif
