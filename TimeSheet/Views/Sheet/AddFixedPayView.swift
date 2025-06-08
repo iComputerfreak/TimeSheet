@@ -74,7 +74,7 @@ struct AddFixedPayView: View {
                                         .padding(.bottom, 2)
                                         .background {
                                             RoundedRectangle(cornerRadius: 3)
-                                                .fill(Color("secondaryAccent"))
+                                                .fill(Colors.secondaryAccent)
                                         }
                                 }
                                 Spacer()
