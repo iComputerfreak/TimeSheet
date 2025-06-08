@@ -21,10 +21,10 @@ struct PayoutRow: View {
     var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading) {
-                Text("\(payout.date, format: .dateTime.day().month().year())")
+                Text(payout.date.formatted(.dateTime.day().month().year()))
                     .font(.headline)
                 let duration = Self.durationFormatter.string(from: payout.duration) ?? ""
-                Text("\(duration)")
+                Text(duration)
             }
             Spacer()
             let total = payout.amount.formatted(.currency(code: config.currency))

@@ -1,0 +1,96 @@
+"CREATE_ENTRY.ACTIVITY" = "Activity (optional)";
+
+"CREATE_ENTRY.NAVIGATION_TITLE" = "Add Entry";
+
+"CREATE_ENTRY.AMOUNT" = "Amount";
+
+"CREATE_PAYOUT.BALANCE" = "Balance";
+
+"CREATE_PAYOUT.NAVIGATION_BAR.CREATE" = "Create";
+
+"CREATE_PAYOUT.NAVIGATION_TITLE" = "Create Payout";
+
+"SETTINGS.CURRENCY" = "Currency";
+
+"CREATE_ENTRY.DATE" = "Date";
+
+"GENERIC.DELETE" = "Delete";
+
+"GENERIC.EDIT" = "Edit";
+
+"CREATE_PAYOUT.FULL_PAYOUT" = "Full Payout";
+
+"LIST.NAVIGATION_BAR.GENERATE" = "Generate";
+
+"HISTORY.GRAPH_CONTENT" = "Graph Content";
+
+"HISTORY.NAVIGATION_TITLE" = "History";
+
+"CREATE_ENTRY.HOURLY_WAGE" = "Hourly wage";
+
+"SETTINGS.HOURLY_WAGE" = "Hourly wage";
+
+"CREATE_ENTRY.HOURS" = "Hours";
+
+"CREATE_ENTRY.ALERTS.HOURS_MISSING.TITLE" = "Hours missing";
+
+"HISTORY.GRAPH_TYPE.INCOME" = "Income";
+
+"HISTORY.NO_DATA_TO_SHOW" = "No data to display";
+
+"CREATE_PAYOUT.ALERTS.EMPTY_PAYOUT.TITLE" = "No Entries";
+
+"GENERIC.OKAY" = "Ok";
+
+"LIST.NAVIGATION_BAR.PAYOUT" = "Payout";
+
+"CREATE_PAYOUT.AMOUNT" = "Payout Amount";
+
+"CREATE_PAYOUT.AMOUNT_HINT" = "Amount";
+
+"PAYOUTS.NAVIGATION_TITLE" = "Payouts";
+
+"CREATE_ENTRY.ALERTS.HOURS_MISSING.MESSAGE" = "Please specify how many hours you worked.";
+
+"GENERIC.SAVE" = "Save";
+
+"SETTINGS.NAVIGATION_TITLE" = "Settings";
+
+"LIST.NAVIGATION_TITLE" = "Sheet";
+
+"CREATE_PAYOUT.ALERTS.EMPTY_PAYOUT.MESSAGE" = "There are no entries in the list. You cannot create an empty payout.";
+
+"HISTORY.GRAPH_TYPE.TIME" = "Time";
+
+"LIST.FOOTER.TOTAL" = "Total";
+
+"CREATE_PAYOUT.MESSAGES.FULL_PAYOUT" = "When creating a full payout, all entries in the time sheet will be removed and archived in the payouts tab. The generated payout cannot be edited.";
+
+"CREATE_PAYOUT.MESSAGES.SPECIFIC_PAYOUT" = "When creating a specific payout, the payout amount will be added as a separate entry in the time sheet and all other entries will remain.";
+
+"CREATE_ENTRY.FIXED_AMOUNT" = "Fixed Amount";
+
+"CREATE_ENTRY.TIME" = "Time";
+
+"CREATE_ENTRY.HOURS" = "Hours";
+
+"CREATE_ENTRY.MINUTES" = "Minutes";
+
+"GENERIC.DONE" = "Done";
+
+"PAYOUTS.SWIPE_ACTIONS.EDIT" = "Edit Payout";
+
+"CREATE_PAYOUT.EDIT_NAVIGATION_TITLE" = "Edit Payout";
+
+// The title of the payout in the list of payouts.
+"PAYOUTS.ACTIVITY_TEXT" = "Payout";
+
+"HISTORY.AXIS_LABEL_DATE" = "Date";
+
+"CREATE_PAYOUT.DATE" = "Date";
+
+"CREATE_ENTRY.KEYBOARD.PLUS_MINUS" = "+/-";
+
+"CREATE_ENTRY.ALERTS.AMOUNT_MISSING.TITLE" = "Amount missing";
+
+"CREATE_ENTRY.ALERTS.AMOUNT_MISSING.MESSAGE" = "Please specify a pay amount.";

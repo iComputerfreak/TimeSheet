@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 74;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -42,7 +42,6 @@
 		AB5CE3522DF4BE2F009E41F3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				/Localized/Localizable.strings,
 				Assets.xcassets,
 				"Preview Content/Preview Assets.xcassets",
 			);
@@ -181,6 +180,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABE17BA228522F7B00879C30 /* Build configuration list for PBXNativeTarget "TimeSheet" */;
 			buildPhases = (
+				AB8F2F982DF58A4D00069A02 /* SwiftGen */,
 				ABE17B9028522F7A00879C30 /* Sources */,
 				ABCD5FB92DF484D3009ADEDD /* SwiftLint */,
 				ABE17B9128522F7A00879C30 /* Frameworks */,
@@ -230,6 +230,7 @@
 				};
 			};
 			buildConfigurationList = ABE17B8F28522F7A00879C30 /* Build configuration list for PBXProject "TimeSheet" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -241,7 +242,6 @@
 			packageReferences = (
 				ABD6D4BD2DF4C1650021A0E7 /* XCRemoteSwiftPackageReference "JFUtils" */,
 			);
-			preferredProjectObjectVersion = 56;
 			productRefGroup = ABE17B9528522F7A00879C30 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -278,6 +278,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		AB8F2F982DF58A4D00069A02 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]\nthen\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftgen >/dev/null; then\n  swiftgen\nelse\n  echo \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
+		};
 		ABCD5FB92DF484D3009ADEDD /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;

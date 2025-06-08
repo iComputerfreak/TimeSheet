@@ -36,7 +36,7 @@ struct AnnotationView: View {
 
     var body: some View {
         VStack {
-            Text("\(monthName)")
+            Text(monthName)
             Text(valueLabel)
         }
             .padding(8)

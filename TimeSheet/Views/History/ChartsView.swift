@@ -5,8 +5,9 @@
 //  Created by Jonas Frey on 10.06.22.
 //
 
-import SwiftUI
 import Charts
+import Core
+import SwiftUI
 
 enum GraphType {
     case income
@@ -14,10 +15,8 @@ enum GraphType {
 
     var yLabel: String {
         switch self {
-        case .income:
-            return "Income"
-        case .time:
-            return "Time"
+        case .income: Strings.History.GraphType.income
+        case .time: Strings.History.GraphType.time
         }
     }
 }
@@ -60,7 +59,7 @@ struct ChartsView: View {
             // TODO: We should not compare the literal title here, we should create a different struct for Payouts
             .mapValues { value in
                 value
-                    .filter { $0.activity != String(localized: "Payout") }
+                    .filter { $0.activity != Strings.Payouts.activityText }
                     .map(\.pay)
                     .reduce(0, +)
             }
@@ -97,22 +96,22 @@ struct ChartsView: View {
         NavigationStack {
             Group {
                 if worktimes.isEmpty {
-                    Text("No data to display")
+                    Text(Strings.History.noDataToShow)
                 } else {
                     chartsContent
                 }
             }
-            .navigationTitle("History")
+            .navigationTitle(Strings.History.navigationTitle)
         }
     }
 
     var chartsContent: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Picker("Graph Content", selection: $graphType) {
-                    Text("Income")
+                Picker(Strings.History.graphContent, selection: $graphType) {
+                    Text(Strings.History.GraphType.income)
                         .tag(GraphType.income)
-                    Text("Time")
+                    Text(Strings.History.GraphType.time)
                         .tag(GraphType.time)
                 }
                 .pickerStyle(.segmented)
@@ -127,10 +126,10 @@ struct ChartsView: View {
                             Spacer()
                             switch graphType {
                             case .income:
-                                Text("\(income, format: .currency(code: config.currency))")
+                                Text(income.formatted(.currency(code: config.currency)))
                             case .time:
                                 let components = DateComponents(hour: Int(income), minute: Int(income * 60) % 60)
-                                Text("\(Self.historyDurationFormatter.string(from: components) ?? "")")
+                                Text(Self.historyDurationFormatter.string(from: components) ?? "")
                             }
                         }
                         .foregroundColor(.gray)

@@ -33,7 +33,7 @@ struct WorkTimeList: View {
                                         Button {
                                             worktimes.removeAll(where: { $0.id == worktime.id })
                                         } label: {
-                                            Label("Delete", systemImage: "trash")
+                                            Label(Strings.Generic.delete, systemImage: "trash")
                                         }
                                     }
                                     .tint(.red)
@@ -45,7 +45,7 @@ struct WorkTimeList: View {
                                                     .first { $0.wrappedValue.id == worktime.id }!
                                             )
                                         } label: {
-                                            Label("Edit", systemImage: "pencil")
+                                            Label(Strings.Generic.edit, systemImage: "pencil")
                                         }
                                     }
                                 }
@@ -59,7 +59,7 @@ struct WorkTimeList: View {
                             .map(\.pay)
                             .reduce(0, +)
                         HStack {
-                            Text("\(monthName) \(year, format: .number.grouping(.never))")
+                            Text("\(monthName) \(year.formatted(.number.grouping(.never)))")
                             Spacer()
                             TimeView(duration: totalHours, amount: totalMoney)
                         }

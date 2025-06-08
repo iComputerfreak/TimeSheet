@@ -1,0 +1,91 @@
+// swiftlint:disable all
+// Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
+
+{% if catalogs %}
+{% macro hasValuesBlock assets filter %}
+  {%- for asset in assets -%}
+    {%- if asset.type == filter -%}
+      1
+    {%- elif asset.items -%}
+      {% call hasValuesBlock asset.items filter %}
+    {%- endif -%}
+  {%- endfor -%}
+{% endmacro %}
+{% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
+{% set colorType %}{{param.colorTypeName|default:"ColorAsset"}}{% endset %}
+{% set imageType %}{{param.imageTypeName|default:"ImageAsset"}}{% endset %}
+{% set forceNamespaces %}{{param.forceProvidesNamespaces|default:"false"}}{% endset %}
+{% set accessModifier %}{% if param.publicAccess %}public{% else %}internal{% endif %}{% endset %}
+{% set hasImage %}{% for catalog in catalogs %}{% call hasValuesBlock catalog.assets "image" %}{% endfor %}{% endset %}
+{% set hasColor %}{% for catalog in catalogs %}{% call hasValuesBlock catalog.assets "color" %}{% endfor %}{% endset %}
+import SwiftUI
+
+private let bundle = Bundle(for: BundleToken.self)
+
+// MARK: - Asset Catalogs
+
+{% macro enumBlock assets %}
+    {% call casesBlock assets %}
+{% endmacro %}
+{% macro casesBlock assets %}
+    {% for asset in assets %}
+    {% if asset.type == "color" %}
+    {{accessModifier}} static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = Color("{{asset.value}}", bundle: bundle)
+    {% elif asset.type == "image" %}
+    {{accessModifier}} static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = {{imageType}}(name: "{{asset.value}}")
+    {% elif asset.items and ( forceNamespaces == "true" or asset.isNamespaced == "true" ) %}
+    {{accessModifier}} enum {{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
+
+      {% filter indent:2 %}{% call casesBlock asset.items %}{% endfilter %}
+    }
+    {% elif asset.items %}
+    {% call casesBlock asset.items %}
+    {% endif %}
+    {% endfor %}
+{% endmacro %}
+{% macro allValuesBlock assets filter prefix %}
+    {% for asset in assets %}
+    {% if asset.type == filter %}
+    {{prefix}}{{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}},
+    {% elif asset.items and ( forceNamespaces == "true" or asset.isNamespaced == "true" ) %}
+    {% set prefix2 %}{{prefix}}{{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}}.{% endset %}
+    {% call allValuesBlock asset.items filter prefix2 %}
+    {% elif asset.items %}
+    {% call allValuesBlock asset.items filter prefix %}
+    {% endif %}
+    {% endfor %}
+{% endmacro %}
+{{accessModifier}} enum {{enumName}} {
+    {% if catalogs.count > 1 %}
+    {% for catalog in catalogs %}
+    {{accessModifier}} enum {{catalog.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
+        {% filter indent:2 %}{% call enumBlock catalog.assets %}{% endfilter %}
+    }
+    {% endfor %}
+    {% else %}
+    {% call enumBlock catalogs.first.assets %}
+    {% endif %}
+}
+
+// MARK: - Implementation Details
+
+{% if hasImage %}
+{{accessModifier}} struct {{imageType}}: Sendable {
+    fileprivate let name: String
+
+    {{accessModifier}} var image: Image {
+        return Image(name, bundle: bundle)
+    }
+
+    {{accessModifier}} var uiImage: UIImage {
+        return UIImage(named: name, in: bundle, with: nil)!
+    }
+}
+{% endif %}
+
+private final class BundleToken {}
+{% else %}
+// No assets found
+{% endif %}
+
+// swiftlint:enable all

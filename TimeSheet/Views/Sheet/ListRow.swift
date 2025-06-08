@@ -26,11 +26,11 @@ struct ListRow: View {
                         .bold()
                 }
                 let date = worktime.date.formatted(.dateTime.weekday().day().month(.defaultDigits))
-                Text("\(date)")
+                Text(date)
             }
             Spacer()
             VStack(alignment: .trailing) {
-                Text("\(worktime.pay, format: .currency(code: config.currency))")
+                Text(worktime.pay.formatted(.currency(code: config.currency)))
                     .bold()
                     .foregroundColor(worktime.pay >= 0 ? .green : .red)
                 let duration = Self.durationFormatter.string(from: worktime.duration) ?? ""

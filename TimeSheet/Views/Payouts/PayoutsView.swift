@@ -5,6 +5,7 @@
 //  Created by Jonas Frey on 09.06.22.
 //
 
+import Core
 import SwiftUI
 
 struct PayoutsView: View {
@@ -24,7 +25,7 @@ struct PayoutsView: View {
                         WorkTimeList(worktimes: $payout.worktimes)
                             .environmentObject(userData)
                             .environmentObject(config)
-                            .navigationTitle("\(payout.date, format: .dateTime.day().month().year())")
+                            .navigationTitle(payout.date.formatted(.dateTime.day().month().year()))
                     } label: {
                         PayoutRow(payout: payout)
                     }
@@ -32,18 +33,18 @@ struct PayoutsView: View {
                         Button {
                             userData.payouts.removeAll(where: { $0.id == payout.id })
                         } label: {
-                            Label("Delete", systemImage: "trash")
+                            Label(Strings.Generic.delete, systemImage: "trash")
                         }
                         .tint(.red)
                         Button {
                             editingPayout = payout
                         } label: {
-                            Label("Edit", systemImage: "pencil")
+                            Label(Strings.Generic.edit, systemImage: "pencil")
                         }
                     }
                 }
             }
-            .navigationTitle("Payouts")
+            .navigationTitle(Strings.Payouts.navigationTitle)
         }
         .sheet(item: $editingPayout) { payout in
             let index = userData.payouts.firstIndex(where: { $0.id == payout.id })!

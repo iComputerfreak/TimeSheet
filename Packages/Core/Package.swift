@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "Core",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v16),
     ],
@@ -20,7 +21,10 @@ let package = Package(
         .target(
             name: "Core",
             dependencies: [],
-            path: "Sources"
+            path: "Sources",
+            resources: [
+                .process("Resources"),
+            ]
         ),
         .testTarget(
             name: "CoreTests",

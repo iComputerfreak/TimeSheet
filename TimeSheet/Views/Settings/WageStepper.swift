@@ -5,6 +5,7 @@
 //  Created by Jonas Frey on 10.06.22.
 //
 
+import Core
 import SwiftUI
 
 struct WageStepper: View {
@@ -14,9 +15,9 @@ struct WageStepper: View {
     var body: some View {
         Stepper(value: $wage, in: 0...100, step: 0.5, format: .currency(code: config.currency)) {
             HStack {
-                Text("Hourly wage")
+                Text(Strings.Settings.hourlyWage)
                 Spacer()
-                TextField("Wage", value: $wage, format: .currency(code: config.currency))
+                TextField(Strings.Settings.hourlyWage, value: $wage, format: .currency(code: config.currency))
                     .multilineTextAlignment(.trailing)
                     .scrollDismissesKeyboard(.automatic)
                     .submitLabel(.done)

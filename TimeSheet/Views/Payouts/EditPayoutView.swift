@@ -5,6 +5,7 @@
 //  Created by Jonas Frey on 04.05.23.
 //
 
+import Core
 import SwiftUI
 
 struct EditPayoutView: View {
@@ -15,10 +16,10 @@ struct EditPayoutView: View {
     var body: some View {
         NavigationStack {
             Form {
-                DatePicker("Date", selection: $payout.date, displayedComponents: .date)
-                    .navigationTitle("Edit Payout")
+                DatePicker(Strings.CreatePayout.date, selection: $payout.date, displayedComponents: .date)
+                    .navigationTitle(Strings.CreatePayout.editNavigationTitle)
                 HStack {
-                    Text("Amount")
+                    Text(Strings.CreatePayout.amountHint)
                     Spacer()
                     Text(payout.amount.formatted(.currency(code: config.currency)))
                         .foregroundColor(.gray)
@@ -29,7 +30,7 @@ struct EditPayoutView: View {
                     Button {
                         dismiss()
                     } label: {
-                        Text("Done")
+                        Text(Strings.Generic.done)
                             .bold()
                     }
                 }

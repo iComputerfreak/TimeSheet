@@ -5,8 +5,9 @@
 //  Created by Jonas Frey on 10.06.22.
 //
 
-import SwiftUI
 import Charts
+import Core
+import SwiftUI
 
 struct InteractiveDateChart: View {
     var data: [(Date, Double)]
@@ -58,13 +59,13 @@ struct InteractiveDateChart: View {
             ForEach(displayedData, id: \.0) { date, amount in
                 // Move the data point into the middle of the month
                 AreaMark(
-                    x: .value("Date", date),
+                    x: .value(Strings.History.axisLabelDate, date),
                     y: .value(graphType.yLabel, amount)
                 )
                 .interpolationMethod(.linear)
                 .foregroundStyle(Gradient(colors: [.green.opacity(0.6), .green]))
                 LineMark(
-                    x: .value("Date", date),
+                    x: .value(Strings.History.axisLabelDate, date),
                     y: .value(graphType.yLabel, amount)
                 )
                 .interpolationMethod(.linear)
@@ -73,7 +74,7 @@ struct InteractiveDateChart: View {
             if let highlightedMonth {
                 let value = displayedData.first(where: { $0.0 == highlightedMonth })?.1 ?? 0
                 BarMark(
-                    x: .value("Date", highlightedMonth),
+                    x: .value(Strings.History.axisLabelDate, highlightedMonth),
                     yStart: .value(graphType.yLabel, 0),
                     yEnd: .value(graphType.yLabel, value),
                     width: .fixed(2)
