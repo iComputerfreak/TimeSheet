@@ -5,6 +5,8 @@
 //  Created by Jonas Frey on 07.07.22.
 //
 
+import Domain
+import Model
 import SwiftUI
 
 struct HistoryView: View {

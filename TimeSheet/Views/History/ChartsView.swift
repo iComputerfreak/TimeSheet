@@ -7,6 +7,8 @@
 
 import Charts
 import Core
+import Domain
+import Model
 import SwiftUI
 
 enum GraphType {

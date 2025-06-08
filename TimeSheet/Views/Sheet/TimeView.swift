@@ -5,6 +5,8 @@
 //  Created by Jonas Frey on 09.06.22.
 //
 
+import Domain
+import Model
 import SwiftUI
 
 struct TimeView: View {

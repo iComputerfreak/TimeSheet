@@ -6,7 +6,9 @@
 //
 
 import Core
+import Domain
 import JFUtils
+import Model
 import SwiftUI
 
 struct ListView: View {

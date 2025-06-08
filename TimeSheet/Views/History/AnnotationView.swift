@@ -5,6 +5,7 @@
 //  Created by Jonas Frey on 10.06.22.
 //
 
+import Domain
 import SwiftUI
 
 struct AnnotationView: View {

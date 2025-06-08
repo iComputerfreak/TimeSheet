@@ -5,6 +5,8 @@
 //  Created by Jonas Frey on 10.06.22.
 //
 
+import Domain
+import Model
 import SwiftUI
 
 struct PayoutRow: View {

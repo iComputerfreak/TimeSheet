@@ -6,6 +6,9 @@
 //
 
 import Core
+import Domain
+import Model
+import Presentation
 import SwiftUI
 
 struct AddWorkTimeView: View {

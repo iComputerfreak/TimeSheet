@@ -7,16 +7,18 @@
 
 import Core
 import Foundation
+import Model
 import SwiftUI
 
-class UserData: ObservableObject {
+// TODO: Remove unchecked Sendable
+public class UserData: ObservableObject, @unchecked Sendable {
     private static let worktimesKey = "worktimes"
     private static let payoutsKey = "payouts"
 
-    @Published var worktimes: [WorkTime]
-    @Published var payouts: [Payout]
+    @Published public var worktimes: [WorkTime]
+    @Published public var payouts: [Payout]
 
-    var totalWorkingDuration: DateComponents {
+    public var totalWorkingDuration: DateComponents {
         worktimes
             .filter { !$0.isFixedPay }
             .filter { $0.pay > 0 }
@@ -24,25 +26,25 @@ class UserData: ObservableObject {
             .reduce(.zero, +)
     }
 
-    var totalWorktimePayIncludingDebts: Double {
+    public var totalWorktimePayIncludingDebts: Double {
         worktimes
             .map(\.pay)
             .reduce(0, +)
     }
 
-    init(worktimes: [WorkTime], payouts: [Payout]) {
+    public init(worktimes: [WorkTime], payouts: [Payout]) {
         self.worktimes = worktimes
         self.payouts = payouts
     }
 
     // Load from persistent store
-    init() {
+    public init() {
         print("Loading persistent data...")
         self.worktimes = Self.decode([WorkTime].self, forKey: Self.worktimesKey) ?? []
         self.payouts = Self.decode([Payout].self, forKey: Self.payoutsKey) ?? []
     }
 
-    func save() {
+    public func save() {
         print("Saving persistent data...")
         let encoder = PropertyListEncoder()
         do {
@@ -54,7 +56,7 @@ class UserData: ObservableObject {
     }
 }
 
-extension UserData {
+public extension UserData {
     static func decode<T: Decodable>(_ type: T.Type, forKey key: String) -> T? {
         guard let data = UserDefaults.standard.data(forKey: key) else { return nil }
         do {

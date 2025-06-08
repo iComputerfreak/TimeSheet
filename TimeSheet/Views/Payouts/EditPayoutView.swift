@@ -6,6 +6,8 @@
 //
 
 import Core
+import Domain
+import Model
 import SwiftUI
 
 struct EditPayoutView: View {

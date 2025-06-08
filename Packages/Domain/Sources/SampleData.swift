@@ -6,18 +6,19 @@
 //
 
 import Foundation
+import Model
 
-enum SampleData {
+public enum SampleData: Sendable {
     private static let screenshotWage: Double = 20
 
-    static let userData: UserData = {
+    public static let userData: UserData = {
         UserData(
             worktimes: generateWorkTimes(),
             payouts: generatePayouts()
         )
     }()
 
-    static let screenshotWorktimes: [WorkTime] = [
+    public static let screenshotWorktimes: [WorkTime] = [
         WorkTime(
             date: Date.create(2022, 11, 12),
             activity: "Redesign of personal website",
@@ -70,7 +71,7 @@ enum SampleData {
         (Date.create(2022, 04, 01), 3000.0)
     ]
 
-    static var screenshotPayouts: [Payout] {
+    public static var screenshotPayouts: [Payout] {
         screenshotPayoutsData.map { date, amount in
             let hours = amount / screenshotWage
             let minutes = amount.truncatingRemainder(dividingBy: screenshotWage) / (screenshotWage / 60)
@@ -84,7 +85,7 @@ enum SampleData {
     }
 }
 
-extension SampleData {
+public extension SampleData {
     static func generateWorkTimes(count: Int = 80) -> [WorkTime] {
         var worktimes: [WorkTime] = []
         for _ in 1...count {
@@ -123,7 +124,7 @@ extension SampleData {
     }
 }
 
-extension Date {
+public extension Date {
     static func create(_ year: Int, _ month: Int, _ day: Int) -> Date {
         Calendar.current.date(from: .init(year: year, month: month, day: day))!
     }
