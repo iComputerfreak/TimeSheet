@@ -181,6 +181,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABE17BA228522F7B00879C30 /* Build configuration list for PBXNativeTarget "TimeSheet" */;
 			buildPhases = (
+				AB8F2F982DF58A4D00069A02 /* SwiftGen */,
 				ABE17B9028522F7A00879C30 /* Sources */,
 				ABCD5FB92DF484D3009ADEDD /* SwiftLint */,
 				ABE17B9128522F7A00879C30 /* Frameworks */,
@@ -278,6 +279,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		AB8F2F982DF58A4D00069A02 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]\nthen\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftgen >/dev/null; then\n  swiftgen\nelse\n  echo \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
+		};
 		ABCD5FB92DF484D3009ADEDD /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;

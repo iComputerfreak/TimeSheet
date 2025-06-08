@@ -1,0 +1,21 @@
+strings:
+  inputs: Packages/Core/Sources/Resources/en.lproj
+  outputs:
+    - templatePath: swiftgen-stencils/strings-swift6.stencil
+      output: Packages/Core/Sources/Generated/Strings.swift
+      enumName: Strings
+xcassets:
+  - inputs: Packages/Core/Sources/Resources/Colors.xcassets
+    outputs:
+      - templatePath: swiftgen-stencils/assets-swift6.stencil
+        output: Packages/Core/Sources/Generated/Colors.swift
+        params:
+          enumName: Colors
+          publicAccess: true
+  - inputs: Packages/Core/Sources/Resources/Images.xcassets
+    outputs:
+      - templatePath: swiftgen-stencils/assets-swift6.stencil
+        output: Packages/Core/Sources/Generated/Images.swift
+        params:
+          enumName: Images
+          publicAccess: true
