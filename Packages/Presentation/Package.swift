@@ -3,32 +3,34 @@
 import PackageDescription
 
 let package = Package(
-    name: "Domain",
+    name: "Presentation",
     platforms: [
         .iOS(.v17),
     ],
     products: [
         .library(
-            name: "Domain",
-            targets: ["Domain"]
+            name: "Presentation",
+            targets: ["Presentation"]
         ),
     ],
     dependencies: [
         .package(path: "../Core"),
+        .package(path: "../Domain"),
         .package(path: "../Model"),
     ],
     targets: [
         .target(
-            name: "Domain",
+            name: "Presentation",
             dependencies: [
                 "Core",
+                "Domain",
                 "Model",
             ],
             path: "Sources"
         ),
         .testTarget(
-            name: "DomainTests",
-            dependencies: ["Domain"],
+            name: "PresentationTests",
+            dependencies: ["Presentation"],
             path: "Tests"
         ),
     ]
