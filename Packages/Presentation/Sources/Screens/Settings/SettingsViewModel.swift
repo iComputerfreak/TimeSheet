@@ -9,35 +9,30 @@ extension SettingsView {
     @Observable
     public class ViewModel: ViewModelProtocol {
         var wage: Double {
-            didSet {
-                AppStorage(UserDefaultsKey.wage).wrappedValue = wage
-            }
+            get { config.wage }
+            set { config.wage = newValue }
         }
 
         var currency: String {
-            didSet {
-                AppStorage(UserDefaultsKey.currency).wrappedValue = currency
-            }
+            get { config.currency }
+            set { config.currency = newValue }
         }
+
+        @ObservationIgnored
+        @Injected var config: Config
 
         #if DEBUG
         @ObservationIgnored
         @Injected var userData: UserData
         #endif
 
-        public init() {
-            @AppStorage(UserDefaultsKey.wage)
-            var storedWage: Double = UserDefaultsDefaultValue.wage
-            self.wage = storedWage
+        public init() {}
 
-            @AppStorage(UserDefaultsKey.currency)
-            var storedCurrency: String = UserDefaultsDefaultValue.currency
-            self.currency = storedCurrency
-        }
-
+        #if DEBUG
         func generateSampleData() {
             userData.worktimes = SampleData.screenshotWorktimes
             userData.payouts = SampleData.screenshotPayouts
         }
+        #endif
     }
 }
