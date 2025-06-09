@@ -20,7 +20,7 @@ func assertSnapshot(
     line: UInt = #line,
     column: UInt = #column,
     @ViewBuilder view: () -> some View
-) async {
+) {
     let view = view().frame(minWidth: width, minHeight: height)
     assertSnapshot(
         of: view,

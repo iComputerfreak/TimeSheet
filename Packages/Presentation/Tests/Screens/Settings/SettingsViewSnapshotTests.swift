@@ -12,8 +12,8 @@ struct SettingsViewSnapshotTests {
     }
 
     @Test
-    func testSettings() async {
-        await assertSnapshot {
+    func testSettings() {
+        assertSnapshot {
             SettingsView()
         }
     }
