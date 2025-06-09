@@ -109,8 +109,10 @@ struct InteractiveDateChart: View {
                     .gesture(
                         DragGesture(minimumDistance: 0)
                             .onChanged { value in
+                                guard let plotFrame = proxy.plotFrame else { return }
+
                                 // Find the x-coordinates in the chart’s plot area.
-                                let xCurrent = value.location.x - nthGeoItem[proxy.plotAreaFrame].origin.x
+                                let xCurrent = value.location.x - nthGeoItem[plotFrame].origin.x
                                 // Find the date value at the x-coordinate.
                                 let date: Date = proxy.value(atX: xCurrent) ?? .now
                                 // Snap to nearest month

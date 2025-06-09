@@ -64,7 +64,7 @@ struct AddWorkTimeView: View {
             DatePicker(selection: $date, in: dateRange, displayedComponents: .date) {
                 Text(Strings.CreateEntry.date)
             }
-            .onChange(of: date) { _ in
+            .onChange(of: date) {
                 // Mark the date as manually changed
                 self.dateChanged = true
             }
