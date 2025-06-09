@@ -2,15 +2,19 @@
 
 #if DEBUG
 
+import Core
 import Domain
 import SwiftUI
 
 extension View {
     func previewEnvironment() -> some View {
-        self
-            .environmentObject(Config())
-            .environmentObject(UserData())
-            .environment(\.locale, Locale(identifier: "de"))
+        // Make sure to use the preview dependency container
+        Container.$current.withValue(Container.preview) {
+            self
+                .environmentObject(Config())
+                .environmentObject(UserData())
+                .environment(\.locale, Locale(identifier: "de"))
+        }
     }
 }
 
