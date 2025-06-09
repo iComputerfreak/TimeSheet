@@ -14,9 +14,6 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
 
-    @StateObject private var userData = UserData()
-//    @StateObject private var config = Config()
-
     var body: some View {
         TabView {
             ListView()
@@ -47,8 +44,6 @@ struct ContentView: View {
                         .accessibilityIdentifier("settings-tab")
                 }
         }
-        .environmentObject(userData)
-//        .environmentObject(config)
         .onChange(of: scenePhase) { newValue in
             if newValue == .background {
                 userData.save()

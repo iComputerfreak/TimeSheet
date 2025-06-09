@@ -41,7 +41,7 @@ extension DateComponentsFormatter {
 struct ChartsView: View {
     static let historyDurationFormatter = DateComponentsFormatter(allowedUnits: [.hour, .minute], unitsStyle: .short)
 
-    @EnvironmentObject private var config: Config
+    @Injected private var config: Config
     @State private var graphType: GraphType = .income
     let worktimes: [WorkTime]
 

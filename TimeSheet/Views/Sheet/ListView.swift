@@ -12,8 +12,8 @@ import Model
 import SwiftUI
 
 struct ListView: View {
-    @EnvironmentObject private var config: Config
-    @EnvironmentObject private var userData: UserData
+    @Injected private var config: Config
+    @Injected private var userData: UserData
     @State private var payoutConfirmationShowing = false
     @State private var createPayoutSheetShowing = false
 

@@ -5,6 +5,7 @@
 //  Created by Jonas Frey on 10.06.22.
 //
 
+import Core
 import Domain
 import Model
 import SwiftUI
@@ -17,7 +18,7 @@ struct PayoutRow: View {
         return f
     }
 
-    @EnvironmentObject private var config: Config
+    @Injected private var config: Config
     let payout: Payout
 
     var body: some View {

@@ -5,12 +5,13 @@
 //  Created by Jonas Frey on 09.06.22.
 //
 
+import Core
 import Domain
 import Model
 import SwiftUI
 
 struct TimeView: View {
-    @EnvironmentObject private var config: Config
+    @Injected private var config: Config
     let duration: DateComponents
     let amount: Double
 

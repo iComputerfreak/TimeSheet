@@ -11,8 +11,8 @@ import Model
 import SwiftUI
 
 struct CreatePayoutView: View {
-    @EnvironmentObject private var userData: UserData
-    @EnvironmentObject private var config: Config
+    @Injected private var userData: UserData
+    @Injected private var config: Config
     @Environment(\.dismiss) private var dismiss
 
     @State private var fullPayoutMode = true

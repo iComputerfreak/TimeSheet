@@ -5,6 +5,7 @@
 //  Created by Jonas Frey on 10.06.22.
 //
 
+import Core
 import Domain
 import SwiftUI
 
@@ -16,7 +17,7 @@ struct AnnotationView: View {
         return f
     }
 
-    @EnvironmentObject private var config: Config
+    @Injected private var config: Config
     let date: Date
     let value: Double
     let graphType: GraphType

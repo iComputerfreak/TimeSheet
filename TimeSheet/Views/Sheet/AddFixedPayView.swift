@@ -11,7 +11,7 @@ import Model
 import SwiftUI
 
 struct AddFixedPayView: View {
-    @EnvironmentObject private var config: Config
+    @Injected private var config: Config
     @State private var date = Date.now
     @State private var activity: String = ""
     @State private var payAmount: Double = 0

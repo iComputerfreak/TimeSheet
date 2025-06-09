@@ -12,7 +12,7 @@ import SwiftUI
 
 struct EditPayoutView: View {
     @Binding var payout: Payout
-    @EnvironmentObject private var config: Config
+    @Injected private var config: Config
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {

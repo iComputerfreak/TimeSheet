@@ -15,7 +15,7 @@ struct InteractiveDateChart: View {
     var data: [(Date, Double)]
     var graphType: GraphType
 
-    @EnvironmentObject private var config: Config
+    @Injected private var config: Config
     @State private var highlightedMonth: Date?
 
     var displayedData: [(Date, Double)] {

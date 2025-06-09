@@ -5,12 +5,13 @@
 //  Created by Jonas Frey on 07.07.22.
 //
 
+import Core
 import Domain
 import Model
 import SwiftUI
 
 struct HistoryView: View {
-    @EnvironmentObject private var userData: UserData
+    @Injected private var userData: UserData
 
     var worktimes: [WorkTime] {
         userData.worktimes + userData.payouts.flatMap(\.worktimes)

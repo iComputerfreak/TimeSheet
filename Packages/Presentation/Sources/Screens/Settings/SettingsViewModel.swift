@@ -21,8 +21,8 @@ extension SettingsView {
         }
 
         #if DEBUG
-        // TODO: Use DI
-        /*@EnvironmentObject*/ var userData: UserData = .init()
+        @ObservationIgnored
+        @Injected var userData: UserData
         #endif
 
         public init() {

@@ -14,7 +14,7 @@ import SwiftUI
 struct AddWorkTimeView: View {
     let minuteSteps = 5
 
-    @EnvironmentObject private var config: Config
+    @Injected private var config: Config
     @State private var date: Date
     @State private var activity: String
     @State private var hours: Int

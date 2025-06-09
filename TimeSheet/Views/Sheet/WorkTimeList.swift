@@ -11,7 +11,7 @@ import Model
 import SwiftUI
 
 struct WorkTimeList: View {
-    @EnvironmentObject private var config: Config
+    @Injected private var config: Config
     @Binding var worktimes: [WorkTime]
 
     var years: [Int] {
