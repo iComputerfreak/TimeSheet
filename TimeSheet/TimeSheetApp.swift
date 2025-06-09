@@ -5,11 +5,12 @@
 //  Created by Jonas Frey on 09.06.22.
 //
 
+import Core
 import SwiftUI
 
 @main
 struct TimeSheetApp: App {
-    @State private var dependencyInitializer: DependencyInitializer = .init()
+    @State private var dependencyInitializer: DependencyInitializer = LiveDependencyInitializer()
 
     var body: some Scene {
         WindowGroup {
