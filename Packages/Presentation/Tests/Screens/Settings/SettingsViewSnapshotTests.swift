@@ -2,16 +2,10 @@
 
 @testable import Presentation
 
-import Core
-import Domain
-import Foundation
-import SnapshotTesting
-import SnapshotTestingMacros
 import Testing
-import SwiftUI
 
-@Suite
 @MainActor
+@Suite(.tags(.snapshot))
 struct SettingsViewSnapshotTests {
     init() {
         registerTestingDependencies()
