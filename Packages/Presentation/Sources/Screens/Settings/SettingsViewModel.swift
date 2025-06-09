@@ -14,7 +14,7 @@ extension SettingsView {
             }
         }
 
-        var currency: String = UserDefaultsDefaultValue.currency {
+        var currency: String {
             didSet {
                 AppStorage(UserDefaultsKey.currency).wrappedValue = currency
             }
@@ -33,6 +33,11 @@ extension SettingsView {
             @AppStorage(UserDefaultsKey.currency)
             var storedCurrency: String = UserDefaultsDefaultValue.currency
             self.currency = storedCurrency
+        }
+
+        func generateSampleData() {
+            userData.worktimes = SampleData.screenshotWorktimes
+            userData.payouts = SampleData.screenshotPayouts
         }
     }
 }

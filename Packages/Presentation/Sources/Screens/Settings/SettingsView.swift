@@ -29,10 +29,7 @@ public struct SettingsView: StatefulView {
                 }
                 #if DEBUG
                 if viewModel.userData.worktimes.isEmpty {
-                    Button(Strings.List.NavigationBar.generate) {
-                        viewModel.userData.worktimes = SampleData.screenshotWorktimes
-                        viewModel.userData.payouts = SampleData.screenshotPayouts
-                    }
+                    Button(Strings.List.NavigationBar.generate, action: viewModel.generateSampleData)
                 }
                 #endif
             }
