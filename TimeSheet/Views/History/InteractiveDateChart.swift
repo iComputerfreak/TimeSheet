@@ -87,7 +87,6 @@ struct InteractiveDateChart: View {
                     alignment: alignment(for: highlightedMonth)
                 ) {
                     AnnotationView(date: highlightedMonth, value: value, graphType: graphType)
-                        .environmentObject(config)
                 }
             }
         }
@@ -183,9 +182,10 @@ struct InteractiveDateChart: View {
     }
 }
 
-struct InteractiveDateChart_Previews: PreviewProvider {
-    static var worktimesByMonth: [Date: [WorkTime]] {
-        Dictionary(
+#if DEBUG
+#Preview {
+    @Previewable var incomePerMonth: [(Date, Double)] = {
+        let worktimesByMonth: [Date: [WorkTime]] = Dictionary(
             grouping: SampleData.generateWorkTimes(),
             by: { worktime in
                 Calendar.current.date(from: .init(
@@ -195,19 +195,15 @@ struct InteractiveDateChart_Previews: PreviewProvider {
                 )) ?? worktime.date
             }
         )
-    }
-
-    static var incomePerMonth: [(Date, Double)] {
-        Array(
+        return Array(
             worktimesByMonth
                 .mapValues { $0.map(\.pay).reduce(0, +) }
                 .sorted { $0.key < $1.key }
                 .prefix(12)
         )
-    }
+    }()
 
-    static var previews: some View {
-        InteractiveDateChart(data: incomePerMonth, graphType: .income)
-            .environmentObject(Config())
-    }
+    InteractiveDateChart(data: incomePerMonth, graphType: .income)
+        .previewEnvironment()
 }
+#endif

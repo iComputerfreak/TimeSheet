@@ -89,11 +89,11 @@ struct WorkTimeList: View {
     }
 }
 
-struct WorkTimeList_Previews: PreviewProvider {
-    @State static var worktimes = SampleData.generateWorkTimes()
+#if DEBUG
+#Preview {
+    @Previewable @State var worktimes = SampleData.generateWorkTimes()
 
-    static var previews: some View {
-        WorkTimeList(worktimes: $worktimes)
-        .environmentObject(Config())
-    }
+    WorkTimeList(worktimes: $worktimes)
+        .previewEnvironment()
 }
+#endif

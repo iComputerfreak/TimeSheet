@@ -41,9 +41,9 @@ struct EditPayoutView: View {
     }
 }
 
-struct EditPayoutView_Previews: PreviewProvider {
-    static var previews: some View {
-        EditPayoutView(payout: .constant(Payout(date: .now, worktimes: [])))
-            .environmentObject(Config())
-    }
+#if DEBUG
+#Preview {
+    EditPayoutView(payout: .constant(Payout(date: .now, worktimes: [])))
+        .previewEnvironment()
 }
+#endif

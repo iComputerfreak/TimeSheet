@@ -136,11 +136,11 @@ struct AddWorkTimeView: View {
     }
 }
 
-struct AddWorkTimeView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            AddWorkTimeView(worktimes: .constant([]))
-                .environmentObject(Config())
-        }
+#if DEBUG
+#Preview {
+    NavigationStack {
+        AddWorkTimeView(worktimes: .constant([]))
+            .previewEnvironment()
     }
 }
+#endif

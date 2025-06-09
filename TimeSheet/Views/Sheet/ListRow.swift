@@ -45,12 +45,11 @@ struct ListRow: View {
     }
 }
 
-struct ListRow_Previews: PreviewProvider {
-    static var previews: some View {
-        List {
-            ListRow(worktime: SampleData.generateWorkTimes(count: 1).first!)
-                .environment(\.locale, Locale(identifier: "de"))
-                .environmentObject(Config())
-        }
+#if DEBUG
+#Preview {
+    List {
+        ListRow(worktime: SampleData.generateWorkTimes(count: 1).first!)
+            .previewEnvironment()
     }
 }
+#endif

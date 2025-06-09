@@ -51,7 +51,6 @@ struct PayoutsView: View {
         .sheet(item: $editingPayout) { payout in
             let index = userData.payouts.firstIndex(where: { $0.id == payout.id })!
             EditPayoutView(payout: $userData.payouts[index])
-                .environmentObject(config)
         }
     }
 }

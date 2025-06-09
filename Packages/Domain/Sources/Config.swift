@@ -9,7 +9,7 @@ import Core
 import Foundation
 import SwiftUI
 
-public class Config: ObservableObject {
+public class Config {
     @AppStorage(UserDefaultsKey.wage)
     public var wage: Double = UserDefaultsDefaultValue.wage
 

@@ -49,11 +49,10 @@ struct AnnotationView: View {
     }
 }
 
-struct AnnotationView_Previews: PreviewProvider {
-    static var previews: some View {
-        AnnotationView(date: .now, value: 100, graphType: .income)
-            .padding()
-            .previewLayout(.sizeThatFits)
-            .environmentObject(Config())
-    }
+#if DEBUG
+#Preview(traits: .sizeThatFitsLayout) {
+    AnnotationView(date: .now, value: 100, graphType: .income)
+        .padding()
+        .previewEnvironment()
 }
+#endif
