@@ -9,9 +9,18 @@ import SwiftUI
 
 @main
 struct TimeSheetApp: App {
+    @State private var dependencyInitializer: DependencyInitializer = .init()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if dependencyInitializer.didRegisterDependencies {
+                ContentView()
+            } else {
+                Text("Dependencies not initialized")
+                    .task {
+                        await dependencyInitializer.register()
+                    }
+            }
         }
     }
 }

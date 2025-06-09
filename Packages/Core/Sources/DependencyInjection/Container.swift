@@ -32,7 +32,9 @@ public final class Container: @unchecked Sendable { // We use `NSRecursiveLock` 
     public init() {}
 
     /// Registers a value for a specific type and an optional key.
-    public func register<Value>(key: (any DependencyKey)? = nil, _ value: @escaping () -> Value) {
+    ///
+    /// - Note: Registered dependencies are evaluated immediately and the instances stored in the container.
+    public func register<Value>(_ type: Value.Type, key: (any DependencyKey)? = nil, _ value: @escaping () -> Value) {
         let keyString = keyString(for: Value.self, key: key)
         synchronize {
             registrations[keyString] = value()
