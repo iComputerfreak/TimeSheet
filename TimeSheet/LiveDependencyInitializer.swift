@@ -15,12 +15,12 @@ public final class LiveDependencyInitializer: DependencyInitializer {
         await register(in: .current)
     }
 
-    public func register(in container: Container) async {
-        container.register(UserData.self) {
+    public func register(in context: DependencyContext) async {
+        context.register(UserData.self) {
             UserData()
         }
 
-        container.register(Config.self) {
+        context.register(Config.self) {
             Config()
         }
 

@@ -3,7 +3,7 @@
 @propertyWrapper
 public struct Injected<Value> {
     public var wrappedValue: Value {
-        Container.current.resolve()
+        DependencyContext.current.resolve()
     }
 
     public init() {}

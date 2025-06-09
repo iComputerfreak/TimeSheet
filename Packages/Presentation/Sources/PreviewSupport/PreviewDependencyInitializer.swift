@@ -18,12 +18,12 @@ public final class PreviewDependencyInitializer: DependencyInitializer {
     }
 
     // TODO: Use mocks
-    public func register(in container: Container) async {
-        container.register(UserData.self) {
+    public func register(in context: DependencyContext) async {
+        context.register(UserData.self) {
             SampleData.userData
         }
 
-        container.register(Config.self) {
+        context.register(Config.self) {
             Config()
         }
 

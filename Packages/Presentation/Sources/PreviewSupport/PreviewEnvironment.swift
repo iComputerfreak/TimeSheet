@@ -12,8 +12,8 @@ public struct PreviewEnvironmentModifier: ViewModifier {
     @State private var dependencyInitializer: DependencyInitializer = PreviewDependencyInitializer()
 
     public func body(content: Content) -> some View {
-        // Make sure to use the preview dependency container
-        Container.$current.withValue(Container.preview) {
+        // Make sure to use the preview dependency context
+        DependencyContext.$current.withValue(DependencyContext.preview) {
             Group {
                 if dependencyInitializer.didRegisterDependencies {
                     content.environment(\.locale, Locale(identifier: "de"))

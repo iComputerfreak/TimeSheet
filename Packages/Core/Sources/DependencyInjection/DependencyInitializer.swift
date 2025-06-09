@@ -5,5 +5,5 @@ public protocol DependencyInitializer: Sendable {
     var didRegisterDependencies: Bool { get }
 
     func register() async
-    func register(in container: Container) async
+    func register(in context: DependencyContext) async
 }

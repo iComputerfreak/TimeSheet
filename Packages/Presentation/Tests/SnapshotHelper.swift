@@ -35,7 +35,7 @@ func assertSnapshot(
 }
 
 func registerTestingDependencies() {
-    let context = Container.current
+    let context = DependencyContext.current
     context.reset()
     context.register(Config.self) { Config() }
     context.register(UserData.self) { UserData() }
