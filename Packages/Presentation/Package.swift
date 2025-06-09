@@ -17,6 +17,7 @@ let package = Package(
         .package(path: "../Core"),
         .package(path: "../Domain"),
         .package(path: "../Model"),
+        .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.18.4"),
     ],
     targets: [
         .target(
@@ -30,7 +31,10 @@ let package = Package(
         ),
         .testTarget(
             name: "PresentationTests",
-            dependencies: ["Presentation"],
+            dependencies: [
+                "Presentation",
+                .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
+            ],
             path: "Tests"
         ),
     ]
