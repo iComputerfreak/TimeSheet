@@ -14,6 +14,8 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
 
+    @Injected private var userData: UserData
+
     var body: some View {
         TabView {
             ListView()
@@ -52,8 +54,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#if DEBUG
+#Preview {
+    ContentView()
 }
+#endif

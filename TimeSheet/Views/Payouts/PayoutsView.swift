@@ -16,17 +16,17 @@ struct PayoutsView: View {
     @State private var editingPayout: Payout?
 
     var payouts: [Binding<Payout>] {
-        $userData.payouts.sorted { $0.wrappedValue.date > $1.wrappedValue.date }
+        @Bindable var userData = self.userData
+        return $userData.payouts.sorted { $0.wrappedValue.date > $1.wrappedValue.date }
     }
 
     var body: some View {
+        @Bindable var userData = self.userData
         NavigationStack {
             List {
                 ForEach(payouts) { $payout in
                     NavigationLink {
                         WorkTimeList(worktimes: $payout.worktimes)
-                            .environmentObject(userData)
-                            .environmentObject(config)
                             .navigationTitle(payout.date.formatted(.dateTime.day().month().year()))
                     } label: {
                         PayoutRow(payout: payout)
@@ -56,10 +56,9 @@ struct PayoutsView: View {
     }
 }
 
-struct PayoutsView_Previews: PreviewProvider {
-    static var previews: some View {
-        PayoutsView()
-            .environmentObject(SampleData.userData)
-            .environmentObject(Config())
-    }
+#if DEBUG
+#Preview {
+    PayoutsView()
+        .previewEnvironment()
 }
+#endif

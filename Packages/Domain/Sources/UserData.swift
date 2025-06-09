@@ -11,12 +11,13 @@ import Model
 import SwiftUI
 
 // TODO: Remove unchecked Sendable
-public class UserData: ObservableObject, @unchecked Sendable {
+@Observable
+public final class UserData: @unchecked Sendable {
     private static let worktimesKey = "worktimes"
     private static let payoutsKey = "payouts"
 
-    @Published public var worktimes: [WorkTime]
-    @Published public var payouts: [Payout]
+    public var worktimes: [WorkTime]
+    public var payouts: [Payout]
 
     public var totalWorkingDuration: DateComponents {
         worktimes

@@ -25,6 +25,7 @@ struct ListView: View {
     }
 
     var body: some View {
+        @Bindable var userData = self.userData
         NavigationStack {
             VStack(spacing: 0) {
                 WorkTimeList(worktimes: $userData.worktimes)
@@ -87,11 +88,9 @@ struct ListView: View {
     }
 }
 
-struct ListView_Previews: PreviewProvider {
-    static var previews: some View {
-        ListView()
-            .environment(\.locale, Locale(identifier: "de"))
-            .environmentObject(Config())
-            .environmentObject(SampleData.userData)
-    }
+#if DEBUG
+#Preview {
+    ListView()
+        .previewEnvironment()
 }
+#endif

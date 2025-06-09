@@ -147,12 +147,11 @@ struct ChartsView: View {
     }
 }
 
-struct ChartsView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ChartsView(worktimes: SampleData.userData.worktimes)
-                .environmentObject(SampleData.userData)
-                .environmentObject(Config())
-        }
+#if DEBUG
+#Preview {
+    Group {
+        ChartsView(worktimes: SampleData.userData.worktimes)
+            .previewEnvironment()
     }
 }
+#endif

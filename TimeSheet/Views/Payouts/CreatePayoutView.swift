@@ -116,10 +116,9 @@ struct CreatePayoutView: View {
     }
 }
 
-struct CreatePayoutView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreatePayoutView()
-            .environmentObject(SampleData.userData)
-            .environmentObject(Config())
-    }
+#if DEBUG
+#Preview {
+    CreatePayoutView()
+        .previewEnvironment()
 }
+#endif
