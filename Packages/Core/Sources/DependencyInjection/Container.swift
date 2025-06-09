@@ -46,13 +46,21 @@ public final class Container: @unchecked Sendable { // We use `NSRecursiveLock` 
         let keyString = keyString(for: Value.self, key: key)
         return synchronize {
             guard let value = registrations[keyString] as? Value else {
+                let availableRegistrations = registrations.keys.joined(separator: ", ")
                 fatalError(
                     "No registration found for type \(String(describing: Value.self)) and "
                     + "key \(key?.rawValue ?? "nil"). "
-                    + "Available registrations: \(registrations.keys.joined(separator: ", "))"
+                    + "Available registrations: \(availableRegistrations.isEmpty ? "None" : availableRegistrations)"
                 )
             }
             return value
+        }
+    }
+
+    /// Resets the container, removing all registrations.
+    public func reset() {
+        synchronize {
+            registrations.removeAll()
         }
     }
 
