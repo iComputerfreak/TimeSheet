@@ -9,6 +9,7 @@ import Core
 import Domain
 import JFUtils
 import Model
+import Presentation
 import SwiftUI
 
 struct ListView: View {
@@ -54,7 +55,7 @@ struct ListView: View {
                             Label(Strings.CreateEntry.time, systemImage: "clock")
                                 .accessibilityIdentifier("time-based")
                         }
-                        NavigationLink(destination: AddFixedPayView(worktimes: $userData.worktimes)) {
+                        NavigationLink(destination: AddFixedPayView(viewModel: .init(worktimes: $userData.worktimes))) {
                             Label(Strings.CreateEntry.fixedAmount, systemImage: "banknote")
                                 .accessibilityIdentifier("fixed-amount")
                         }
