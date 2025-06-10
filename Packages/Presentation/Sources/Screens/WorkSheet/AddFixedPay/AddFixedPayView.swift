@@ -1,9 +1,4 @@
-//
-//  AddFixedPayView.swift
-//  TimeSheet
-//
-//  Created by Jonas Frey on 27.10.22.
-//
+// Copyright © 2025 Jonas Frey. All rights reserved.
 
 import Core
 import Domain

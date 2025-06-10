@@ -8,6 +8,7 @@
 import Core
 import Domain
 import Model
+import Presentation
 import SwiftUI
 
 struct WorkTimeList: View {
@@ -42,10 +43,10 @@ struct WorkTimeList: View {
                                     // Edit Button
                                     if !worktime.isFixedPay {
                                         NavigationLink {
-                                            AddWorkTimeView(
+                                            AddWorkTimeView(viewModel: .init(
                                                 editingItem: $worktimes
                                                     .first { $0.wrappedValue.id == worktime.id }!
-                                            )
+                                            ))
                                         } label: {
                                             Label(Strings.Generic.edit, systemImage: "pencil")
                                         }

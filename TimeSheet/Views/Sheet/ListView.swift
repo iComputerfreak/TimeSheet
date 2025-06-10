@@ -51,7 +51,7 @@ struct ListView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
-                        NavigationLink(destination: AddWorkTimeView(worktimes: $userData.worktimes)) {
+                        NavigationLink(destination: AddWorkTimeView(viewModel: .init(worktimes: $userData.worktimes))) {
                             Label(Strings.CreateEntry.time, systemImage: "clock")
                                 .accessibilityIdentifier("time-based")
                         }
