@@ -45,9 +45,9 @@ public struct WorkTime: Identifiable, Codable, Equatable, Sendable {
         self.init(
             date: date,
             activity: activity,
-            hours: Int(abs(fixedPay)),
-            minutes: minutes,
-            wage: fixedPay < 0 ? -1 : 1
+            hours: 1,
+            minutes: 0,
+            wage: fixedPay
         )
         self.isFixedPay = true
     }
