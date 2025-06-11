@@ -36,7 +36,7 @@ struct AddFixedPaySnapshotTests {
             activity: "Some Activity Name",
             fixedPay: 26.9
         )
-        assertSnapshot(record: true) {
+        assertSnapshot {
             AddFixedPayView(
                 viewModel: .init(editingItem: .constant(workTime))
             )
