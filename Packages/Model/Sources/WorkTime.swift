@@ -41,7 +41,6 @@ public struct WorkTime: Identifiable, Codable, Equatable, Sendable {
     }
 
     public init(date: Date, activity: String?, fixedPay: Double) {
-        let minutes = Int(abs(fixedPay).truncatingRemainder(dividingBy: 1) * 60)
         self.init(
             date: date,
             activity: activity,
