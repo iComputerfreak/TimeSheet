@@ -18,6 +18,13 @@ extension SettingsView {
             set { config.currency = newValue }
         }
 
+        #if DEBUG
+        var shouldShowGenerateButton: Bool {
+            guard userData.worktimes.isEmpty else { return false }
+            return !UserDefaults.standard.bool(forKey: UserDefaultsKey.shouldHideGenerateSampleDataButton)
+        }
+        #endif
+
         @ObservationIgnored
         @Injected var config: Config
 

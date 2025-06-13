@@ -7,6 +7,7 @@ public enum UserDefaultsKey {
     public static let wage: String = "wage"
     public static let worktimes: String = "worktimes"
     public static let payouts: String = "payouts"
+    public static let shouldHideGenerateSampleDataButton: String = "shouldHideGenerateSampleDataButton"
 }
 
 public enum UserDefaultsDefaultValue {

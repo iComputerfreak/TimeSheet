@@ -23,7 +23,7 @@ public struct SettingsView: StatefulView {
                     }
                 }
                 #if DEBUG
-                if viewModel.userData.worktimes.isEmpty {
+                if viewModel.shouldShowGenerateButton {
                     Button(Strings.List.NavigationBar.generate, action: viewModel.generateSampleData)
                 }
                 #endif
