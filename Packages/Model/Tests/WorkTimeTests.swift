@@ -1,8 +1,9 @@
 // Copyright © 2025 Jonas Frey. All rights reserved.
 
+@testable import Model
+
 import Foundation
 import Testing
-@testable import Model
 
 @Suite
 struct WorkTimeTests {

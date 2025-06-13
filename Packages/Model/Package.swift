@@ -18,7 +18,10 @@ let package = Package(
         .target(
             name: "Model",
             dependencies: [],
-            path: "Sources"
+            path: "Sources",
+            swiftSettings: [
+                .enableUpcomingFeature("StrictConcurrency")
+            ]
         ),
         .testTarget(
             name: "ModelTests",

@@ -24,7 +24,10 @@ let package = Package(
                 "Core",
                 "Model",
             ],
-            path: "Sources"
+            path: "Sources",
+            swiftSettings: [
+                .enableUpcomingFeature("StrictConcurrency")
+            ]
         ),
         .testTarget(
             name: "DomainTests",
