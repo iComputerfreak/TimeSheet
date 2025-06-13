@@ -18,6 +18,7 @@ let package = Package(
         .package(path: "../Domain"),
         .package(path: "../Model"),
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.18.4"),
+        .package(url: "https://github.com/iComputerfreak/JFUtils", branch: "main"),
     ],
     targets: [
         .target(
@@ -26,6 +27,7 @@ let package = Package(
                 "Core",
                 "Domain",
                 "Model",
+                .product(name: "JFUtils", package: "JFUtils"),
             ],
             path: "Sources",
             swiftSettings: [

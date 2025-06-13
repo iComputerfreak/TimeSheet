@@ -9,8 +9,6 @@ import SwiftUI
 extension AddFixedPayView {
     @Observable
     public class ViewModel: ViewModelProtocol {
-        let dateRange: ClosedRange<Date>
-
         var date = Date.now
         var activity: String = ""
         var payAmount: Double = 0
@@ -22,9 +20,11 @@ extension AddFixedPayView {
             payAmount == 0
         }
 
-        private init() {
-            self.dateRange = Date().addingTimeInterval(GlobalConstants.lowestValidNegativeDateInterval) ... Date()
+        var dateRange: ClosedRange<Date> {
+            Date(timeIntervalSinceNow: GlobalConstants.lowestValidNegativeDateInterval) ... Date()
         }
+
+        private init() {}
 
         /// Creates a new AddWorkTimeView in either adding mode, adding a new work time item on save
         /// - Parameter worktimes: The list of worktimes to append the new object at

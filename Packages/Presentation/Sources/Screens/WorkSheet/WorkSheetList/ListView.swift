@@ -20,10 +20,10 @@ public struct ListView: StatefulView {
                 HStack {
                     Text(Strings.List.Footer.total)
                     Spacer()
-//                    TimeView(
-//                        duration: viewModel.userData.totalWorkingDuration,
-//                        amount: viewModel.userData.totalWorktimePayIncludingDebts
-//                    )
+                    TimeView(
+                        duration: viewModel.userData.totalWorkingDuration,
+                        amount: viewModel.userData.totalWorktimePayIncludingDebts
+                    )
                 }
                 .bold()
                 .padding(.horizontal)
@@ -60,7 +60,7 @@ public struct ListView: StatefulView {
             }
         }
         .sheet(isPresented: $viewModel.createPayoutSheetShowing) {
-//            CreatePayoutView()
+            CreatePayoutView()
         }
     }
 }

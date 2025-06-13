@@ -25,7 +25,9 @@ extension AddWorkTimeView {
 
         var zeroHoursShowing = false
 
-        var dateRange = Date().addingTimeInterval(GlobalConstants.lowestValidNegativeDateInterval) ... Date()
+        var dateRange: ClosedRange<Date> {
+            Date(timeIntervalSinceNow: GlobalConstants.lowestValidNegativeDateInterval) ... Date()
+        }
 
         var isSaveButtonDisabled: Bool {
             hours == 0 && minutes == 0
@@ -62,7 +64,6 @@ extension AddWorkTimeView {
         }
 
         func didAppear() {
-            dateRange = Date().addingTimeInterval(GlobalConstants.lowestValidNegativeDateInterval) ... Date()
             // If the user did not change the date himself, reset it to "today"
             // This works around the bug that the date seems to be stuck on old values when opening the app after a few days
             // TODO: DEBUG by putting an exact date in the form and observing if it changes when cancelling and reopening the view

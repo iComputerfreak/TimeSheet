@@ -1,9 +1,4 @@
-//
-//  SettingsView.swift
-//  TimeSheet
-//
-//  Created by Jonas Frey on 09.06.22.
-//
+// Copyright © 2025 Jonas Frey. All rights reserved.
 
 import Core
 import Domain

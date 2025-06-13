@@ -1,9 +1,4 @@
-//
-//  WageStepper.swift
-//  TimeSheet
-//
-//  Created by Jonas Frey on 10.06.22.
-//
+// Copyright © 2025 Jonas Frey. All rights reserved.
 
 import Core
 import SwiftUI
