@@ -18,7 +18,7 @@ struct ContentView: View {
 
     var body: some View {
         TabView {
-            ListView()
+            ListView(viewModel: .init())
                 .tabItem {
                     Image(systemName: "list.bullet.rectangle.portrait")
                     Text(Strings.List.navigationTitle)
