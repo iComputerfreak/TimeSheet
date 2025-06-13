@@ -12,7 +12,7 @@ public enum SampleData: Sendable {
     private static let screenshotWage: Double = 20
 
     public static let userData: UserData = {
-        UserData(
+        MockUserData(
             worktimes: generateWorkTimes(),
             payouts: generatePayouts()
         )

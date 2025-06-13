@@ -43,5 +43,5 @@ func setupTesting() {
     let context = DependencyContext.current
     context.reset()
     context.register(Config.self) { Config() }
-    context.register(UserData.self) { UserData() }
+    context.register(UserData.self) { MockUserData() }
 }

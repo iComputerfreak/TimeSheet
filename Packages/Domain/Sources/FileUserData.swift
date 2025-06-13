@@ -12,10 +12,7 @@ import SwiftUI
 
 // TODO: Remove unchecked Sendable
 @Observable
-public final class UserData: @unchecked Sendable {
-    private static let worktimesKey = "worktimes"
-    private static let payoutsKey = "payouts"
-
+public final class FileUserData: UserData, @unchecked Sendable {
     public var worktimes: [WorkTime]
     public var payouts: [Payout]
 
@@ -41,23 +38,24 @@ public final class UserData: @unchecked Sendable {
     // Load from persistent store
     public init() {
         print("Loading persistent data...")
-        self.worktimes = Self.decode([WorkTime].self, forKey: Self.worktimesKey) ?? []
-        self.payouts = Self.decode([Payout].self, forKey: Self.payoutsKey) ?? []
+        self.worktimes = Self.decode([WorkTime].self, forKey: UserDefaultsKey.worktimes) ?? []
+        self.payouts = Self.decode([Payout].self, forKey: UserDefaultsKey.payouts) ?? []
+        print("Loaded \(self.worktimes.count) worktimes and \(self.payouts.count) payouts.")
     }
 
     public func save() {
         print("Saving persistent data...")
         let encoder = PropertyListEncoder()
         do {
-            UserDefaults.standard.set(try encoder.encode(self.worktimes), forKey: Self.worktimesKey)
-            UserDefaults.standard.set(try encoder.encode(self.payouts), forKey: Self.payoutsKey)
+            UserDefaults.standard.set(try encoder.encode(self.worktimes), forKey: UserDefaultsKey.worktimes)
+            UserDefaults.standard.set(try encoder.encode(self.payouts), forKey: UserDefaultsKey.payouts)
         } catch {
             print(error)
         }
     }
 }
 
-public extension UserData {
+public extension FileUserData {
     static func decode<T: Decodable>(_ type: T.Type, forKey key: String) -> T? {
         guard let data = UserDefaults.standard.data(forKey: key) else { return nil }
         do {

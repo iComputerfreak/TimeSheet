@@ -17,7 +17,7 @@ public final class LiveDependencyInitializer: DependencyInitializer {
 
     public func register(in context: DependencyContext) async {
         context.register(UserData.self) {
-            UserData()
+            FileUserData()
         }
 
         context.register(Config.self) {
