@@ -5,6 +5,8 @@ import Foundation
 public enum UserDefaultsKey {
     public static let currency: String = "currency"
     public static let wage: String = "wage"
+    public static let worktimes: String = "worktimes"
+    public static let payouts: String = "payouts"
 }
 
 public enum UserDefaultsDefaultValue {

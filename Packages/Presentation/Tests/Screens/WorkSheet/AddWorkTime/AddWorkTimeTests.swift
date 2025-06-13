@@ -15,7 +15,7 @@ struct AddWorkTimeTests {
     @Injected private var config: Config
 
     init() {
-        registerTestingDependencies()
+        setupTesting()
     }
 
     @Test func testDidAppearDateUnchanged() async {

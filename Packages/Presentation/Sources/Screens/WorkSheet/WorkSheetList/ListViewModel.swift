@@ -44,5 +44,9 @@ extension ListView {
             }
             .sorted(on: \.date, by: >)
         }
+
+        func didTapCreatePayout() {
+            createPayoutSheetShowing = true
+        }
     }
 }

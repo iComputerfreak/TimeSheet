@@ -14,7 +14,7 @@ struct SettingsViewModelTests {
     @Injected private var userData: UserData
 
     init() {
-        registerTestingDependencies()
+        setupTesting()
     }
 
     @Test

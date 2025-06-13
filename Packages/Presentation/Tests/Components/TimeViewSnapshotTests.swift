@@ -9,7 +9,7 @@ import Testing
 @Suite(.tags(.snapshot))
 struct TimeViewSnapshotTests {
     init() {
-        registerTestingDependencies()
+        setupTesting()
     }
 
     @Test

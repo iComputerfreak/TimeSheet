@@ -34,7 +34,12 @@ func assertSnapshot(
     )
 }
 
-func registerTestingDependencies() {
+func setupTesting() {
+    UserDefaults.standard.removeObject(forKey: UserDefaultsKey.currency)
+    UserDefaults.standard.removeObject(forKey: UserDefaultsKey.wage)
+    UserDefaults.standard.removeObject(forKey: UserDefaultsKey.worktimes)
+    UserDefaults.standard.removeObject(forKey: UserDefaultsKey.payouts)
+
     let context = DependencyContext.current
     context.reset()
     context.register(Config.self) { Config() }

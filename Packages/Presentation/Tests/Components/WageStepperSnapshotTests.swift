@@ -9,7 +9,7 @@ import Testing
 @Suite(.tags(.snapshot))
 struct WageStepperSnapshotTests {
     init() {
-        registerTestingDependencies()
+        setupTesting()
     }
 
     @Test

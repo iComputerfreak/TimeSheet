@@ -34,7 +34,7 @@ public struct ListView: StatefulView {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(Strings.List.NavigationBar.payout) {
-                        viewModel.createPayoutSheetShowing = true
+                        viewModel.didTapCreatePayout()
                     }
                     .accessibilityIdentifier("payout-button")
                 }

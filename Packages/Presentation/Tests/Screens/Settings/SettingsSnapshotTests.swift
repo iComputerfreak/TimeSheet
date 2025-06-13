@@ -8,7 +8,7 @@ import Testing
 @Suite(.tags(.snapshot))
 struct SettingsViewSnapshotTests {
     init() {
-        registerTestingDependencies()
+        setupTesting()
     }
 
     @Test

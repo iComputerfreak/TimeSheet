@@ -13,7 +13,7 @@ struct AddFixedPaySnapshotTests {
     private let exampleDate = Date(timeIntervalSince1970: 1735689600) // 2025-01-01
 
     init() {
-        registerTestingDependencies()
+        setupTesting()
     }
 
     @Test func testCreationEmpty() {

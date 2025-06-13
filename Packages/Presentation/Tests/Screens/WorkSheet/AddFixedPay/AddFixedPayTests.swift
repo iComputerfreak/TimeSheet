@@ -15,7 +15,7 @@ struct AddFixedPayTests {
     @Injected private var config: Config
 
     init() {
-        registerTestingDependencies()
+        setupTesting()
     }
 
     @Test func testInvertPayAmount() async {
