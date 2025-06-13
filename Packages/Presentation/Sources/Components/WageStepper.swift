@@ -15,7 +15,8 @@ public struct WageStepper: View {
     }
 
     public var body: some View {
-        Stepper(value: $wage, in: 0...100, step: 0.5, format: .currency(code: currencyCode)) {
+        // This upper limit might seem high, but we also need to consider other currencies.
+        Stepper(value: $wage, in: 0...1_000_000, step: 0.5, format: .currency(code: currencyCode)) {
             HStack {
                 Text(Strings.Settings.hourlyWage)
                 Spacer()

@@ -58,6 +58,7 @@ extension AddWorkTimeView {
             let worktime = editingItem.wrappedValue
             self.activity = worktime.activity ?? ""
             self.date = worktime.date
+            self.dateChanged = true // We don't want to reset it to today
             self.hours = worktime.duration.hour ?? 0
             self.minutes = worktime.duration.minute ?? 0
             self.wage = worktime.wage
