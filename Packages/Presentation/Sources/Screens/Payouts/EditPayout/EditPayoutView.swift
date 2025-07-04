@@ -1,29 +1,29 @@
-//
-//  EditPayoutView.swift
-//  TimeSheet
-//
-//  Created by Jonas Frey on 04.05.23.
-//
+// Copyright © 2025 Jonas Frey. All rights reserved.
 
 import Core
 import Domain
 import Model
 import SwiftUI
 
-struct EditPayoutView: View {
-    @Binding var payout: Payout
-    @Injected private var config: Config
+public struct EditPayoutView: StatefulView {
+    @State public var viewModel: ViewModel
+
     @Environment(\.dismiss) private var dismiss
 
-    var body: some View {
+    // swiftlint:disable:next type_contents_order
+    public init(viewModel: ViewModel) {
+        self.viewModel = viewModel
+    }
+
+    public var body: some View {
         NavigationStack {
             Form {
-                DatePicker(Strings.CreatePayout.date, selection: $payout.date, displayedComponents: .date)
+                DatePicker(Strings.CreatePayout.date, selection: $viewModel.payout.date, displayedComponents: .date)
                     .navigationTitle(Strings.CreatePayout.editNavigationTitle)
                 HStack {
                     Text(Strings.CreatePayout.amountHint)
                     Spacer()
-                    Text(payout.amount.formatted(.currency(code: config.currency)))
+                    Text(viewModel.formattedPayoutAmount)
                         .foregroundColor(.gray)
                 }
             }
@@ -43,7 +43,7 @@ struct EditPayoutView: View {
 
 #if DEBUG
 #Preview {
-    EditPayoutView(payout: .constant(Payout(date: .now, worktimes: [])))
+    EditPayoutView(viewModel: .init(payout: .constant(Payout(date: .now, worktimes: []))))
         .previewEnvironment()
 }
 #endif
