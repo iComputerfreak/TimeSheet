@@ -12,8 +12,8 @@ extension CreatePayoutView {
         var fullPayoutMode: Bool
         var payoutAmount: Double
         var payoutDate: Date
-        var zeroPayoutAlertShowing: Bool
-        var noEntriesShowing: Bool
+        var zeroPayoutAlertShowing: Bool = false
+        var noEntriesShowing: Bool = false
 
         @ObservationIgnored
         @Injected private var userData: UserData
@@ -25,8 +25,7 @@ extension CreatePayoutView {
         }
 
         var formattedBalance: String {
-            let balance = userData.worktimes.map(\.pay).reduce(0, +)
-            return balance.formatted(.currency(code: config.currency))
+            return fullAmount.formatted(.currency(code: config.currency))
         }
 
         var isCreateButtonDisabled: Bool {
@@ -46,15 +45,11 @@ extension CreatePayoutView {
         init(
             fullPayoutMode: Bool = true,
             payoutAmount: Double = 0,
-            payoutDate: Date = .now,
-            zeroPayoutAlertShowing: Bool = false,
-            noEntriesShowing: Bool = false
+            payoutDate: Date = .now
         ) {
             self.fullPayoutMode = fullPayoutMode
             self.payoutAmount = payoutAmount
             self.payoutDate = payoutDate
-            self.zeroPayoutAlertShowing = zeroPayoutAlertShowing
-            self.noEntriesShowing = noEntriesShowing
         }
 
         func onAppear() {
