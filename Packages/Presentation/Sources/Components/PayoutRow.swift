@@ -1,16 +1,11 @@
-//
-//  PayoutRow.swift
-//  TimeSheet
-//
-//  Created by Jonas Frey on 10.06.22.
-//
+// Copyright © 2025 Jonas Frey. All rights reserved.
 
 import Core
 import Domain
 import Model
 import SwiftUI
 
-struct PayoutRow: View {
+public struct PayoutRow: View {
     private static var durationFormatter: DateComponentsFormatter {
         let f = DateComponentsFormatter()
         f.allowedUnits = [.hour, .minute]
@@ -21,7 +16,12 @@ struct PayoutRow: View {
     @Injected private var config: Config
     let payout: Payout
 
-    var body: some View {
+    // swiftlint:disable:next type_contents_order
+    public init(payout: Payout) {
+        self.payout = payout
+    }
+
+    public var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading) {
                 Text(payout.date.formatted(.dateTime.day().month().year()))
@@ -38,9 +38,9 @@ struct PayoutRow: View {
     }
 }
 
-struct PayoutRow_Previews: PreviewProvider {
-    static var previews: some View {
+#Preview(traits: .sizeThatFitsLayout) {
+    List {
         PayoutRow(payout: .init(date: .now, worktimes: SampleData.generateWorkTimes(count: 10)))
-        .previewLayout(.sizeThatFits)
     }
+    .previewEnvironment()
 }
