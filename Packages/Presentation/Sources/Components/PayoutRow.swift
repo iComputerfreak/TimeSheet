@@ -38,9 +38,11 @@ public struct PayoutRow: View {
     }
 }
 
+#if DEBUG
 #Preview(traits: .sizeThatFitsLayout) {
     List {
         PayoutRow(payout: .init(date: .now, worktimes: SampleData.generateWorkTimes(count: 10)))
     }
     .previewEnvironment()
 }
+#endif
