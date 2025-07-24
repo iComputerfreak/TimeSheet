@@ -1,16 +1,12 @@
-//
-//  ListRow.swift
-//  TimeSheet
-//
-//  Created by Jonas Frey on 09.06.22.
-//
+// Copyright © 2025 Jonas Frey. All rights reserved.
 
 import Core
 import Domain
 import Model
 import SwiftUI
 
-struct ListRow: View {
+// TODO: Make all views internal
+public struct ListRow: View {
     private static var durationFormatter: DateComponentsFormatter {
         let f = DateComponentsFormatter()
         f.allowedUnits = [.hour, .minute]
@@ -19,9 +15,14 @@ struct ListRow: View {
     }
 
     @Injected private var config: Config
-    let worktime: WorkTime
+    private let worktime: WorkTime
 
-    var body: some View {
+    // swiftlint:disable:next type_contents_order
+    public init(worktime: WorkTime) {
+        self.worktime = worktime
+    }
+
+    public var body: some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading) {
                 if let activity = worktime.activity {
