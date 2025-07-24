@@ -16,6 +16,7 @@ struct PayoutRowSnapshotTests {
     }
 
     @Test(
+        .serialized,
         arguments: [
             [
                 WorkTime(

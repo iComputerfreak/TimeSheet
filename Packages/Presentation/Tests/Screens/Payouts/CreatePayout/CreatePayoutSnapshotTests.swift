@@ -9,7 +9,7 @@ import Model
 import Testing
 
 @MainActor
-@Suite(.tags(.snapshot))
+@Suite(.tags(.snapshot), .serialized)
 struct CreatePayoutSnapshotTests {
     private let exampleDate = Date(timeIntervalSince1970: 1735689600) // 2025-01-01
 
