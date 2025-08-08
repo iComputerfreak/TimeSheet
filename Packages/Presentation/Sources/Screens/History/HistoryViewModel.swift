@@ -70,8 +70,11 @@ extension HistoryView {
 
         var data: [(Date, Double)] {
             switch graphType {
-            case .income: return incomePerMonth
-            case .time: return hoursPerMonth
+            case .income:
+                return incomePerMonth
+
+            case .time:
+                return hoursPerMonth
             }
         }
 
