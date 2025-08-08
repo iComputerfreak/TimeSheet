@@ -18,6 +18,8 @@
 
 "GENERIC.EDIT" = "Edit";
 
+"GENERIC.CANCEL" = "Cancel";
+
 "CREATE_PAYOUT.FULL_PAYOUT" = "Full Payout";
 
 "LIST.NAVIGATION_BAR.GENERATE" = "Generate";

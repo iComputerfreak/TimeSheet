@@ -54,6 +54,8 @@
 
 "GENERIC.SAVE" = "Speichern";
 
+"GENERIC.CANCEL" = "Abbrechen";
+
 "SETTINGS.NAVIGATION_TITLE" = "Einstellungen";
 
 "LIST.NAVIGATION_TITLE" = "Stundenzettel";

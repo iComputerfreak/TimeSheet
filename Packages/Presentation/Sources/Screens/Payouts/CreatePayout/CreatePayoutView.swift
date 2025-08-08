@@ -56,7 +56,12 @@ struct CreatePayoutView: StatefulView {
             }
             .navigationTitle(Strings.CreatePayout.navigationTitle)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(Strings.Generic.cancel) {
+                        dismiss()
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
                     Button(Strings.CreatePayout.NavigationBar.create) {
                         viewModel.saveEntry()
                         dismiss()

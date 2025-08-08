@@ -79,6 +79,8 @@ public enum Strings {
     }
   }
   public enum Generic {
+    /// Cancel
+    public static let cancel = Strings.tr("Localizable", "GENERIC.CANCEL", fallback: "Cancel")
     /// Delete
     public static let delete = Strings.tr("Localizable", "GENERIC.DELETE", fallback: "Delete")
     /// Done
