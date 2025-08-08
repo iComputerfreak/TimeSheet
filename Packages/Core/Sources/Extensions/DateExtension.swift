@@ -45,3 +45,13 @@ public extension Date {
         Calendar.current.component(.year, from: self)
     }
 }
+
+public extension Date {
+    static func fixed(year: Int, month: Int, day: Int) -> Date {
+        var components = DateComponents()
+        components.year = year
+        components.month = month
+        components.day = day
+        return Calendar.current.date(from: components) ?? Date()
+    }
+}
