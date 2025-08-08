@@ -1,5 +1,6 @@
 @testable import Domain
 
+import Core
 import Foundation
 import Model
 import Testing
@@ -86,5 +87,35 @@ struct UserDataTests {
         // worktimes and payouts empty
         #expect(userData.worktimes.count == 0)
         #expect(userData.payouts.count == 0)
+    }
+
+    @Test("FileUserData.save() correctly persists worktimes and payouts")
+    func testSavePersistsWorktimesAndPayouts() {
+        // Clear UserDefaults
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.worktimes)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.payouts)
+        let date = Date()
+        let worktime = WorkTime(date: date, activity: "Test Activity", hours: 1, minutes: 15, wage: 30)
+        let payout = Payout(id: UUID(), date: date, worktimes: [worktime])
+        let userData = FileUserData(worktimes: [worktime], payouts: [payout])
+
+        userData.save()
+
+        // Retrieve and decode from UserDefaults
+        guard
+            let worktimesData = UserDefaults.standard.data(forKey: UserDefaultsKey.worktimes),
+            let payoutsData = UserDefaults.standard.data(forKey: UserDefaultsKey.payouts)
+        else {
+            Issue.record("Data was not saved to UserDefaults")
+            return
+        }
+        let decoder = PropertyListDecoder()
+        let decodedWorktimes = try? decoder.decode([WorkTime].self, from: worktimesData)
+        let decodedPayouts = try? decoder.decode([Payout].self, from: payoutsData)
+
+        #expect(decodedWorktimes?.count == 1)
+        #expect(decodedPayouts?.count == 1)
+        #expect(decodedWorktimes?.first == worktime)
+        #expect(decodedPayouts?.first == payout)
     }
 }

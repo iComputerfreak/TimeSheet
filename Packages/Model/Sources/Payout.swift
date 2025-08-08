@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Payout: Codable, Identifiable {
+public struct Payout: Codable, Identifiable, Equatable {
     public var id = UUID()
     public var date: Date
     public var worktimes: [WorkTime]
