@@ -11,21 +11,6 @@ import Domain
 import Model
 import SwiftUI
 
-enum GraphType {
-    case income
-    case time
-
-    var yLabel: String {
-        switch self {
-        case .income:
-            Strings.History.GraphType.income
-
-        case .time:
-            Strings.History.GraphType.time
-        }
-    }
-}
-
 extension DateComponentsFormatter {
     convenience init(allowedUnits: NSCalendar.Unit?, unitsStyle: DateComponentsFormatter.UnitsStyle?) {
         self.init()

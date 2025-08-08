@@ -15,12 +15,14 @@ let package = Package(
         ),
     ],
     dependencies: [
-        // In theory, this package is allowed to depend on "Model", but right now it's not necessary.
+        .package(path: "../Model"),
     ],
     targets: [
         .target(
             name: "Core",
-            dependencies: [],
+            dependencies: [
+                "Model",
+            ],
             path: "Sources",
             resources: [
                 .process("Resources"),
