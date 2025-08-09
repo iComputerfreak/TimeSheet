@@ -6,7 +6,11 @@ import Model
 import Testing
 
 @Suite
-struct UserDataTests {
+final class UserDataTests {
+    init() {
+        setupTesting()
+    }
+
     @Test("Init with sample data computes correct totals")
     func testInitWithSampleData() {
         let date = Date()
@@ -19,7 +23,11 @@ struct UserDataTests {
         let payout = Payout(id: UUID(), date: date, worktimes: [regularWorktime, fixedPayWorktime])
 
         // Initialize FileUserData with these
-        let userData = FileUserData(worktimes: [regularWorktime, fixedPayWorktime], payouts: [payout])
+        let userData = FileUserData(
+            worktimes: [regularWorktime, fixedPayWorktime],
+            payouts: [payout],
+            userDefaults: .testing()
+        )
 
         // totalWorkingDuration only includes the regular one (2h)
         #expect(userData.totalWorkingDuration.hour == 2)
@@ -45,7 +53,11 @@ struct UserDataTests {
         let zeroPayWorktime1 = WorkTime(date: date, activity: "Zero Pay 1", hours: 1, minutes: 0, wage: 0)
         let zeroPayWorktime2 = WorkTime(date: date, activity: "Zero Pay 2", hours: 3, minutes: 0, wage: 0)
 
-        let userData = FileUserData(worktimes: [zeroPayWorktime1, zeroPayWorktime2], payouts: [])
+        let userData = FileUserData(
+            worktimes: [zeroPayWorktime1, zeroPayWorktime2],
+            payouts: [],
+            userDefaults: .testing()
+        )
 
         // totalWorkingDuration should be zero because pay is zero
         #expect(userData.totalWorkingDuration.hour == 0)
@@ -62,7 +74,7 @@ struct UserDataTests {
         let fixedPay1 = WorkTime(date: date, activity: "Fixed Pay 1", fixedPay: 60)
         let fixedPay2 = WorkTime(date: date, activity: "Fixed Pay 2", fixedPay: 40)
 
-        let userData = FileUserData(worktimes: [fixedPay1, fixedPay2], payouts: [])
+        let userData = FileUserData(worktimes: [fixedPay1, fixedPay2], payouts: [], userDefaults: .testing())
 
         // totalWorkingDuration should be zero (per filter in implementation)
         #expect(userData.totalWorkingDuration.hour == 0)
@@ -75,7 +87,7 @@ struct UserDataTests {
     @Test("Init with no data")
     func testInitWithNoData() {
         // FileUserData with empty arrays
-        let userData = FileUserData(worktimes: [], payouts: [])
+        let userData = FileUserData(worktimes: [], payouts: [], userDefaults: .testing())
 
         // totalWorkingDuration should be zero
         #expect(userData.totalWorkingDuration.hour == 0)
@@ -91,20 +103,21 @@ struct UserDataTests {
 
     @Test("FileUserData.save() correctly persists worktimes and payouts")
     func testSavePersistsWorktimesAndPayouts() {
+        let userDefaults = UserDefaults.testing()
         // Clear UserDefaults
-        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.worktimes)
-        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.payouts)
+        userDefaults.removeObject(forKey: UserDefaultsKey.worktimes)
+        userDefaults.removeObject(forKey: UserDefaultsKey.payouts)
         let date = Date()
         let worktime = WorkTime(date: date, activity: "Test Activity", hours: 1, minutes: 15, wage: 30)
         let payout = Payout(id: UUID(), date: date, worktimes: [worktime])
-        let userData = FileUserData(worktimes: [worktime], payouts: [payout])
+        let userData = FileUserData(worktimes: [worktime], payouts: [payout], userDefaults: userDefaults)
 
         userData.save()
 
         // Retrieve and decode from UserDefaults
         guard
-            let worktimesData = UserDefaults.standard.data(forKey: UserDefaultsKey.worktimes),
-            let payoutsData = UserDefaults.standard.data(forKey: UserDefaultsKey.payouts)
+            let worktimesData = userDefaults.data(forKey: UserDefaultsKey.worktimes),
+            let payoutsData = userDefaults.data(forKey: UserDefaultsKey.payouts)
         else {
             Issue.record("Data was not saved to UserDefaults")
             return
@@ -117,5 +130,48 @@ struct UserDataTests {
         #expect(decodedPayouts?.count == 1)
         #expect(decodedWorktimes?.first == worktime)
         #expect(decodedPayouts?.first == payout)
+    }
+
+    @Test("FileUserData.init() loads data from UserDefaults correctly")
+    func testInitLoadsFromUserDefaults() throws {
+        let userDefaults = UserDefaults.testing()
+
+        let date = Date()
+        let worktime = WorkTime(date: date, activity: "Loaded Work", hours: 3, minutes: 30, wage: 25)
+        let payout = Payout(id: UUID(), date: date, worktimes: [worktime])
+
+        // Save encoded objects directly to UserDefaults
+        let encoder = PropertyListEncoder()
+        let worktimesData = try encoder.encode([worktime])
+        let payoutsData = try encoder.encode([payout])
+        userDefaults.set(worktimesData, forKey: UserDefaultsKey.worktimes)
+        userDefaults.set(payoutsData, forKey: UserDefaultsKey.payouts)
+
+        // Now, loading FileUserData with the empty init() should load these values
+        let loadedUserData = FileUserData(userDefaults: userDefaults)
+        #expect(loadedUserData.worktimes.count == 1)
+        #expect(loadedUserData.payouts.count == 1)
+        #expect(loadedUserData.worktimes.first == worktime)
+        #expect(loadedUserData.payouts.first == payout)
+    }
+
+    @Test("FileUserData.save() and .init() round-trip data through UserDefaults")
+    func testSaveAndLoadRoundTrip() {
+        let userDefaults = UserDefaults.testing()
+
+        let date = Date()
+        let worktime = WorkTime(date: date, activity: "RoundTrip", hours: 4, minutes: 45, wage: 40)
+        let payout = Payout(id: UUID(), date: date, worktimes: [worktime])
+
+        // Save using FileUserData.save()
+        let userDataToSave = FileUserData(worktimes: [worktime], payouts: [payout], userDefaults: userDefaults)
+        userDataToSave.save()
+
+        // Load using FileUserData.init()
+        let loadedUserData = FileUserData(userDefaults: userDefaults)
+        #expect(loadedUserData.worktimes.count == 1)
+        #expect(loadedUserData.payouts.count == 1)
+        #expect(loadedUserData.worktimes.first == worktime)
+        #expect(loadedUserData.payouts.first == payout)
     }
 }

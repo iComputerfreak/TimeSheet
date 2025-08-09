@@ -13,6 +13,7 @@ import SwiftUI
 // TODO: Remove unchecked Sendable
 @Observable
 public final class FileUserData: UserData, @unchecked Sendable {
+    private let userDefaults: UserDefaults
     public var worktimes: [WorkTime]
     public var payouts: [Payout]
 
@@ -30,16 +31,26 @@ public final class FileUserData: UserData, @unchecked Sendable {
             .reduce(0, +)
     }
 
-    public init(worktimes: [WorkTime], payouts: [Payout]) {
+    public convenience init(worktimes: [WorkTime], payouts: [Payout]) {
+        self.init(worktimes: worktimes, payouts: payouts, userDefaults: .standard)
+    }
+
+    public init(worktimes: [WorkTime], payouts: [Payout], userDefaults: UserDefaults) {
         self.worktimes = worktimes
         self.payouts = payouts
+        self.userDefaults = userDefaults
+    }
+
+    public convenience init() {
+        self.init(userDefaults: .standard)
     }
 
     // Load from persistent store
-    public init() {
+    public init(userDefaults: UserDefaults) {
         print("Loading persistent data...")
-        self.worktimes = Self.decode([WorkTime].self, forKey: UserDefaultsKey.worktimes) ?? []
-        self.payouts = Self.decode([Payout].self, forKey: UserDefaultsKey.payouts) ?? []
+        self.worktimes = Self.decode([WorkTime].self, forKey: UserDefaultsKey.worktimes, from: userDefaults) ?? []
+        self.payouts = Self.decode([Payout].self, forKey: UserDefaultsKey.payouts, from: userDefaults) ?? []
+        self.userDefaults = userDefaults
         print("Loaded \(self.worktimes.count) worktimes and \(self.payouts.count) payouts.")
     }
 
@@ -47,8 +58,8 @@ public final class FileUserData: UserData, @unchecked Sendable {
         print("Saving persistent data...")
         let encoder = PropertyListEncoder()
         do {
-            UserDefaults.standard.set(try encoder.encode(self.worktimes), forKey: UserDefaultsKey.worktimes)
-            UserDefaults.standard.set(try encoder.encode(self.payouts), forKey: UserDefaultsKey.payouts)
+            userDefaults.set(try encoder.encode(self.worktimes), forKey: UserDefaultsKey.worktimes)
+            userDefaults.set(try encoder.encode(self.payouts), forKey: UserDefaultsKey.payouts)
         } catch {
             print(error)
         }
@@ -56,8 +67,12 @@ public final class FileUserData: UserData, @unchecked Sendable {
 }
 
 public extension FileUserData {
-    static func decode<T: Decodable>(_ type: T.Type, forKey key: String) -> T? {
-        guard let data = UserDefaults.standard.data(forKey: key) else { return nil }
+    static func decode<T: Decodable>(
+        _ type: T.Type,
+        forKey key: String,
+        from userDefaults: UserDefaults = .standard
+    ) -> T? {
+        guard let data = userDefaults.data(forKey: key) else { return nil }
         do {
             return try PropertyListDecoder().decode(type, from: data)
         } catch {
