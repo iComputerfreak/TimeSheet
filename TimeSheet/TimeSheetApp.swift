@@ -17,7 +17,7 @@ struct TimeSheetApp: App {
             if dependencyInitializer.didRegisterDependencies {
                 ContentView()
             } else {
-                Text("Dependencies not initialized")
+                ProgressView()
                     .task {
                         await dependencyInitializer.register()
                     }
