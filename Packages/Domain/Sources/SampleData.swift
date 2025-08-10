@@ -8,15 +8,9 @@
 import Foundation
 import Model
 
+@MainActor
 public enum SampleData: Sendable {
     private static let screenshotWage: Double = 20
-
-    public static let userData: UserData = {
-        MockUserData(
-            worktimes: generateWorkTimes(),
-            payouts: generatePayouts()
-        )
-    }()
 
     public static let screenshotWorktimes: [WorkTime] = [
         WorkTime(

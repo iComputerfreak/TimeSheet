@@ -3,7 +3,7 @@
 import Foundation
 import Model
 
-public protocol UserData: AnyObject, Observable, Sendable {
+public protocol UserData: AnyObject, Observable {
     var worktimes: [WorkTime] { get set }
     var payouts: [Payout] { get set }
     var totalWorkingDuration: DateComponents { get }

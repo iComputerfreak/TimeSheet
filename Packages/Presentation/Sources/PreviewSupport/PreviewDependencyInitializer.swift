@@ -17,11 +17,12 @@ public final class PreviewDependencyInitializer: DependencyInitializer {
         await register(in: .current)
     }
 
-    // TODO: Use mocks
     public func register(in context: DependencyContext) async {
-        context.register(UserData.self) {
-            SampleData.userData
-        }
+        let mockUserData = await MockUserData(
+            worktimes: SampleData.generateWorkTimes(),
+            payouts: SampleData.generatePayouts()
+        )
+        context.register(UserData.self) { mockUserData }
 
         context.register(Config.self) {
             Config()

@@ -12,7 +12,7 @@ import SwiftUI
 
 // TODO: Remove unchecked Sendable
 @Observable
-public final class FileUserData: UserData, @unchecked Sendable {
+public final class FileUserData: UserData {
     private let userDefaults: UserDefaults
     public var worktimes: [WorkTime]
     public var payouts: [Payout]
