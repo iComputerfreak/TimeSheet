@@ -18,10 +18,14 @@ public struct PayoutsView: StatefulView {
             List {
                 ForEach(viewModel.payoutBindings) { $payout in
                     NavigationLink {
-                        Text("TODO")
-                        // TODO: Fix
-//                        WorkTimeList(worktimes: $payout.worktimes)
-                            .navigationTitle(payout.date.formatted(viewModel.payoutDateFormat))
+                        WorkTimeListView(
+                            viewModel: .init(
+                                navigationTitle: payout.date.formatted(viewModel.payoutDateFormat),
+                                worktimes: payout.worktimes,
+                                canEditWorktimes: false,
+                                canDeleteWorktimes: false
+                            )
+                        )
                     } label: {
                         PayoutRow(payout: payout)
                     }
