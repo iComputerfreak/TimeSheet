@@ -5,8 +5,6 @@ import Domain
 import Model
 import SwiftUI
 
-// TODO: After refactoring everything to MVVM, go through and check what can be internal again
-
 struct AddFixedPayView: StatefulView {
     @Environment(\.dismiss) private var dismiss
 

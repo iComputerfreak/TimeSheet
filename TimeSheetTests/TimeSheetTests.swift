@@ -4,7 +4,6 @@ import Testing
 
 struct TimeSheetTests {
     @Test func example() async throws {
-        // TODO: Implement tests
         #expect(true)
     }
 }
