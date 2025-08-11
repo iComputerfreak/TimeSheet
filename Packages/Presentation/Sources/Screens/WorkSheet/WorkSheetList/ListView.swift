@@ -18,41 +18,43 @@ public struct ListView: StatefulView {
             WorkTimeListView(
                 viewModel: .init(
                     navigationTitle: Strings.List.navigationTitle,
-                    worktimes: viewModel.worktimes,
+                    worktimes: viewModel.userData.worktimes,
                     canEditWorktimes: true,
                     canDeleteWorktimes: true
                 )
             )
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(Strings.List.NavigationBar.payout) {
-                        viewModel.didTapCreatePayout()
-                    }
-                    .accessibilityIdentifier("payout-button")
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Menu {
-                        NavigationLink(
-                            destination: AddWorkTimeView(viewModel: .init(worktimes: $viewModel.worktimes))
-                        ) {
-                            Label(Strings.CreateEntry.time, systemImage: "clock")
-                                .accessibilityIdentifier("time-based")
-                        }
-                        NavigationLink(
-                            destination: AddFixedPayView(viewModel: .init(worktimes: $viewModel.worktimes))
-                        ) {
-                            Label(Strings.CreateEntry.fixedAmount, systemImage: "banknote")
-                                .accessibilityIdentifier("fixed-amount")
-                        }
-                    } label: {
-                        Image(systemName: "plus")
-                            .accessibilityIdentifier("add")
-                    }
-                }
-            }
+            .toolbar { toolbarContent }
         }
         .sheet(isPresented: $viewModel.createPayoutSheetShowing) {
             CreatePayoutView()
+        }
+    }
+
+    @ToolbarContentBuilder private var toolbarContent: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarLeading) {
+            Button(Strings.List.NavigationBar.payout) {
+                viewModel.didTapCreatePayout()
+            }
+            .accessibilityIdentifier("payout-button")
+        }
+        ToolbarItem(placement: .navigationBarTrailing) {
+            Menu {
+                NavigationLink(
+                    destination: AddWorkTimeView(viewModel: .init(worktimes: viewModel.worktimesBinding))
+                ) {
+                    Label(Strings.CreateEntry.time, systemImage: "clock")
+                        .accessibilityIdentifier("time-based")
+                }
+                NavigationLink(
+                    destination: AddFixedPayView(viewModel: .init(worktimes: viewModel.worktimesBinding))
+                ) {
+                    Label(Strings.CreateEntry.fixedAmount, systemImage: "banknote")
+                        .accessibilityIdentifier("fixed-amount")
+                }
+            } label: {
+                Image(systemName: "plus")
+                    .accessibilityIdentifier("add")
+            }
         }
     }
 }

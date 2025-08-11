@@ -35,6 +35,10 @@ extension WorkTimeListView {
                 .reduce(0, +)
         }
 
+        private var userData: UserData {
+            DependencyContext.current.resolve()
+        }
+
         init(
             navigationTitle: String,
             worktimes: [WorkTime],
@@ -65,7 +69,7 @@ extension WorkTimeListView {
         }
 
         func delete(_ worktime: WorkTime) {
-            worktimes.removeAll(where: { $0.id == worktime.id })
+            userData.worktimes.removeAll(where: { $0.id == worktime.id })
         }
 
         func isShowingEditButton(for worktime: WorkTime) -> Bool {
@@ -83,7 +87,7 @@ extension WorkTimeListView {
                 )
             } set: { newValue in
                 if let worktimeIndex = self.worktimes.firstIndex(where: { $0.id == worktimeID }) {
-                    self.worktimes[worktimeIndex] = newValue
+                    self.userData.worktimes[worktimeIndex] = newValue
                 }
             }
         }

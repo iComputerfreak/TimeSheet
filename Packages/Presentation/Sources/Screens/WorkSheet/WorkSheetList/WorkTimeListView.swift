@@ -7,8 +7,9 @@ import Model
 import SwiftUI
 
 struct WorkTimeListView: StatefulView {
-    // TODO: Check if VM is recreated on view updates
-    @State var viewModel: ViewModel
+    // We explicitly don't use @State here to force a re-render of this component view whenever the parent sets a new
+    // view model. This would be comparable to this view holding the properties directly.
+    var viewModel: ViewModel
 
     // swiftlint:disable:next type_contents_order
     init(viewModel: ViewModel) {
