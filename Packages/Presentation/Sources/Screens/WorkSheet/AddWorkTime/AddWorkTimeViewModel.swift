@@ -8,7 +8,7 @@ import SwiftUI
 
 extension AddWorkTimeView {
     @Observable
-    public class ViewModel: ViewModelProtocol {
+    class ViewModel: ViewModelProtocol {
         let minuteSteps: Int = 5
 
         var date: Date {
@@ -38,7 +38,7 @@ extension AddWorkTimeView {
 
         /// Creates a new AddWorkTimeView in either adding mode, adding a new work time item on save
         /// - Parameter worktimes: The list of worktimes to append the new object at
-        public init(worktimes: Binding<[WorkTime]>) {
+        init(worktimes: Binding<[WorkTime]>) {
             self.worktimes = worktimes
             self.editingItem = nil
             self.date = Date()
@@ -50,7 +50,7 @@ extension AddWorkTimeView {
 
         /// Creates a new AddWorkTimeView in editing mode, editing the given `editingItem`
         /// - Parameter editingItem: The work time being edited
-        public init(editingItem: Binding<WorkTime>) {
+        init(editingItem: Binding<WorkTime>) {
             self.worktimes = nil
             self.editingItem = editingItem
 

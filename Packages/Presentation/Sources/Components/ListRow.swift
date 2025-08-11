@@ -5,8 +5,7 @@ import Domain
 import Model
 import SwiftUI
 
-// TODO: Make all views internal
-public struct ListRow: View {
+struct ListRow: View {
     private static var durationFormatter: DateComponentsFormatter {
         let f = DateComponentsFormatter()
         f.allowedUnits = [.hour, .minute]
@@ -18,11 +17,11 @@ public struct ListRow: View {
     private let worktime: WorkTime
 
     // swiftlint:disable:next type_contents_order
-    public init(worktime: WorkTime) {
+    init(worktime: WorkTime) {
         self.worktime = worktime
     }
 
-    public var body: some View {
+    var body: some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading) {
                 if let activity = worktime.activity {

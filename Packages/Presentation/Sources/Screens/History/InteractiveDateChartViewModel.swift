@@ -8,18 +8,18 @@ import SwiftUI
 
 extension InteractiveDateChartView {
     @Observable
-    public class ViewModel: ViewModelProtocol {
-        public var data: [(Date, Double)]
-        public var graphType: GraphType
-        public var highlightedMonth: Date?
+    class ViewModel: ViewModelProtocol {
+        var data: [(Date, Double)]
+        var graphType: GraphType
+        var highlightedMonth: Date?
 
         /// Returns the latest 12 months sorted by date
-        public var displayedData: [(Date, Double)] {
+        var displayedData: [(Date, Double)] {
             // data is already sorted
             data.suffix(12)
         }
 
-        public init(data: [(Date, Double)], graphType: GraphType) {
+        init(data: [(Date, Double)], graphType: GraphType) {
             self.data = Self.fillMissingMonths(data)
             self.graphType = graphType
         }
@@ -58,7 +58,7 @@ extension InteractiveDateChartView {
         }
 
         /// Returns the alignment for chart labels for the given month.
-        public func alignment(for month: Date) -> Alignment {
+        func alignment(for month: Date) -> Alignment {
             let months = displayedData.map(\.0)
             if month == months.first {
                 return .topLeading

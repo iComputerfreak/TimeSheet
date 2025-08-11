@@ -7,7 +7,7 @@ import SwiftUI
 
 extension EditPayoutView {
     @Observable
-    public class ViewModel: ViewModelProtocol {
+    class ViewModel: ViewModelProtocol {
         var payout: Payout
 
         @ObservationIgnored @Binding var payoutBinding: Payout

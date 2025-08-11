@@ -6,12 +6,10 @@ import Core
 import Domain
 import SwiftUI
 
-// TODO: Make internal again, when all UI is moved here
-
-public struct PreviewEnvironmentModifier: ViewModifier {
+struct PreviewEnvironmentModifier: ViewModifier {
     @State private var dependencyInitializer: DependencyInitializer = PreviewDependencyInitializer()
 
-    public func body(content: Content) -> some View {
+    func body(content: Content) -> some View {
         // Make sure to use the preview dependency context
         DependencyContext.$current.withValue(DependencyContext.preview) {
             Group {
@@ -28,7 +26,7 @@ public struct PreviewEnvironmentModifier: ViewModifier {
     }
 }
 
-public extension View {
+extension View {
     func previewEnvironment() -> some View {
         self.modifier(PreviewEnvironmentModifier())
     }

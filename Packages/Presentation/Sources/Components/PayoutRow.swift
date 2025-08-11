@@ -5,7 +5,7 @@ import Domain
 import Model
 import SwiftUI
 
-public struct PayoutRow: View {
+struct PayoutRow: View {
     private static var durationFormatter: DateComponentsFormatter {
         let f = DateComponentsFormatter()
         f.allowedUnits = [.hour, .minute]
@@ -17,11 +17,11 @@ public struct PayoutRow: View {
     let payout: Payout
 
     // swiftlint:disable:next type_contents_order
-    public init(payout: Payout) {
+    init(payout: Payout) {
         self.payout = payout
     }
 
-    public var body: some View {
+    var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading) {
                 Text(payout.date.formatted(.dateTime.day().month().year()))

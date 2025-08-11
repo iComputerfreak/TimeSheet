@@ -8,7 +8,7 @@ import SwiftUI
 
 extension AddFixedPayView {
     @Observable
-    public class ViewModel: ViewModelProtocol {
+    class ViewModel: ViewModelProtocol {
         var date = Date.now
         var activity: String = ""
         var payAmount: Double = 0
@@ -28,7 +28,7 @@ extension AddFixedPayView {
 
         /// Creates a new AddWorkTimeView in either adding mode, adding a new work time item on save
         /// - Parameter worktimes: The list of worktimes to append the new object at
-        public convenience init(worktimes: Binding<[WorkTime]>) {
+        convenience init(worktimes: Binding<[WorkTime]>) {
             self.init()
             self.worktimes = worktimes
             self.editingItem = nil
@@ -36,7 +36,7 @@ extension AddFixedPayView {
 
         /// Creates a new AddWorkTimeView in editing mode, editing the given `editingItem`
         /// - Parameter editingItem: The work time being edited
-        public convenience init(editingItem: Binding<WorkTime>) {
+        convenience init(editingItem: Binding<WorkTime>) {
             self.init()
             self.worktimes = nil
             self.editingItem = editingItem

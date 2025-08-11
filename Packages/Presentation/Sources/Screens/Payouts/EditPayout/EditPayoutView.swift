@@ -5,17 +5,17 @@ import Domain
 import Model
 import SwiftUI
 
-public struct EditPayoutView: StatefulView {
-    @State public var viewModel: ViewModel
+struct EditPayoutView: StatefulView {
+    @State var viewModel: ViewModel
 
     @Environment(\.dismiss) private var dismiss
 
     // swiftlint:disable:next type_contents_order
-    public init(viewModel: ViewModel) {
+    init(viewModel: ViewModel) {
         self.viewModel = viewModel
     }
 
-    public var body: some View {
+    var body: some View {
         NavigationStack {
             Form {
                 DatePicker(Strings.CreatePayout.date, selection: $viewModel.payout.date, displayedComponents: .date)

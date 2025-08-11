@@ -6,15 +6,15 @@ import Domain
 import Model
 import SwiftUI
 
-public struct InteractiveDateChartView: StatefulView {
-    @State public var viewModel: ViewModel
+struct InteractiveDateChartView: StatefulView {
+    @State var viewModel: ViewModel
 
     // swiftlint:disable:next type_contents_order
-    public init(viewModel: ViewModel = .init(data: [], graphType: .income)) {
+    init(viewModel: ViewModel = .init(data: [], graphType: .income)) {
         self.viewModel = viewModel
     }
 
-    public var body: some View {
+    var body: some View {
         Chart {
             ForEach(viewModel.displayedData, id: \.0) { date, amount in
                 AreaMark(

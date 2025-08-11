@@ -7,17 +7,17 @@ import SwiftUI
 
 // TODO: After refactoring everything to MVVM, go through and check what can be internal again
 
-public struct AddFixedPayView: StatefulView {
+struct AddFixedPayView: StatefulView {
     @Environment(\.dismiss) private var dismiss
 
-    @State public var viewModel: ViewModel
+    @State var viewModel: ViewModel
 
     // swiftlint:disable:next type_contents_order
-    public init(viewModel: ViewModel) {
+    init(viewModel: ViewModel) {
         self.viewModel = viewModel
     }
 
-    public var body: some View {
+    var body: some View {
         Form {
             TextField(Strings.CreateEntry.activity, text: $viewModel.activity)
             DatePicker(selection: $viewModel.date, in: viewModel.dateRange, displayedComponents: .date) {

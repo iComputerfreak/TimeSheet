@@ -9,7 +9,7 @@ import Foundation
 import Model
 
 @MainActor
-public enum SampleData: Sendable {
+public enum SampleData {
     private static let screenshotWage: Double = 20
 
     public static let screenshotWorktimes: [WorkTime] = [

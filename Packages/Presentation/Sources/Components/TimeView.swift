@@ -5,19 +5,19 @@ import Domain
 import Model
 import SwiftUI
 
-public struct TimeView: View {
+struct TimeView: View {
     let duration: DateComponents
     let amount: Double
 
     @Injected private var config: Config
 
     // swiftlint:disable:next type_contents_order
-    public init(duration: DateComponents, amount: Double) {
+    init(duration: DateComponents, amount: Double) {
         self.duration = duration
         self.amount = amount
     }
 
-    public var body: some View {
+    var body: some View {
         let timeString = WorkTime.durationFormatter.string(from: duration) ?? ""
         let moneyString = amount.formatted(.currency(code: config.currency))
         Text("\(timeString) (\(moneyString))")
