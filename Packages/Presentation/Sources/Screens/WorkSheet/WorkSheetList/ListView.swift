@@ -13,7 +13,6 @@ public struct ListView: StatefulView {
         self.viewModel = viewModel
     }
 
-    // TODO: Refactor out some code
     public var body: some View {
         NavigationStack {
             WorkTimeListView(

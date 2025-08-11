@@ -15,11 +15,8 @@ extension WorkTimeListView {
         let canDeleteWorktimes: Bool
         var worktimes: [WorkTime]
 
-        @ObservationIgnored
-        @Injected var userData: UserData
-
         var years: [Int] {
-            userData.worktimes
+            worktimes
                 .map(\.date.year)
                 .removingDuplicates()
                 .sorted(by: >)
@@ -51,7 +48,7 @@ extension WorkTimeListView {
         }
 
         func months(in year: Int) -> [Int] {
-            userData.worktimes
+            worktimes
                 .filter { worktime in
                     worktime.date.year == year
                 }
@@ -61,7 +58,7 @@ extension WorkTimeListView {
         }
 
         func worktimes(in year: Int, month: Int) -> [WorkTime] {
-            userData.worktimes.filter { worktime in
+            worktimes.filter { worktime in
                 worktime.date.year == year && worktime.date.month == month
             }
             .sorted(on: \.date, by: >)

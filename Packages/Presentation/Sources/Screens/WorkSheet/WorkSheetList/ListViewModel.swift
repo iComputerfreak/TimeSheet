@@ -13,8 +13,7 @@ extension ListView {
         var createPayoutSheetShowing = false
 
         var worktimes: [WorkTime] {
-            get { userData.worktimes }
-            set { userData.worktimes = newValue }
+            didSet { userData.worktimes = worktimes }
         }
 
         @ObservationIgnored
@@ -27,7 +26,10 @@ extension ListView {
                 .sorted(by: >)
         }
 
-        public init() {}
+        public init() {
+            @Injected var userData: UserData
+            worktimes = userData.worktimes
+        }
 
         func months(in year: Int) -> [Int] {
             userData.worktimes

@@ -10,7 +10,6 @@ import Foundation
 import Model
 import SwiftUI
 
-// TODO: Remove unchecked Sendable
 @Observable
 public final class FileUserData: UserData {
     private let userDefaults: UserDefaults

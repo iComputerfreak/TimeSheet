@@ -9,12 +9,25 @@ import Core
 import Foundation
 import SwiftUI
 
+@Observable
 public class Config {
-    @AppStorage(UserDefaultsKey.wage)
-    public var wage: Double = UserDefaultsDefaultValue.wage
+    public var wage: Double {
+        didSet {
+            UserDefaults.standard.set(wage, forKey: UserDefaultsKey.wage)
+        }
+    }
 
-    @AppStorage("currency")
-    public var currency: String = "EUR"
+    public var currency: String {
+        didSet {
+            UserDefaults.standard.set(currency, forKey: UserDefaultsKey.currency)
+        }
+    }
 
-    public init() {}
+    public init() {
+        let loadedWage = UserDefaults.standard.double(forKey: UserDefaultsKey.wage)
+        self.wage = loadedWage > 0 ? loadedWage : UserDefaultsDefaultValue.wage
+
+        let loadedCurrency = UserDefaults.standard.string(forKey: UserDefaultsKey.currency)
+        self.currency = loadedCurrency ?? Locale.current.currency?.identifier ?? "EUR"
+    }
 }

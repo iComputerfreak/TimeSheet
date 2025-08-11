@@ -8,14 +8,24 @@ import SwiftUI
 extension SettingsView {
     @Observable
     public class ViewModel: ViewModelProtocol {
-        var wage: Double {
-            get { config.wage }
-            set { config.wage = newValue }
-        }
+        let availableCurrencyCodes: [String] = {
+            var codes = Locale.commonISOCurrencyCodes
+            // We show the "common" codes and also the user's current default currency code
+            if
+                let currentCurrency = Locale.current.currency?.identifier,
+                !codes.contains(currentCurrency)
+            {
+                codes.append(currentCurrency)
+            }
+            return codes
+        }()
 
         var currency: String {
-            get { config.currency }
-            set { config.currency = newValue }
+            didSet { config.currency = currency }
+        }
+
+        var wage: Double {
+            didSet { config.wage = wage }
         }
 
         #if DEBUG
@@ -25,15 +35,17 @@ extension SettingsView {
         }
         #endif
 
-        @ObservationIgnored
-        @Injected var config: Config
+        var config: Config { DependencyContext.live.resolve() }
 
         #if DEBUG
-        @ObservationIgnored
-        @Injected var userData: UserData
+        var userData: UserData { DependencyContext.live.resolve() }
         #endif
 
-        public init() {}
+        public init() {
+            @Injected var config: Config
+            self.currency = config.currency
+            self.wage = config.wage
+        }
 
         #if DEBUG
         func generateSampleData() {
