@@ -94,6 +94,7 @@ unused_declaration:
 
 type_contents_order:
  order:
+   - subtype
    - case
    - type_alias
    - associated_type
@@ -108,7 +109,6 @@ type_contents_order:
    - other_method
    - subscript
    - deinitializer
-   - subtype
 
 multiline_arguments:
   only_enforce_after_first_closure_on_first_line: true

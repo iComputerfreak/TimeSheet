@@ -64,7 +64,7 @@
 
 "HISTORY.GRAPH_TYPE.TIME" = "Time";
 
-"LIST.FOOTER.TOTAL" = "Total";
+"LIST.FOOTER.TOTAL" = "Balance";
 
 "CREATE_PAYOUT.MESSAGES.FULL_PAYOUT" = "When creating a full payout, all entries in the time sheet will be removed and archived in the payouts tab. The generated payout cannot be edited.";
 

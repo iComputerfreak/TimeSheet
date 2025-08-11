@@ -17,44 +17,53 @@ struct WorkTimeListView: StatefulView {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            List {
-                ForEach(viewModel.years, id: \.self) { (year: Int) in
-                    ForEach(viewModel.months(in: year), id: \.self) { (month: Int) in
-                        Section {
-                            ForEach(viewModel.worktimes(in: year, month: month)) { (worktime: WorkTime) in
-                                ListRow(worktime: worktime)
-                                    .swipeActions {
-                                        deleteButton(worktime: worktime)
-                                        editButton(worktime: worktime)
-                                    }
-                            }
-                        } header: {
-                            HStack {
-                                Text(viewModel.headerString(year: year, month: month))
-                                Spacer()
-                                TimeView(
-                                    duration: viewModel.totalHours(in: year, month: month),
-                                    amount: viewModel.totalMoney(in: year, month: month)
-                                )
-                            }
+        if #available(iOS 26.0, *) {
+            // On iOS 26+, we show a bottom tab bar accessory, so we don't need to show the footer here.
+            listContent
+        } else {
+            VStack(spacing: 0) {
+                listContent
+                Divider()
+                HStack {
+                    Text(Strings.List.Footer.total)
+                    Spacer()
+                    TimeView(
+                        duration: viewModel.totalWorkingDuration,
+                        amount: viewModel.totalWorktimePayIncludingDebts
+                    )
+                }
+                .bold()
+                .padding(.horizontal)
+                .padding(.vertical, 10)
+                Divider()
+            }
+        }
+    }
+
+    private var listContent: some View {
+        List {
+            ForEach(viewModel.years, id: \.self) { (year: Int) in
+                ForEach(viewModel.months(in: year), id: \.self) { (month: Int) in
+                    Section {
+                        ForEach(viewModel.worktimes(in: year, month: month)) { (worktime: WorkTime) in
+                            ListRow(worktime: worktime)
+                                .swipeActions {
+                                    deleteButton(worktime: worktime)
+                                    editButton(worktime: worktime)
+                                }
+                        }
+                    } header: {
+                        HStack {
+                            Text(viewModel.headerString(year: year, month: month))
+                            Spacer()
+                            TimeView(
+                                duration: viewModel.totalHours(in: year, month: month),
+                                amount: viewModel.totalMoney(in: year, month: month)
+                            )
                         }
                     }
                 }
             }
-            Divider()
-            HStack {
-                Text(Strings.List.Footer.total)
-                Spacer()
-                TimeView(
-                    duration: viewModel.totalWorkingDuration,
-                    amount: viewModel.totalWorktimePayIncludingDebts
-                )
-            }
-            .bold()
-            .padding(.horizontal)
-            .padding(.vertical, 10)
-            Divider()
         }
         .navigationTitle(viewModel.navigationTitle)
     }
