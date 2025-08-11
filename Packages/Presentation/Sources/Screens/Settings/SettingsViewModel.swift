@@ -35,10 +35,10 @@ extension SettingsView {
         }
         #endif
 
-        var config: Config { DependencyContext.live.resolve() }
+        var config: Config { DependencyContext.current.resolve() }
 
         #if DEBUG
-        var userData: UserData { DependencyContext.live.resolve() }
+        var userData: UserData { DependencyContext.current.resolve() }
         #endif
 
         public init() {
