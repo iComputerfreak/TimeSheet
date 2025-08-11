@@ -11,12 +11,20 @@ import Testing
 
 @MainActor
 @Suite(.tags(.unit), .serialized)
-struct ListViewTests {
+struct WorkTimeListViewTests {
     @Injected private var userData: UserData
-    let sut: ListView.ViewModel = .init()
+    let sut: WorkTimeListView.ViewModel
 
     init() {
         setupTesting()
+
+        @Injected var userData: UserData
+        sut = .init(
+            navigationTitle: "",
+            worktimes: userData.worktimes,
+            canEditWorktimes: true,
+            canDeleteWorktimes: true
+        )
     }
 
     @Test func testWorkTimes() async {
@@ -35,14 +43,6 @@ struct ListViewTests {
         #expect(
             sut.worktimes(in: 2022, month: 11) == [2, 1, 0].map { SampleData.screenshotWorktimes[$0] }
         )
-    }
-
-    @Test func testDidTapCreatePayout() {
-        #expect(sut.createPayoutSheetShowing == false)
-
-        sut.didTapCreatePayout()
-
-        #expect(sut.createPayoutSheetShowing == true)
     }
 
     @Test func testDelete() {
