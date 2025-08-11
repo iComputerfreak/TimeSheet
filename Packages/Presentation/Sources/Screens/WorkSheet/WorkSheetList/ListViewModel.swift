@@ -11,6 +11,8 @@ extension ListView {
     @Observable
     public class ViewModel: ViewModelProtocol {
         var createPayoutSheetShowing = false
+        var addWorkTimeViewShowing = false
+        var addFixedPayViewShowing = false
 
         var userData: UserData {
             DependencyContext.current.resolve()
@@ -25,9 +27,5 @@ extension ListView {
         }
 
         public init() {}
-
-        func didTapCreatePayout() {
-            createPayoutSheetShowing = true
-        }
     }
 }

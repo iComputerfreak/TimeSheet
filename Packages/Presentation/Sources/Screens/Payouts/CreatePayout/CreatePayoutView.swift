@@ -57,14 +57,18 @@ struct CreatePayoutView: StatefulView {
             .navigationTitle(Strings.CreatePayout.navigationTitle)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button(Strings.Generic.cancel) {
+                    Button(role: .legacyClose) {
                         dismiss()
+                    } label: {
+                        Label(Strings.Generic.cancel, systemImage: "xmark")
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(Strings.CreatePayout.NavigationBar.create) {
+                    Button(role: .legacyConfirm) {
                         viewModel.saveEntry()
                         dismiss()
+                    } label: {
+                        Label(Strings.CreatePayout.NavigationBar.create, systemImage: "checkmark")
                     }
                     .accessibilityIdentifier("create-button")
                     .disabled(viewModel.isCreateButtonDisabled)

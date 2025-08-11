@@ -18,46 +18,60 @@ struct AddFixedPayView: StatefulView {
     }
 
     var body: some View {
-        Form {
-            TextField(Strings.CreateEntry.activity, text: $viewModel.activity)
-            DatePicker(selection: $viewModel.date, in: viewModel.dateRange, displayedComponents: .date) {
-                Text(Strings.CreateEntry.date)
-            }
-            HStack {
-                Text(Strings.CreateEntry.amount)
-                Spacer(minLength: 50)
-                TextField(
-                    Strings.CreateEntry.amount,
-                    value: $viewModel.payAmount,
-                    format: .number.precision(.fractionLength(0...2))
-                )
-                .multilineTextAlignment(.trailing)
-                .keyboardType(.decimalPad)
-                .toolbar {
-                    ToolbarItem(placement: .keyboard) {
-                        HStack {
-                            Button(action: viewModel.invertPayAmount) {
-                                Text(Strings.CreateEntry.Keyboard.plusMinus)
-                                    .padding(.horizontal, 4)
-                                    .padding(.bottom, 2)
-                                    .background {
-                                        RoundedRectangle(cornerRadius: 3)
-                                            .fill(Colors.secondaryAccent)
-                                    }
+        NavigationStack {
+            Form {
+                TextField(Strings.CreateEntry.activity, text: $viewModel.activity)
+                DatePicker(selection: $viewModel.date, in: viewModel.dateRange, displayedComponents: .date) {
+                    Text(Strings.CreateEntry.date)
+                }
+                HStack {
+                    Text(Strings.CreateEntry.amount)
+                    Spacer(minLength: 50)
+                    TextField(
+                        Strings.CreateEntry.amount,
+                        value: $viewModel.payAmount,
+                        format: .number.precision(.fractionLength(0...2))
+                    )
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.decimalPad)
+                    .toolbar {
+                        ToolbarItem(placement: .keyboard) {
+                            HStack {
+                                Button(action: viewModel.invertPayAmount) {
+                                    Text(Strings.CreateEntry.Keyboard.plusMinus)
+                                        .padding(.horizontal, 4)
+                                        .padding(.bottom, 2)
+                                        .background {
+                                            RoundedRectangle(cornerRadius: 3)
+                                                .fill(Colors.secondaryAccent)
+                                        }
+                                }
+                                Spacer()
                             }
-                            Spacer()
                         }
                     }
                 }
             }
-        }
-        .navigationTitle(Strings.CreateEntry.navigationTitle)
-        .toolbar {
-            Button(Strings.Generic.save) {
-                viewModel.saveEntry()
-                dismiss()
+            .navigationTitle(Strings.CreateEntry.navigationTitle)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(role: .legacyConfirm) {
+                        viewModel.saveEntry()
+                        dismiss()
+                    } label: {
+                        Label(Strings.Generic.save, systemImage: "checkmark")
+                    }
+                    .disabled(viewModel.isSaveButtonDisabled)
+                }
+
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(role: .legacyClose) {
+                        dismiss()
+                    } label: {
+                        Label(Strings.Generic.cancel, systemImage: "xmark")
+                    }
+                }
             }
-            .disabled(viewModel.isSaveButtonDisabled)
         }
         .alert(Strings.CreateEntry.Alerts.AmountMissing.title, isPresented: $viewModel.zeroHoursShowing) {
             Button(Strings.Generic.okay) {}

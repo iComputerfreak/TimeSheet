@@ -28,26 +28,32 @@ public struct ListView: StatefulView {
         .sheet(isPresented: $viewModel.createPayoutSheetShowing) {
             CreatePayoutView()
         }
+        .sheet(isPresented: $viewModel.addWorkTimeViewShowing) {
+            AddWorkTimeView(viewModel: .init(worktimes: viewModel.worktimesBinding))
+        }
+        .sheet(isPresented: $viewModel.addFixedPayViewShowing) {
+            AddFixedPayView(viewModel: .init(worktimes: viewModel.worktimesBinding))
+        }
     }
 
     @ToolbarContentBuilder private var toolbarContent: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             Button(Strings.List.NavigationBar.payout) {
-                viewModel.didTapCreatePayout()
+                viewModel.createPayoutSheetShowing = true
             }
             .accessibilityIdentifier("payout-button")
         }
         ToolbarItem(placement: .navigationBarTrailing) {
             Menu {
-                NavigationLink(
-                    destination: AddWorkTimeView(viewModel: .init(worktimes: viewModel.worktimesBinding))
-                ) {
+                Button {
+                    viewModel.addWorkTimeViewShowing = true
+                } label: {
                     Label(Strings.CreateEntry.time, systemImage: "clock")
                         .accessibilityIdentifier("time-based")
                 }
-                NavigationLink(
-                    destination: AddFixedPayView(viewModel: .init(worktimes: viewModel.worktimesBinding))
-                ) {
+                Button {
+                    viewModel.addFixedPayViewShowing = true
+                } label: {
                     Label(Strings.CreateEntry.fixedAmount, systemImage: "banknote")
                         .accessibilityIdentifier("fixed-amount")
                 }

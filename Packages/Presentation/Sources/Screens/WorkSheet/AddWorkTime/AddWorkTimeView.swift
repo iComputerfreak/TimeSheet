@@ -16,34 +16,48 @@ struct AddWorkTimeView: StatefulView {
     }
 
     var body: some View {
-        Form {
-            TextField(Strings.CreateEntry.activity, text: $viewModel.activity)
-            DatePicker(selection: $viewModel.date, in: viewModel.dateRange, displayedComponents: .date) {
-                Text(Strings.CreateEntry.date)
+        NavigationStack {
+            Form {
+                TextField(Strings.CreateEntry.activity, text: $viewModel.activity)
+                DatePicker(selection: $viewModel.date, in: viewModel.dateRange, displayedComponents: .date) {
+                    Text(Strings.CreateEntry.date)
+                }
+                Stepper(value: $viewModel.hours, in: 0...23) {
+                    HStack {
+                        Text(Strings.CreateEntry.hours)
+                        Spacer()
+                        Text(viewModel.hours.formatted())
+                    }
+                }
+                Stepper(value: $viewModel.minutes, in: 0...55, step: 5) {
+                    HStack {
+                        Text(Strings.CreateEntry.minutes)
+                        Spacer()
+                        Text(viewModel.minutes.formatted())
+                    }
+                }
+                WageStepper(wage: $viewModel.wage)
             }
-            Stepper(value: $viewModel.hours, in: 0...23) {
-                HStack {
-                    Text(Strings.CreateEntry.hours)
-                    Spacer()
-                    Text(viewModel.hours.formatted())
+            .navigationTitle(Strings.CreateEntry.navigationTitle)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(role: .legacyConfirm) {
+                        viewModel.saveEntry()
+                        dismiss()
+                    } label: {
+                        Label(Strings.Generic.save, systemImage: "checkmark")
+                    }
+                    .disabled(viewModel.isSaveButtonDisabled)
+                }
+
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(role: .legacyClose) {
+                        dismiss()
+                    } label: {
+                        Label(Strings.Generic.cancel, systemImage: "xmark")
+                    }
                 }
             }
-            Stepper(value: $viewModel.minutes, in: 0...55, step: 5) {
-                HStack {
-                    Text(Strings.CreateEntry.minutes)
-                    Spacer()
-                    Text(viewModel.minutes.formatted())
-                }
-            }
-            WageStepper(wage: $viewModel.wage)
-        }
-        .navigationTitle(Strings.CreateEntry.navigationTitle)
-        .toolbar {
-            Button(Strings.Generic.save) {
-                viewModel.saveEntry()
-                dismiss()
-            }
-            .disabled(viewModel.isSaveButtonDisabled)
         }
         .onAppear {
             viewModel.didAppear()
