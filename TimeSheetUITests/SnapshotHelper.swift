@@ -1,5 +1,5 @@
 //
-//  SelfHelper.swift
+//  SnapshotHelper.swift
 //  Example
 //
 //  Created by Felix Krause on 10/8/15.
@@ -9,7 +9,7 @@
 // IMPORTANT: When modifying this file, make sure to
 //            increment the version number at the very
 //            bottom of the file to notify users about
-//            the new SelfHelper.swift
+//            the new SnapshotHelper.swift
 // -----------------------------------------------------
 
 import Foundation
@@ -17,7 +17,7 @@ import XCTest
 
 @MainActor
 func setupSnapshot(_ app: XCUIApplication, waitForAnimations: Bool = true) {
-    Snapshot.setupSelf(app, waitForAnimations: waitForAnimations)
+    Snapshot.setupSnapshot(app, waitForAnimations: waitForAnimations)
 }
 
 @MainActor
@@ -37,7 +37,7 @@ func snapshot(_ name: String, timeWaitingForIdle timeout: TimeInterval = 20) {
     Snapshot.snapshot(name, timeWaitingForIdle: timeout)
 }
 
-enum SelfError: Error, CustomDebugStringConvertible {
+enum SnapshotError: Error, CustomDebugStringConvertible {
     case cannotFindSimulatorHomeDirectory
     case cannotRunOnPhysicalDevice
 
@@ -46,7 +46,7 @@ enum SelfError: Error, CustomDebugStringConvertible {
         case .cannotFindSimulatorHomeDirectory:
             return "Couldn't find simulator home location. Please, check SIMULATOR_HOST_HOME env variable."
         case .cannotRunOnPhysicalDevice:
-            return "Can't use Self on a physical device."
+            return "Can't use Snapshot on a physical device."
         }
     }
 }
@@ -63,7 +63,7 @@ open class Snapshot: NSObject {
     static var deviceLanguage = ""
     static var currentLocale = ""
 
-    open class func setupSelf(_ app: XCUIApplication, waitForAnimations: Bool = true) {
+    open class func setupSnapshot(_ app: XCUIApplication, waitForAnimations: Bool = true) {
         Self.app = app
         Self.waitForAnimations = waitForAnimations
 
@@ -227,7 +227,7 @@ open class Snapshot: NSObject {
         #endif
 
         guard let app = self.app else {
-            NSLog("XCUIApplication is not set. Please call setupSelf(app) before snapshot().")
+            NSLog("XCUIApplication is not set. Please call setupSnapshot(app) before snapshot().")
             return
         }
 
@@ -248,12 +248,12 @@ open class Snapshot: NSObject {
         return homeDir.appendingPathComponent(cachePath)
         #elseif arch(i386) || arch(x86_64) || arch(arm64)
         guard let simulatorHostHome = ProcessInfo().environment["SIMULATOR_HOST_HOME"] else {
-            throw SelfError.cannotFindSimulatorHomeDirectory
+                throw SnapshotError.cannotFindSimulatorHomeDirectory
         }
         let homeDir = URL(fileURLWithPath: simulatorHostHome)
         return homeDir.appendingPathComponent(cachePath)
         #else
-        throw SelfError.cannotRunOnPhysicalDevice
+            throw SnapshotError.cannotRunOnPhysicalDevice
         #endif
     }
 }
@@ -300,7 +300,7 @@ private extension XCUIElementQuery {
     @MainActor
     var deviceStatusBars: XCUIElementQuery {
         guard let app = Snapshot.app else {
-            fatalError("XCUIApplication is not set. Please call setupSelf(app) before snapshot().")
+            fatalError("XCUIApplication is not set. Please call setupSnapshot(app) before snapshot().")
         }
 
         let deviceWidth = app.windows.firstMatch.frame.width
@@ -323,4 +323,4 @@ private extension CGFloat {
 
 // Please don't remove the lines below
 // They are used to detect outdated configuration files
-// SelfHelperVersion [1.30]
+// SnapshotHelperVersion [1.30]
