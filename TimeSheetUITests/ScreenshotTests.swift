@@ -7,21 +7,20 @@
 
 import XCTest
 
-final class TimeSheetUITests: XCTestCase {
-    // swiftlint:disable:next implicitly_unwrapped_optional
-    private var app: XCUIApplication!
-    // swiftlint:disable:next implicitly_unwrapped_optional
-    private var screenshotCounter: Int!
+@MainActor
+final class ScreenshotTests: XCTestCase {
+    private var app = XCUIApplication()
+    private var screenshotCounter: Int = 1
 
     override func setUpWithError() throws {
         try super.setUpWithError()
         continueAfterFailure = false
-        app = XCUIApplication()
-        setupSnapshot(app)
-        screenshotCounter = 1
     }
 
+    @MainActor
     func testTakeAppStoreScreenshots() throws {
+        setupSnapshot(app)
+
         app.launch()
 
         // MARK: Set up sample data
@@ -57,7 +56,7 @@ final class TimeSheetUITests: XCTestCase {
         snapshot("Settings")
     }
 
-    // Take a snapshot with a global increasing counter as a prefix
+    @MainActor
     private func snapshot(_ name: String) {
         Snapshot.snapshot("\(String(format: "%02d", screenshotCounter))_\(name)")
         screenshotCounter += 1

@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "E1332DA5-DF07-4976-AEF9-20B7496A5870",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:TimeSheet.xcodeproj",
+        "identifier" : "AB391CA22964B7EE00A0B0C1",
+        "name" : "TimeSheetUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
