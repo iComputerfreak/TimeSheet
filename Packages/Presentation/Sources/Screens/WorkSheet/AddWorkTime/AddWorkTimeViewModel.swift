@@ -65,7 +65,7 @@ extension AddWorkTimeView {
         }
 
         func didAppear() {
-            // If the user did not change the date himself, reset it to "today"
+            // If the user did not change the date themselves, reset it to "today"
             // This works around the bug that the date seems to be stuck on old values when opening the app after a few days
             // TODO: DEBUG by putting an exact date in the form and observing if it changes when cancelling and reopening the view
             if !dateChanged {

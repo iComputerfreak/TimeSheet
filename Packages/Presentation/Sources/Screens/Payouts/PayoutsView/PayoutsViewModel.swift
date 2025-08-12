@@ -12,14 +12,17 @@ extension PayoutsView {
         var editingPayout: Payout?
 
         var payoutBindings: [Binding<Payout>] {
-            // TODO: Fix (use proper binding instead)
-            userData.payouts.indices.map { index in
-                Binding {
-                    self.userData.payouts[index]
-                } set: { newValue in
-                    self.userData.payouts[index] = newValue
+            userData.payouts
+                .enumerated()
+                // Sort latest to oldest
+                .sorted(on: \.element.date, by: >)
+                .map { index, _ in
+                    Binding {
+                        self.userData.payouts[index]
+                    } set: { newValue in
+                        self.userData.payouts[index] = newValue
+                    }
                 }
-            }
         }
 
         var payoutDateFormat: Date.FormatStyle {
