@@ -32,7 +32,7 @@ final class TimeSheetUITests: XCTestCase {
         }
         // Create the sample data
         app.tabBars.buttons["settings-tab"].tap()
-        app.buttons["Generate Screenshot Data"].tap()
+        app.buttons["Generate"].tap()
         app.tabBars.buttons["sheet-tab"].tap()
 
         // Take the screenshots
@@ -47,7 +47,6 @@ final class TimeSheetUITests: XCTestCase {
         snapshot("Create_Payout")
         app.swipeDown(velocity: .fast)
 
-        // TODO: Fix
         app.tabBars.buttons["payouts-tab"].tap()
         snapshot("Payouts")
 
