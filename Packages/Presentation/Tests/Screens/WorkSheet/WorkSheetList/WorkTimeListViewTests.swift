@@ -11,24 +11,23 @@ import Testing
 
 @MainActor
 @Suite(.tags(.unit), .serialized)
-struct WorkTimeListViewTests {
+final class WorkTimeListViewTests {
     @Injected private var userData: UserData
-    let sut: WorkTimeListView.ViewModel
+
+    let sut: WorkTimeListView.ViewModel = .init(
+        navigationTitle: "",
+        worktimes: [],
+        canEditWorktimes: true,
+        canDeleteWorktimes: true
+    )
 
     init() {
         setupTesting()
-
-        @Injected var userData: UserData
-        sut = .init(
-            navigationTitle: "",
-            worktimes: userData.worktimes,
-            canEditWorktimes: true,
-            canDeleteWorktimes: true
-        )
     }
 
     @Test func testWorkTimes() async {
         userData.worktimes = SampleData.screenshotWorktimes
+        sut.worktimes = SampleData.screenshotWorktimes
 
         #expect(sut.years == [2023, 2022])
         #expect(sut.months(in: 2023) == [1])
@@ -47,15 +46,16 @@ struct WorkTimeListViewTests {
 
     @Test func testDelete() {
         let worktime = SampleData.generateWorkTimes(count: 1).first!
+        // We expect the worktime being deleted from the user data
         userData.worktimes = [worktime]
-        #expect(sut.worktimes == [worktime])
+        #expect(userData.worktimes == [worktime])
         sut.delete(worktime)
-        #expect(sut.worktimes.isEmpty)
+        #expect(userData.worktimes.isEmpty)
     }
 
     @Test func testDeleteNonexistent() {
         let worktime = SampleData.generateWorkTimes(count: 1).first!
-        userData.worktimes = [worktime]
+        sut.worktimes = [worktime]
         #expect(sut.worktimes == [worktime])
         // Delete invalid worktime
         sut.delete(SampleData.generateWorkTimes(count: 1).first!)
@@ -71,7 +71,7 @@ struct WorkTimeListViewTests {
 
     @Test func testWorktimeBinding() {
         let worktime = SampleData.generateWorkTimes(count: 1).first!
-        userData.worktimes = [worktime]
+        sut.worktimes = [worktime]
 
         #expect(sut.worktimeBinding(for: worktime.id).wrappedValue == worktime)
     }
@@ -97,7 +97,7 @@ struct WorkTimeListViewTests {
 
     @Test func testTotalHoursSingleEntry() {
         let worktime = SampleData.generateWorkTimes(count: 1).first!
-        userData.worktimes = [worktime]
+        sut.worktimes = [worktime]
 
         #expect(sut.totalHours(in: worktime.date.year, month: worktime.date.month).hour == worktime.duration.hour)
         #expect(sut.totalHours(in: worktime.date.year, month: worktime.date.month).minute == worktime.duration.minute)
@@ -107,7 +107,7 @@ struct WorkTimeListViewTests {
 
     @Test func testTotalHoursSingleEntryFixedPay() {
         let worktime = WorkTime(date: .now, activity: nil, fixedPay: 100)
-        userData.worktimes = [worktime]
+        sut.worktimes = [worktime]
 
         // Fixed pay should not count towards total hours
         #expect(sut.totalHours(in: worktime.date.year, month: worktime.date.month) == .zero)
@@ -118,7 +118,7 @@ struct WorkTimeListViewTests {
     @Test func testTotalHoursMultipleEntry() {
         let worktime1 = SampleData.generateWorkTimes(count: 1).first!
         let worktime2 = WorkTime(date: worktime1.date, activity: nil, hours: 1, minutes: 30, wage: 10)
-        userData.worktimes = [worktime1, worktime2]
+        sut.worktimes = [worktime1, worktime2]
 
         let totalDuration = worktime1.duration + worktime2.duration
 
@@ -133,7 +133,7 @@ struct WorkTimeListViewTests {
 
     @Test func testTotalMoneySingleEntry() {
         let worktime = SampleData.generateWorkTimes(count: 1).first!
-        userData.worktimes = [worktime]
+        sut.worktimes = [worktime]
 
         #expect(sut.totalMoney(in: worktime.date.year, month: worktime.date.month) == worktime.pay)
         #expect(sut.totalMoney(in: worktime.date.year + 1, month: worktime.date.month) == .zero)
@@ -143,7 +143,7 @@ struct WorkTimeListViewTests {
     @Test func testTotalMoneyMultipleEntry() {
         let worktime1 = SampleData.generateWorkTimes(count: 1).first!
         let worktime2 = WorkTime(date: worktime1.date, activity: nil, hours: 1, minutes: 30, wage: 10)
-        userData.worktimes = [worktime1, worktime2]
+        sut.worktimes = [worktime1, worktime2]
 
         let totalMoney = worktime1.pay + worktime2.pay
 
