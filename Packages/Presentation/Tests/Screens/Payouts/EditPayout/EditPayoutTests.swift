@@ -25,8 +25,8 @@ struct EditPayoutTests {
     }
 
     @Test mutating func testSave() async {
-        let initialPayout = Payout(date: Date(timeIntervalSince1970: 0), worktimes: [])
-        let newPayout = Payout(date: Date(timeIntervalSince1970: 100), worktimes: [])
+        let initialPayout = Payout(date: Date(timeIntervalSince1970: 0), workTimes: [])
+        let newPayout = Payout(date: Date(timeIntervalSince1970: 100), workTimes: [])
 
         var payout: Payout = initialPayout
         let payoutBinding: Binding<Payout> = .init {

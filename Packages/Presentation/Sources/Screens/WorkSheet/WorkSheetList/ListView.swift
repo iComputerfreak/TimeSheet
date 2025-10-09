@@ -18,9 +18,9 @@ public struct ListView: StatefulView {
             WorkTimeListView(
                 viewModel: .init(
                     navigationTitle: Strings.List.navigationTitle,
-                    worktimes: viewModel.userData.worktimes,
-                    canEditWorktimes: true,
-                    canDeleteWorktimes: true
+                    workTimes: viewModel.userData.workTimes,
+                    canEditWorkTimes: true,
+                    canDeleteWorkTimes: true
                 )
             )
             .toolbar { toolbarContent }
@@ -29,10 +29,10 @@ public struct ListView: StatefulView {
             CreatePayoutView()
         }
         .sheet(isPresented: $viewModel.addWorkTimeViewShowing) {
-            AddWorkTimeView(viewModel: .init(worktimes: viewModel.worktimesBinding))
+            AddWorkTimeView(viewModel: .init(workTimes: viewModel.workTimesBinding))
         }
         .sheet(isPresented: $viewModel.addFixedPayViewShowing) {
-            AddFixedPayView(viewModel: .init(worktimes: viewModel.worktimesBinding))
+            AddFixedPayView(viewModel: .init(workTimes: viewModel.workTimesBinding))
         }
     }
 

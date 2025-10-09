@@ -81,18 +81,18 @@ struct InteractiveDateChartView: StatefulView {
 #if DEBUG
 #Preview {
     @Previewable var incomePerMonth: [(Date, Double)] = {
-        let worktimesByMonth: [Date: [WorkTime]] = Dictionary(
+        let workTimesByMonth: [Date: [WorkTime]] = Dictionary(
             grouping: SampleData.generateWorkTimes(),
-            by: { worktime in
+            by: { workTime in
                 Calendar.current.date(from: DateComponents(
-                    year: worktime.date.year,
-                    month: worktime.date.month,
+                    year: workTime.date.year,
+                    month: workTime.date.month,
                     day: 1
-                )) ?? worktime.date
+                )) ?? workTime.date
             }
         )
         return Array(
-            worktimesByMonth
+            workTimesByMonth
                 .mapValues { $0.map(\.pay).reduce(0, +) }
                 .sorted { $0.key < $1.key }
                 .prefix(12)

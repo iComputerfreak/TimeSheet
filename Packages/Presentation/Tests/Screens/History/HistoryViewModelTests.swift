@@ -21,25 +21,25 @@ struct HistoryViewModelTests {
         setupTesting()
     }
 
-    @Test func testEmptyWorktimes() {
-        userData.worktimes = []
+    @Test func testEmptyWorkTimes() {
+        userData.workTimes = []
         let viewModel = HistoryView.ViewModel()
-        #expect(viewModel.worktimes.isEmpty)
-        #expect(viewModel.worktimesByMonth.isEmpty)
+        #expect(viewModel.workTimes.isEmpty)
+        #expect(viewModel.workTimesByMonth.isEmpty)
         #expect(viewModel.incomePerMonth.isEmpty)
         #expect(viewModel.hoursPerMonth.isEmpty)
         #expect(viewModel.data.isEmpty)
     }
 
-    @Test func testSingleWorktimeIncomeAndHours() {
+    @Test func testSingleWorkTimeIncomeAndHours() {
         let wt = WorkTime(date: january, activity: "Consulting", hours: 2, minutes: 30, wage: 50.0)
-        userData.worktimes = [wt]
+        userData.workTimes = [wt]
         let viewModel = HistoryView.ViewModel()
 
-        // worktimes
-        #expect(viewModel.worktimes == [wt])
+        // workTimes
+        #expect(viewModel.workTimes == [wt])
         // by month
-        #expect(viewModel.worktimesByMonth[january]?.first == wt)
+        #expect(viewModel.workTimesByMonth[january]?.first == wt)
         // income
         #expect(viewModel.incomePerMonth.contains(where: { $0.0 == january && $0.1 == wt.pay }))
         // hours
@@ -53,12 +53,12 @@ struct HistoryViewModelTests {
         let wt1 = WorkTime(date: january, activity: "A", hours: 2, minutes: 0, wage: 40)
         let wt2 = WorkTime(date: february, activity: "B", hours: 3, minutes: 30, wage: 50)
         let wt3 = WorkTime(date: march, activity: "C", hours: 1, minutes: 45, wage: 55)
-        userData.worktimes = [wt1, wt2, wt3]
+        userData.workTimes = [wt1, wt2, wt3]
 
         let viewModel = HistoryView.ViewModel()
 
-        #expect(viewModel.worktimes.count == 3)
-        #expect(viewModel.worktimesByMonth.count == 3)
+        #expect(viewModel.workTimes.count == 3)
+        #expect(viewModel.workTimesByMonth.count == 3)
         #expect(viewModel.incomePerMonth.count == 3)
         #expect(viewModel.hoursPerMonth.count == 3)
         // Data is income by default
@@ -69,7 +69,7 @@ struct HistoryViewModelTests {
 
     @Test func testGraphTypeSwitch() {
         let wt = WorkTime(date: january, activity: "Consulting", hours: 2, minutes: 30, wage: 50.0)
-        userData.worktimes = [wt]
+        userData.workTimes = [wt]
         let viewModel = HistoryView.ViewModel()
 
         // Default is income

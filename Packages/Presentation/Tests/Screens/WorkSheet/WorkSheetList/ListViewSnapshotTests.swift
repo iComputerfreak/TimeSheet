@@ -24,7 +24,7 @@ struct ListViewSnapshotTests {
     }
 
     @Test func testFilled() {
-        userData.worktimes = SampleData.screenshotWorktimes
+        userData.workTimes = SampleData.screenshotWorkTimes
         assertSnapshot {
             ListView()
         }

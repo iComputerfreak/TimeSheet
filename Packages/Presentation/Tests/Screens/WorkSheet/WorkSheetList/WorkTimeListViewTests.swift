@@ -16,9 +16,9 @@ final class WorkTimeListViewTests {
 
     let sut: WorkTimeListView.ViewModel = .init(
         navigationTitle: "",
-        worktimes: [],
-        canEditWorktimes: true,
-        canDeleteWorktimes: true
+        workTimes: [],
+        canEditWorkTimes: true,
+        canDeleteWorkTimes: true
     )
 
     init() {
@@ -26,54 +26,54 @@ final class WorkTimeListViewTests {
     }
 
     @Test func testWorkTimes() async {
-        userData.worktimes = SampleData.screenshotWorktimes
-        sut.worktimes = SampleData.screenshotWorktimes
+        userData.workTimes = SampleData.screenshotWorkTimes
+        sut.workTimes = SampleData.screenshotWorkTimes
 
         #expect(sut.years == [2023, 2022])
         #expect(sut.months(in: 2023) == [1])
         #expect(sut.months(in: 2022) == [12, 11])
-        #expect(sut.worktimes == userData.worktimes)
+        #expect(sut.workTimes == userData.workTimes)
         #expect(
-            sut.worktimes(in: 2023, month: 1) == [SampleData.screenshotWorktimes[5]]
+            sut.workTimes(in: 2023, month: 1) == [SampleData.screenshotWorkTimes[5]]
         )
         #expect(
-            sut.worktimes(in: 2022, month: 12) == [4, 3].map { SampleData.screenshotWorktimes[$0] }
+            sut.workTimes(in: 2022, month: 12) == [4, 3].map { SampleData.screenshotWorkTimes[$0] }
         )
         #expect(
-            sut.worktimes(in: 2022, month: 11) == [2, 1, 0].map { SampleData.screenshotWorktimes[$0] }
+            sut.workTimes(in: 2022, month: 11) == [2, 1, 0].map { SampleData.screenshotWorkTimes[$0] }
         )
     }
 
     @Test func testDelete() {
-        let worktime = SampleData.generateWorkTimes(count: 1).first!
-        // We expect the worktime being deleted from the user data
-        userData.worktimes = [worktime]
-        #expect(userData.worktimes == [worktime])
-        sut.delete(worktime)
-        #expect(userData.worktimes.isEmpty)
+        let workTime = SampleData.generateWorkTimes(count: 1).first!
+        // We expect the workTime being deleted from the user data
+        userData.workTimes = [workTime]
+        #expect(userData.workTimes == [workTime])
+        sut.delete(workTime)
+        #expect(userData.workTimes.isEmpty)
     }
 
     @Test func testDeleteNonexistent() {
-        let worktime = SampleData.generateWorkTimes(count: 1).first!
-        sut.worktimes = [worktime]
-        #expect(sut.worktimes == [worktime])
-        // Delete invalid worktime
+        let workTime = SampleData.generateWorkTimes(count: 1).first!
+        sut.workTimes = [workTime]
+        #expect(sut.workTimes == [workTime])
+        // Delete invalid workTime
         sut.delete(SampleData.generateWorkTimes(count: 1).first!)
-        #expect(sut.worktimes == [worktime])
+        #expect(sut.workTimes == [workTime])
     }
 
     @Test func testIsShowingEditButton() {
-        let fixedPayWorktime = WorkTime(date: .now, activity: nil, fixedPay: 100)
-        #expect(sut.isShowingEditButton(for: fixedPayWorktime) == false)
-        let nonFixedPayWorktime = WorkTime(date: .now, activity: nil, duration: .init(hour: 1), wage: 10)
-        #expect(sut.isShowingEditButton(for: nonFixedPayWorktime) == true)
+        let fixedPayWorkTime = WorkTime(date: .now, activity: nil, fixedPay: 100)
+        #expect(sut.isShowingEditButton(for: fixedPayWorkTime) == false)
+        let nonFixedPayWorkTime = WorkTime(date: .now, activity: nil, duration: .init(hour: 1), wage: 10)
+        #expect(sut.isShowingEditButton(for: nonFixedPayWorkTime) == true)
     }
 
-    @Test func testWorktimeBinding() {
-        let worktime = SampleData.generateWorkTimes(count: 1).first!
-        sut.worktimes = [worktime]
+    @Test func testWorkTimeBinding() {
+        let workTime = SampleData.generateWorkTimes(count: 1).first!
+        sut.workTimes = [workTime]
 
-        #expect(sut.worktimeBinding(for: worktime.id).wrappedValue == worktime)
+        #expect(sut.workTimeBinding(for: workTime.id).wrappedValue == workTime)
     }
 
     @Test func testHeaderString() {
@@ -96,35 +96,35 @@ final class WorkTimeListViewTests {
     }
 
     @Test func testTotalHoursSingleEntry() {
-        let worktime = SampleData.generateWorkTimes(count: 1).first!
-        sut.worktimes = [worktime]
+        let workTime = SampleData.generateWorkTimes(count: 1).first!
+        sut.workTimes = [workTime]
 
-        #expect(sut.totalHours(in: worktime.date.year, month: worktime.date.month).hour == worktime.duration.hour)
-        #expect(sut.totalHours(in: worktime.date.year, month: worktime.date.month).minute == worktime.duration.minute)
-        #expect(sut.totalHours(in: worktime.date.year + 1, month: worktime.date.month) == .zero)
-        #expect(sut.totalHours(in: worktime.date.year, month: worktime.date.month + 1 % 12) == .zero)
+        #expect(sut.totalHours(in: workTime.date.year, month: workTime.date.month).hour == workTime.duration.hour)
+        #expect(sut.totalHours(in: workTime.date.year, month: workTime.date.month).minute == workTime.duration.minute)
+        #expect(sut.totalHours(in: workTime.date.year + 1, month: workTime.date.month) == .zero)
+        #expect(sut.totalHours(in: workTime.date.year, month: workTime.date.month + 1 % 12) == .zero)
     }
 
     @Test func testTotalHoursSingleEntryFixedPay() {
-        let worktime = WorkTime(date: .now, activity: nil, fixedPay: 100)
-        sut.worktimes = [worktime]
+        let workTime = WorkTime(date: .now, activity: nil, fixedPay: 100)
+        sut.workTimes = [workTime]
 
         // Fixed pay should not count towards total hours
-        #expect(sut.totalHours(in: worktime.date.year, month: worktime.date.month) == .zero)
-        #expect(sut.totalHours(in: worktime.date.year + 1, month: worktime.date.month) == .zero)
-        #expect(sut.totalHours(in: worktime.date.year, month: worktime.date.month + 1 % 12) == .zero)
+        #expect(sut.totalHours(in: workTime.date.year, month: workTime.date.month) == .zero)
+        #expect(sut.totalHours(in: workTime.date.year + 1, month: workTime.date.month) == .zero)
+        #expect(sut.totalHours(in: workTime.date.year, month: workTime.date.month + 1 % 12) == .zero)
     }
 
     @Test func testTotalHoursMultipleEntry() {
-        let worktime1 = SampleData.generateWorkTimes(count: 1).first!
-        let worktime2 = WorkTime(date: worktime1.date, activity: nil, hours: 1, minutes: 30, wage: 10)
-        sut.worktimes = [worktime1, worktime2]
+        let workTime1 = SampleData.generateWorkTimes(count: 1).first!
+        let workTime2 = WorkTime(date: workTime1.date, activity: nil, hours: 1, minutes: 30, wage: 10)
+        sut.workTimes = [workTime1, workTime2]
 
-        let totalDuration = worktime1.duration + worktime2.duration
+        let totalDuration = workTime1.duration + workTime2.duration
 
-        #expect(sut.totalHours(in: worktime1.date.year, month: worktime1.date.month) == totalDuration)
-        #expect(sut.totalHours(in: worktime1.date.year + 1, month: worktime1.date.month) == .zero)
-        #expect(sut.totalHours(in: worktime1.date.year, month: worktime1.date.month + 1 % 12) == .zero)
+        #expect(sut.totalHours(in: workTime1.date.year, month: workTime1.date.month) == totalDuration)
+        #expect(sut.totalHours(in: workTime1.date.year + 1, month: workTime1.date.month) == .zero)
+        #expect(sut.totalHours(in: workTime1.date.year, month: workTime1.date.month + 1 % 12) == .zero)
     }
 
     @Test func testTotalMoneyNoEntries() {
@@ -132,23 +132,23 @@ final class WorkTimeListViewTests {
     }
 
     @Test func testTotalMoneySingleEntry() {
-        let worktime = SampleData.generateWorkTimes(count: 1).first!
-        sut.worktimes = [worktime]
+        let workTime = SampleData.generateWorkTimes(count: 1).first!
+        sut.workTimes = [workTime]
 
-        #expect(sut.totalMoney(in: worktime.date.year, month: worktime.date.month) == worktime.pay)
-        #expect(sut.totalMoney(in: worktime.date.year + 1, month: worktime.date.month) == .zero)
-        #expect(sut.totalMoney(in: worktime.date.year, month: worktime.date.month + 1 % 12) == .zero)
+        #expect(sut.totalMoney(in: workTime.date.year, month: workTime.date.month) == workTime.pay)
+        #expect(sut.totalMoney(in: workTime.date.year + 1, month: workTime.date.month) == .zero)
+        #expect(sut.totalMoney(in: workTime.date.year, month: workTime.date.month + 1 % 12) == .zero)
     }
 
     @Test func testTotalMoneyMultipleEntry() {
-        let worktime1 = SampleData.generateWorkTimes(count: 1).first!
-        let worktime2 = WorkTime(date: worktime1.date, activity: nil, hours: 1, minutes: 30, wage: 10)
-        sut.worktimes = [worktime1, worktime2]
+        let workTime1 = SampleData.generateWorkTimes(count: 1).first!
+        let workTime2 = WorkTime(date: workTime1.date, activity: nil, hours: 1, minutes: 30, wage: 10)
+        sut.workTimes = [workTime1, workTime2]
 
-        let totalMoney = worktime1.pay + worktime2.pay
+        let totalMoney = workTime1.pay + workTime2.pay
 
-        #expect(sut.totalMoney(in: worktime1.date.year, month: worktime1.date.month) == totalMoney)
-        #expect(sut.totalMoney(in: worktime1.date.year + 1, month: worktime1.date.month) == .zero)
-        #expect(sut.totalMoney(in: worktime1.date.year, month: worktime1.date.month + 1 % 12) == .zero)
+        #expect(sut.totalMoney(in: workTime1.date.year, month: workTime1.date.month) == totalMoney)
+        #expect(sut.totalMoney(in: workTime1.date.year + 1, month: workTime1.date.month) == .zero)
+        #expect(sut.totalMoney(in: workTime1.date.year, month: workTime1.date.month + 1 % 12) == .zero)
     }
 }

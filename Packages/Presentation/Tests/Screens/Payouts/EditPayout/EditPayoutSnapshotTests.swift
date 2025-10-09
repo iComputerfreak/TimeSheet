@@ -15,7 +15,7 @@ struct EditPayoutSnapshotTests {
 
     init() {
         setupTesting()
-        userData.worktimes = SampleData.screenshotWorktimes
+        userData.workTimes = SampleData.screenshotWorkTimes
     }
 
     @Test func testEditPayout() {

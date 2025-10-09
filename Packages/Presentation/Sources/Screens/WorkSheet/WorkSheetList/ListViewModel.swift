@@ -18,11 +18,11 @@ extension ListView {
             DependencyContext.current.resolve()
         }
 
-        var worktimesBinding: Binding<[WorkTime]> {
+        var workTimesBinding: Binding<[WorkTime]> {
             Binding {
-                self.userData.worktimes
+                self.userData.workTimes
             } set: { newValue in
-                self.userData.worktimes = newValue
+                self.userData.workTimes = newValue
             }
         }
 

@@ -14,30 +14,30 @@ struct ListRow: View {
     }
 
     @Injected private var config: Config
-    private let worktime: WorkTime
+    private let workTime: WorkTime
 
     // swiftlint:disable:next type_contents_order
-    init(worktime: WorkTime) {
-        self.worktime = worktime
+    init(workTime: WorkTime) {
+        self.workTime = workTime
     }
 
     var body: some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading) {
-                if let activity = worktime.activity {
+                if let activity = workTime.activity {
                     Text(activity)
                         .bold()
                 }
-                let date = worktime.date.formatted(.dateTime.weekday().day().month(.defaultDigits))
+                let date = workTime.date.formatted(.dateTime.weekday().day().month(.defaultDigits))
                 Text(date)
             }
             Spacer()
             VStack(alignment: .trailing) {
-                Text(worktime.pay.formatted(.currency(code: config.currency)))
+                Text(workTime.pay.formatted(.currency(code: config.currency)))
                     .bold()
-                    .foregroundColor(worktime.pay >= 0 ? .green : .red)
-                let duration = Self.durationFormatter.string(from: worktime.duration) ?? ""
-                if !worktime.isFixedPay {
+                    .foregroundColor(workTime.pay >= 0 ? .green : .red)
+                let duration = Self.durationFormatter.string(from: workTime.duration) ?? ""
+                if !workTime.isFixedPay {
                     Text(duration)
                 }
             }
@@ -48,7 +48,7 @@ struct ListRow: View {
 #if DEBUG
 #Preview {
     List {
-        ListRow(worktime: SampleData.generateWorkTimes(count: 1).first!)
+        ListRow(workTime: SampleData.generateWorkTimes(count: 1).first!)
             .previewEnvironment()
     }
 }

@@ -37,7 +37,7 @@ func assertSnapshot(
 func setupTesting() {
     UserDefaults.standard.removeObject(forKey: UserDefaultsKey.currency)
     UserDefaults.standard.removeObject(forKey: UserDefaultsKey.wage)
-    UserDefaults.standard.removeObject(forKey: UserDefaultsKey.worktimes)
+    UserDefaults.standard.removeObject(forKey: UserDefaultsKey.workTimes)
     UserDefaults.standard.removeObject(forKey: UserDefaultsKey.payouts)
 
     // Don't show the "Generate Sample Data" button in the settings view to not interfere with the snapshot tests

@@ -38,10 +38,10 @@ struct ListRowSnapshotTests {
             )
         ]
     )
-    func testListRow(worktime: WorkTime) {
+    func testListRow(workTime: WorkTime) {
         assertSnapshot(height: 400) {
             List {
-                ListRow(worktime: worktime)
+                ListRow(workTime: workTime)
             }
         }
     }

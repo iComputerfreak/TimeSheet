@@ -17,7 +17,7 @@ struct AddFixedPaySnapshotTests {
     }
 
     @Test func testCreationEmpty() {
-        let viewModel = AddFixedPayView.ViewModel(worktimes: .constant([]))
+        let viewModel = AddFixedPayView.ViewModel(workTimes: .constant([]))
         // We need to set the date to a fixed value, otherwise it's "today", which will fail the snapshot test.
         viewModel.date = exampleDate
         assertSnapshot {
@@ -26,7 +26,7 @@ struct AddFixedPaySnapshotTests {
     }
 
     @Test func testCreationFilled() {
-        let viewModel = AddFixedPayView.ViewModel(worktimes: .constant([]))
+        let viewModel = AddFixedPayView.ViewModel(workTimes: .constant([]))
         viewModel.activity = "Some Activity Name"
         viewModel.date = exampleDate
         viewModel.payAmount = 22

@@ -11,27 +11,27 @@ extension WorkTimeListView {
     @Observable
     class ViewModel: ViewModelProtocol {
         let navigationTitle: String
-        let canEditWorktimes: Bool
-        let canDeleteWorktimes: Bool
-        var worktimes: [WorkTime]
+        let canEditWorkTimes: Bool
+        let canDeleteWorkTimes: Bool
+        var workTimes: [WorkTime]
         var editingWorkTime: WorkTime?
 
         var years: [Int] {
-            worktimes
+            workTimes
                 .map(\.date.year)
                 .removingDuplicates()
                 .sorted(by: >)
         }
 
         var totalWorkingDuration: DateComponents {
-            worktimes
+            workTimes
                 .filter { !$0.isFixedPay }
                 .map(\.duration)
                 .reduce(DateComponents.zero, +)
         }
 
-        var totalWorktimePayIncludingDebts: Double {
-            worktimes
+        var totalWorkTimePayIncludingDebts: Double {
+            workTimes
                 .map(\.pay)
                 .reduce(0, +)
         }
@@ -42,53 +42,53 @@ extension WorkTimeListView {
 
         init(
             navigationTitle: String,
-            worktimes: [WorkTime],
-            canEditWorktimes: Bool,
-            canDeleteWorktimes: Bool
+            workTimes: [WorkTime],
+            canEditWorkTimes: Bool,
+            canDeleteWorkTimes: Bool
         ) {
             self.navigationTitle = navigationTitle
-            self.worktimes = worktimes
-            self.canEditWorktimes = canEditWorktimes
-            self.canDeleteWorktimes = canDeleteWorktimes
+            self.workTimes = workTimes
+            self.canEditWorkTimes = canEditWorkTimes
+            self.canDeleteWorkTimes = canDeleteWorkTimes
         }
 
         func months(in year: Int) -> [Int] {
-            worktimes
-                .filter { worktime in
-                    worktime.date.year == year
+            workTimes
+                .filter { workTime in
+                    workTime.date.year == year
                 }
                 .map(\.date.month)
                 .removingDuplicates()
                 .sorted(by: >)
         }
 
-        func worktimes(in year: Int, month: Int) -> [WorkTime] {
-            worktimes.filter { worktime in
-                worktime.date.year == year && worktime.date.month == month
+        func workTimes(in year: Int, month: Int) -> [WorkTime] {
+            workTimes.filter { workTime in
+                workTime.date.year == year && workTime.date.month == month
             }
             .sorted(on: \.date, by: >)
         }
 
-        func delete(_ worktime: WorkTime) {
-            userData.worktimes.removeAll(where: { $0.id == worktime.id })
+        func delete(_ workTime: WorkTime) {
+            userData.workTimes.removeAll(where: { $0.id == workTime.id })
         }
 
-        func isShowingEditButton(for worktime: WorkTime) -> Bool {
+        func isShowingEditButton(for workTime: WorkTime) -> Bool {
             // We don't show the edit button for fixed pay entries right now
-            !worktime.isFixedPay
+            !workTime.isFixedPay
         }
 
-        func worktimeBinding(for worktimeID: UUID) -> Binding<WorkTime> {
+        func workTimeBinding(for workTimeID: UUID) -> Binding<WorkTime> {
             Binding {
-                self.worktimes.first { $0.id == worktimeID } ?? WorkTime(
+                self.workTimes.first { $0.id == workTimeID } ?? WorkTime(
                     date: .now,
                     activity: nil,
                     duration: .init(),
                     wage: 0
                 )
             } set: { newValue in
-                if let worktimeIndex = self.worktimes.firstIndex(where: { $0.id == worktimeID }) {
-                    self.userData.worktimes[worktimeIndex] = newValue
+                if let workTimeIndex = self.workTimes.firstIndex(where: { $0.id == workTimeID }) {
+                    self.userData.workTimes[workTimeIndex] = newValue
                 }
             }
         }
@@ -99,14 +99,14 @@ extension WorkTimeListView {
         }
 
         func totalHours(in year: Int, month: Int) -> DateComponents {
-            worktimes(in: year, month: month)
+            workTimes(in: year, month: month)
                 .filter { !$0.isFixedPay }
                 .map(\.duration)
                 .reduce(DateComponents.zero, +)
         }
 
         func totalMoney(in year: Int, month: Int) -> Double {
-            worktimes(in: year, month: month)
+            workTimes(in: year, month: month)
                 .map(\.pay)
                 .reduce(0, +)
         }

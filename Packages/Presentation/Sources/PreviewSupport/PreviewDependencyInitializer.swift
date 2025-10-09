@@ -19,7 +19,7 @@ public final class PreviewDependencyInitializer: DependencyInitializer {
 
     public func register(in context: DependencyContext) async {
         let mockUserData = await MockUserData(
-            worktimes: SampleData.generateWorkTimes(),
+            workTimes: SampleData.generateWorkTimes(),
             payouts: SampleData.generatePayouts()
         )
         context.register(UserData.self) { mockUserData }

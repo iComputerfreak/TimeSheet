@@ -24,7 +24,7 @@ struct CreatePayoutTests {
     @Test func testFullAmount() async {
         #expect(sut.fullAmount == 0)
 
-        userData.worktimes = SampleData.screenshotWorktimes
+        userData.workTimes = SampleData.screenshotWorkTimes
 
         #expect(sut.fullAmount == 390)
     }
@@ -34,7 +34,7 @@ struct CreatePayoutTests {
 
         #expect(sut.isCreateButtonDisabled)
 
-        userData.worktimes = SampleData.screenshotWorktimes
+        userData.workTimes = SampleData.screenshotWorkTimes
 
         #expect(!sut.isCreateButtonDisabled)
     }
@@ -50,32 +50,32 @@ struct CreatePayoutTests {
     }
 
     @Test func testOnAppear() {
-        userData.worktimes = SampleData.screenshotWorktimes
+        userData.workTimes = SampleData.screenshotWorkTimes
         sut.onAppear()
         #expect(sut.payoutAmount == 390)
 
-        userData.worktimes = [.init(date: Date(), activity: nil, fixedPay: -1000)]
+        userData.workTimes = [.init(date: Date(), activity: nil, fixedPay: -1000)]
         sut.onAppear()
         #expect(sut.payoutAmount == 0, "If the total amount is negative, the payout amount should be capped to 0")
     }
 
     @Test func testSaveEntryFullPayout() {
         sut.fullPayoutMode = true
-        userData.worktimes = SampleData.screenshotWorktimes
+        userData.workTimes = SampleData.screenshotWorkTimes
 
-        let amount = SampleData.screenshotWorktimes.map(\.pay).reduce(0, +)
+        let amount = SampleData.screenshotWorkTimes.map(\.pay).reduce(0, +)
         let initialCount = userData.payouts.count
 
         sut.saveEntry()
 
         #expect(userData.payouts.count == initialCount + 1)
         #expect(userData.payouts.last?.amount == amount)
-        #expect(userData.payouts.last?.worktimes == SampleData.screenshotWorktimes)
+        #expect(userData.payouts.last?.workTimes == SampleData.screenshotWorkTimes)
     }
 
     @Test func testSaveEntryFullPayoutErrorNoEntries() {
         sut.fullPayoutMode = true
-        userData.worktimes = []
+        userData.workTimes = []
 
         let initialCount = userData.payouts.count
 
@@ -88,7 +88,7 @@ struct CreatePayoutTests {
     @Test func testSaveEntryPartialPayout() {
         sut.fullPayoutMode = false
         sut.payoutAmount = 100
-        userData.worktimes = SampleData.screenshotWorktimes
+        userData.workTimes = SampleData.screenshotWorkTimes
 
         let initialCount = userData.payouts.count
 
@@ -99,14 +99,14 @@ struct CreatePayoutTests {
             // swiftlint:disable:next line_length
             "Creating a new partial payout should not create a new payout in the respecitve tab, but instead create a new entry in the list."
         )
-        #expect(userData.worktimes.last?.pay == -100)
-        #expect(userData.worktimes.last?.isFixedPay == true)
+        #expect(userData.workTimes.last?.pay == -100)
+        #expect(userData.workTimes.last?.isFixedPay == true)
     }
 
     @Test func testSaveEntryPartialPayoutErrorZeroAmount() {
         sut.fullPayoutMode = false
         sut.payoutAmount = 0
-        userData.worktimes = SampleData.screenshotWorktimes
+        userData.workTimes = SampleData.screenshotWorkTimes
 
         let initialCount = userData.payouts.count
 

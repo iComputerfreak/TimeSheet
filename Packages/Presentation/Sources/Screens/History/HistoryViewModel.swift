@@ -21,25 +21,25 @@ extension HistoryView {
 
         var currency: String { config.currency }
 
-        var worktimes: [WorkTime] {
-            userData.worktimes + userData.payouts.flatMap(\.worktimes)
+        var workTimes: [WorkTime] {
+            userData.workTimes + userData.payouts.flatMap(\.workTimes)
         }
 
-        var worktimesByMonth: [Date: [WorkTime]] {
+        var workTimesByMonth: [Date: [WorkTime]] {
             Dictionary(
-                grouping: worktimes,
-                by: { worktime in
+                grouping: workTimes,
+                by: { workTime in
                     Calendar.current.date(from: .init(
-                        year: worktime.date.year,
-                        month: worktime.date.month,
+                        year: workTime.date.year,
+                        month: workTime.date.month,
                         day: 1
-                    )) ?? worktime.date
+                    )) ?? workTime.date
                 }
             )
         }
 
         var incomePerMonth: [(Date, Double)] {
-            worktimesByMonth
+            workTimesByMonth
             // Do not include payouts
             // TODO: We should not compare the literal title here, we should create a different struct for Payouts
                 .mapValues { value in
@@ -53,8 +53,8 @@ extension HistoryView {
 
         var hoursPerMonth: [(Date, Double)] {
             var hoursByMonth: [(key: Date, value: Double)] = []
-            for (date, worktimes) in worktimesByMonth {
-                let hours = worktimes
+            for (date, workTimes) in workTimesByMonth {
+                let hours = workTimes
                 // Don't include fixed pay in the hours
                     .filter { !$0.isFixedPay }
                     .map(\.duration)

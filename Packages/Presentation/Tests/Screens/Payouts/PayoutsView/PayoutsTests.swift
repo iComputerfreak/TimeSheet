@@ -17,7 +17,7 @@ struct PayoutsTests {
 
     private let sut: PayoutsView.ViewModel = .init()
 
-    private let payout: Payout = .init(date: Date(timeIntervalSince1970: 1_000_000), worktimes: [])
+    private let payout: Payout = .init(date: Date(timeIntervalSince1970: 1_000_000), workTimes: [])
 
     init() {
         setupTesting()

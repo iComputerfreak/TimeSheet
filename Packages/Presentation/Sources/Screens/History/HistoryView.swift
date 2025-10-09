@@ -16,7 +16,7 @@ public struct HistoryView: View {
     public var body: some View {
         NavigationStack {
             Group {
-                if viewModel.worktimes.isEmpty {
+                if viewModel.workTimes.isEmpty {
                     Text(Strings.History.noDataToShow)
                 } else {
                     chartsContent

@@ -20,7 +20,7 @@ extension AddWorkTimeView {
         var wage: Double
         var dateChanged = false
 
-        private var worktimes: Binding<[WorkTime]>?
+        private var workTimes: Binding<[WorkTime]>?
         private var editingItem: Binding<WorkTime>?
 
         var zeroHoursShowing = false
@@ -37,9 +37,9 @@ extension AddWorkTimeView {
         @Injected private var config: Config
 
         /// Creates a new AddWorkTimeView in either adding mode, adding a new work time item on save
-        /// - Parameter worktimes: The list of worktimes to append the new object at
-        init(worktimes: Binding<[WorkTime]>) {
-            self.worktimes = worktimes
+        /// - Parameter workTimes: The list of workTimes to append the new object at
+        init(workTimes: Binding<[WorkTime]>) {
+            self.workTimes = workTimes
             self.editingItem = nil
             self.date = Date()
             self.activity = ""
@@ -51,17 +51,17 @@ extension AddWorkTimeView {
         /// Creates a new AddWorkTimeView in editing mode, editing the given `editingItem`
         /// - Parameter editingItem: The work time being edited
         init(editingItem: Binding<WorkTime>) {
-            self.worktimes = nil
+            self.workTimes = nil
             self.editingItem = editingItem
 
             // Pre-fill the values with the ones of the editingItem
-            let worktime = editingItem.wrappedValue
-            self.activity = worktime.activity ?? ""
-            self.date = worktime.date
+            let workTime = editingItem.wrappedValue
+            self.activity = workTime.activity ?? ""
+            self.date = workTime.date
             self.dateChanged = true // We don't want to reset it to today
-            self.hours = worktime.duration.hour ?? 0
-            self.minutes = worktime.duration.minute ?? 0
-            self.wage = worktime.wage
+            self.hours = workTime.duration.hour ?? 0
+            self.minutes = workTime.duration.minute ?? 0
+            self.wage = workTime.wage
         }
 
         func didAppear() {
@@ -90,15 +90,15 @@ extension AddWorkTimeView {
                 minutes: minutes,
                 wage: wage
             )
-            if let worktimes {
-                worktimes.wrappedValue.append(newItem)
+            if let workTimes {
+                workTimes.wrappedValue.append(newItem)
             } else if let editingItem {
                 // Keep the old id
                 newItem.id = editingItem.wrappedValue.id
                 editingItem.wrappedValue = newItem
             } else {
                 assertionFailure(
-                    "AddWorkTimeView was created with neither a list of worktimes, nor an editingItem."
+                    "AddWorkTimeView was created with neither a list of workTimes, nor an editingItem."
                 )
             }
             self.dateChanged = false

@@ -17,7 +17,7 @@ struct AddWorkTimeSnapshotTests {
     }
 
     @Test func testCreationEmpty() {
-        let viewModel = AddWorkTimeView.ViewModel(worktimes: .constant([]))
+        let viewModel = AddWorkTimeView.ViewModel(workTimes: .constant([]))
         // We need to set the date to a fixed value, otherwise it's "today", which will fail the snapshot test.
         viewModel.date = exampleDate
         viewModel.dateChanged = true
@@ -27,7 +27,7 @@ struct AddWorkTimeSnapshotTests {
     }
 
     @Test func testCreationFilled() {
-        let viewModel = AddWorkTimeView.ViewModel(worktimes: .constant([]))
+        let viewModel = AddWorkTimeView.ViewModel(workTimes: .constant([]))
         viewModel.activity = "Some Activity Name"
         viewModel.date = exampleDate
         viewModel.hours = 4

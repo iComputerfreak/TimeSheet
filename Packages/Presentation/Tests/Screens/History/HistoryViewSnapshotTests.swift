@@ -21,15 +21,15 @@ struct HistoryViewSnapshotTests {
 
     @Test func testEmptyHistory() {
         let viewModel = HistoryView.ViewModel()
-        // Ensure worktimes is empty for empty state
-        userData.worktimes = []
+        // Ensure workTimes is empty for empty state
+        userData.workTimes = []
         assertSnapshot {
             HistoryView(viewModel: viewModel)
         }
     }
 
     @Test func testFilledHistory() {
-        let worktimes: [WorkTime] = [
+        let workTimes: [WorkTime] = [
             WorkTime(
                 date: exampleDate,
                 activity: "Consulting",
@@ -53,7 +53,7 @@ struct HistoryViewSnapshotTests {
             )
         ]
         let viewModel = HistoryView.ViewModel()
-        userData.worktimes = worktimes
+        userData.workTimes = workTimes
         assertSnapshot {
             HistoryView(viewModel: viewModel)
         }

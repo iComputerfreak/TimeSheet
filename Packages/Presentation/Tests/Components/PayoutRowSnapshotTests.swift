@@ -64,10 +64,10 @@ struct PayoutRowSnapshotTests {
             ]
         ]
     )
-    func testPayoutRow(worktimes: [WorkTime]) {
+    func testPayoutRow(workTimes: [WorkTime]) {
         assertSnapshot(height: 400) {
             List {
-                PayoutRow(payout: Payout(date: Self.testDate, worktimes: worktimes))
+                PayoutRow(payout: Payout(date: Self.testDate, workTimes: workTimes))
             }
         }
     }

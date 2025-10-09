@@ -19,7 +19,7 @@ struct AddFixedPayTests {
     }
 
     @Test func testInvertPayAmount() async {
-        let sut: AddFixedPayView.ViewModel = .init(worktimes: .constant([]))
+        let sut: AddFixedPayView.ViewModel = .init(workTimes: .constant([]))
 
         sut.payAmount = 10
         sut.invertPayAmount()
@@ -40,7 +40,7 @@ struct AddFixedPayTests {
     }
 
     @Test func testSaveEntryZeroAmount() {
-        let sut: AddFixedPayView.ViewModel = .init(worktimes: .constant([]))
+        let sut: AddFixedPayView.ViewModel = .init(workTimes: .constant([]))
         sut.date = Date()
         sut.activity = "Test Activity"
         sut.payAmount = 0
@@ -51,43 +51,43 @@ struct AddFixedPayTests {
     }
 
     @Test func testSaveEntryCreation() {
-        var worktimes: [WorkTime] = []
-        let worktimesBinding = Binding {
-            worktimes
+        var workTimes: [WorkTime] = []
+        let workTimesBinding = Binding {
+            workTimes
         } set: { newValue in
-            worktimes = newValue
+            workTimes = newValue
         }
-        let sut = AddFixedPayView.ViewModel(worktimes: worktimesBinding)
+        let sut = AddFixedPayView.ViewModel(workTimes: workTimesBinding)
         let newDate = Date()
         sut.date = newDate
         sut.activity = "Test Activity"
         sut.payAmount = 25
 
-        let worktimeCountBefore = worktimes.count
+        let workTimeCountBefore = workTimes.count
 
         sut.saveEntry()
 
-        #expect(worktimes.count == worktimeCountBefore + 1)
-        #expect(worktimes.last?.date == newDate)
-        #expect(worktimes.last?.activity == "Test Activity")
-        #expect(worktimes.last?.isFixedPay == true)
-        #expect(worktimes.last?.pay == 25)
+        #expect(workTimes.count == workTimeCountBefore + 1)
+        #expect(workTimes.last?.date == newDate)
+        #expect(workTimes.last?.activity == "Test Activity")
+        #expect(workTimes.last?.isFixedPay == true)
+        #expect(workTimes.last?.pay == 25)
     }
 
     @Test func testSaveEntryEditing() {
-        var worktime: WorkTime = .init(
+        var workTime: WorkTime = .init(
             date: Date.distantPast,
             activity: "Test Activity",
             hours: 2,
             minutes: 30,
             wage: 20.0
         )
-        let worktimeBinding = Binding {
-            worktime
+        let workTimeBinding = Binding {
+            workTime
         } set: { newValue in
-            worktime = newValue
+            workTime = newValue
         }
-        let sut = AddFixedPayView.ViewModel(editingItem: worktimeBinding)
+        let sut = AddFixedPayView.ViewModel(editingItem: workTimeBinding)
         let newDate = Date()
         sut.date = newDate
         sut.activity = "Test Activity 2"
@@ -95,20 +95,20 @@ struct AddFixedPayTests {
 
         sut.saveEntry()
 
-        #expect(worktime.date == newDate)
-        #expect(worktime.activity == "Test Activity 2")
-        #expect(worktime.isFixedPay == true)
-        #expect(worktime.pay == 22)
+        #expect(workTime.date == newDate)
+        #expect(workTime.activity == "Test Activity 2")
+        #expect(workTime.isFixedPay == true)
+        #expect(workTime.pay == 22)
     }
 
     @Test func testEmptyActivity() {
-        var worktimes: [WorkTime] = []
-        let worktimesBinding = Binding {
-            worktimes
+        var workTimes: [WorkTime] = []
+        let workTimesBinding = Binding {
+            workTimes
         } set: { newValue in
-            worktimes = newValue
+            workTimes = newValue
         }
-        let sut = AddFixedPayView.ViewModel(worktimes: worktimesBinding)
+        let sut = AddFixedPayView.ViewModel(workTimes: workTimesBinding)
         let newDate = Date()
         sut.date = newDate
         sut.activity = ""
@@ -116,6 +116,6 @@ struct AddFixedPayTests {
 
         sut.saveEntry()
 
-        #expect(worktimes.last?.activity == nil, "An empty activity text should result in a nil activity")
+        #expect(workTimes.last?.activity == nil, "An empty activity text should result in a nil activity")
     }
 }

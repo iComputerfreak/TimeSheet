@@ -12,30 +12,30 @@ import SwiftUI
 
 @Observable
 public final class MockUserData: UserData, @unchecked Sendable {
-    public var worktimes: [WorkTime]
+    public var workTimes: [WorkTime]
     public var payouts: [Payout]
 
     public var totalWorkingDuration: DateComponents {
-        worktimes
+        workTimes
             .filter { !$0.isFixedPay }
             .filter { $0.pay > 0 }
             .map(\.duration)
             .reduce(.zero, +)
     }
 
-    public var totalWorktimePayIncludingDebts: Double {
-        worktimes
+    public var totalWorkTimePayIncludingDebts: Double {
+        workTimes
             .map(\.pay)
             .reduce(0, +)
     }
 
-    public init(worktimes: [WorkTime], payouts: [Payout]) {
-        self.worktimes = worktimes
+    public init(workTimes: [WorkTime], payouts: [Payout]) {
+        self.workTimes = workTimes
         self.payouts = payouts
     }
 
     public init() {
-        self.worktimes = []
+        self.workTimes = []
         self.payouts = []
     }
 

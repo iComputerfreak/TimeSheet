@@ -29,7 +29,7 @@ struct WorkTimeListView: StatefulView {
                     Spacer()
                     TimeView(
                         duration: viewModel.totalWorkingDuration,
-                        amount: viewModel.totalWorktimePayIncludingDebts
+                        amount: viewModel.totalWorkTimePayIncludingDebts
                     )
                 }
                 .bold()
@@ -45,11 +45,11 @@ struct WorkTimeListView: StatefulView {
             ForEach(viewModel.years, id: \.self) { (year: Int) in
                 ForEach(viewModel.months(in: year), id: \.self) { (month: Int) in
                     Section {
-                        ForEach(viewModel.worktimes(in: year, month: month)) { (worktime: WorkTime) in
-                            ListRow(worktime: worktime)
+                        ForEach(viewModel.workTimes(in: year, month: month)) { (workTime: WorkTime) in
+                            ListRow(workTime: workTime)
                                 .swipeActions {
-                                    deleteButton(worktime: worktime)
-                                    editButton(worktime: worktime)
+                                    deleteButton(workTime: workTime)
+                                    editButton(workTime: workTime)
                                 }
                         }
                     } header: {
@@ -67,16 +67,16 @@ struct WorkTimeListView: StatefulView {
         }
         .navigationTitle(viewModel.navigationTitle)
         .sheet(item: $viewModel.editingWorkTime) { workTime in
-            AddWorkTimeView(viewModel: .init(editingItem: viewModel.worktimeBinding(for: workTime.id)))
+            AddWorkTimeView(viewModel: .init(editingItem: viewModel.workTimeBinding(for: workTime.id)))
         }
     }
 
     @ViewBuilder
-    private func deleteButton(worktime: WorkTime) -> some View {
-        if viewModel.canDeleteWorktimes {
+    private func deleteButton(workTime: WorkTime) -> some View {
+        if viewModel.canDeleteWorkTimes {
             Button {
                 withAnimation {
-                    viewModel.delete(worktime)
+                    viewModel.delete(workTime)
                 }
             } label: {
                 Label(Strings.Generic.delete, systemImage: "trash")
@@ -86,10 +86,10 @@ struct WorkTimeListView: StatefulView {
     }
 
     @ViewBuilder
-    private func editButton(worktime: WorkTime) -> some View {
-        if viewModel.canEditWorktimes, viewModel.isShowingEditButton(for: worktime) {
+    private func editButton(workTime: WorkTime) -> some View {
+        if viewModel.canEditWorkTimes, viewModel.isShowingEditButton(for: workTime) {
             Button {
-                viewModel.editWorkTime(workTime: worktime)
+                viewModel.editWorkTime(workTime: workTime)
             } label: {
                 Label(Strings.Generic.edit, systemImage: "pencil")
             }
@@ -102,9 +102,9 @@ struct WorkTimeListView: StatefulView {
     WorkTimeListView(
         viewModel: .init(
             navigationTitle: "Work Times",
-            worktimes: SampleData.screenshotWorktimes,
-            canEditWorktimes: true,
-            canDeleteWorktimes: true
+            workTimes: SampleData.screenshotWorkTimes,
+            canEditWorkTimes: true,
+            canDeleteWorkTimes: true
         )
     )
     .previewEnvironment()

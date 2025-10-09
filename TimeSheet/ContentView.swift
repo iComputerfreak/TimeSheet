@@ -85,7 +85,7 @@ struct ContentView: View {
                 Spacer()
                 TimeView(
                     duration: userData.totalWorkingDuration,
-                    amount: userData.totalWorktimePayIncludingDebts
+                    amount: userData.totalWorkTimePayIncludingDebts
                 )
             }
             .bold()

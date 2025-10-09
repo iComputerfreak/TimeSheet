@@ -73,7 +73,7 @@ struct AddWorkTimeView: StatefulView {
 #if DEBUG
 #Preview {
     NavigationStack {
-        AddWorkTimeView(viewModel: .init(worktimes: .constant([])))
+        AddWorkTimeView(viewModel: .init(workTimes: .constant([])))
             .previewEnvironment()
     }
 }

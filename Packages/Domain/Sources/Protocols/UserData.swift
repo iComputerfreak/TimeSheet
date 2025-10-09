@@ -4,12 +4,12 @@ import Foundation
 import Model
 
 public protocol UserData: AnyObject, Observable {
-    var worktimes: [WorkTime] { get set }
+    var workTimes: [WorkTime] { get set }
     var payouts: [Payout] { get set }
     var totalWorkingDuration: DateComponents { get }
-    var totalWorktimePayIncludingDebts: Double { get }
+    var totalWorkTimePayIncludingDebts: Double { get }
 
-    init(worktimes: [WorkTime], payouts: [Payout])
+    init(workTimes: [WorkTime], payouts: [Payout])
     init()
 
     func save()

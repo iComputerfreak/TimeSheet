@@ -19,8 +19,8 @@ struct SettingsViewModelTests {
 
     @Test
     func testGenerateSampleData() async {
-        #expect(sut.userData.worktimes.isEmpty)
+        #expect(sut.userData.workTimes.isEmpty)
         sut.generateSampleData()
-        #expect(sut.userData.worktimes == SampleData.screenshotWorktimes)
+        #expect(sut.userData.workTimes == SampleData.screenshotWorkTimes)
     }
 }

@@ -41,7 +41,7 @@ struct PayoutRow: View {
 #if DEBUG
 #Preview(traits: .sizeThatFitsLayout) {
     List {
-        PayoutRow(payout: .init(date: .now, worktimes: SampleData.generateWorkTimes(count: 10)))
+        PayoutRow(payout: .init(date: .now, workTimes: SampleData.generateWorkTimes(count: 10)))
     }
     .previewEnvironment()
 }

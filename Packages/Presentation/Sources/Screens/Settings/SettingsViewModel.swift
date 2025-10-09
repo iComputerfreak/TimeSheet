@@ -30,7 +30,7 @@ extension SettingsView {
 
         #if DEBUG
         var shouldShowGenerateButton: Bool {
-            guard userData.worktimes.isEmpty else { return false }
+            guard userData.workTimes.isEmpty else { return false }
             return !UserDefaults.standard.bool(forKey: UserDefaultsKey.shouldHideGenerateSampleDataButton)
         }
         #endif
@@ -49,7 +49,7 @@ extension SettingsView {
 
         #if DEBUG
         func generateSampleData() {
-            userData.worktimes = SampleData.screenshotWorktimes
+            userData.workTimes = SampleData.screenshotWorkTimes
             userData.payouts = SampleData.screenshotPayouts
         }
         #endif

@@ -81,7 +81,7 @@ struct AddFixedPayView: StatefulView {
 
 #if DEBUG
 #Preview {
-    AddFixedPayView(viewModel: .init(worktimes: .constant(SampleData.generateWorkTimes())))
+    AddFixedPayView(viewModel: .init(workTimes: .constant(SampleData.generateWorkTimes())))
         .previewEnvironment()
 }
 #endif

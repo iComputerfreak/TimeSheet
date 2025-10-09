@@ -50,7 +50,7 @@ struct EditPayoutView: StatefulView {
 
 #if DEBUG
 #Preview {
-    EditPayoutView(viewModel: .init(payout: .constant(Payout(date: .now, worktimes: []))))
+    EditPayoutView(viewModel: .init(payout: .constant(Payout(date: .now, workTimes: []))))
         .previewEnvironment()
 }
 #endif

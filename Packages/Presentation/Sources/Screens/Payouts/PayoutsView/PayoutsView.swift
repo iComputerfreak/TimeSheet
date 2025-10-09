@@ -21,9 +21,9 @@ public struct PayoutsView: StatefulView {
                         WorkTimeListView(
                             viewModel: .init(
                                 navigationTitle: payout.date.formatted(viewModel.payoutDateFormat),
-                                worktimes: payout.worktimes,
-                                canEditWorktimes: false,
-                                canDeleteWorktimes: false
+                                workTimes: payout.workTimes,
+                                canEditWorkTimes: false,
+                                canDeleteWorkTimes: false
                             )
                         )
                     } label: {

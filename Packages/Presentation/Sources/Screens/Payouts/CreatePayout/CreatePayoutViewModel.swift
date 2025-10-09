@@ -21,7 +21,7 @@ extension CreatePayoutView {
         @Injected var config: Config
 
         var fullAmount: Double {
-            userData.worktimes.map(\.pay).reduce(0, +)
+            userData.workTimes.map(\.pay).reduce(0, +)
         }
 
         var formattedBalance: String {
@@ -31,7 +31,7 @@ extension CreatePayoutView {
         var isCreateButtonDisabled: Bool {
             switch fullPayoutMode {
             case true:
-                return userData.worktimes.isEmpty
+                return userData.workTimes.isEmpty
 
             case false:
                 return payoutAmount <= 0
@@ -59,30 +59,30 @@ extension CreatePayoutView {
 
         func saveEntry() {
             if fullPayoutMode {
-                guard !userData.worktimes.isEmpty else {
+                guard !userData.workTimes.isEmpty else {
                     self.noEntriesShowing = true
                     return
                 }
                 // Create the payout
                 let payout = Payout(
                     date: payoutDate,
-                    worktimes: userData.worktimes
+                    workTimes: userData.workTimes
                 )
                 withAnimation {
                     self.userData.payouts.append(payout)
                 }
-                self.userData.worktimes = []
+                self.userData.workTimes = []
             } else {
                 guard payoutAmount > 0 else {
                     zeroPayoutAlertShowing = true
                     return
                 }
-                let worktime = WorkTime(
+                let workTime = WorkTime(
                     date: payoutDate,
                     activity: Strings.Payouts.activityText,
                     fixedPay: -payoutAmount
                 )
-                userData.worktimes.append(worktime)
+                userData.workTimes.append(workTime)
             }
         }
     }

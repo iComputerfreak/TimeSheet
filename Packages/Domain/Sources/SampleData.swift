@@ -12,7 +12,7 @@ import Model
 public enum SampleData {
     private static let screenshotWage: Double = 20
 
-    public static let screenshotWorktimes: [WorkTime] = [
+    public static let screenshotWorkTimes: [WorkTime] = [
         WorkTime(
             date: Date.create(2022, 11, 12),
             activity: "Redesign of personal website",
@@ -71,7 +71,7 @@ public enum SampleData {
             let minutes = amount.truncatingRemainder(dividingBy: screenshotWage) / (screenshotWage / 60)
             return Payout(
                 date: date,
-                worktimes: [
+                workTimes: [
                     WorkTime(date: date, activity: nil, hours: Int(hours), minutes: Int(minutes), wage: screenshotWage)
                 ]
             )
@@ -81,12 +81,12 @@ public enum SampleData {
 
 public extension SampleData {
     static func generateWorkTimes(count: Int = 80) -> [WorkTime] {
-        var worktimes: [WorkTime] = []
+        var workTimes: [WorkTime] = []
         for _ in 1...count {
             let (h, m) = randomHours()
-            worktimes.append(.init(date: randomDate(), activity: nil, hours: h, minutes: m, wage: randomWage()))
+            workTimes.append(.init(date: randomDate(), activity: nil, hours: h, minutes: m, wage: randomWage()))
         }
-        return worktimes
+        return workTimes
     }
 
     static func generatePayouts(count: Int = 5) -> [Payout] {
@@ -97,7 +97,7 @@ public extension SampleData {
             let offset = -TimeInterval(Int.random(in: 7...21)) * .day
             date.addTimeInterval(offset)
             let (h, m) = randomHours()
-            payouts.append(.init(date: date, worktimes: [
+            payouts.append(.init(date: date, workTimes: [
                 .init(date: date, activity: nil, hours: h, minutes: m, wage: randomWage())
             ]))
         }
