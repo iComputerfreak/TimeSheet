@@ -29,12 +29,18 @@ struct EditPayoutView: StatefulView {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
+                    Button(role: .legacyConfirm) {
                         viewModel.save()
                         dismiss()
                     } label: {
                         Label(Strings.Generic.done, systemImage: "checkmark")
-                            .tint(.accentColor)
+                    }
+                }
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(role: .legacyClose) {
+                        dismiss()
+                    } label: {
+                        Label(Strings.Generic.cancel, systemImage: "xmark")
                     }
                 }
             }
