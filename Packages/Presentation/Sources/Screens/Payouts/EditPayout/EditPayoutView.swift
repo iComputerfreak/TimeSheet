@@ -30,10 +30,11 @@ struct EditPayoutView: StatefulView {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
+                        viewModel.save()
                         dismiss()
                     } label: {
-                        Text(Strings.Generic.done)
-                            .bold()
+                        Label(Strings.Generic.done, systemImage: "checkmark")
+                            .tint(.accentColor)
                     }
                 }
             }
