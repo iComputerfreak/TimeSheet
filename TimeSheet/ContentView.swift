@@ -80,19 +80,17 @@ struct ContentView: View {
             .accessibilityIdentifier("settings-tab")
         }
         .tabViewBottomAccessory {
-            if selectedTab == .list {
-                HStack {
-                    Text(Strings.List.Footer.total)
-                    Spacer()
-                    TimeView(
-                        duration: userData.totalWorkingDuration,
-                        amount: userData.totalWorktimePayIncludingDebts
-                    )
-                }
-                .bold()
-                .padding(.horizontal)
-                .padding(.vertical, 10)
+            HStack {
+                Text(Strings.List.Footer.total)
+                Spacer()
+                TimeView(
+                    duration: userData.totalWorkingDuration,
+                    amount: userData.totalWorktimePayIncludingDebts
+                )
             }
+            .bold()
+            .padding(.horizontal)
+            .padding(.vertical, 10)
         }
         .tabBarMinimizeBehavior(.onScrollDown)
     }
