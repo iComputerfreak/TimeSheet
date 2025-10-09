@@ -1,0 +1,41 @@
+// Copyright © 2025 Jonas Frey. All rights reserved.
+
+import Core
+import Domain
+import Model
+import SwiftUI
+
+public struct SettingsView: StatefulView {
+    @State public var viewModel: ViewModel
+
+    // swiftlint:disable:next type_contents_order
+    public init(viewModel: ViewModel = .init()) {
+        self.viewModel = viewModel
+    }
+
+    public var body: some View {
+        NavigationStack {
+            Form {
+                WageStepper(wage: $viewModel.wage)
+                Picker(Strings.Settings.currency, selection: $viewModel.currency) {
+                    ForEach(Locale.commonISOCurrencyCodes, id: \.self) { code in
+                        Text(code)
+                    }
+                }
+                #if DEBUG
+                if viewModel.shouldShowGenerateButton {
+                    Button(Strings.List.NavigationBar.generate, action: viewModel.generateSampleData)
+                }
+                #endif
+            }
+            .navigationTitle(Strings.Settings.navigationTitle)
+        }
+    }
+}
+
+#if DEBUG
+#Preview {
+    SettingsView()
+        .previewEnvironment()
+}
+#endif

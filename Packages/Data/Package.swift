@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "Data",
     platforms: [
-        .iOS(.v16),
+        .iOS(.v17),
     ],
     products: [
         .library(
@@ -26,7 +26,10 @@ let package = Package(
                 "Domain",
                 "Model",
             ],
-            path: "Sources"
+            path: "Sources",
+            swiftSettings: [
+                .enableUpcomingFeature("StrictConcurrency")
+            ]
         ),
         .testTarget(
             name: "DataTests",

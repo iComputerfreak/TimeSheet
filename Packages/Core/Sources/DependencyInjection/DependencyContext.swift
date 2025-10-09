@@ -1,0 +1,86 @@
+// Copyright © 2025 Jonas Frey. All rights reserved.
+
+import Foundation
+
+/// A dependency injection context that allows for registering and resolving dependencies.
+///
+/// This context uses a task-local variable to provide the current dependency context in the current task.
+///
+/// To resolve dependencies, use the static `current` property of `DependencyContext`.
+///
+/// If you need to do work that needs to be synchronized, e.g., resetting and re-registering dependencies, you can use
+/// `DependencyContext.synchronize(_:)` to ensure that the work is done in a thread-safe and no registrations or resolutions are
+/// executed in the mean time.
+///
+/// To use a different context, you can use `DependencyContext.$current.withValue(_:operation:)` to set a different context
+/// for the current `Task`. This value is available inside the operation closure.
+public final class DependencyContext: @unchecked Sendable { // We use `NSRecursiveLock` to ensure Sendable conformance
+    /// The dependency context to use in the current task.
+    @TaskLocal public static var current: DependencyContext = .live
+    /// The live dependency context, containing the actual dependencies used in production.
+    public static let live = DependencyContext()
+
+    #if DEBUG
+    /// A preview dependency context, used for SwiftUI Previews.
+    public static let preview = DependencyContext()
+    #endif
+
+    private let lock: NSRecursiveLock = .init()
+    private var registrations: [String: Any] = [:]
+
+    // Allow creation of individual contexts for testing
+    public init() {}
+
+    /// Registers a value for a specific type and an optional key.
+    ///
+    /// - Note: Registered dependencies are evaluated immediately and the instances stored in the context.
+    public func register<Value>(_ type: Value.Type, key: (any DependencyKey)? = nil, _ value: @escaping () -> Value) {
+        let keyString = keyString(for: Value.self, key: key)
+        synchronize {
+            registrations[keyString] = value()
+        }
+    }
+
+    /// Resolves a value from the specific type and an optional key.
+    public func resolve<Value>(key: (any DependencyKey)? = nil) -> Value {
+        let keyString = keyString(for: Value.self, key: key)
+        return synchronize {
+            guard let value = registrations[keyString] as? Value else {
+                let availableRegistrations = registrations.keys.joined(separator: ", ")
+                fatalError(
+                    "No registration found for type \(String(describing: Value.self)) and "
+                    + "key \(key?.rawValue ?? "nil"). "
+                    + "Available registrations: \(availableRegistrations.isEmpty ? "None" : availableRegistrations)"
+                )
+            }
+            return value
+        }
+    }
+
+    /// Resets the context, removing all registrations.
+    public func reset() {
+        synchronize {
+            registrations.removeAll()
+        }
+    }
+
+    private func keyString<T>(for type: T.Type, key: (any DependencyKey)?) -> String {
+        let typeDescription = String(describing: type)
+        if let key {
+            return "\(typeDescription).\(key.rawValue)"
+        } else {
+            return typeDescription
+        }
+    }
+}
+
+public extension DependencyContext {
+    /// Synchronizes the execution of the provided work block, ensuring that no other registrations or resolutions
+    /// are executed in the meantime.
+    func synchronize<T>(_ work: () -> T) -> T {
+        defer { lock.unlock() }
+        lock.lock()
+
+        return work()
+    }
+}

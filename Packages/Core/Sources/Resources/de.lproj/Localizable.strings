@@ -54,6 +54,8 @@
 
 "GENERIC.SAVE" = "Speichern";
 
+"GENERIC.CANCEL" = "Abbrechen";
+
 "SETTINGS.NAVIGATION_TITLE" = "Einstellungen";
 
 "LIST.NAVIGATION_TITLE" = "Stundenzettel";
@@ -62,7 +64,7 @@
 
 "HISTORY.GRAPH_TYPE.TIME" = "Zeit";
 
-"LIST.FOOTER.TOTAL" = "Gesamt";
+"LIST.FOOTER.TOTAL" = "Guthaben";
 
 "CREATE_PAYOUT.MESSAGES.FULL_PAYOUT" = "Wenn Sie eine volle Auszahlung erstellen werden alle Einträge auf dem Stundenzettel entfernt und im Auszahlungs-Tab archiviert. Die erstellte Auszahlung kann nicht bearbeitet werden.";
 

@@ -79,6 +79,8 @@ public enum Strings {
     }
   }
   public enum Generic {
+    /// Cancel
+    public static let cancel = Strings.tr("Localizable", "GENERIC.CANCEL", fallback: "Cancel")
     /// Delete
     public static let delete = Strings.tr("Localizable", "GENERIC.DELETE", fallback: "Delete")
     /// Done
@@ -110,8 +112,8 @@ public enum Strings {
     /// Sheet
     public static let navigationTitle = Strings.tr("Localizable", "LIST.NAVIGATION_TITLE", fallback: "Sheet")
     public enum Footer {
-      /// Total
-      public static let total = Strings.tr("Localizable", "LIST.FOOTER.TOTAL", fallback: "Total")
+      /// Balance
+      public static let total = Strings.tr("Localizable", "LIST.FOOTER.TOTAL", fallback: "Balance")
     }
     public enum NavigationBar {
       /// Generate

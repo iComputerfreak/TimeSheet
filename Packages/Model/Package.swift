@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "Model",
     platforms: [
-        .iOS(.v16),
+        .iOS(.v17),
     ],
     products: [
         .library(
@@ -18,7 +18,10 @@ let package = Package(
         .target(
             name: "Model",
             dependencies: [],
-            path: "Sources"
+            path: "Sources",
+            swiftSettings: [
+                .enableUpcomingFeature("StrictConcurrency")
+            ]
         ),
         .testTarget(
             name: "ModelTests",
