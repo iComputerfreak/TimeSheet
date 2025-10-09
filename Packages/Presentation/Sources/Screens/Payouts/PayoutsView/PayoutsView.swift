@@ -52,7 +52,9 @@ public struct PayoutsView: StatefulView {
     }
 }
 
+#if DEBUG
 #Preview {
     PayoutsView()
         .previewEnvironment()
 }
+#endif
