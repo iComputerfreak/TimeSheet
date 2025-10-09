@@ -9,7 +9,7 @@ import SwiftUI
 struct WorkTimeListView: StatefulView {
     // We explicitly don't use @State here to force a re-render of this component view whenever the parent sets a new
     // view model. This would be comparable to this view holding the properties directly.
-    var viewModel: ViewModel
+    @Bindable var viewModel: ViewModel
 
     // swiftlint:disable:next type_contents_order
     init(viewModel: ViewModel) {
@@ -66,6 +66,9 @@ struct WorkTimeListView: StatefulView {
             }
         }
         .navigationTitle(viewModel.navigationTitle)
+        .sheet(item: $viewModel.editingWorkTime) { workTime in
+            AddWorkTimeView(viewModel: .init(editingItem: viewModel.worktimeBinding(for: workTime.id)))
+        }
     }
 
     @ViewBuilder
@@ -85,10 +88,8 @@ struct WorkTimeListView: StatefulView {
     @ViewBuilder
     private func editButton(worktime: WorkTime) -> some View {
         if viewModel.canEditWorktimes, viewModel.isShowingEditButton(for: worktime) {
-            NavigationLink {
-                AddWorkTimeView(viewModel: .init(
-                    editingItem: viewModel.worktimeBinding(for: worktime.id)
-                ))
+            Button {
+                viewModel.editWorkTime(workTime: worktime)
             } label: {
                 Label(Strings.Generic.edit, systemImage: "pencil")
             }

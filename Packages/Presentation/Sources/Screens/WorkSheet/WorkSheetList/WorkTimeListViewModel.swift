@@ -14,6 +14,7 @@ extension WorkTimeListView {
         let canEditWorktimes: Bool
         let canDeleteWorktimes: Bool
         var worktimes: [WorkTime]
+        var editingWorkTime: WorkTime?
 
         var years: [Int] {
             worktimes
@@ -108,6 +109,10 @@ extension WorkTimeListView {
             worktimes(in: year, month: month)
                 .map(\.pay)
                 .reduce(0, +)
+        }
+
+        func editWorkTime(workTime: WorkTime) {
+            self.editingWorkTime = workTime
         }
     }
 }
