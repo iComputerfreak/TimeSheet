@@ -13,6 +13,11 @@
   },
   "testTargets" : [
     {
+      "skippedTags" : {
+        "tags" : [
+          ".snapshot"
+        ]
+      },
       "target" : {
         "containerPath" : "container:Packages\/Data",
         "identifier" : "DataTests",
@@ -20,6 +25,11 @@
       }
     },
     {
+      "skippedTags" : {
+        "tags" : [
+          ".snapshot"
+        ]
+      },
       "target" : {
         "containerPath" : "container:Packages\/Domain",
         "identifier" : "DomainTests",
@@ -27,6 +37,11 @@
       }
     },
     {
+      "skippedTags" : {
+        "tags" : [
+          ".snapshot"
+        ]
+      },
       "target" : {
         "containerPath" : "container:Packages\/Model",
         "identifier" : "ModelTests",
@@ -35,6 +50,11 @@
     },
     {
       "parallelizable" : false,
+      "skippedTags" : {
+        "tags" : [
+          ".snapshot"
+        ]
+      },
       "target" : {
         "containerPath" : "container:Packages\/Presentation",
         "identifier" : "PresentationTests",
@@ -42,6 +62,11 @@
       }
     },
     {
+      "skippedTags" : {
+        "tags" : [
+          ".snapshot"
+        ]
+      },
       "target" : {
         "containerPath" : "container:Packages\/Core",
         "identifier" : "CoreTests",
@@ -49,6 +74,11 @@
       }
     },
     {
+      "skippedTags" : {
+        "tags" : [
+          ".snapshot"
+        ]
+      },
       "target" : {
         "containerPath" : "container:TimeSheet.xcodeproj",
         "identifier" : "AB5CE2F72DF4B213009E41F3",
