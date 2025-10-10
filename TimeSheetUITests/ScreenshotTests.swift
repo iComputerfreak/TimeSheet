@@ -31,7 +31,7 @@ final class ScreenshotTests: XCTestCase {
         }
         // Create the sample data
         app.buttons["settings-tab"].firstMatch.tap()
-        app.buttons["Generate"].firstMatch.tap()
+        app.buttons["generate-button"].firstMatch.tap()
         app.buttons["sheet-tab"].firstMatch.tap()
 
         // Take the screenshots
