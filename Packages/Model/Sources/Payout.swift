@@ -8,6 +8,12 @@
 import Foundation
 
 public struct Payout: Codable, Identifiable, Equatable, Sendable {
+    enum CodingKeys: String, CodingKey {
+        case id
+        case date
+        case workTimes = "worktimes"
+    }
+
     public var id = UUID()
     public var date: Date
     public var workTimes: [WorkTime]
